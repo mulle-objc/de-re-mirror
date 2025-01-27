@@ -1,0 +1,382 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>@property( attributes) &#8211; De Re @property</title>
+<meta name="description" content="Attributes define the behavior of the property and the code generated for the accessors. The default 
+attributes of a  property are assign, nonserializable, readwrite.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="@property( attributes)">
+<meta name="twitter:description" content="Attributes define the behavior of the property and the code generated for the accessors. The default attributes of a property are assign, nonserializable, readwrite. For non-object properties you can omit attributes. For object properties choose copy, if the Class supports the NSCopying protocol. Otherwise default to retain. Everything else is...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-property/images/thumbs/attributes.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="@property( attributes)">
+<meta property="og:description" content="Attributes define the behavior of the property and the code generated for the accessors. The default attributes of a property are assign, nonserializable, readwrite. For non-object properties you can omit attributes. For object properties choose copy, if the Class supports the NSCopying protocol. Otherwise default to retain. Everything else is...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/attributes.html">
+<meta property="og:site_name" content="De Re @property">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-property/images/thumbs/attributes.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-property/images/logo.png">
+
+
+
+<link href="/de-re-property/atom.xml" type="application/atom+xml" rel="alternate" title="De Re @property Feed">
+<link href="/de-re-property/index.rdf" type="application/rss+xml" rel="alternate" title="De Re @property Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/attributes.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-properties@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-properties@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re @property&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/declaration.html" title="@property declaration">@property declaration</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/attributes.html" title="@property( attributes)">@property( attributes)</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/definition.html" title="@property definition">@property definition</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/access.html" title="@property access">@property access</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/runtime.html" title="@property signature">@property signature</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/class-inheritance.html" title="@property inheritance by class">@property inheritance by class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/protocol-inheritance.html" title="@property inheritance by protocol">@property inheritance by protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/protocolclass-inheritance.html" title="@property inheritance by protocolclass">@property inheritance by protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/redeclaration.html" title="@property redeclaration">@property redeclaration</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/synthesize-directive.html" title="@synthesize">@synthesize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/dynamic-directive.html" title="@dynamic">@dynamic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/assign.html" title="Reference: assign">Reference: assign</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/container.html" title="Reference: container">Reference: container</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/copy.html" title="Reference: copy">Reference: copy</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/dynamic.html" title="Reference: dynamic">Reference: dynamic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/observable.html" title="Reference: observable">Reference: observable</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/nonatomic.html" title="Reference: nonatomic">Reference: nonatomic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/readonly.html" title="Reference: readonly">Reference: readonly</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/retain.html" title="Reference: retain">Reference: retain</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/serializable.html" title="Reference: serializable">Reference: serializable</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re @property&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>@property( attributes)</h1>
+                  <div>
+                  <p>Attributes define the behavior of the property and the code generated for the accessors. The default 
+attributes of a  property are <code class="language-plaintext highlighter-rouge">assign</code>, <code class="language-plaintext highlighter-rouge">nonserializable</code>, <code class="language-plaintext highlighter-rouge">readwrite</code>.</p>
+
+<p>For non-object properties you can omit attributes. For object properties choose <code class="language-plaintext highlighter-rouge">copy</code>, if
+the Class supports the <code class="language-plaintext highlighter-rouge">NSCopying</code> protocol. Otherwise default to <code class="language-plaintext highlighter-rouge">retain</code>. 
+Everything else is a special case.</p>
+
+<h2 id="general-attributes">General attributes</h2>
+
+<p>In MulleObjC, the attributes you can use on all property types (e.g. <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">char *</code>, <code class="language-plaintext highlighter-rouge">struct CGPoint</code>,  <code class="language-plaintext highlighter-rouge">id</code>) are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="assign.html"><code class="language-plaintext highlighter-rouge">assign</code></a></td>
+      <td>Directly assigns value without retaining or copying, used for primitives and non-retaining relationships.</td>
+    </tr>
+    <tr>
+      <td><a href="dynamic.html"><code class="language-plaintext highlighter-rouge">dynamic</code></a></td>
+      <td>Indicates that accessor methods are provided at runtime. No instance variable is generated</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getter=getterName</code></td>
+      <td>Custom getter method name.</td>
+    </tr>
+    <tr>
+      <td><a href="observable.html"><code class="language-plaintext highlighter-rouge">observable</code></a></td>
+      <td>Used to notice changes in property values.</td>
+    </tr>
+    <tr>
+      <td><a href="nonatomic.html"><code class="language-plaintext highlighter-rouge">nonatomic</code></a></td>
+      <td>Useless syntax fluff, as it’s the default and <code class="language-plaintext highlighter-rouge">atomic</code> is not supported</td>
+    </tr>
+    <tr>
+      <td><a href="serializable.html"><code class="language-plaintext highlighter-rouge">nonserializable</code></a></td>
+      <td>Marks the property as not serializable.</td>
+    </tr>
+    <tr>
+      <td><a href="readonly.html"><code class="language-plaintext highlighter-rouge">readonly</code></a></td>
+      <td>Read-only property, only a getter is generated.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">readwrite</code></td>
+      <td>The opposite of readonly, useless syntax fluff</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setter=setterName</code></td>
+      <td>Custom setter method name.</td>
+    </tr>
+    <tr>
+      <td><a href="serializable.html"><code class="language-plaintext highlighter-rouge">serializable</code></a></td>
+      <td>Marks the property as serializable for archiving and serialization purposes.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can only choose one of <code class="language-plaintext highlighter-rouge">readonly</code> or <code class="language-plaintext highlighter-rouge">readwrite</code> for a property.
+You can not choose <code class="language-plaintext highlighter-rouge">setter</code> for a <code class="language-plaintext highlighter-rouge">readonly</code> property.</p>
+
+<h2 id="object-attributes">Object attributes</h2>
+
+<p>These attributes are only useful on object types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="retain.html"><code class="language-plaintext highlighter-rouge">retain</code></a></td>
+      <td>Retains the value when set, used for mutable objects</td>
+    </tr>
+    <tr>
+      <td><a href="copy.html"><code class="language-plaintext highlighter-rouge">copy</code></a></td>
+      <td>Copies the value when set, used for value types like <code class="language-plaintext highlighter-rouge">NSString</code>.</td>
+    </tr>
+    <tr>
+      <td><a href="container.html"><code class="language-plaintext highlighter-rouge">container</code></a></td>
+      <td>Used for properties that are collections, enabling additional behaviors.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Some attributes exclude the use of another attribute, this may or may not be flagged by the compiler:</p>
+
+<p>You can only choose one of <code class="language-plaintext highlighter-rouge">copy</code>, <code class="language-plaintext highlighter-rouge">assign</code>, <code class="language-plaintext highlighter-rouge">retain</code> for a property.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-property/declaration.html">@property declaration</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-property/definition.html">@property definition</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

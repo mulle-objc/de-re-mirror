@@ -1,0 +1,475 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>🌳 Virtual Environment &#8211; De Re mulle-sde</title>
+<meta name="description" content="Environment variables are used by mulle-sde to store project related information, like the programming language to use, the place to search for dependencies and so on. If one were to use the global shell environment (setup by a .bashrc or .profile file) for these environment variables, this wouldn’t go very...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="🌳 Virtual Environment">
+<meta name="twitter:description" content="Environment variables are used by mulle-sde to store project related information, like the programming language to use, the place to search for dependencies and so on. If one were to use the global shell environment (setup by a .bashrc or .profile file) for these environment variables, this wouldn’t go very...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🌳 Virtual Environment">
+<meta property="og:description" content="Environment variables are used by mulle-sde to store project related information, like the programming language to use, the place to search for dependencies and so on. If one were to use the global shell environment (setup by a .bashrc or .profile file) for these environment variables, this wouldn’t go very...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/virtual-env.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/virtual-env.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/existing-makefile.html" title="🔶 Manage a Makefile project 🆕">🔶 Manage a Makefile project 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/virtual-env.html" title="🌳 Virtual Environment">🌳 Virtual Environment</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/template.html" title="🕋 Template generator">🕋 Template generator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/compositor.html" title="🌲 Project Compositor">🌲 Project Compositor</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/builder.html" title="🚬 Fetch and build">🚬 Fetch and build</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/makefile.html" title="💠 Makefile maintainer">💠 Makefile maintainer</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/test-coverage.html" title="☑︎ Test suite with Coverage 🆕">☑︎ Test suite with Coverage 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/definition.html" title="💄 Definition isolator">💄 Definition isolator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/hecklers-corner.html" title="Hecklers Corner">Hecklers Corner</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>🌳 Virtual Environment</h1>
+                  <div>
+                  <p><a href="//en.wikipedia.org/wiki/Environment_variable">Environment variables</a> are used
+by mulle-sde to store project related information, like the programming
+language to use, the place to search for dependencies and so on.
+If one were to use the global shell environment (setup by a <code class="language-plaintext highlighter-rouge">.bashrc</code> or
+<code class="language-plaintext highlighter-rouge">.profile</code> file) for these environment variables, this wouldn’t go very far, as
+different projects would interfere with each other.</p>
+
+<p>Therefore mulle-sde provides a custom environment. In it, unwanted environment
+settings are hidden and desired settings are added. Furthermore these
+<strong>environment settings can be specific</strong> to a certain <strong>platform</strong> or
+<strong>host</strong> or <strong>user</strong>.</p>
+
+<h3 id="a-clean-environement-for-consistent-builds">A clean environement for consistent builds</h3>
+
+<p>Differences in environment variable values between different developers or
+computers are a source of subtle and hard to find bugs like “Why is the sort
+order different on this machine ?” Development in a consistent environment is
+a time saver.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<p>Let’s create a virtual environment in a demo folder “foo”. The virtual
+environment will have a certain <em>style</em> called <code class="language-plaintext highlighter-rouge">none/inherit</code>, which filters
+out most environment variables. It will leave the <code class="language-plaintext highlighter-rouge">PATH</code> variable intact though.
+The command <code class="language-plaintext highlighter-rouge">mulle-sde init -d foo -s none/inherit none</code> will do
+all of that:</p>
+
+<p><img src="images/environment-initial.png" alt="Initial Environment" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">mulle-sde env</code> command shows the environment variables, that
+are added by the virtual environment configuration. These environment variables
+are grouped by <em>scope</em> (see below). The complete environment, as available
+to the commands running in the virtual environment, can be seen with:
+<code class="language-plaintext highlighter-rouge">mulle-sde run env | sort</code>. <code class="language-plaintext highlighter-rouge">mulle-sde run</code> executes a single command inside
+the virtual environment. You can also get an interactive shell with just
+<code class="language-plaintext highlighter-rouge">mulle-sde</code>.</p>
+
+<blockquote>
+  <p>The “foo” folder will appear empty as the virtual environment is stored in
+a hidden <code class="language-plaintext highlighter-rouge">.mulle</code> folder. If mulle-sde finds  no <code class="language-plaintext highlighter-rouge">.mulle</code> folder in the
+current directory, a search is made, to find the nearest enclosing virtual
+environment. Thus you can execute mulle-sde commands, wherever you are
+inside the project.</p>
+</blockquote>
+
+<h2 id="scopes">Scopes</h2>
+
+<p>Environment variables in mulle-sde are scoped. There is a certain order in
+which they are defined, so that settings can inherit or override previous
+setting. For example a mulle-sde plugin may specify a default executable
+<code class="language-plaintext highlighter-rouge">FOO_EXE=foo</code>. But you may need a different tool on macOS. So you specify for
+macOS: <code class="language-plaintext highlighter-rouge">mulle-sde env --os darwin set FOO_EXE bar</code>.
+This value will then override the plugin value on macOS only.</p>
+
+<blockquote>
+  <p>How do you know that you need to use “darwin” on macOS ? Run
+<code class="language-plaintext highlighter-rouge">mulle-sde uname</code> to get the short identifier for the current platform.</p>
+</blockquote>
+
+<p>The scopes, in order of them being read, are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scope</th>
+      <th>Read/Write</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hardcoded</code></td>
+      <td>NO</td>
+      <td>Variables needed by mulle-sde scripts.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugin</code></td>
+      <td>NO</td>
+      <td>Variables added by the chosen plugin (see Tool-style).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugin-os-&lt;uname&gt;</code></td>
+      <td>NO</td>
+      <td>Variables added by the chosen plugin for specific platforms.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">project</code></td>
+      <td>YES</td>
+      <td>Project specific variables. Usually set once and rarely changed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">global</code></td>
+      <td>YES</td>
+      <td>Global project tweaks. This is the default scope for many commands.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">os-&lt;uname&gt;</code></td>
+      <td>YES</td>
+      <td>Platform specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">host-&lt;hostname&gt;</code></td>
+      <td>YES</td>
+      <td>Host specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">user-&lt;username&gt;</code></td>
+      <td>YES</td>
+      <td>User specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">post-global</code></td>
+      <td>YES</td>
+      <td>Globally incorporate changes from site/user/host tweaks.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The order is important, for example <code class="language-plaintext highlighter-rouge">host-&lt;hostname&gt;</code> variables can override
+<code class="language-plaintext highlighter-rouge">os-&lt;uname&gt;</code> variables. They can also expand them.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde <span class="nb">env</span> <span class="nt">--this-os</span> <span class="nb">set </span>X_PATH <span class="s1">'a:b'</span>
+<span class="nv">$ </span>mulle-sde <span class="nb">env</span> <span class="nt">--this-host</span> <span class="nb">set </span>X_PATH <span class="s1">'${X_PATH}:c'</span>
+<span class="nv">$ </span>mulle-sde <span class="nb">env </span>get <span class="nt">--output-eval</span> X_PATH
+a:b:c
+</code></pre></div></div>
+
+<p>Can you add more scopes ? Yes.</p>
+
+<blockquote>
+  <h4 id="note">Note</h4>
+
+  <p><code class="language-plaintext highlighter-rouge">global</code> settings are still local to the project environment. They are
+global, in that they always apply, no matter the platform, user, or host.</p>
+</blockquote>
+
+<h2 id="path-restrictions">PATH restrictions</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">PATH</code> environment variable is used to find commands to execute. With
+mulle-sde you can prune the <code class="language-plaintext highlighter-rouge">PATH</code> down, so that only a very basic set of
+commands is available. This way, your project won’t accidentally rely  on
+features, that are not present on other platforms. With the <code class="language-plaintext highlighter-rouge">mulle-sde tool add</code>
+command, you add commands that are necessary:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde tool add <span class="nt">--optional</span> cmake
+</code></pre></div></div>
+
+<p>You can differentiate between <em>required</em> and <em>optional</em> tools and you can
+have different tools for different platforms.</p>
+
+<h3 id="environment-styles">Environment Styles</h3>
+
+<p>Let’s get back to the
+<code class="language-plaintext highlighter-rouge">mulle-sde init -d foo -s none/inherit none</code> command and
+talk about the <code class="language-plaintext highlighter-rouge">none/inherit</code> style some more.  A style specifies in the first
+part the “tool style” (often provided by a “plugin”) and in the second part
+the “environment style”, also known as the “flavor”.</p>
+
+<p>Currently there are five known environment styles, ordered from
+restrictive to loose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Env-style</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">none</code></td>
+      <td>All environment variables must be user defined</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">restrict</code></td>
+      <td>Inherit some environment (like <code class="language-plaintext highlighter-rouge">SSH_TTY</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">relax</code></td>
+      <td>as “restrict” plus <code class="language-plaintext highlighter-rouge">/bin</code> and <code class="language-plaintext highlighter-rouge">/usr/bin</code> are available via <code class="language-plaintext highlighter-rouge">PATH</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">inherit</code></td>
+      <td>as “restrict”, but <code class="language-plaintext highlighter-rouge">PATH</code> is kept intact</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wild</code></td>
+      <td>no restrictions</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tool-styles">Tool Styles</h3>
+
+<p>The four toolstyles are used to augment the basic environment styles <code class="language-plaintext highlighter-rouge">none</code> and
+<code class="language-plaintext highlighter-rouge">restrict</code> with a predefined set of tools. For mulle-sde development tool-style
+<code class="language-plaintext highlighter-rouge">mulle</code> will be the norm.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool-style</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">none</code></td>
+      <td>No additions to the tool list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">minimal</code></td>
+      <td>a minimal set of tools (like cd, ls)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">developer</code></td>
+      <td>a common set of tools (like cd, ls, awk, man)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mulle</code></td>
+      <td>Like developer but also adds mulle-sde tools</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Since the contents of <code class="language-plaintext highlighter-rouge">PATH</code> or <code class="language-plaintext highlighter-rouge">/bin</code> aren’t clearly defined and vary on a
+per host and per platform basis, <code class="language-plaintext highlighter-rouge">relax</code> and <code class="language-plaintext highlighter-rouge">inherit</code> are relatively blunt
+instruments. The tool styles based on <code class="language-plaintext highlighter-rouge">none</code> or <code class="language-plaintext highlighter-rouge">restrict</code> offer more fine
+grained control over the available tools.</p>
+
+<h2 id="breaking-out-of-the-environment">Breaking out of the environment</h2>
+
+<p>With <code class="language-plaintext highlighter-rouge">mudo</code> you can run commands with an unrestricted PATH from inside the
+virtual environment e.g. <code class="language-plaintext highlighter-rouge">mudo subl src/main.m</code>.</p>
+
+<h2 id="final-words">Final words</h2>
+
+<p>If virtual environments is all you need, you don’t need the full mulle-sde
+install but can use <a href="https://github.com/mulle-sde/mulle-env">mulle-env</a>
+instead, which is actually responsible for all the environment handling.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-sde/existing-makefile.html">🔶 Manage a Makefile project 🆕</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-sde/template.html">🕋 Template generator</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

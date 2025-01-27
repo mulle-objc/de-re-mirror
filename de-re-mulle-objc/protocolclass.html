@@ -1,0 +1,637 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Advanced: Protocolclasses allow default implementations &#8211; De Re mulle-objc</title>
+<meta name="description" content="A protocolclass is a mulle-objc extension of the Objective-C language. It allows
+a class to inherit default implementations from a protocol.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Advanced: Protocolclasses allow default implementations">
+<meta name="twitter:description" content="A protocolclass is a mulle-objc extension of the Objective-C language. It allows a class to inherit default implementations from a protocol. @protocolclass as a keyword doesn’t exist yet, but it’s effect can be simulated by: @class Foo; @protocol Foo; @end; @interface Foo &lt;Foo&gt;; @end. For a class to become a...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/protocolclass.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advanced: Protocolclasses allow default implementations">
+<meta property="og:description" content="A protocolclass is a mulle-objc extension of the Objective-C language. It allows a class to inherit default implementations from a protocol. @protocolclass as a keyword doesn’t exist yet, but it’s effect can be simulated by: @class Foo; @protocol Foo; @end; @interface Foo &lt;Foo&gt;; @end. For a class to become a...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/protocolclass.html">
+<meta property="og:site_name" content="De Re mulle-objc">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/protocolclass.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/logo.png">
+
+
+
+<link href="/de-re-mulle-objc/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-objc Feed">
+<link href="/de-re-mulle-objc/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-objc Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/protocolclass.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/intro.html" title="De Re mulle-objc">De Re mulle-objc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern.html" title="Project Setup">Project Setup</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-source.html" title="Generic Headers">Generic Headers</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-dependency.html" title="Dependencies">Dependencies</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern-complex.html" title="Projects with Multiple Targets">Projects with Multiple Targets</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/good.html" title="Good mulle-objc Code">Good mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/basics.html" title="A complete class">A complete class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/objects.html" title="Objects and Properties">Objects and Properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/printing.html" title="Printing">Printing</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-class.html" title="Plug And Play Class">Plug And Play Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-category.html" title="Plug And Play Category">Plug And Play Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/overridden.html" title="Advanced: Calling overridden methods">Advanced: Calling overridden methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/forward.html" title="Advanced: -forward:">Advanced: -forward:</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocolclass.html" title="Advanced: Protocolclasses allow default implementations">Advanced: Protocolclasses allow default implementations</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/classcluster.html" title="Advanced: Classcluster Classes">Advanced: Classcluster Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/singleton.html" title="Advanced: Singleton classes">Advanced: Singleton classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tps.html" title="Advanced: Tagged Pointer Classes">Advanced: Tagged Pointer Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/differences.html" title="Porting: Differences to Objective-C 2.0">Porting: Differences to Objective-C 2.0</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/legacy.html" title="Porting: Legacy Workflow">Porting: Legacy Workflow</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/bad.html" title="Porting: Bad mulle-objc Code">Porting: Bad mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/porting.html" title="Porting: General Tips">Porting: General Tips</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/subscripting.html" title="Porting: subscripting">Porting: subscripting</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/arc.html" title="Porting: ARC">Porting: ARC</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/block.html" title="Porting: ^blocks">Porting: ^blocks</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/dotsyntax.html" title="Porting: . syntax for properties">Porting: . syntax for properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/generics.html" title="Porting: generics">Porting: generics</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modules.html" title="Porting: @import">Porting: @import</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/package.html" title="Porting: @package">Porting: @package</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocol.html" title="Porting: Protocols are a kind of @selector">Porting: Protocols are a kind of @selector</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/property.html" title="Porting @property">Porting @property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synthesize.html" title="Porting: @synthesize is useless now">Porting: @synthesize is useless now</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synchronized.html" title="Porting: Synchronized is gone">Porting: Synchronized is gone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/varargs.html" title="Porting: Variable Arguments in Methods">Porting: Variable Arguments in Methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/nszone.html" title="Porting: NSZone">Porting: NSZone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/unichar.html" title="Porting: unichar">Porting: unichar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/cpp.html" title="Porting: Objective-C++">Porting: Objective-C++</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/xcodeproj.html" title="Porting: Xcode projects">Porting: Xcode projects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tools.html" title="Tooling: mulle-objc Tools">Tooling: mulle-objc Tools</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/coverage.html" title="Tooling: Coverage information">Tooling: Coverage information</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/reduction.html" title="Tooling: Code reduction">Tooling: Code reduction</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Advanced: Protocolclasses allow default implementations</h1>
+                  <div>
+                  <p>A <em>protocolclass</em> is a mulle-objc extension of the Objective-C language. It allows
+a class to inherit default implementations from a protocol.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@protocolclass</code> as a keyword doesn’t exist yet, but it’s effect can be
+simulated by: <code class="language-plaintext highlighter-rouge">@class Foo; @protocol Foo; @end; @interface Foo &lt;Foo&gt;; @end</code>.</p>
+
+<p>For a class to become a protocolclass it must meet the following
+requirements:</p>
+
+<ul>
+  <li>it must be a root class (not inherit from another class)</li>
+  <li>it must implement the protocol of the same name</li>
+  <li>it must not implement any other protocols</li>
+  <li>it must not have instance variables</li>
+</ul>
+
+<p>Also a protocolclass can not have any categories, this isn’t enforced, but
+categories on protocolclass aren’t used by the runtime for method lookup.
+The protocol of the protocolclass can adopt other protocols.</p>
+
+<h2 id="a-protocolclass-with-a-default-implementation-of-a-method">A protocolclass with a default implementation of a method</h2>
+
+<p>You can create a protocolclass easily with with mulle-sde:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">mulle-sde add -t protocolclass src/&lt;name&gt;</span>.m
+</code></pre></div></div>
+
+<h3 id="future">future</h3>
+
+<p>This is how a <code class="language-plaintext highlighter-rouge">@protocolclass</code> will look like at some point in the future:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">@protocolclass</span> <span class="n">Foo</span>
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">someValue</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The use of <code class="language-plaintext highlighter-rouge">@optional</code> for <code class="language-plaintext highlighter-rouge">-someValue</code> allows it to be used as a default
+implementation, where an adopting class does not get a warning, if it doesn’t
+implement it. A <code class="language-plaintext highlighter-rouge">@protocolclass</code> must implement the <code class="language-plaintext highlighter-rouge">@optional</code> methods.</p>
+
+<h3 id="now">now</h3>
+
+<p>This is how a protocolclass looks like now, without macros:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@class</span> <span class="nc">Foo</span><span class="p">;</span>
+<span class="k">@protocol</span> <span class="nc">Foo</span>
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Foo</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">someValue</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The declaration of <code class="language-plaintext highlighter-rouge">@class Foo</code> before <code class="language-plaintext highlighter-rouge">@protocol Foo</code> signals that this is a
+protocolclass. Notice how the class <code class="language-plaintext highlighter-rouge">Foo</code> is adopting it’s protocol <code class="language-plaintext highlighter-rouge">Foo</code> of
+the same name. It is a root class.</p>
+
+<p>This will give you a number of compiler warnings, due to root classes being
+used and so forth.</p>
+
+<h3 id="now-with-macros">now with macros</h3>
+
+<p><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS</code> macros can make your life a little easier, by removing some
+typework and by removing the compiler warnings.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Macro</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE( name, ...)</code></td>
+      <td>Declare a <em>protocolclass</em> that adopts other protocols</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE0( name)</code></td>
+      <td>Declare a <em>protocolclass</em> that adopts no other protocols</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_IMPLEMENTATION( name)</code></td>
+      <td>Define a <em>protocolclass</em></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_END()</code></td>
+      <td>Terminate either a <em>protocolclass</em> declaration or definition</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Thus the above example can be transformed with macros into:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Foo.h</code>:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PROTOCOLCLASS_INTERFACE0</span><span class="p">(</span> <span class="n">Foo</span><span class="p">)</span>
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+
+<span class="n">PROTOCOLCLASS_IMPLEMENTATION</span><span class="p">(</span> <span class="n">Foo</span><span class="p">)</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">someValue</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>Due to deficiences in the way variadic arguments are handled in C macros, you must use
+<code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE0</code> instead of <code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE</code>, if your protocolclass
+adopts no further protocols.</p>
+
+<h2 id="a-protocolclass-with-a-property">A protocolclass with a property</h2>
+
+<h3 id="future-1">future</h3>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">@protocolclass</span> <span class="n">Foo</span>
+<span class="k">@property</span> <span class="kt">int</span>  <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The adoptingClass will implement the property.</p>
+
+<h3 id="now-1">now</h3>
+
+<p>This is how it looks like now without macros:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@class</span> <span class="nc">Foo</span><span class="p">;</span>
+<span class="k">@protocol</span> <span class="nc">Foo</span>
+<span class="k">@property</span> <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Foo</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>You must redeclare the property in the adopting class.</p>
+
+<h3 id="now-with-macros-1">now with macros</h3>
+
+<p>Now with even more macros:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#define FooProperties \
+@property int someValue
+</span>
+<span class="n">PROTOCOLCLASS_INTERFACE0</span><span class="p">(</span> <span class="n">Foo</span><span class="p">)</span>
+<span class="n">FooProperties</span><span class="p">;</span>
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+
+<span class="n">PROTOCOLCLASS_IMPLEMENTATION</span><span class="p">(</span> <span class="n">Foo</span><span class="p">)</span>
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+
+<span class="k">@interface</span> <span class="nc">AdoptingClass</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">Foo</span><span class="o">&gt;</span>
+<span class="n">FooProperties</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="supplement-an-existing-protocol-with-protocolclass-methods">Supplement an existing protocol with protocolclass methods</h2>
+
+<p>When you do this, your protocolclass should adopt that other protocol
+and redeclare those methods, for which implementations are provided as
+<code class="language-plaintext highlighter-rouge">@optional</code>.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Redeclaration as optional is a mulle-objc specific feature.</div>
+
+<h2 id="calling-nsobject-methods-from-your-protocolclass-methods">Calling NSObject methods from your protocolclass methods</h2>
+
+<p>If your protocolclass wants to use NSObject methods, it should declare this
+in its protocol.</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">PROTOCOLCLASS_INTERFACE</span><span class="p">(</span> <span class="n">MyProtocolClass</span><span class="p">,</span> <span class="n">NSObject</span><span class="p">)</span>
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">doSomethingWithObject</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span><span class="p">;</span>
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+
+<span class="n">PROTOCOLCLASS_IMPLEMENTATION</span><span class="p">(</span> <span class="n">Foo</span><span class="p">)</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="nf">doSomethingWithObject</span><span class="p">:(</span><span class="n">id</span><span class="o">&lt;</span><span class="n">MyProtocolClass</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[</span><span class="n">object</span> <span class="nf">isKindOfClass</span><span class="p">:[</span><span class="n">NSString</span> <span class="nf">class</span><span class="p">]]);</span>
+<span class="p">}</span>
+<span class="n">PROTOCOLCLASS_END</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="things-to-watch-out-for">Things to watch out for</h2>
+
+<h3 id="reaching-the-protocolclass-via-super">Reaching the protocolclass via super</h3>
+
+<p>In the class adopting your protocol, a call to super will first search the protocolclasses in order
+of adoption then the superclass, in the case  <code class="language-plaintext highlighter-rouge">MyClass</code> that is <code class="language-plaintext highlighter-rouge">Foo</code> first then <code class="language-plaintext highlighter-rouge">NSObject</code>.</p>
+
+<h3 id="calling-super-from-the-protocolclass">Calling super from the protocolclass</h3>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> Not recommended!</div>
+
+<p>As a protocolclass is a root class, there is no way to call <strong>super</strong> from a protocolclass. There is a way
+around this though.</p>
+
+<p>You can search for the overridden implementation of a selector, given the class and category of the
+implementation.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">IMP</span>   <span class="n">imp</span><span class="p">;</span>
+
+   <span class="n">imp</span> <span class="o">=</span> <span class="n">MulleObjCObjectSearchOverriddenIMP</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span> <span class="n">doTheFooThing</span><span class="p">),</span> <span class="k">@selector</span><span class="p">(</span> <span class="n">Foo</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">(</span><span class="o">*</span><span class="n">imp</span><span class="p">)(</span> <span class="n">self</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span> <span class="n">doTheFooThing</span><span class="p">),</span> <span class="n">self</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>This works fine, unless the receiver is implementing the same protocolclass again and is calling super.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-objc/forward.html">Advanced: -forward:</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-objc/classcluster.html">Advanced: Classcluster Classes</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Porting: ARC &#8211; De Re mulle-objc</title>
+<meta name="description" content="ARC as a technology is not available in mulle-objc and never will be.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Porting: ARC">
+<meta name="twitter:description" content="ARC as a technology is not available in mulle-objc and never will be. Ideally though, code should remain functional in ARC but work flawlessly in mulle-objc. Use convenience constructors Outside of -init and -dealloc, replace [[obj alloc] init] calls with convenience constructors like +[NSArray array], if available. Create your own...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/arc.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Porting: ARC">
+<meta property="og:description" content="ARC as a technology is not available in mulle-objc and never will be. Ideally though, code should remain functional in ARC but work flawlessly in mulle-objc. Use convenience constructors Outside of -init and -dealloc, replace [[obj alloc] init] calls with convenience constructors like +[NSArray array], if available. Create your own...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/arc.html">
+<meta property="og:site_name" content="De Re mulle-objc">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/arc.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/logo.png">
+
+
+
+<link href="/de-re-mulle-objc/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-objc Feed">
+<link href="/de-re-mulle-objc/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-objc Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/arc.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/intro.html" title="De Re mulle-objc">De Re mulle-objc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern.html" title="Project Setup">Project Setup</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-source.html" title="Generic Headers">Generic Headers</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-dependency.html" title="Dependencies">Dependencies</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern-complex.html" title="Projects with Multiple Targets">Projects with Multiple Targets</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/good.html" title="Good mulle-objc Code">Good mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/basics.html" title="A complete class">A complete class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/objects.html" title="Objects and Properties">Objects and Properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/printing.html" title="Printing">Printing</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-class.html" title="Plug And Play Class">Plug And Play Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-category.html" title="Plug And Play Category">Plug And Play Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/overridden.html" title="Advanced: Calling overridden methods">Advanced: Calling overridden methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/forward.html" title="Advanced: -forward:">Advanced: -forward:</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocolclass.html" title="Advanced: Protocolclasses allow default implementations">Advanced: Protocolclasses allow default implementations</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/classcluster.html" title="Advanced: Classcluster Classes">Advanced: Classcluster Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/singleton.html" title="Advanced: Singleton classes">Advanced: Singleton classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tps.html" title="Advanced: Tagged Pointer Classes">Advanced: Tagged Pointer Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/differences.html" title="Porting: Differences to Objective-C 2.0">Porting: Differences to Objective-C 2.0</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/legacy.html" title="Porting: Legacy Workflow">Porting: Legacy Workflow</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/bad.html" title="Porting: Bad mulle-objc Code">Porting: Bad mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/porting.html" title="Porting: General Tips">Porting: General Tips</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/subscripting.html" title="Porting: subscripting">Porting: subscripting</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/arc.html" title="Porting: ARC">Porting: ARC</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/block.html" title="Porting: ^blocks">Porting: ^blocks</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/dotsyntax.html" title="Porting: . syntax for properties">Porting: . syntax for properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/generics.html" title="Porting: generics">Porting: generics</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modules.html" title="Porting: @import">Porting: @import</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/package.html" title="Porting: @package">Porting: @package</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocol.html" title="Porting: Protocols are a kind of @selector">Porting: Protocols are a kind of @selector</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/property.html" title="Porting @property">Porting @property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synthesize.html" title="Porting: @synthesize is useless now">Porting: @synthesize is useless now</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synchronized.html" title="Porting: Synchronized is gone">Porting: Synchronized is gone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/varargs.html" title="Porting: Variable Arguments in Methods">Porting: Variable Arguments in Methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/nszone.html" title="Porting: NSZone">Porting: NSZone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/unichar.html" title="Porting: unichar">Porting: unichar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/cpp.html" title="Porting: Objective-C++">Porting: Objective-C++</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/xcodeproj.html" title="Porting: Xcode projects">Porting: Xcode projects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tools.html" title="Tooling: mulle-objc Tools">Tooling: mulle-objc Tools</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/coverage.html" title="Tooling: Coverage information">Tooling: Coverage information</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/reduction.html" title="Tooling: Code reduction">Tooling: Code reduction</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Porting: ARC</h1>
+                  <div>
+                  <p>ARC as a technology is not available in <strong>mulle-objc</strong> and never will be.</p>
+
+<p>Ideally though, code should remain functional in ARC but work flawlessly in
+mulle-objc.</p>
+
+<h2 id="use-convenience-constructors">Use convenience constructors</h2>
+
+<p>Outside of <code class="language-plaintext highlighter-rouge">-init</code> and <code class="language-plaintext highlighter-rouge">-dealloc</code>, replace <code class="language-plaintext highlighter-rouge">[[obj alloc] init]</code> calls with
+convenience constructors like <code class="language-plaintext highlighter-rouge">+[NSArray array]</code>, if available.</p>
+
+<h3 id="create-your-own-convenience-constructors">Create your own convenience constructors</h3>
+
+<p>If a convenience constructor is not available, it might be useful to
+create your own with a category. Consider this if there is a lot of calls
+for the same class/method combination.</p>
+
+<p>This is the code to replace a <code class="language-plaintext highlighter-rouge">[[Foo alloc] initWithRandomNumber]</code> with
+<code class="language-plaintext highlighter-rouge">[Foo fooWithRandomNumber]</code>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Foo</span><span class="p">(</span> <span class="nl">Convenience</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">fooWithRandomNumber</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">Foo</span><span class="p">(</span> <span class="nl">Convenience</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">fooWithRandomNumber</span>
+<span class="p">{</span>
+   <span class="n">id</span>   <span class="n">obj</span><span class="p">;</span>
+
+   <span class="n">obj</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Foo</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithRandomNumber</span><span class="p">:</span><span class="n">rand</span><span class="p">()];</span>
+<span class="cp">#if ! __has_feature(objc_arc)
+</span>   <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">autorelease</span><span class="p">];</span>
+<span class="cp">#endif
+</span>   <span class="k">return</span><span class="p">(</span> <span class="n">obj</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h3 id="wrap-allocinit-calls">Wrap alloc/init calls</h3>
+
+<p>You could also use this idea to wrap your <code class="language-plaintext highlighter-rouge">[[obj alloc] init]</code> code</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#if __has_feature(objc_arc)
+# define AUTORELEASE( x)  x
+#else
+# define AUTORELEASE( x)  NSAutoreleaseObject( x)
+#endif
+</span></code></pre></div></div>
+
+<p>So you can simplify the above written <code class="language-plaintext highlighter-rouge">+fooWithRandomNumber</code> like this:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">fooWithRandomNumber</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">AUTORELEASE</span><span class="p">(</span> <span class="p">[[</span><span class="n">Foo</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithRandomNumber</span><span class="p">:</span><span class="n">rand</span><span class="p">()]</span> <span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="add-super-dealloc-to--dealloc">Add <code class="language-plaintext highlighter-rouge">[super dealloc]</code> to <code class="language-plaintext highlighter-rouge">-dealloc</code></h3>
+
+<p>You could use this idea to modify your <code class="language-plaintext highlighter-rouge">-dealloc</code> code</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#if __has_feature(objc_arc)
+# define SUPER_DEALLOC()
+#else
+# define SUPER_DEALLOC()  [super dealloc]
+#endif
+</span></code></pre></div></div>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+   <span class="n">SUPER_DEALLOC</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="fix-convenience-constructors-in--init">Fix convenience constructors in -init</h2>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+   <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">self</span><span class="p">)</span>
+      <span class="n">_foo</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nf">array</span><span class="p">];</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here an instance variable is initialized with an autoreleased <code class="language-plaintext highlighter-rouge">NSArray</code>, which
+will soon be unavailable.</p>
+
+<p>Write <code class="language-plaintext highlighter-rouge">_foo = [[NSArray alloc] init];</code> to make your code ARC and mulle-objc
+compatible.</p>
+
+<h2 id="release-instance-variables-manually">Release instance variables manually</h2>
+
+<p>There is often no <code class="language-plaintext highlighter-rouge">-dealloc</code> method in ARC code. That is fine if the
+class has only properties. Then mulle-objc will clean up automatically.
+If your class has non-property instance variables, they must be released in
+<code class="language-plaintext highlighter-rouge">-dealloc</code> or <code class="language-plaintext highlighter-rouge">-finalize</code>.</p>
+
+<p>Since <code class="language-plaintext highlighter-rouge">-finalize</code> isn’t used in ARC code, it can be a good place to do it.
+Othewise you could use <code class="language-plaintext highlighter-rouge">#if __has_feature( objc_arc)</code> in <code class="language-plaintext highlighter-rouge">-dealloc</code>.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#ifdef __MULLE_OBJC__
+</span><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_foo</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="n">_foo</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+
+   <span class="p">[</span><span class="n">super</span> <span class="nf">finalize</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<p>Remember to use <code class="language-plaintext highlighter-rouge">-autorelease</code> instead of <code class="language-plaintext highlighter-rouge">-release</code>. Also <code class="language-plaintext highlighter-rouge">nil</code> out the instance variable in <code class="language-plaintext highlighter-rouge">-finalize</code>.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> You would not nil out in <code class="language-plaintext highlighter-rouge">-dealloc</code> and you
+would use <code class="language-plaintext highlighter-rouge">-release</code> in <code class="language-plaintext highlighter-rouge">-dealloc</code>.</div>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-objc/subscripting.html">Porting: subscripting</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-objc/block.html">Porting: ^blocks</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

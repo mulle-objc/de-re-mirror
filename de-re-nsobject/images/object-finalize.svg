@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color-interpolation="auto" color-rendering="auto" fill="black" font-family="'Dialog'" font-size="12px" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" text-rendering="auto" viewBox="0 0 780 285" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="a">
+<path d="m111 109h780v285h-780v-285z"/>
+</clipPath>
+</defs>
+<g transform="translate(-111,-109)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="111" y="109" width="780" height="285" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" fill="#9cf" shape-rendering="geometricPrecision" stroke="#9cf" text-rendering="geometricPrecision">
+<path d="m244.2 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m244.2 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="255.2002" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">+alloc</text>
+</g>
+<g transform="translate(-111 -109)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<ellipse cx="275" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="275" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+<text x="269.049" y="346.8485" clip-path="url(#a)" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" stroke="none" xml:space="preserve">1</text>
+</g>
+<g transform="translate(-111 -109)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<path d="m354.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m354.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="362.4002" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-retain</text>
+</g>
+<g transform="translate(-111 -109)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<ellipse cx="385.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="385.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+<text x="379.549" y="346.8485" clip-path="url(#a)" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" stroke="none" xml:space="preserve">2</text>
+</g>
+<g transform="translate(-111 -109)" fill="#fc9" shape-rendering="geometricPrecision" stroke="#fc9" text-rendering="geometricPrecision">
+<path d="m575.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m575.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="580.1002" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-release</text>
+</g>
+<g transform="translate(-111 -109)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<ellipse cx="606.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="606.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+<text x="600.549" y="346.8485" clip-path="url(#a)" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" stroke="none" xml:space="preserve">1</text>
+</g>
+<g transform="translate(-111 -109)" fill="#fc9" shape-rendering="geometricPrecision" stroke="#fc9" text-rendering="geometricPrecision">
+<path d="m687.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m687.7 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="692.1002" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-release</text>
+</g>
+<g transform="translate(-111 -109)" fill="#f9c" shape-rendering="geometricPrecision" stroke="#f9c" text-rendering="geometricPrecision">
+<ellipse cx="718.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="718.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+<text x="712.549" y="346.8485" clip-path="url(#a)" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" stroke="none" xml:space="preserve">0</text>
+</g>
+<g transform="translate(-111 -109)" fill="#f9c" shape-rendering="geometricPrecision" stroke="#f9c" text-rendering="geometricPrecision">
+<path d="m756.89 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m756.89 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="761.2877" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-dealloc</text>
+<ellipse cx="836.62" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+</g>
+<g transform="translate(-111 -109)" fill="gray" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" shape-rendering="geometricPrecision" stroke="gray" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<text x="830.674" y="346.8485" clip-path="url(#a)" stroke="none" xml:space="preserve">0</text>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="164.5" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+</g>
+<g transform="translate(-111 -109)" fill="gray" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" shape-rendering="geometricPrecision" stroke="gray" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<text x="158.549" y="346.8485" clip-path="url(#a)" stroke="none" xml:space="preserve">0</text>
+</g>
+<g transform="translate(-111 -109)" fill="#f9c" shape-rendering="geometricPrecision" stroke="#f9c" text-rendering="geometricPrecision">
+<path d="m465.2 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m465.2 211.31h69.3l-7.7 31h-69.3z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="466.3002" y="231.0805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-finalize</text>
+</g>
+<g transform="translate(-111 -109)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<ellipse cx="496" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="496" cy="338.31" rx="38.5" ry="40.5" clip-path="url(#a)" fill="none"/>
+<text x="490.049" y="346.8485" clip-path="url(#a)" font-family="'Noto Sans Display SemiBold'" font-size="22px" font-weight="bold" stroke="none" xml:space="preserve">2</text>
+</g>
+<g transform="translate(-111 -109)" fill="#f9c" shape-rendering="geometricPrecision" stroke="#f9c" text-rendering="geometricPrecision">
+<path d="m423.2 124.81h163.8l-18.198 31h-163.8z" clip-path="url(#a)" fill-rule="evenodd" stroke="none"/>
+</g>
+<g transform="translate(-111 -109)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<path d="m423.2 124.81h163.8l-18.198 31h-163.8z" clip-path="url(#a)" fill="none" fill-rule="evenodd"/>
+<text x="426.7006" y="144.5805" clip-path="url(#a)" font-family="'Noto Sans Mono'" font-size="11px" stroke="none" xml:space="preserve">-mullePerformFinalize</text>
+<path d="m275 242.32v47.477" clip-path="url(#a)" fill="none"/>
+<path d="m275 297.8 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+<path d="m385.5 242.32v47.477" clip-path="url(#a)" fill="none"/>
+<path d="m385.5 297.8 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+<path d="m313.5 338.31h33.5" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m606.5 242.32v47.477" clip-path="url(#a)" fill="none"/>
+<path d="m606.5 297.8 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+<path d="m718.5 242.32v47.477" clip-path="url(#a)" fill="none"/>
+<path d="m718.5 297.8 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+<path d="m645 338.31h35" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m794.49 242.3 22.786 51.915" clip-path="url(#a)" fill="none"/>
+<path d="m820.49 301.54-0.2444-12.998-3.3727 4.7566-5.7841-0.7376z" clip-path="url(#a)" stroke="none"/>
+<path d="m757 338.31h41.125" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m203 338.31h33.5" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m496 242.3v47.511" clip-path="url(#a)" fill="none"/>
+<path d="m496 297.81 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+<path d="m424 338.31h33.5" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m534.5 338.31h33.5" clip-path="url(#a)" fill="none" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round"/>
+<path d="m496 155.81v47.503" clip-path="url(#a)" fill="none"/>
+<path d="m496 211.32 5-12-5 3-5-3z" clip-path="url(#a)" stroke="none"/>
+</g>
+</svg>

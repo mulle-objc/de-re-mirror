@@ -1,0 +1,1476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">De Re @property</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="https://www.mulle-kybernetik.com/atom.xml" />
+<link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com" />
+<updated>2025-01-26T22:44:07+01:00</updated>
+<id>https://www.mulle-kybernetik.com/</id>
+<author>
+  <name>Nat!</name>
+  <uri>https://www.mulle-kybernetik.com/</uri>
+  <email>nat-properties@emulle-kybernetik.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: serializable]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/serializable.html" />
+  <id>https://www.mulle-kybernetik.com/serializable.html</id>
+  <published>2025-01-12T00:00:00+01:00</published>
+  <updated>2025-01-12T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature letter&lt;/td&gt;
+      &lt;td&gt;‘E’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serializable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nonserializable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The attribute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serializable&lt;/code&gt; indicates that a property should be
+serialized by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSCoder&lt;/code&gt;, MulleEOF or some other persistence method.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;MEMO&lt;/strong&gt;: One should optionally be able to specify a class name to indicate 
+the destination class to be used in the deserialization process.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Its counterpart is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nonserializable&lt;/code&gt;, which can be used to explicitly redeclare a 
+previously serializable a property.&lt;/p&gt;
+
+&lt;h2 id=&quot;nscode-considerations&quot;&gt;NSCode considerations&lt;/h2&gt;
+
+&lt;p&gt;When only properties are needed for the serialization of an object, you don’t need to
+write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-initWithCoder:&lt;/code&gt; and  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-encodeWithCoder:&lt;/code&gt; as the default 
+&lt;a href=&quot;https://developer.apple.com/documentation/foundation/nscoder?language=objc&quot;&gt;NSCoder&lt;/a&gt; implementation will have enough
+runtime information to serialize and deserialize the object.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: retain]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/retain.html" />
+  <id>https://www.mulle-kybernetik.com/retain.html</id>
+  <published>2025-01-10T00:00:00+01:00</published>
+  <updated>2025-01-10T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;object types&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘&amp;amp;’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt; attribute is used with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; declarations in Objective-C to specify retain counting memory management behavior for object properties. This
+is the default for objects. For objects that implement the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSCopying&lt;/code&gt;
+protocol, you should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; instead.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Increases the retain count of assigned objects&lt;/li&gt;
+  &lt;li&gt;Automatically autoreleases the old value before assigning a new one&lt;/li&gt;
+  &lt;li&gt;Ensures the property maintains ownership of its assigned object&lt;/li&gt;
+  &lt;li&gt;Helps prevent premature deallocation of objects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;caveats&quot;&gt;Caveats&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Potential for retain cycles if not used carefully&lt;/li&gt;
+  &lt;li&gt;You can not use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt; on non-object types (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;char *&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; on value types like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSString&lt;/code&gt;, which have a mutable variant like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSMutableString&lt;/code&gt; is asking for trouble.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;_isMarried&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;spouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;marryPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_isMarried&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setSpouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;accessors&quot;&gt;Accessors&lt;/h3&gt;
+
+&lt;p&gt;This is the equivalent implementation for an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt; object property:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: readonly]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/readonly.html" />
+  <id>https://www.mulle-kybernetik.com/readonly.html</id>
+  <published>2025-01-09T00:00:00+01:00</published>
+  <updated>2025-01-09T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘R’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readonly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt; attribute is used with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; declarations in Objective-C
+to create properties that can only be read from outside the class, but not
+modified. This is useful for encapsulating internal state and providing
+controlled access to object data.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Only generates a getter method, no setter&lt;/li&gt;
+  &lt;li&gt;Prevents external modification of the property&lt;/li&gt;
+  &lt;li&gt;Useful for maintaining object invariants and encapsulation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;caveat&quot;&gt;Caveat&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Requires added release or deallocation code, if the property needs to be set internally&lt;/li&gt;
+  &lt;li&gt;Will generate an instance variable unless declared as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@dynamic&lt;/code&gt; as well&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt;: Consider using a standard method, instead of a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; when dealing with
+readonly values.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Circle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readonly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readonly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Circle&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;_radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithRadius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_radius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_PI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_radius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// [_radius autorelease];  // if _radius were an object...&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// _radius = nil;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;readonly-accessors&quot;&gt;readonly accessors&lt;/h3&gt;
+
+&lt;p&gt;For a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt; property, only a getter method is implemented:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you need to set the instance value, you would do so typically during &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; and you would 
+typically clear the value during &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: nonatomic]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/nonatomic.html" />
+  <id>https://www.mulle-kybernetik.com/nonatomic.html</id>
+  <published>2025-01-08T00:00:00+01:00</published>
+  <updated>2025-01-08T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘N’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nonatomic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nonatomic&lt;/code&gt; is “fluff” in mulle-objc, since all attributes are non-atomic.
+Atomicity in mulle-objc is either handled by locking (see MulleObject)
+or through atomic types.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: observable]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/observable.html" />
+  <id>https://www.mulle-kybernetik.com/observable.html</id>
+  <published>2025-01-07T00:00:00+01:00</published>
+  <updated>2025-01-07T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘O’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;mulle-objc only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;angle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The property attribute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;observable&lt;/code&gt; is a modifier for the setting accessors.
+The generated code will call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[self willChange]&lt;/code&gt; before changing the value.&lt;/p&gt;
+
+&lt;p&gt;This is true for all properties, object properties&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Here’s an example demonstrating how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;willChange&lt;/code&gt; could create a snapshot of
+the current object state before changing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;otherObject&lt;/code&gt; property:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;NSMutableDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;otherObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;addToSnapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_mulle_objc_property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                           &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userinfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MyClass&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userinfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_mulle_objc_property_get_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// Use Key Value Coding here from MulleObjCKVCFoundation to get&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// everything as objects&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;valueForKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_snapshot&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+                          &lt;span class=&quot;nl&quot;&gt;forKey:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;willChange&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_snapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;// Use a NSMutableDictionary from MulleObjCContainerFoundation&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_snapshot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSMutableDictionary&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dictionary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MulleObjCInstanceWalkProperties&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;addToSnapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This implementation allows you to capture the state of all properties before
+any change occurs, which can be useful for undo functionality, change tracking,
+or other state management purposes.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: dynamic]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/dynamic.html" />
+  <id>https://www.mulle-kybernetik.com/dynamic.html</id>
+  <published>2025-01-04T00:00:00+01:00</published>
+  <updated>2025-01-04T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;mulle-objc only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;barUTF8String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt; indicates that a property is not backed by an instance variable. The
+compiler will generate neither an instance variable nor the accessor methods.&lt;/p&gt;
+
+&lt;p&gt;This is useful for forwarding properties for example:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setBarUTF8String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_other&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setBarUTF8String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;caveat&quot;&gt;Caveat&lt;/h2&gt;
+
+&lt;p&gt;If an existing non-dynamic property by a base class is redeclared as dynamic, then it’s too late. The instance variable 
+will have been created already in the base class and the accessor methods will have been generated there as well.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: copy]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/copy.html" />
+  <id>https://www.mulle-kybernetik.com/copy.html</id>
+  <published>2025-01-04T00:00:00+01:00</published>
+  <updated>2025-01-04T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;object types&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘C’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; attribute is used with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; declarations in Objective-C for
+object properties that should maintain their own independent copy of the
+assigned value.&lt;/p&gt;
+
+&lt;p&gt;This is used for objects that implement the NSCopying protocol such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSString&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSData&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Creates a new copy of the assigned object&lt;/li&gt;
+  &lt;li&gt;Automatically autoreleases the old value before assigning the new copy&lt;/li&gt;
+  &lt;li&gt;Ensures the property has its own independent instance of the object&lt;/li&gt;
+  &lt;li&gt;Prevents unintended modifications to the original object&lt;/li&gt;
+  &lt;li&gt;Eliminates whole classes of bugs (circular references, unintended modifications)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A class that only consists of properties of non-pointer C types
+(like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSUInteger&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float&lt;/code&gt;) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; object types is a about as carefree
+a design as possible.&lt;/p&gt;
+
+&lt;h3 id=&quot;caveats&quot;&gt;Caveats&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;May have performance implications for large objects due to copying&lt;/li&gt;
+  &lt;li&gt;You can not use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; on non-object types (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;char *&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;updateTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newTitle&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capitalizedTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;capitalizedTitle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newTitle&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;capitalizedString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capitalizedTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;copy-accessors&quot;&gt;copy accessors&lt;/h3&gt;
+
+&lt;p&gt;This is the equivalent implementation for a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; object property:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: container]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/container.html" />
+  <id>https://www.mulle-kybernetik.com/container.html</id>
+  <published>2025-01-02T00:00:00+01:00</published>
+  <updated>2025-01-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;object types&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;‘K’ (‘+’,’-‘)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;mulle-objc only&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSArray&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A property backed by a container gains two additional accessors an “adder” and a “remover. 
+If the property  is called “foos”, the two accessors will be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addToFoos:&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;removeFromFoos:&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;These will call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addObject:&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;removeObject:&lt;/code&gt; on the instance variable respectively. 
+You typically only interact with the property, using the adder and remover for setting only
+and the getter for getting the whole container. But using the setter like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setFoos:&lt;/code&gt; is still
+valid.&lt;/p&gt;
+
+&lt;p&gt;Specifying the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;container&lt;/code&gt; attribute, gives access to  two additional attributes:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adder=adderName&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Custom getter method name.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remover=removerName&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Custom setter method name.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;addToFoos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;removeFromFoos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSArray&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;These are encoded in the signature as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt; for the adder and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt; for the remover.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Reference: assign]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/assign.html" />
+  <id>https://www.mulle-kybernetik.com/assign.html</id>
+  <published>2025-01-01T00:00:00+01:00</published>
+  <updated>2025-01-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Types&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Signature Letter&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Portability&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Default&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt; attribute is the default attribute for all attributes,
+and is therefore often omitted on non-object properties. For object
+properties that are actually &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt;, it’s very bad style to omit it.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt; attribute is used with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; declarations in Objective-C for
+object properties that should not retain ownership of the assigned value. This
+is commonly used for delegates or references to owner objects to avoid retain
+cycles.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Simply assigns the pointer without increasing the retain count&lt;/li&gt;
+  &lt;li&gt;Does not release the old value before assigning the new one&lt;/li&gt;
+  &lt;li&gt;Does not ensure the property maintains ownership of its assigned object&lt;/li&gt;
+  &lt;li&gt;Useful for avoiding retain cycles in parent-child or delegate relationships&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;caveat&quot;&gt;Caveat&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can lead to dangling pointers, if the assigned object is prematurely deallocated&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ChildViewController&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UIViewController&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UIViewController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parentViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ChildViewController&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setParentController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UIViewController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setParentViewController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;assign-accessors&quot;&gt;assign accessors&lt;/h3&gt;
+
+&lt;p&gt;These are the equivalent accessor implementation for an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt; object property:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Outro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/outro.html" />
+  <id>https://www.mulle-kybernetik.com/outro.html</id>
+  <published>2024-12-29T00:00:00+01:00</published>
+  <updated>2024-12-29T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;advantages-of-property&quot;&gt;Advantages of @property&lt;/h2&gt;
+
+&lt;p&gt;The main technical advantages are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Automated accessor generation reduces repetitive code&lt;/li&gt;
+  &lt;li&gt;Standardized memory management patterns in setters&lt;/li&gt;
+  &lt;li&gt;Direct control over getter/setter implementation when needed&lt;/li&gt;
+  &lt;li&gt;Properties handle the retain/release cycle in setters automatically&lt;/li&gt;
+  &lt;li&gt;Enhanced introspection&lt;/li&gt;
+  &lt;li&gt;Automated break of retain cycles during -finalize for readwrite properties&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;These are good rules to follow:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;do use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; whenever possible&lt;/li&gt;
+  &lt;li&gt;do prefer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt; over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt;, whenever possible&lt;/li&gt;
+  &lt;li&gt;do wrap &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@protocol&lt;/code&gt; properties into a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#define&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;do not redeclare &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; types&lt;/li&gt;
+  &lt;li&gt;do not use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;do not use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@dynamic&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;avoid &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt; properties, if you don’t need the introspection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rules are not laws.&lt;/p&gt;
+
+&lt;h2 id=&quot;ai-tip&quot;&gt;AI Tip&lt;/h2&gt;
+
+&lt;p&gt;You can ask any AI like &lt;a href=&quot;https://perplexity.ai&quot;&gt;perplexity.ai&lt;/a&gt;, just tell it that you are 
+using “mulle-objc” instead of Apple “Objective-C”.
+Most of them are quite good at explaining the concepts.&lt;/p&gt;
+
+&lt;h2 id=&quot;odd-tip&quot;&gt;Odd Tip&lt;/h2&gt;
+
+&lt;p&gt;For a few special cases a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@public&lt;/code&gt; instance variable can be a simple alternative to a property.&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;If you have problems with this little pamphlet or want a second opinion, you could try the 
+following sources:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://fullonrager.github.io/rys-objective-c-tutorial-archive/properties.html&quot;&gt;Rys Objective-C Tutorial - Properties&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/properties-in-objective-c/&quot;&gt;GeeksForGeeks - Properties in Objective-C&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/10909039/in-objective-c-when-should-i-use-property-and-when-should-i-use-instance-variab&quot;&gt;Stack Overflow - Properties vs Instance Variables&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=r6dOUEeGr_w&quot;&gt;Video Tutorial - Properties&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocProperties.html&quot;&gt;Apple - Properties&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html&quot;&gt;Apple - Encapsulating Data&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Be wary of the following concepts though: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weak&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strong&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;atomic&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unsafe_unretained&lt;/code&gt;, 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt;, “ARC”, “Property Observers”, “Dot Notation”, “Xcode”
+which are all more or less not applicable to mulle-objc.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@dynamic]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/dynamic-directive.html" />
+  <id>https://www.mulle-kybernetik.com/dynamic-directive.html</id>
+  <published>2024-12-09T00:00:00+01:00</published>
+  <updated>2024-12-09T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In mulle-objc &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@dynamic&lt;/code&gt; can only be usefully used together with the &lt;a href=&quot;dynamic.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;&lt;/a&gt;
+attribute. For non-dynamic properties, subclasses will assume the existence of instance variables 
+which will lead to memory layout issues, when the superclass doesn’t actually have those 
+instance variables.&lt;/p&gt;
+
+&lt;p&gt;But for dynamic properties, if you want to postpone the implementation to a subclass or a 
+category or you want to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward:&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@dynamic&lt;/code&gt; will allow you to compile the 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implementation&lt;/code&gt;without any accessor code.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@dynamic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@synthesize]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/synthesize-directive.html" />
+  <id>https://www.mulle-kybernetik.com/synthesize-directive.html</id>
+  <published>2024-12-08T00:00:00+01:00</published>
+  <updated>2024-12-08T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In mulle-objc, instance variables are automatically synthesized for all
+non-dynamic properties, regardless of whether &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt; is used or not.
+This means that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt; directive is essentially superfluous.&lt;/p&gt;
+
+&lt;p&gt;Though superflous, you can still use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt; in mulle-objc if you want:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@synthesize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@synthesize&lt;/code&gt; follows standard Objective-C rules with some key differences:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The compiler creates the instance variable with a standard naming convention anyway (unless it’s &lt;a href=&quot;dynamic.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;You cannot rename the backing instance variable&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property redeclaration]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/redeclaration.html" />
+  <id>https://www.mulle-kybernetik.com/redeclaration.html</id>
+  <published>2024-12-07T00:00:00+01:00</published>
+  <updated>2024-12-07T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;redeclaring-properties-of-a-protocol&quot;&gt;Redeclaring properties of a protocol&lt;/h2&gt;
+
+&lt;p&gt;You can redeclare a property of a property pretty easily, since no accessors and
+instance variables will have been generated yet. This allows you to change the 
+attributes. This is not additive or subtractive, you redeclare all the attributes
+in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; statement.&lt;/p&gt;
+
+&lt;p&gt;You most likely will not want to change the type of the property though unless you 
+are keen on opening Pandoras box.&lt;/p&gt;
+
+&lt;h2 id=&quot;redeclaring-inherited-properties-of-a-base-class&quot;&gt;Redeclaring inherited properties of a base class&lt;/h2&gt;
+
+&lt;p&gt;You can redeclare an inherited property in a class. This is akin to defining a dynamic property
+though. You will have to manually reimplement the accessor code in your class in the majority of cases.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Unless the attribute has only informational character like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serialiable&lt;/code&gt; for example.
+The getter can probably be inherited, but you will need to reimplement the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setter&lt;/code&gt; (and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adder&lt;/code&gt;,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remover&lt;/code&gt; on
+a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;container&lt;/code&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;caveats&quot;&gt;Caveats&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Redeclaration in a subclass does not change the accessor code, you may need to reimplement the setter accessor.&lt;/li&gt;
+  &lt;li&gt;Changing the type of a property to an incompatible type of the instance variable is a recipe for disaster, if you c. The compiler will warn you though.&lt;/li&gt;
+  &lt;li&gt;Redeclaration of a property of a base class adds a new property to the runtime, which will have no instance variable in its signature.
+    &lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copiedBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copiedBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;will produce a property with signature &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;@&quot;Bar&quot;,&amp;amp;,N&quot;&lt;/code&gt; in &lt;strong&gt;Bar&lt;/strong&gt; and a property with signature &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;@&quot;Bar&quot;,C,O,N,V_copiedBar&quot;&lt;/code&gt; in &lt;strong&gt;Foo&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property inheritance by protocolclass]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/protocolclass-inheritance.html" />
+  <id>https://www.mulle-kybernetik.com/protocolclass-inheritance.html</id>
+  <published>2024-12-03T00:00:00+01:00</published>
+  <updated>2024-12-03T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;A protocolclass in principle is the same as a protocol. Here the
+protocolclass provides “value-adding” multiple inheritance like 
+code by exploiting the use of properties.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Assume CGColor is a C struct and defined elsewhere&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#define ColorSwappable_PROPERTIES                             \
+   @property CGColor foregroundColor;                         \
+   @property CGColor backgroundColor
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// out procotol class (without the use of PROTOCOLCLASS_INTERFACE)   &lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ColorSwappable&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ColorSwappable_PROPERTIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@optional&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swapColors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ColorSwappable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ColorSwappable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ColorSwappable&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swapColors&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;CGColor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foregroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setForegroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]];&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setBackgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyColorfulClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ColorSwappable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ColorSwappable_PROPERTIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyColorfulClass&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// No need to implement swapColors, it will use the default implementation&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property inheritance by protocol]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/protocol-inheritance.html" />
+  <id>https://www.mulle-kybernetik.com/protocol-inheritance.html</id>
+  <published>2024-12-02T00:00:00+01:00</published>
+  <updated>2024-12-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;A protocol only specifies the syntax a class should adhere to. Consequently
+the class that adapts a protocol must also implement the properties the 
+protocol declares:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MulleCursor&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isEditing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;editing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;        
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleCursorPosition&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;cursorPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A common trope for a protocol that declares @properties is to create a
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#define ..._PROPERTIES&lt;/code&gt; that the adopting class can then use:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define MULLE_CURSOR_PROPERTIES                                 \
+   @property( assign, getter=isEditing) BOOL    editing;        \
+   @property( assign) MulleCursorPosition       cursorPosition
+&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MulleCursor&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;MULLE_CURSOR_PROPERTIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MulleCursorPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cursorPositionForPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mouseLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CGFloat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offsetNeededToMakeCursorVisible&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MulleCursorPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxCursorPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A class implementing MulleCursor would then be written like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleCursor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;MULLE_CURSOR_PROPERTIES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;with minimal fuzz.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property inheritance by class]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/class-inheritance.html" />
+  <id>https://www.mulle-kybernetik.com/class-inheritance.html</id>
+  <published>2024-12-01T00:00:00+01:00</published>
+  <updated>2024-12-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Properties are inherited like methods and instance variable from the base class:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;anotherValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bar will have two properties, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;anotherValue&lt;/code&gt;.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property signature]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/runtime.html" />
+  <id>https://www.mulle-kybernetik.com/runtime.html</id>
+  <published>2024-10-31T00:00:00+01:00</published>
+  <updated>2024-10-31T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;The “signature” of a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; is available at runtime through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-objc-runtime&lt;/code&gt; API.
+Property signatures in Objective-C follow a specific format that encodes the property attributes 
+as a comma-separated string. Let’s break down its components:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;TYPE&quot;[,ATTRIBUTES][,ACCESSORS][,IVAR]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;type&quot;&gt;TYPE&lt;/h4&gt;
+
+&lt;p&gt;The signature always starts with the type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@encode&lt;/code&gt;. Which is amply explained
+in the runtime documentation. Here ‘@’ stands for a retained Object pointer.&lt;/p&gt;
+
+&lt;p&gt;e.g. “@”NSString”” for object pointers
+“i” for int, “f” for float, etc.&lt;/p&gt;
+
+&lt;h4 id=&quot;attributes&quot;&gt;ATTRIBUTES&lt;/h4&gt;
+
+&lt;p&gt;The attributes of the property are comma-separated single-character flags&lt;/p&gt;
+
+&lt;p&gt;Attribute flags (single letters):&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Letter&lt;/th&gt;
+      &lt;th&gt;Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;N&lt;/td&gt;
+      &lt;td&gt;nonatomic (appears in most signatures as default)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;readonly&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C&lt;/td&gt;
+      &lt;td&gt;copy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;amp;&lt;/td&gt;
+      &lt;td&gt;retain&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;D&lt;/td&gt;
+      &lt;td&gt;dynamic&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;E&lt;/td&gt;
+      &lt;td&gt;serializable&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;K&lt;/td&gt;
+      &lt;td&gt;container&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O&lt;/td&gt;
+      &lt;td&gt;observable&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V&lt;/td&gt;
+      &lt;td&gt;ivar, followed by the ivar name&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;accessors&quot;&gt;ACCESSORS&lt;/h4&gt;
+
+&lt;p&gt;The custom accessors are like the attributes of the property comma-separated single-character flags,
+followed by the name of the accessor:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Letter&lt;/th&gt;
+      &lt;th&gt;Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;G&lt;/td&gt;
+      &lt;td&gt;followed by getter name&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S&lt;/td&gt;
+      &lt;td&gt;followed by setter name&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;+&lt;/td&gt;
+      &lt;td&gt;followed by adder name (for containers)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;followed by remover name (for containers)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The default accessors are omitted by the compiler.&lt;/p&gt;
+
+&lt;h4 id=&quot;ivar&quot;&gt;IVAR&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Letter&lt;/th&gt;
+      &lt;th&gt;Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V&lt;/td&gt;
+      &lt;td&gt;followed by the ivar name&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Always appears last if present. A ‘V’ followed by the name of the instance variable, 
+which will invariable have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt; prefix.  Omitted by dynamic properties&lt;/p&gt;
+
+&lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
+
+&lt;p&gt;Let’s analyze some examples:&lt;/p&gt;
+
+&lt;h4 id=&quot;basic-retain-property&quot;&gt;Basic retain property&lt;/h4&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retainedBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The signature &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;@&quot;Bar&quot;,&amp;amp;,N,V_retainedBar&lt;/code&gt; indicates: object pointer to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bar&lt;/code&gt; objects, retain, nonatomic, ivar named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_retainedBar&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;container-property-with-custom-accessors&quot;&gt;Container property with custom accessors&lt;/h4&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adderBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;removerBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getterBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setterBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;containerBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The signature &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;@&quot;Bar&quot;,K,N,GgetterBar,SsetterBar:,+adderBar:,-removerBar:,V_containerBar&lt;/code&gt; indicates: object pointer, container, nonatomic, custom getter/setter/adder/remover, ivar named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_containerBar&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;dynamic-property&quot;&gt;Dynamic property&lt;/h4&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dynamicBar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The signature: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&quot;Bar&quot;,N&lt;/code&gt; indicates: object pointer, nonatomic, no ivar (dynamic)&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property access]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/access.html" />
+  <id>https://www.mulle-kybernetik.com/access.html</id>
+  <published>2024-10-21T00:00:00+02:00</published>
+  <updated>2024-10-21T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Though the property is declared in the class and the meta information is part of the class,
+the property value itself is stored in the instances of a class.&lt;/p&gt;
+
+&lt;p&gt;You access the value of a property with Objective-C method syntax on the respective instance:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#import &amp;lt;Foundation/Foundation.h&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MyClass&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+   &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1848&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;mulle_printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%tu&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property definition]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/definition.html" />
+  <id>https://www.mulle-kybernetik.com/definition.html</id>
+  <published>2024-10-20T00:00:00+02:00</published>
+  <updated>2024-10-20T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;You don’t need to write any code in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implementation&lt;/code&gt; of your class. But you of course do
+need to define the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implementation&lt;/code&gt; somewhere:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The compiler will take note of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property( assign) NSUInteger  count;&lt;/code&gt; in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@interface&lt;/code&gt; section 
+and already add an instance variable of the same name (prefixed with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt;)
+to the list of instance variables of the class.&lt;/p&gt;
+
+&lt;p&gt;The compiler will then declare two accessor methods &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;- (NSUInteger) count&lt;/code&gt; for
+retrieving the instance variable value and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;- (void) setCount:(NSUInteger)value&lt;/code&gt; for setting it.&lt;/p&gt;
+
+&lt;p&gt;Once the compiler sees the corresponding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implementation&lt;/code&gt;, it will actually generate code
+for these two accessor methods.&lt;/p&gt;
+
+&lt;p&gt;In essence a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; is the combination of&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A protected “Instance Variable” (ivar):
+    &lt;ul&gt;
+      &lt;li&gt;The actual memory location storing the value&lt;/li&gt;
+      &lt;li&gt;The ivar name is the property name, prefixed with an underscore (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_&lt;/code&gt;)&lt;/li&gt;
+      &lt;li&gt;Direct access possible within the accessor implementation, but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@protected&lt;/code&gt; from the outside&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A “Getter Method”:
+    &lt;ul&gt;
+      &lt;li&gt;Returns the value of the ivar&lt;/li&gt;
+      &lt;li&gt;Usually named exactly like the property&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A “Setter Method”:
+    &lt;ul&gt;
+      &lt;li&gt;Sets the value of the ivar&lt;/li&gt;
+      &lt;li&gt;Its name is the property name capitalized and prefixed with set&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So writing:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;is almost equivalent to:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Why only &lt;em&gt;almost equivalent&lt;/em&gt; ? That is, because the compiler will also generate additional runtime 
+information for the property. At runtime you can query for the property name, and 
+can easily get the associated setter and getter methods, which is a major optimization
+for key value coding (KVC). You can also query the properties declared attributes at runtime, which
+are encoded in the &lt;a href=&quot;runtime.html&quot;&gt;signature&lt;/a&gt;.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[@property( attributes)]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/attributes.html" />
+  <id>https://www.mulle-kybernetik.com/attributes.html</id>
+  <published>2024-10-18T00:00:00+02:00</published>
+  <updated>2024-10-18T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-properties@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Attributes define the behavior of the property and the code generated for the accessors. The default 
+attributes of a  property are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nonserializable&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readwrite&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For non-object properties you can omit attributes. For object properties choose &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt;, if
+the Class supports the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSCopying&lt;/code&gt; protocol. Otherwise default to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt;. 
+Everything else is a special case.&lt;/p&gt;
+
+&lt;h2 id=&quot;general-attributes&quot;&gt;General attributes&lt;/h2&gt;
+
+&lt;p&gt;In MulleObjC, the attributes you can use on all property types (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;char *&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct CGPoint&lt;/code&gt;,  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id&lt;/code&gt;) are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;assign.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Directly assigns value without retaining or copying, used for primitives and non-retaining relationships.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;dynamic.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Indicates that accessor methods are provided at runtime. No instance variable is generated&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getter=getterName&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Custom getter method name.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;observable.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;observable&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Used to notice changes in property values.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;nonatomic.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nonatomic&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Useless syntax fluff, as it’s the default and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;atomic&lt;/code&gt; is not supported&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;serializable.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nonserializable&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Marks the property as not serializable.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;readonly.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Read-only property, only a getter is generated.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readwrite&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;The opposite of readonly, useless syntax fluff&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setter=setterName&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Custom setter method name.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;serializable.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serializable&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Marks the property as serializable for archiving and serialization purposes.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You can only choose one of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readwrite&lt;/code&gt; for a property.
+You can not choose &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setter&lt;/code&gt; for a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;readonly&lt;/code&gt; property.&lt;/p&gt;
+
+&lt;h2 id=&quot;object-attributes&quot;&gt;Object attributes&lt;/h2&gt;
+
+&lt;p&gt;These attributes are only useful on object types:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;retain.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Retains the value when set, used for mutable objects&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;copy.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Copies the value when set, used for value types like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSString&lt;/code&gt;.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;container.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;container&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Used for properties that are collections, enabling additional behaviors.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Some attributes exclude the use of another attribute, this may or may not be flagged by the compiler:&lt;/p&gt;
+
+&lt;p&gt;You can only choose one of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retain&lt;/code&gt; for a property.&lt;/p&gt;
+</content>
+</entry>
+
+</feed>

@@ -1,0 +1,1227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>mulle-objc Development with IDEs</title>
+        <description>Developing mulle-objc projects with IDEs like Jetbrains CLion . Setup, Usage and Pitfalls.</description>
+        <link>https://www.mulle-kybernetik.com/</link>
+        <atom:link href="https://www.mulle-kybernetik.com/atom.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sun, 26 Jan 2025 22:59:24 +0100</pubDate>
+        <lastBuildDate>Sun, 26 Jan 2025 22:59:24 +0100</lastBuildDate>
+        <generator>Jekyll v4.3.4</generator>
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+&lt;/style&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;h1&gt;404&lt;/h1&gt;
+
+  &lt;p&gt;&lt;strong&gt;Page not found :(&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;The requested page could not be found.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/404.html</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/404.html</guid>
+            
+         </item>
+          
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot; xml:lang=&quot;en&quot;&gt;
+&lt;title type=&quot;text&quot;&gt;mulle-objc Development with IDEs&lt;/title&gt;
+&lt;generator uri=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&lt;/generator&gt;
+&lt;link rel=&quot;self&quot; type=&quot;application/atom+xml&quot; href=&quot;https://www.mulle-kybernetik.com/atom.xml&quot; /&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com&quot; /&gt;
+&lt;updated&gt;2025-01-26T22:59:24+01:00&lt;/updated&gt;
+&lt;id&gt;https://www.mulle-kybernetik.com/&lt;/id&gt;
+&lt;author&gt;
+  &lt;name&gt;Nat!&lt;/name&gt;
+  &lt;uri&gt;https://www.mulle-kybernetik.com/&lt;/uri&gt;
+  &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+&lt;/author&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Outro]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/outro.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/outro.html&lt;/id&gt;
+  &lt;published&gt;2022-11-01T00:00:00+01:00&lt;/published&gt;
+  &lt;updated&gt;2022-11-01T00:00:00+01:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;So that should get you up an running.
+The &amp;lt;a href=&amp;quot;//mulle-objc.github.io/De-Re-mulle-objc/&amp;quot;&amp;gt;De Re mulle-sde&amp;lt;/a&amp;gt;
+developer guide might be a good next read. To get deeper into &amp;lt;em&amp;gt;mulle-sde&amp;lt;/em&amp;gt;
+check out the &amp;lt;a href=&amp;quot;//mulle-sde.github.io/De-Re-mulle-sde/&amp;quot;&amp;gt;De Re mulle-sde&amp;lt;/a&amp;gt;
+guide.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;links&amp;quot;&amp;gt;Links&amp;lt;/h2&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;//mulle-objc.github.io/&amp;quot;&amp;gt;mulle-objc&amp;lt;/a&amp;gt; homepage&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;A simple example &amp;lt;a href=&amp;quot;//github.com/MulleWeb/mulle-markdown&amp;quot;&amp;gt;mulle-markdown&amp;lt;/a&amp;gt; shows off many of the capabilities of mulle-objc development.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Visual Studio Code]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/easy-vscode.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/easy-vscode.html&lt;/id&gt;
+  &lt;published&gt;2022-02-02T00:00:00+01:00&lt;/published&gt;
+  &lt;updated&gt;2022-02-02T00:00:00+01:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//code.visualstudio.com/Download&amp;quot;&amp;gt;Visual Studio Code&amp;lt;/a&amp;gt; and it’s
+&amp;lt;a href=&amp;quot;https://itsfoss.com/vscodium/&amp;quot;&amp;gt;FOSS&amp;lt;/a&amp;gt; sibling
+&amp;lt;a href=&amp;quot;https://github.com/VSCodium/vscodium/releases&amp;quot;&amp;gt;VSCodium&amp;lt;/a&amp;gt; are primarily
+Web IDEs that can also be used to develop C projects.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;To get VSCode cooking though, you need to pep it up with extensions. Here is a 
+list of some extensions, that are useful for mulle-objc development:&amp;lt;/p&amp;gt;
+
+&amp;lt;table&amp;gt;
+  &amp;lt;thead&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;th&amp;gt;Package&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Comment&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;C/C++ (ms-vscode)&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Not easily &amp;lt;a href=&amp;quot;https://github.com/VSCodium/vscodium/issues/493&amp;quot;&amp;gt;available&amp;lt;/a&amp;gt; on VSCodium&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;CMake (twxs)&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Markdown Preview Github Styling (bierner)&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Native Debug (webfreak)&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;p&amp;gt;Click on the “Extension” icon on the left and search for extensions:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-extension.png&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;create-a-mulle-objc-project&amp;quot;&amp;gt;Create a mulle-objc project&amp;lt;/h3&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;If you haven’t installed mulle-sde go back to the
+&amp;lt;a href=&amp;quot;intro.html&amp;quot;&amp;gt;Intro&amp;lt;/a&amp;gt; and follow the
+instructions there.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;p&amp;gt;You need a terminal to create a &amp;lt;em&amp;gt;mulle-objc&amp;lt;/em&amp;gt; project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;git clone https://github.com/mulle-cc/mulle-objc-vscode.git my-project
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//github.com/mulle-sde/mulle-sde-developer&amp;quot;&amp;gt;mulle-sde-developer&amp;lt;/a&amp;gt; provides the
+&amp;lt;em&amp;gt;vscode-clang&amp;lt;/em&amp;gt; extension. This extension ensures, that VSCode ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with &amp;lt;em&amp;gt;mulle-sde&amp;lt;/em&amp;gt; and some debugger support
+for the “Native Debug” extension.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;When you create a new project from scratch, add the &amp;lt;em&amp;gt;vscode.clang&amp;lt;/em&amp;gt;
+extension:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde init &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-d&amp;lt;/span&amp;gt; my-project &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-m&amp;lt;/span&amp;gt; foundation/objc-developer executable
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde extension add vscode-clang
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Without the vscode extension, there won’t be any
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.vscode&amp;lt;/code&amp;gt; file initially in your project.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;open-the-project&amp;quot;&amp;gt;Open the project&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;From the console, if you have the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;vscode&amp;lt;/code&amp;gt; command in your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PATH&amp;lt;/code&amp;gt;, you can
+type &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;vscode my-project&amp;lt;/code&amp;gt; and the project should open.
+Otherwise open the project from within VSCode with &amp;lt;em&amp;gt;“File /Open Folder…“&amp;lt;/em&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;And there should be your project:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-project.png&amp;quot; alt=&amp;quot;Project&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;But… there may be errors. There are various paths in the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.vscode&amp;lt;/code&amp;gt;
+folder that may need fixing. Edit the file &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.vscode/c_cpp_properties.json&amp;lt;/code&amp;gt;:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;version&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;4&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;configurations&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;name&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Linux&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;includePath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/src/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/dependency/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/addiction/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;defines&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compilerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-clang&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;cStandard&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;c11&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;intelliSenseMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;clang-x64&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compileCommands&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug/compile_commands.json&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;name&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Mac&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;includePath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/src/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/dependency/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/addiction/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;defines&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compilerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-clang&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;cStandard&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;c11&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;intelliSenseMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;clang-x64&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compileCommands&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug/compile_commands.json&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;name&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Win32&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;includePath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/src/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/dependency/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/addiction/include/**&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;defines&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compilerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-clang-cl.exe&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;cStandard&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;c11&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;intelliSenseMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;clang-x64&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+         &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;compileCommands&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug/compile_commands.json&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;For your platform, adjust to the proper compiler path. Type &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;which mulle-clang&amp;lt;/code&amp;gt;
+and it should give you the proper path. (Otherwise look in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;/opt/mulle-clang-project/&amp;amp;lt;version&amp;amp;gt;/bin&amp;lt;/code&amp;gt; or &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;/usr/local/bin&amp;lt;/code&amp;gt;).&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;run-tasks&amp;quot;&amp;gt;Run Tasks&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;To see the list of available tasks choose &amp;lt;em&amp;gt;“Terminal / Run Task…”&amp;lt;/em&amp;gt; and the list
+of commands will look something like this:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-tasks.png&amp;quot; alt=&amp;quot;Tasks&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;table&amp;gt;
+  &amp;lt;thead&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;th&amp;gt;Task&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Description&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Reflect&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;CMakeLists.txt&amp;lt;/code&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Debug&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;The default build-style for crafting is Debug&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Release&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Use Release build-style for crafting&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Clean your projects build products and intermediate files&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean Tidy&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Also clean downloaded dependencies. They will need to be refetched.&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean Download Caches&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Also clean mirrored git repositories and cached tar archives.&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Upgrade&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;After installing a new mulle-sde version, upgrade the project. Cleans caches…&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;development-cycle&amp;quot;&amp;gt;Development Cycle&amp;lt;/h2&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;craft&amp;quot;&amp;gt;Craft&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;You need the package &amp;lt;strong&amp;gt;C/C++&amp;lt;/strong&amp;gt; for this.&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Build your project using the “Craft Debug” task (&amp;lt;em&amp;gt;“Terminal / Run Build Task…“&amp;lt;/em&amp;gt;).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-craft.png&amp;quot; alt=&amp;quot;Craft&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;In the end you will see the line:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;Run your executable:
+   kitchen/Debug/my-project
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;The executable location may differ with your local setup. So you might see a
+different path there. You can now run the executable directly in VSCode.
+Use &amp;lt;em&amp;gt;Terminal / New Termial&amp;lt;/em&amp;gt; to open a terminal:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-run.png&amp;quot; alt=&amp;quot;Terminals&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;debug&amp;quot;&amp;gt;Debug&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Navigate to your sources &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/main.m&amp;lt;/code&amp;gt; and place a breakpoint in the
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;main&amp;lt;/code&amp;gt; by clicking to the left of the linenumber:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-breakpoint.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You may have to edit the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.vscode/launch.json&amp;lt;/code&amp;gt; file at this point,
+to set the correct executable path for the debugger.&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Webfreak or C/C++ (ms-vscode) ?&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+
+  &amp;lt;p&amp;gt;There are two extensions to enable debugging in Visual Studio Code. 
+One is &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;webfreak.debug&amp;lt;/code&amp;gt; (&amp;lt;strong&amp;gt;Native Debug by Webfreak&amp;lt;/strong&amp;gt;) the other
+is &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;ms-vscode.cpptool&amp;lt;/code&amp;gt; (&amp;lt;strong&amp;gt;C/C++ from Microsoft&amp;lt;/strong&amp;gt;). 
+In terms of this guide, the main differentiator in the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;launch.json&amp;lt;/code&amp;gt;
+between both extensions is the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;type&amp;lt;/code&amp;gt;. It’s &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;quot;cppdbg&amp;quot;&amp;lt;/code&amp;gt; for Microsoft and 
+“gdb” for Webfreak.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;ms-vscodecpptool&amp;quot;&amp;gt;ms-vscode.cpptool&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;Edit the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;miDebuggerPath&amp;lt;/code&amp;gt; path to the mulle-gdb path (&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;which mulle-gdb&amp;lt;/code&amp;gt;) on
+your platform:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;version&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;0.2.0&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;configurations&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+        &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;_comment&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;All? It&amp;apos;s often convenient in library projects too&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;name&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Debug my-project&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;type&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;cppdbg&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;request&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;launch&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;stopAtEntry&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kc&amp;quot;&amp;gt;true&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;program&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug/my-project&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;args&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;environment&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;cwd&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;additionalSOLibSearchPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/dependency/Debug/lib:${workspaceFolder}/dependency/lib&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;windows&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;MIMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;gdb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;miDebuggerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;C:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\\&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;mingw64&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\\&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;bin&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\\&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;mulle-gdb.exe&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;program&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug/my-project.exe&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;osx&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;MIMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;lldb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;miDebuggerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;/usr/local/bin/lldb-mi&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;linux&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;MIMode&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;gdb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;miDebuggerPath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-gdb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+             &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;preLaunchTask&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Debug&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+        &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;webfreakdebug&amp;quot;&amp;gt;webfreak.debug&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;Edit the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;gdbpath&amp;lt;/code&amp;gt; path to the mulle-gdb path (&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;which mulle-gdb&amp;lt;/code&amp;gt;) on
+your platform:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;version&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;0.2.0&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;configurations&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+        &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;type&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;gdb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;request&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;launch&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;gdbpath&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;/usr/local/bin/mulle-gdb&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;name&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Debug my-project&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;target&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceRoot}/kitchen/Debug/my-project.exe&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;cwd&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceRoot}&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;valuesFormatting&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;parseText&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+        &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-debug.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;From here on use either the &amp;lt;a href=&amp;quot;//marketplace.visualstudio.com/items?itemName=webfreak.debug&amp;quot;&amp;gt;Native Debug documentation&amp;lt;/a&amp;gt;
+or &amp;lt;a href=&amp;quot;https://code.visualstudio.com/docs/cpp/cpp-debug&amp;quot;&amp;gt;Debug C in Visual Studio Code&amp;lt;/a&amp;gt; for more help.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;edit&amp;quot;&amp;gt;Edit&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;We create a new class in “VSCode” to demonstrate the
+“Edit-&amp;amp;gt;Reflect-&amp;amp;gt;Craft(-&amp;amp;gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; namely &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.h&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.m&amp;lt;/code&amp;gt;.
+(Right click on the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; folder and “New File”).&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Let’s put an error into the file for demonstration purposes:&amp;lt;/p&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.h&amp;quot;&amp;gt;#import &amp;quot;import.h&amp;quot;
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.m&amp;quot;&amp;gt;#import &amp;quot;Foo.h&amp;quot;
+
+#import &amp;quot;import-private.h&amp;quot;
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( &amp;quot;Hello\n&amp;quot;);
+}
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h4 id=&amp;quot;tip&amp;quot;&amp;gt;Tip&amp;lt;/h4&amp;gt;
+
+  &amp;lt;p&amp;gt;If you like a class with template code, you can use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-sde add src/Foo.m&amp;lt;/code&amp;gt;
+instead. This will also make the next “Reflect” step superflous.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;reflect&amp;quot;&amp;gt;Reflect&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Now run the “Reflect” task (&amp;lt;em&amp;gt;“Terminal / Run Task… / Reflect”&amp;lt;/em&amp;gt;).
+The reflection places your source files into the &amp;lt;em&amp;gt;cmake&amp;lt;/em&amp;gt; build system and adds
+them to your list of C headers. You can observe the change in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Sources&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Headers&amp;lt;/code&amp;gt; as well as in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/reflect/_my-project.export.h&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You only need to “Reflect” if you have added or deleted files from the project.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;craft-1&amp;quot;&amp;gt;Craft&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Now with the syntax error in place, the next craft will immediately preempt
+with an error:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/vscode-error.png&amp;quot; alt=&amp;quot;Error&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;If Visual Studio can’t find the source file, you may have to tweak the
+“problemmatcher” in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.vscode/tasks.json&amp;lt;/code&amp;gt;:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;version&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;2.0.0&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+    &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;tasks&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+        &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;label&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;Craft&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;type&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;shell&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;command&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-sde&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;args&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;craft&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;],&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;problemMatcher&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;base&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;$gcc&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;fileLocation&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                  &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;relative&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                  &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${workspaceFolder}/kitchen/Debug&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+                &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+            &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;err&amp;quot;&amp;gt;...&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;change the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;quot;relative&amp;quot;&amp;lt;/code&amp;gt; in “tasks/problemMatcher/fileLocation” to
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;quot;absolute&amp;quot;&amp;lt;/code&amp;gt;.  Do this for the tasks “Craft”, “Debug”, “Release”.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;That wraps it up for VSCode here.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Sublime Text]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/easy-sublime-text.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/easy-sublime-text.html&lt;/id&gt;
+  &lt;published&gt;2022-02-02T00:00:00+01:00&lt;/published&gt;
+  &lt;updated&gt;2022-02-02T00:00:00+01:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using &amp;lt;a href=&amp;quot;https://linuxhint.com/install_packages_sublime_text/&amp;quot;&amp;gt;Package Control&amp;lt;/a&amp;gt;.
+Use that link for instructions, how to use &amp;lt;em&amp;gt;Package Control&amp;lt;/em&amp;gt;. The short
+version is:&amp;lt;/p&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;open “Sublime Text”&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;use &amp;lt;em&amp;gt;“Tools / Install Package Control…”&amp;lt;/em&amp;gt; (or &amp;lt;em&amp;gt;“Tools / Command  Palette… / Install Package Control”&amp;lt;/em&amp;gt;)&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;add packages with &amp;lt;em&amp;gt;“Tools / Command  Palette… / Package Control: Install Package”&amp;lt;/em&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;p&amp;gt;Here is a list of some packages useful for mulle-objc development:&amp;lt;/p&amp;gt;
+
+&amp;lt;table&amp;gt;
+  &amp;lt;thead&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;th&amp;gt;Package&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Package&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Package&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Alignment&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Go To Definition&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;SublimeLinter&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;All Autocomplete&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Origami&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;SublimeLinter-clang&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;AutoFileName&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;ReadonlyProtect&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Terminus&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;CMake&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;SideBarEnhancements&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Unicode Character Highlighter&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Diffy&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;sublime-text-ignore&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;YcmdCompletion&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Git&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;SublimeGDB&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;create-a-mulle-objc-project&amp;quot;&amp;gt;Create a mulle-objc project&amp;lt;/h3&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;If you haven’t installed mulle-sde go back to the
+&amp;lt;a href=&amp;quot;intro.html&amp;quot;&amp;gt;Intro&amp;lt;/a&amp;gt; and follow the
+instructions there.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;p&amp;gt;You need a terminal to create a &amp;lt;em&amp;gt;mulle-objc&amp;lt;/em&amp;gt; project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;git clone https://github.com/mulle-cc/mulle-objc-sublime-text.git my-project
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//github.com/mulle-sde/mulle-sde-developer&amp;quot;&amp;gt;mulle-sde-developer&amp;lt;/a&amp;gt; provides the
+&amp;lt;em&amp;gt;sublime-text&amp;lt;/em&amp;gt; extension. This extension ensures, that Sublime Text ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with &amp;lt;em&amp;gt;mulle-sde&amp;lt;/em&amp;gt; and some debugger support
+for the “SublimeGDB” package.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;When you create a new project from scratch, add the &amp;lt;em&amp;gt;sublime-text&amp;lt;/em&amp;gt;
+extension:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde init &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-d&amp;lt;/span&amp;gt; my-project &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-m&amp;lt;/span&amp;gt; foundation/objc-developer executable
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde extension add sublime-text
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Without the sublime-text extension, there won’t be any
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;my-project.sublime-project&amp;lt;/code&amp;gt; file initially in your project.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;open-the-project&amp;quot;&amp;gt;Open the project&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;From the console, if you have the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;subl&amp;lt;/code&amp;gt; command in your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PATH&amp;lt;/code&amp;gt;, you can
+type &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;subl my-project.sublime-project&amp;lt;/code&amp;gt; and the project will open.
+Otherwise open the project from within Sublime Text with
+&amp;lt;em&amp;gt;“Project /Open Project”&amp;lt;/em&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;And there should be your project:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-project.png&amp;quot; alt=&amp;quot;Project&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;run-tasks&amp;quot;&amp;gt;Run Tasks&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;To see the list of available tasks choose &amp;lt;em&amp;gt;“Tools / Build With…”&amp;lt;/em&amp;gt; and the list
+of commands will look something like this:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-build-with-2.png&amp;quot; alt=&amp;quot;Tools/Build With&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;table&amp;gt;
+  &amp;lt;thead&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;th&amp;gt;Task&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Description&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Reflect&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;CMakeLists.txt&amp;lt;/code&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Craft Debug&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Craft project with build-style Debug&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Craft Release&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Craft project with build-style Release&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Clean your projects build products and intermediate files&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean Tidy&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Also clean downloaded dependencies. They will need to be refetched.&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Clean Download Caches&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Also clean mirrored git repositories and cached tar archives.&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;Upgrade&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;After installing a new mulle-sde version, upgrade the project. Cleans caches…&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;development-cycle&amp;quot;&amp;gt;Development Cycle&amp;lt;/h2&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;craft&amp;quot;&amp;gt;Craft&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Build your project using the “Craft” task (&amp;lt;em&amp;gt;“Tools / Build With… / Craft”&amp;lt;/em&amp;gt;).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-craft.png&amp;quot; alt=&amp;quot;Craft&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;In the end you will see the line:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;Run your executable:
+   /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;The executable location differs with your local setup. So you will see a
+different path there. If you have the package &amp;lt;strong&amp;gt;Terminus&amp;lt;/strong&amp;gt; installed, you can
+now run the executable directly in Sublime Text. Use [CTRL]-[ESCAPE] to open
+Terminus:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-terminus.png&amp;quot; alt=&amp;quot;Terminus&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;debug&amp;quot;&amp;gt;Debug&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;em&amp;gt;You need the package &amp;lt;strong&amp;gt;SublimeGDB&amp;lt;/strong&amp;gt; for this.&amp;lt;/em&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Navigate to your sources &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/main.m&amp;lt;/code&amp;gt; and place a breakpoint in the
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;main&amp;lt;/code&amp;gt; function with [F9].&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-breakpoint.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You will likely need to edit the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;my-object.sublime-project&amp;lt;/code&amp;gt; file itself,
+to set the correct executable path for the debugger. At the top of the file:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;settings&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;sublimegdb_workingdir&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${folder:kitchen/Debug/my-project}&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;sublimegdb_commandline&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-gdb --interpreter=mi kitchen/Debug/my-project&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;change &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;kitchen/Debug/my-project&amp;lt;/code&amp;gt; in both &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;quot;sublimegdb_workingdir&amp;quot;&amp;lt;/code&amp;gt; and
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;quot;sublimegdb_commandline&amp;quot;&amp;lt;/code&amp;gt; to your executable path.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-json highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;settings&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;sublimegdb_workingdir&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;${folder:/home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project}&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+      &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;&amp;quot;sublimegdb_commandline&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;mulle-gdb --interpreter=mi /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project&amp;quot;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+   &amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;},&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint, which now has turned green:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-debug.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h4 id=&amp;quot;debugging-keys&amp;quot;&amp;gt;Debugging Keys&amp;lt;/h4&amp;gt;
+
+  &amp;lt;table&amp;gt;
+    &amp;lt;thead&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;th&amp;gt;Key&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;Function&amp;lt;/th&amp;gt;
+      &amp;lt;/tr&amp;gt;
+    &amp;lt;/thead&amp;gt;
+    &amp;lt;tbody&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[F5]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Start / Continue&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Shift][F5]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Show Input Field&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Ctrl][Shift][F5]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Show Raw Input Field&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Ctrl][F5]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Stop Debugging&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[F9]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Toggle Breakpoint&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[F10]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Step Over&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[F11]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Step Into&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Shift][F11]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Step Out&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Ctrl][F11]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Show Disassembly View&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;[Ctrl][Alt][G]&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;Show Register View&amp;lt;/td&amp;gt;
+      &amp;lt;/tr&amp;gt;
+    &amp;lt;/tbody&amp;gt;
+  &amp;lt;/table&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;p&amp;gt;From here on use the &amp;lt;a href=&amp;quot;//github.com/quarnster/SublimeGDB&amp;quot;&amp;gt;SublimeGDB documentation&amp;lt;/a&amp;gt;
+for more help.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;edit&amp;quot;&amp;gt;Edit&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;We create a new class in “Sublime Text” to demonstrate the
+“Edit-&amp;amp;gt;Reflect-&amp;amp;gt;Craft(-&amp;amp;gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; namely &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.h&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.m&amp;lt;/code&amp;gt;.
+(Right click on the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; folder and “New File”).&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Let’s put an error into the file for demonstration purposes:&amp;lt;/p&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.h&amp;quot;&amp;gt;#import &amp;quot;import.h&amp;quot;
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.m&amp;quot;&amp;gt;#import &amp;quot;Foo.h&amp;quot;
+
+#import &amp;quot;import-private.h&amp;quot;
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( &amp;quot;Hello\n&amp;quot;);
+}
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h4 id=&amp;quot;tip&amp;quot;&amp;gt;Tip&amp;lt;/h4&amp;gt;
+
+  &amp;lt;p&amp;gt;If you like a class with template code, you can use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-sde add src/Foo.m&amp;lt;/code&amp;gt;
+instead. This will also make the next “Reflect” step superflous.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;reflect&amp;quot;&amp;gt;Reflect&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Now run the “Reflect” task (&amp;lt;em&amp;gt;“Tools / Build With… / Reflect”&amp;lt;/em&amp;gt;).
+The reflection places your source files into the &amp;lt;em&amp;gt;cmake&amp;lt;/em&amp;gt; build system and adds
+them to your list of C headers. You can observe the change in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Sources&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Headers&amp;lt;/code&amp;gt; as well as in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/reflect/_my-project.export.h&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You only need to “Reflect” if you have added or deleted files from the project.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;craft-1&amp;quot;&amp;gt;Craft&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Now with the syntax error in place, the next craft will immediately preempt
+with an error:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/sublime-error.png&amp;quot; alt=&amp;quot;Error&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You can step through the errors with &amp;lt;em&amp;gt;“Tools / Build Results / Next Result”&amp;lt;/em&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;That wraps it up for Sublime Text here.&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h2 id=&amp;quot;important-tip&amp;quot;&amp;gt;Important Tip&amp;lt;/h2&amp;gt;
+
+  &amp;lt;p&amp;gt;Depending on how your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PATH&amp;lt;/code&amp;gt; variable is set up, the environment you are
+in, &amp;lt;em&amp;gt;Sublime Text&amp;lt;/em&amp;gt; may not find the &amp;lt;strong&amp;gt;mulle-sde&amp;lt;/strong&amp;gt; executables. To fix this
+close all &amp;lt;em&amp;gt;Sublime Text&amp;lt;/em&amp;gt; windows, so that the application is actually
+exiting. Then start &amp;lt;em&amp;gt;Sublime Text&amp;lt;/em&amp;gt; from a shell, where you know that &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PATH&amp;lt;/code&amp;gt;
+is set correctly, with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;subl&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[CLion]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/easy-clion.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/easy-clion.html&lt;/id&gt;
+  &lt;published&gt;2022-02-02T00:00:00+01:00&lt;/published&gt;
+  &lt;updated&gt;2022-02-02T00:00:00+01:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//www.jetbrains.com/clion/download/&amp;quot;&amp;gt;CLion&amp;lt;/a&amp;gt;) is an IDE by Jetbrains.
+It’s a commercial offering, but you get a 30 day evaluation license the first
+time you download it. So it’s perfect for playing around with mulle-objc. Well
+almost perfect. We need a special setup, otherwise CLion will develop the
+annoying tendency to hang up your system.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;first-start&amp;quot;&amp;gt;First Start&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;The first time you start CLion it will come up with a window like this:&amp;lt;/p&amp;gt;
+
+&amp;lt;p align=&amp;quot;center&amp;quot;&amp;gt;
+&amp;lt;img src=&amp;quot;images/clion-intro.png&amp;quot; style=&amp;quot;height:200px !important;&amp;quot; /&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Let’s just keep it this way for now. There is no “New Project” support for
+mulle-objc (yet ?), so we have to create the project in the terminal.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;create-a-mulle-objc-project&amp;quot;&amp;gt;Create a mulle-objc project&amp;lt;/h3&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;If you haven’t installed mulle-sde go back to the
+&amp;lt;a href=&amp;quot;intro.html&amp;quot;&amp;gt;Intro&amp;lt;/a&amp;gt; and follow the
+instructions there.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;p&amp;gt;You need a terminal to create a &amp;lt;em&amp;gt;mulle-objc&amp;lt;/em&amp;gt; project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;git clone https://github.com/mulle-cc/mulle-objc-idea.git my-project
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//github.com/mulle-sde/mulle-sde-developer&amp;quot;&amp;gt;mulle-sde-developer&amp;lt;/a&amp;gt; provides the
+&amp;lt;em&amp;gt;idea&amp;lt;/em&amp;gt; extension. This extension ensures, that CLion ignores
+files that are non-editable.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;When you create a new project from scratch, add the &amp;lt;em&amp;gt;idea&amp;lt;/em&amp;gt;
+extension:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde init &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-d&amp;lt;/span&amp;gt; my-project &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-m&amp;lt;/span&amp;gt; foundation/objc-developer executable
+&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cd &amp;lt;/span&amp;gt;my-project
+mulle-sde extension add idea
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;The &amp;lt;em&amp;gt;idea&amp;lt;/em&amp;gt; extension is not required for mulle-objc projects, but makes them
+a bit nicer in CLion. Without the idea extension, you will not see an
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.idea&amp;lt;/code&amp;gt; folder in your project initially.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;change-the-build-environment&amp;quot;&amp;gt;Change the build environment&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;CLion has an indexer, that continually checks your project directory for
+changes. Though you can tell the indexer to not index certain places, in
+practicality that doesn’t always seem to work.
+&amp;lt;em&amp;gt;mulle-sde&amp;lt;/em&amp;gt; will create three folders &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;stash&amp;lt;/code&amp;gt;, &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;dependency&amp;lt;/code&amp;gt;, &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;kitchen&amp;lt;/code&amp;gt;.
+When the indexer hits &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;stash&amp;lt;/code&amp;gt;, with its large amount of sources and possible
+symlinks between each project, you may incur slowness or worse.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;The most foolproof method to keep the Clion indexer away from those folders, is
+to store them outside of the project. So lets the create in the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;my-project&amp;lt;/code&amp;gt;
+folder, these mulle-sde settings to store build folders under
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;~/.mulle/var/...&amp;lt;/code&amp;gt; or wherever you find convenient:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--search-nearest&amp;lt;/span&amp;gt; environment &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--host-this&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;set &amp;lt;/span&amp;gt;DEPENDENCY_DIR &amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;&amp;apos;${HOME}/.mulle/var/dependency-${PROJECT_NAME}&amp;apos;&amp;lt;/span&amp;gt;
+mulle-sde &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--search-nearest&amp;lt;/span&amp;gt; environment &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--host-this&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;set &amp;lt;/span&amp;gt;KITCHEN_DIR &amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;&amp;apos;${HOME}/.mulle/var/kitchen-${PROJECT_NAME}&amp;apos;&amp;lt;/span&amp;gt;
+mulle-sde &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--search-nearest&amp;lt;/span&amp;gt; environment &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--host-this&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;se&amp;quot;&amp;gt;\&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;set &amp;lt;/span&amp;gt;MULLE_SOURCETREE_STASH_DIR &amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;&amp;apos;${HOME}/.mulle/var/stash-${PROJECT_NAME}&amp;apos;&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;It is important to make these changes before opening the project, as the
+indexer and the build process will start right away.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You can place these commands in a file called &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;~/bin/post-mulle-sde-init&amp;lt;/code&amp;gt;.
+Then you will not need to execute these commands for every new project created
+with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-sde init&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;The following command will give you the location of the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;dependency&amp;lt;/code&amp;gt; folder
+on the file system, which will be needed in the next step:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-sh highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde environment get &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--output-eval&amp;lt;/span&amp;gt; DEPENDENCY_DIR
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;open-the-project&amp;quot;&amp;gt;Open the project&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Open the project from within Clion now with &amp;lt;em&amp;gt;“File /Open Project”&amp;lt;/em&amp;gt;. At this
+time the “Open Project Wizard” should run. It will let you choose the default
+toolchain or you can  configure a new “System” toolchain.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-wizard.png&amp;quot; alt=&amp;quot;Wizard&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;This is an important step. You should change the C compiler to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-clang&amp;lt;/code&amp;gt;.
+Usually &amp;lt;strong&amp;gt;mulle-clang&amp;lt;/strong&amp;gt; should be in your PATH and you can just type it in.
+If not, you can enter the installation path by clicking the folder button.
+(Tip: look in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;/opt/mulle-clang-project/&amp;amp;lt;version&amp;amp;gt;/bin&amp;lt;/code&amp;gt; or &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;/usr/local/bin&amp;lt;/code&amp;gt;)
+Do the same for the debugger &amp;lt;strong&amp;gt;mulle-gdb&amp;lt;/strong&amp;gt; (&amp;lt;em&amp;gt;“Disclosure Triangle / Custom executable”&amp;lt;/em&amp;gt;,
+even though it’s grayed out).&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Next up is the &amp;lt;strong&amp;gt;cmake&amp;lt;/strong&amp;gt; configuration screen. Here you have to configure the
+“Toolchain” to the toolchain you setup in the previous step. And you also
+enter the ‘DEPENDENCY_DIR’ environment variable.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;I would recommend to check &amp;lt;em&amp;gt;“Reload CMake project on …“&amp;lt;/em&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-wizard-2.png&amp;quot; alt=&amp;quot;Wizard&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;The IDE will immediately spring into action and build your project.&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;If you chose to keep the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;dependency&amp;lt;/code&amp;gt; folder in project, you don’t need
+to set the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;DEPENDENCY_DIR&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;run-configurations&amp;quot;&amp;gt;Run configurations&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;To see the list of available configurations click the disclosure button on the
+Clion configurations / target bar:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+&amp;lt;img src=&amp;quot;images/clion-configurations.png&amp;quot; style=&amp;quot;width:150px !important;&amp;quot; /&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;table&amp;gt;
+  &amp;lt;thead&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;th&amp;gt;Configuration&amp;lt;/th&amp;gt;
+      &amp;lt;th&amp;gt;Description&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/thead&amp;gt;
+  &amp;lt;tbody&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;mulle_sde_reflect&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;CMakeLists.txt&amp;lt;/code&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;mulle_sde_clean_all&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Clean your projects build products and intermediate files&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;mulle_sde_clean_tidy&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Also clean downloaded dependencies. They will need to be refetched.&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;mulle_sde_craft_craftorder&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;Rebuild dependencies&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt; &amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+      &amp;lt;td&amp;gt;mulle_sde_upgrade&amp;lt;/td&amp;gt;
+      &amp;lt;td&amp;gt;After installing a new mulle-sde version, upgrade the project. Cleans caches…&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+  &amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;p&amp;gt;CLion will have picked up these configuration from targets in the cmake files.
+Not all configurations are interesting. You can safely configuration any target 
+that is preceeded with an &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;_&amp;lt;/code&amp;gt; underscore.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You run a configuration by selecting it and then using the “green hammer”,
+to the left of the selector box.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;development-cycle&amp;quot;&amp;gt;Development Cycle&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;At this point the IDE should be in the process of fetching and building the
+dependencies, or maybe its already done. Watch the status line on the bottom to
+see what’s happening. So lets get right into debugging.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-opened.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;debug&amp;quot;&amp;gt;Debug&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Navigate to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/main.m&amp;lt;/code&amp;gt; now and click besides the line number to set a (red)
+breakpoint. Now run your program in the debugger with &amp;lt;em&amp;gt;“Run / Debug…“&amp;lt;/em&amp;gt;.
+The debugger should immediately stop on the breakpoint:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-debug.png&amp;quot; alt=&amp;quot;Breakpoint&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;From here on use the &amp;lt;a href=&amp;quot;https://blog.jetbrains.com/clion/2020/10/clion-debugging-part-1-fundamentals/&amp;quot;&amp;gt;CLion documentation&amp;lt;/a&amp;gt;
+for more help. The CLion debugger is very nice and makes this a standout
+feature in my opinion.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;edit&amp;quot;&amp;gt;Edit&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Create a new class in “Sublime Text” to demonstrate the
+“Edit-&amp;amp;gt;Reflect-&amp;amp;gt;Craft(-&amp;amp;gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; namely &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.h&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/Foo.m&amp;lt;/code&amp;gt;.
+(Right click on the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src&amp;lt;/code&amp;gt; folder and “New File”).&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Let’s put an error into the file for demonstration purposes:&amp;lt;/p&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.h&amp;quot;&amp;gt;#import &amp;quot;import.h&amp;quot;
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;language-Foo.m&amp;quot;&amp;gt;#import &amp;quot;Foo.h&amp;quot;
+
+#import &amp;quot;import-private.h&amp;quot;
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( &amp;quot;Hello\n&amp;quot;);
+}
+
+@end
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h4 id=&amp;quot;tip&amp;quot;&amp;gt;Tip&amp;lt;/h4&amp;gt;
+
+  &amp;lt;p&amp;gt;If you like a class with template code, you can use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-sde add src/Foo.m&amp;lt;/code&amp;gt;
+instead. This will also make the next “Reflect” step superflous.&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;reflect&amp;quot;&amp;gt;Reflect&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Now run the “mulle_sde_reflect” configuration. Choose it from the configuration
+selector box and then press the green hammer, to the left of it.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;The reflection places your source files into the &amp;lt;em&amp;gt;cmake&amp;lt;/em&amp;gt; build system and adds
+them to your list of C headers. You can observe the change in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Sources&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cmake/reflect/_Headers&amp;lt;/code&amp;gt; as well as in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;src/reflect/_my-project.export.h&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You only need to “Reflect” if you have added or deleted files from the project.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;craft&amp;quot;&amp;gt;Craft&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Return to the default configuration “my-project”. Now with the syntax error in
+place, the next craft will immediately preempt with an error:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-error.png&amp;quot; alt=&amp;quot;Error&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;h2 id=&amp;quot;important-tip&amp;quot;&amp;gt;Important Tip&amp;lt;/h2&amp;gt;
+
+  &amp;lt;p&amp;gt;Clion caches a lot. If you make some changes outside of the IDE to the 
+project, you need to clean its &amp;lt;strong&amp;gt;CMake cache&amp;lt;/strong&amp;gt; 
+(Menu: “Tools/CMake/Reset Cache and Reload Project”). Then run the 
+“Configuration” &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_sde_clean_all&amp;lt;/code&amp;gt;, to rebuild everything.&amp;lt;/p&amp;gt;
+
+  &amp;lt;p&amp;gt;There is another cache cleaner (“Menu: “File/Invalidate Caches…”), but it 
+does not affect CMake. It might be good to run this too, if something appears 
+wonky.&amp;lt;/p&amp;gt;
+
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;p&amp;gt;That wraps it up for CLion here.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Intro]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/intro.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/intro.html&lt;/id&gt;
+  &lt;published&gt;2022-01-01T00:00:00+01:00&lt;/published&gt;
+  &lt;updated&gt;2022-01-01T00:00:00+01:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objc-ide@mulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//mulle-objc.github.io&amp;quot;&amp;gt;mulle-objc&amp;lt;/a&amp;gt; is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;img src=&amp;quot;images/clion-debug.png&amp;quot; alt=&amp;quot;Example Screenshot&amp;quot; /&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;install-mulle-objc&amp;quot;&amp;gt;Install mulle-objc&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;You need to install a few packages to get things rolling. These packages
+are common to all IDE setups. As they differ between platforms and are subject
+to change occasionally, the install instructions aren’t replicated here.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;foundation-developer&amp;quot;&amp;gt;foundation-developer&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Install &amp;lt;a href=&amp;quot;//github.com/MulleFoundation/foundation-developer#install&amp;quot;&amp;gt;foundation-developer&amp;lt;/a&amp;gt;.
+The instructions how to do this are on that given page. If you have problems
+with it put up an issue in the github bugtracker.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;mulle-clang&amp;quot;&amp;gt;mulle-clang&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;This step may not be necessary, if you installed &amp;lt;em&amp;gt;foundation-developer&amp;lt;/em&amp;gt; with
+a package manager like &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;brew&amp;lt;/code&amp;gt; or &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;apt&amp;lt;/code&amp;gt;. Fetch the newest mulle-clang version from
+&amp;lt;a href=&amp;quot;https://github.com/mulle-cc/mulle-clang-project/tags&amp;quot;&amp;gt;mulle-clang-project&amp;lt;/a&amp;gt;
+and install.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;mulle-gdb&amp;quot;&amp;gt;mulle-gdb&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Fetch the newest mulle-gdb version from
+&amp;lt;a href=&amp;quot;https://github.com/mulle-cc/mulle-gdb/tags&amp;quot;&amp;gt;mulle-gdb&amp;lt;/a&amp;gt;
+and install.&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;Debugging on macOS is likely broken, unless you have 
+&amp;lt;a href=&amp;quot;https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection?language=objc&amp;quot;&amp;gt;turned off SIP&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;the-fork-in-the-road&amp;quot;&amp;gt;The fork in the road&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;From here choose an IDE or editor and continue:&amp;lt;/p&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;Install &amp;lt;a href=&amp;quot;//www.jetbrains.com/clion/download/&amp;quot;&amp;gt;CLion&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;easy-clion.html&amp;quot;&amp;gt;continue here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;Install &amp;lt;a href=&amp;quot;//www.sublimetext.com/download&amp;quot;&amp;gt;Sublime Text&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;easy-sublime-text.html&amp;quot;&amp;gt;continue here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;Install &amp;lt;a href=&amp;quot;//code.visualstudio.com/Download&amp;quot;&amp;gt;Visual Studio Code&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;easy-vscode.html&amp;quot;&amp;gt;continue here&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+&lt;/feed&gt;
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/atom.xml</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/atom.xml</guid>
+            
+         </item>
+          
+        
+           
+         <item>
+            <title></title>
+            <description>
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/</guid>
+            
+         </item>
+          
+        
+           
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;{% if page.xsl %}&lt;?xml-stylesheet type=&quot;text/xml&quot; href=&quot;{{ &apos;/feed.xslt.xml&apos; | absolute_url }}&quot;?&gt;{% endif %}&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot; {% if site.lang %}xml:lang=&quot;{{ site.lang }}&quot;{% endif %}&gt;&lt;generator uri=&quot;https://jekyllrb.com/&quot; version=&quot;{{ jekyll.version }}&quot;&gt;Jekyll&lt;/generator&gt;&lt;link href=&quot;{{ page.url | absolute_url }}&quot; rel=&quot;self&quot; type=&quot;application/atom+xml&quot; /&gt;&lt;link href=&quot;{{ &apos;/&apos; | absolute_url }}&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot; {% if site.lang %}hreflang=&quot;{{ site.lang }}&quot; {% endif %}/&gt;&lt;updated&gt;{{ site.time | date_to_xmlschema }}&lt;/updated&gt;&lt;id&gt;{{ page.url | absolute_url | xml_escape }}&lt;/id&gt;{% assign title = site.title | default: site.name %}{% if page.collection != &quot;posts&quot; %}{% assign collection = page.collection | capitalize %}{% assign title = title | append: &quot; | &quot; | append: collection %}{% endif %}{% if page.category %}{% assign category = page.category | capitalize %}{% assign title = title | append: &quot; | &quot; | append: category %}{% endif %}{% if title %}&lt;title type=&quot;html&quot;&gt;{{ title | smartify | xml_escape }}&lt;/title&gt;{% endif %}{% if site.description %}&lt;subtitle&gt;{{ site.description | xml_escape }}&lt;/subtitle&gt;{% endif %}{% if site.author %}&lt;author&gt;&lt;name&gt;{{ site.author.name | default: site.author | xml_escape }}&lt;/name&gt;{% if site.author.email %}&lt;email&gt;{{ site.author.email | xml_escape }}&lt;/email&gt;{% endif %}{% if site.author.uri %}&lt;uri&gt;{{ site.author.uri | xml_escape }}&lt;/uri&gt;{% endif %}&lt;/author&gt;{% endif %}{% if page.tags %}{% assign posts = site.tags[page.tags] %}{% else %}{% assign posts = site[page.collection] %}{% endif %}{% if page.category %}{% assign posts = posts | where: &quot;categories&quot;, page.category %}{% endif %}{% unless site.show_drafts %}{% assign posts = posts | where_exp: &quot;post&quot;, &quot;post.draft != true&quot; %}{% endunless %}{% assign posts = posts | sort: &quot;date&quot; | reverse %}{% assign posts_limit = site.feed.posts_limit | default: 10 %}{% for post in posts limit: posts_limit %}&lt;entry{% if post.lang %}{{&quot; &quot;}}xml:lang=&quot;{{ post.lang }}&quot;{% endif %}&gt;{% assign post_title = post.title | smartify | strip_html | normalize_whitespace | xml_escape %}&lt;title type=&quot;html&quot;&gt;{{ post_title }}&lt;/title&gt;&lt;link href=&quot;{{ post.url | absolute_url }}&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot; title=&quot;{{ post_title }}&quot; /&gt;&lt;published&gt;{{ post.date | date_to_xmlschema }}&lt;/published&gt;&lt;updated&gt;{{ post.last_modified_at | default: post.date | date_to_xmlschema }}&lt;/updated&gt;&lt;id&gt;{{ post.id | absolute_url | xml_escape }}&lt;/id&gt;{% assign excerpt_only = post.feed.excerpt_only | default: site.feed.excerpt_only %}{% unless excerpt_only %}&lt;content type=&quot;html&quot; xml:base=&quot;{{ post.url | absolute_url | xml_escape }}&quot;&gt;&lt;![CDATA[{{ post.content | strip }}]]&gt;&lt;/content&gt;{% endunless %}{% assign post_author = post.author | default: post.authors[0] | default: site.author %}{% assign post_author = site.data.authors[post_author] | default: post_author %}{% assign post_author_email = post_author.email | default: nil %}{% assign post_author_uri = post_author.uri | default: nil %}{% assign post_author_name = post_author.name | default: post_author %}&lt;author&gt;&lt;name&gt;{{ post_author_name | default: &quot;&quot; | xml_escape }}&lt;/name&gt;{% if post_author_email %}&lt;email&gt;{{ post_author_email | xml_escape }}&lt;/email&gt;{% endif %}{% if post_author_uri %}&lt;uri&gt;{{ post_author_uri | xml_escape }}&lt;/uri&gt;{% endif %}&lt;/author&gt;{% if post.category %}&lt;category term=&quot;{{ post.category | xml_escape }}&quot; /&gt;{% elsif post.categories %}{% for category in post.categories %}&lt;category term=&quot;{{ category | xml_escape }}&quot; /&gt;{% endfor %}{% endif %}{% for tag in post.tags %}&lt;category term=&quot;{{ tag | xml_escape }}&quot; /&gt;{% endfor %}{% assign post_summary = post.description | default: post.excerpt %}{% if post_summary and post_summary != empty %}&lt;summary type=&quot;html&quot;&gt;&lt;![CDATA[{{ post_summary | strip_html | normalize_whitespace }}]]&gt;&lt;/summary&gt;{% endif %}{% assign post_image = post.image.path | default: post.image %}{% if post_image %}{% unless post_image contains &quot;://&quot; %}{% assign post_image = post_image | absolute_url %}{% endunless %}&lt;media:thumbnail xmlns:media=&quot;http://search.yahoo.com/mrss/&quot; url=&quot;{{ post_image | xml_escape }}&quot; /&gt;&lt;media:content medium=&quot;image&quot; url=&quot;{{ post_image | xml_escape }}&quot; xmlns:media=&quot;http://search.yahoo.com/mrss/&quot; /&gt;{% endif %}&lt;/entry&gt;{% endfor %}&lt;/feed&gt;</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/feed.xml</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/feed.xml</guid>
+            
+         </item>
+          
+        
+    </channel>
+</rss>

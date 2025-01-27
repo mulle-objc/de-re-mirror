@@ -1,0 +1,603 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Visual Studio Code &#8211; mulle-objc Development with IDEs</title>
+<meta name="description" content="Visual Studio Code and it’s
+FOSS sibling
+VSCodium are primarily
+Web IDEs that can also be used to develop C projects.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Visual Studio Code">
+<meta name="twitter:description" content="Visual Studio Code and it’s
+FOSS sibling
+VSCodium are primarily
+Web IDEs that can also be used to develop C projects.
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/mulle-objc-ide/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio Code">
+<meta property="og:description" content="Visual Studio Code and it’s
+FOSS sibling
+VSCodium are primarily
+Web IDEs that can also be used to develop C projects.
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/easy-vscode.html">
+<meta property="og:site_name" content="mulle-objc Development with IDEs">
+
+<link href="/mulle-objc-ide/atom.xml" type="application/atom+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+<link href="/mulle-objc-ide/index.rdf" type="application/rss+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/easy-vscode.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/mulle-objc-ide/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/mulle-objc-ide/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-clion.html" title="CLion">CLion</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html" title="Sublime Text">Sublime Text</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-vscode.html" title="Visual Studio Code">Visual Studio Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Visual Studio Code</h1>
+                  <div>
+                  <p><a href="//code.visualstudio.com/Download">Visual Studio Code</a> and it’s
+<a href="https://itsfoss.com/vscodium/">FOSS</a> sibling
+<a href="https://github.com/VSCodium/vscodium/releases">VSCodium</a> are primarily
+Web IDEs that can also be used to develop C projects.</p>
+
+<p>To get VSCode cooking though, you need to pep it up with extensions. Here is a 
+list of some extensions, that are useful for mulle-objc development:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C/C++ (ms-vscode)</td>
+      <td>Not easily <a href="https://github.com/VSCodium/vscodium/issues/493">available</a> on VSCodium</td>
+    </tr>
+    <tr>
+      <td>CMake (twxs)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Markdown Preview Github Styling (bierner)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Native Debug (webfreak)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click on the “Extension” icon on the left and search for extensions:</p>
+
+<p><img src="images/vscode-extension.png" alt="" /></p>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-vscode.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>vscode-clang</em> extension. This extension ensures, that VSCode ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with <em>mulle-sde</em> and some debugger support
+for the “Native Debug” extension.</p>
+
+<p>When you create a new project from scratch, add the <em>vscode.clang</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add vscode-clang
+</code></pre></div></div>
+
+<p>Without the vscode extension, there won’t be any
+<code class="language-plaintext highlighter-rouge">.vscode</code> file initially in your project.</p>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>From the console, if you have the <code class="language-plaintext highlighter-rouge">vscode</code> command in your <code class="language-plaintext highlighter-rouge">PATH</code>, you can
+type <code class="language-plaintext highlighter-rouge">vscode my-project</code> and the project should open.
+Otherwise open the project from within VSCode with <em>“File /Open Folder…“</em>.</p>
+
+<p>And there should be your project:</p>
+
+<p><img src="images/vscode-project.png" alt="Project" /></p>
+
+<p>But… there may be errors. There are various paths in the <code class="language-plaintext highlighter-rouge">.vscode</code>
+folder that may need fixing. Edit the file <code class="language-plaintext highlighter-rouge">.vscode/c_cpp_properties.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mac"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Win32"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang-cl.exe"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>For your platform, adjust to the proper compiler path. Type <code class="language-plaintext highlighter-rouge">which mulle-clang</code>
+and it should give you the proper path. (Otherwise look in
+<code class="language-plaintext highlighter-rouge">/opt/mulle-clang-project/&lt;version&gt;/bin</code> or <code class="language-plaintext highlighter-rouge">/usr/local/bin</code>).</p>
+
+<h3 id="run-tasks">Run Tasks</h3>
+
+<p>To see the list of available tasks choose <em>“Terminal / Run Task…”</em> and the list
+of commands will look something like this:</p>
+
+<p><img src="images/vscode-tasks.png" alt="Tasks" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td>Debug</td>
+      <td>The default build-style for crafting is Debug</td>
+    </tr>
+    <tr>
+      <td>Release</td>
+      <td>Use Release build-style for crafting</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Clean</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>Clean Tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>Clean Download Caches</td>
+      <td>Also clean mirrored git repositories and cached tar archives.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<h3 id="craft">Craft</h3>
+
+<p><em>You need the package <strong>C/C++</strong> for this.</em></p>
+
+<p>Build your project using the “Craft Debug” task (<em>“Terminal / Run Build Task…“</em>).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.</p>
+
+<p><img src="images/vscode-craft.png" alt="Craft" /></p>
+
+<p>In the end you will see the line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Run your executable:
+   kitchen/Debug/my-project
+</code></pre></div></div>
+
+<p>The executable location may differ with your local setup. So you might see a
+different path there. You can now run the executable directly in VSCode.
+Use <em>Terminal / New Termial</em> to open a terminal:</p>
+
+<p><img src="images/vscode-run.png" alt="Terminals" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p>Navigate to your sources <code class="language-plaintext highlighter-rouge">src/main.m</code> and place a breakpoint in the
+<code class="language-plaintext highlighter-rouge">main</code> by clicking to the left of the linenumber:</p>
+
+<p><img src="images/vscode-breakpoint.png" alt="Breakpoint" /></p>
+
+<p>You may have to edit the <code class="language-plaintext highlighter-rouge">.vscode/launch.json</code> file at this point,
+to set the correct executable path for the debugger.</p>
+
+<blockquote>
+  <p><strong>Webfreak or C/C++ (ms-vscode) ?</strong></p>
+
+  <p>There are two extensions to enable debugging in Visual Studio Code. 
+One is <code class="language-plaintext highlighter-rouge">webfreak.debug</code> (<strong>Native Debug by Webfreak</strong>) the other
+is <code class="language-plaintext highlighter-rouge">ms-vscode.cpptool</code> (<strong>C/C++ from Microsoft</strong>). 
+In terms of this guide, the main differentiator in the <code class="language-plaintext highlighter-rouge">launch.json</code>
+between both extensions is the <code class="language-plaintext highlighter-rouge">type</code>. It’s <code class="language-plaintext highlighter-rouge">"cppdbg"</code> for Microsoft and 
+“gdb” for Webfreak.</p>
+</blockquote>
+
+<h4 id="ms-vscodecpptool">ms-vscode.cpptool</h4>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">miDebuggerPath</code> path to the mulle-gdb path (<code class="language-plaintext highlighter-rouge">which mulle-gdb</code>) on
+your platform:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All? It's often convenient in library projects too"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"additionalSOLibSearchPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/dependency/Debug/lib:${workspaceFolder}/dependency/lib"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"windows"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C:</span><span class="se">\\</span><span class="s2">mingw64</span><span class="se">\\</span><span class="s2">bin</span><span class="se">\\</span><span class="s2">mulle-gdb.exe"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/my-project.exe"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"osx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lldb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/local/bin/lldb-mi"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"linux"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb"</span><span class="w">
+             </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="webfreakdebug">webfreak.debug</h4>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">gdbpath</code> path to the mulle-gdb path (<code class="language-plaintext highlighter-rouge">which mulle-gdb</code>) on
+your platform:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gdbpath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/local/bin/mulle-gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceRoot}/kitchen/Debug/my-project.exe"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceRoot}"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valuesFormatting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parseText"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint:</p>
+
+<p><img src="images/vscode-debug.png" alt="Breakpoint" /></p>
+
+<p>From here on use either the <a href="//marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug documentation</a>
+or <a href="https://code.visualstudio.com/docs/cpp/cpp-debug">Debug C in Visual Studio Code</a> for more help.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>We create a new class in “VSCode” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “Reflect” task (<em>“Terminal / Run Task… / Reflect”</em>).
+The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code></p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft-1">Craft</h3>
+
+<p>Now with the syntax error in place, the next craft will immediately preempt
+with an error:</p>
+
+<p><img src="images/vscode-error.png" alt="Error" /></p>
+
+<p>If Visual Studio can’t find the source file, you may have to tweak the
+“problemmatcher” in <code class="language-plaintext highlighter-rouge">.vscode/tasks.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Craft"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-sde"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"craft"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"problemMatcher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$gcc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fileLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"relative"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"${workspaceFolder}/kitchen/Debug"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>change the <code class="language-plaintext highlighter-rouge">"relative"</code> in “tasks/problemMatcher/fileLocation” to
+<code class="language-plaintext highlighter-rouge">"absolute"</code>.  Do this for the tasks “Craft”, “Debug”, “Release”.</p>
+
+<p>That wraps it up for VSCode here.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html">Sublime Text</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/mulle-objc-ide/outro.html">Outro</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

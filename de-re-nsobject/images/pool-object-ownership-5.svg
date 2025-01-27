@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="459pt" height="612pt" viewBox="0 0 459 612.48" xmlns="http://www.w3.org/2000/svg">
+<g class="graph" transform="scale(1) translate(36 576.48)">
+<title>G</title>
+<polygon points="-36 36 -36 -576.48 423 -576.48 423 36" fill="#fff" stroke="transparent"/>
+<g class="cluster">
+<title>cluster_0</title>
+<path d="m20-8h347c6 0 12-6 12-12v-500.48c0-6-6-12-12-12h-347c-6 0-12 6-12 12v500.48c0 6 6 12 12 12" fill="#ffd700" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_1</title>
+<path d="m45-188.82h256c6 0 12-6 12-12v-117.83c0-6-6-12-12-12h-256c-6 0-12 6-12 12v117.83c0 6 6 12 12 12" fill="none" stroke="#000" stroke-width="0"/>
+</g>
+<g class="cluster">
+<title>cluster_2</title>
+<path d="m45-33h256c6 0 12-6 12-12v-117.82c0-6-6-12-12-12h-256c-6 0-12 6-12 12v117.82c0 6 6 12 12 12" fill="#7b68ee" stroke="#000" stroke-width="5"/>
+</g>
+<g class="node">
+<title>A1</title>
+<ellipse cx="104" cy="-436.06" rx="71.34" ry="71.34" fill="#1e90ff" stroke="#000" stroke-width="6"/>
+<text x="104" y="-432.26" fill="white" font-family="Poppins" font-size="16" text-anchor="middle">document</text>
+</g>
+<g class="node">
+<title>A2</title>
+<ellipse cx="104" cy="-259.74" rx="50.82" ry="50.82" fill="#ff69b4" stroke="#000" stroke-width="6"/>
+<text x="104" y="-255.94" fill="white" font-family="Poppins" font-size="16" text-anchor="middle">person</text>
+</g>
+<g class="edge">
+<title>A1-&gt;A2</title>
+<path d="m104-364.41v43.51" fill="none" stroke="#1e90ff" stroke-dasharray="5,2" stroke-width="8"/>
+<polygon points="111 -320.9 104 -310.9 97 -320.9" fill="#1e90ff" stroke="#1e90ff" stroke-width="8"/>
+</g>
+</g>
+</svg>

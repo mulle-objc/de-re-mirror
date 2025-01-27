@@ -1,0 +1,329 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Intro &#8211; De Re @property</title>
+<meta name="description" content="
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Intro">
+<meta name="twitter:description" content="What is a @property ? A @property in Objective-C automatically creates instance variables and methods for your class, so you can get and set values in your instances. Instead of manually writing code to store and access data, you declare a property and the compiler generates all the necessary code...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-property/images/features/intro.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro">
+<meta property="og:description" content="What is a @property ? A @property in Objective-C automatically creates instance variables and methods for your class, so you can get and set values in your instances. Instead of manually writing code to store and access data, you declare a property and the compiler generates all the necessary code...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/intro.html">
+<meta property="og:site_name" content="De Re @property">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-property/images/features/intro.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-property/images/logo.png">
+
+
+
+<link href="/de-re-property/atom.xml" type="application/atom+xml" rel="alternate" title="De Re @property Feed">
+<link href="/de-re-property/index.rdf" type="application/rss+xml" rel="alternate" title="De Re @property Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/intro.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-properties@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-properties@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re @property&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/declaration.html" title="@property declaration">@property declaration</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/attributes.html" title="@property( attributes)">@property( attributes)</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/definition.html" title="@property definition">@property definition</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/access.html" title="@property access">@property access</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/runtime.html" title="@property signature">@property signature</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/class-inheritance.html" title="@property inheritance by class">@property inheritance by class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/protocol-inheritance.html" title="@property inheritance by protocol">@property inheritance by protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/protocolclass-inheritance.html" title="@property inheritance by protocolclass">@property inheritance by protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/redeclaration.html" title="@property redeclaration">@property redeclaration</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/synthesize-directive.html" title="@synthesize">@synthesize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/dynamic-directive.html" title="@dynamic">@dynamic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/assign.html" title="Reference: assign">Reference: assign</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/container.html" title="Reference: container">Reference: container</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/copy.html" title="Reference: copy">Reference: copy</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/dynamic.html" title="Reference: dynamic">Reference: dynamic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/observable.html" title="Reference: observable">Reference: observable</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/nonatomic.html" title="Reference: nonatomic">Reference: nonatomic</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/readonly.html" title="Reference: readonly">Reference: readonly</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/retain.html" title="Reference: retain">Reference: retain</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-property/serializable.html" title="Reference: serializable">Reference: serializable</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re @property&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Intro</h1>
+                  <div>
+                  <p><img src="images/image-3.jpg" alt="Gratuitous banner" class="banner-image" /></p>
+
+<h2 id="what-is-a-property-">What is a @property ?</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">@property</code> in Objective-C automatically creates instance variables and methods for your class, so you
+can get and set values in your instances. Instead of manually writing code to store and access data,
+you declare a property and the compiler generates all the necessary code for you. Think of it as a smart
+way to add data to your class that can be easily read and modified.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: You need to know the following terms
+<a href="https://www.perplexity.ai/?q=What%20is%20a%20class%20in%20Objective-C%20(specifically%20mulle-objc)%20and%20what%20makes%20it%20different%20to%20a%20struct%20in%20C%20%3F"><code class="language-plaintext highlighter-rouge">class</code></a>,
+<a href="https://www.perplexity.ai/?q=What%20is%20an%20object%20respectively%20instance%20in%20Objective-C%20(specifically%20mulle-objc)%20and%20what%20makes%20it%20different%20to%20a%20pointer%20in%20C%20%3F"><code class="language-plaintext highlighter-rouge">object</code></a>,
+<a href="https://www.perplexity.ai/?q=What%20is%20an%20instance%20in%20Objective-C%20(specifically%20mulle-objc)%20and%20what%20makes%20it%20different%20to%20an%20object%20(hint%20a%20class%20is%20also%20an%20object)%20%3F%E2%80%8B"><code class="language-plaintext highlighter-rouge">instance</code></a>,
+<a href="https://www.perplexity.ai/?q=What%20is%20an%20ivar%20in%20Objective-C%20(specifically%20mulle-objc)%20and%20what%20makes%20it%20different%20to%20a%20field%20in%20a%20C%20struct%20%3F%E2%80%8B"><code class="language-plaintext highlighter-rouge">ivar</code></a>,
+<a href="https://www.perplexity.ai/?q=What%20is%20a%20method%20in%20Objective-C%20(specifically%20mulle-objc)%20and%20what%20makes%20it%20different%20to%20a%20function%20in%20C%20%3F"><code class="language-plaintext highlighter-rouge">method</code></a>
+to understand this tutorial. The deep dive
+<a href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/class.html">Objective-C Runtime in Pictures</a>
+should get you up to speed, unless you are completely new to Objective-C. Then I would
+suggest to read <a href="https://fullonrager.github.io/rys-objective-c-tutorial-archive/">Ry’s Objective-C Tutorial</a> first.</p>
+</blockquote>
+
+<h2 id="guide-overview">Guide Overview</h2>
+
+<p>Start with <a href="declaration.html">@property declaration</a> as your first step towards properties. 
+The next logical step is then <a href="runtime.html">@property definition</a>, followed by
+<a href="access.html">@property access</a>.</p>
+
+<p>Get a deeper understanding of <a href="attributes.html">@property attributes</a> next and then learn 
+how properties get inherited from <a href="class-inheritance.html">classes</a>, 
+<a href="protocol-inheritance.html">protocols</a> and <a href="protocolclass-inheritance.html">protocolclasses</a> 
+in your code. A more esoteric possibility is <a href="redeclaration.html">@property redeclaration</a>,
+which may sometimes come in handy.</p>
+
+<p>For completeness, check out the directives that were used for property creation with 
+<a href="synthesize-directive.html">@synthesize</a> and  <br />
+<a href="dynamic-directive.html">@dynamic</a>. These are very rarely useful in mulle-objc though.</p>
+
+<p>The <a href="outro.html">Outro</a> summarizes key points and gives you a list of links for further study.</p>
+
+<h2 id="mulle-objc">mulle-objc</h2>
+
+<p>Though maybe of interest to practitioners of other Objective-C dialects, this tutorial is focused on
+<a href="https://mulle-objc.github.io">mulle-objc</a> and will not cover attributes that are absent from the
+mulle-objc runtime. It will cover those attributes that are germane to mulle-objc though.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+           &nbsp;
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-property/declaration.html">@property declaration</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

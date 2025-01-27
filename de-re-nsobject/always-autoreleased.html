@@ -1,0 +1,406 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>AAO: Always autoreleased objects &#8211; De Re NSObject</title>
+<meta name="description" content="In mulle-objc the expectation is that all objects are created autoreleased.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="AAO: Always autoreleased objects">
+<meta name="twitter:description" content="In mulle-objc the expectation is that all objects are created autoreleased. RULE: Objects are passed autoreleased to functions and methods and objects are also returned autoreleased from functions and methods. When you -autorelease an object, typically during creation, you are tieing the lifetime of your object to the lifetime of...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/lifecycle.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AAO: Always autoreleased objects">
+<meta property="og:description" content="In mulle-objc the expectation is that all objects are created autoreleased. RULE: Objects are passed autoreleased to functions and methods and objects are also returned autoreleased from functions and methods. When you -autorelease an object, typically during creation, you are tieing the lifetime of your object to the lifetime of...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/always-autoreleased.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/lifecycle.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/always-autoreleased.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>AAO: Always autoreleased objects</h1>
+                  <div>
+                  <p>In mulle-objc the <em>expectation</em> is that all objects are created autoreleased.</p>
+
+<blockquote>
+  <p>RULE: Objects are passed autoreleased to functions and methods and objects
+are also returned autoreleased from functions and methods.</p>
+</blockquote>
+
+<p>When you <code class="language-plaintext highlighter-rouge">-autorelease</code> an object, typically during creation, you are tieing
+the lifetime of your object to the lifetime of the current autorelease pool.
+This is an <strong>explicitly</strong> autoreleased object, as the autorelease
+pool contains a pointer to it.</p>
+
+<p>Your object is now guaranteed to live at least as long as the autorelease pool.
+It will live longer, if it is directly or indirectly part of another autorelease
+pool.</p>
+
+<p>In a method, you know the incoming objects are autoreleased. So you don’t
+<code class="language-plaintext highlighter-rouge">-release</code> or <code class="language-plaintext highlighter-rouge">-autorelease</code> them. If you want to return a new object,
+you return an autoreleased object only.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">Document</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">Document</span> <span class="o">*</span><span class="p">)</span> <span class="nf">improvedDocument</span><span class="p">:(</span><span class="n">Document</span> <span class="o">*</span><span class="p">)</span> <span class="n">document</span>
+<span class="p">{</span>
+   <span class="n">Document</span>  <span class="o">*</span><span class="n">improved</span><span class="p">;</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="p">[</span><span class="n">document</span> <span class="nf">isPerfect</span><span class="p">])</span>
+      <span class="k">return</span><span class="p">(</span> <span class="n">document</span><span class="p">);</span>  <span class="c1">// incoming is autoreleased, outgoing therefore too</span>
+
+   <span class="n">improved</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="c1">// do something smart ...</span>
+   <span class="p">[</span><span class="n">improved</span> <span class="nf">setPerfect</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">document</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>To keep an object alive longer, another objects needs to <code class="language-plaintext highlighter-rouge">-retain</code> it,
+to obtain ownership. As the owning object is oblidged to <code class="language-plaintext highlighter-rouge">-autorelease</code> it
+before the death of the owner, it will need to keep a reference to this object
+for as long as it needs to hold unto it.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Person</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+<span class="k">@public</span>
+   <span class="n">Person</span>  <span class="o">*</span><span class="n">_author</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setAuthor</span><span class="p">:(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span> <span class="n">author</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_author</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="n">_author</span> <span class="o">=</span> <span class="p">[</span><span class="n">author</span> <span class="nf">retain</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+
+<span class="kt">int</span>  <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">document</span><span class="p">;</span>
+   <span class="n">Person</span>     <span class="o">*</span><span class="n">person</span><span class="p">;</span>
+
+   <span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>
+      <span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span> <span class="nf">object</span><span class="p">];</span>
+      <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="n">person</span><span class="p">];</span>
+<span class="c1">// #1</span>
+   <span class="p">}</span>
+
+<span class="c1">// #2</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"%@</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">document</span><span class="o">-&gt;</span><span class="n">_author</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="c1">// #3</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The drawings show the fate of the <em>person</em> object:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-3.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code> <strong>explicit</strong></td>
+      <td><img src="images/pool-object-ownership-7.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code> <strong>implicit</strong></td>
+      <td><img src="images/pool-object-ownership-8.svg" alt="6" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code> <strong>explicit</strong></td>
+    </tr>
+    <tr>
+      <td><em>person</em> is created in an inferior pool and referenced by <em>document</em></td>
+      <td>The inferior pool is gone, <em>person</em> is still alive through a <code class="language-plaintext highlighter-rouge">-retain</code> by <em>document</em></td>
+      <td><em>document</em> relinquishes ownership with <code class="language-plaintext highlighter-rouge">-autorelease</code> of <em>person</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your retained object is now an <strong>implicitly</strong> autoreleased object. When the
+owner cuts the reference, it will <code class="language-plaintext highlighter-rouge">-autorelease</code> your object, therefore turning
+it back into an <strong>expliticly</strong> autoreleased object.</p>
+
+<p>These basic relationships form the foundation of mulle-objc’s object ownership
+convention.</p>
+
+<blockquote>
+  <p>RULE: The only times that <code class="language-plaintext highlighter-rouge">-release</code> calls are made on an object</p>
+  <ol>
+    <li>if it is not part of any autorelease pool either explicitly or implicitly</li>
+    <li>during the death of an autorelease pool (including <code class="language-plaintext highlighter-rouge">-dealloc</code>)</li>
+    <li>in the scope of a function or method, if each <code class="language-plaintext highlighter-rouge">release</code> undoes a preceeding <code class="language-plaintext highlighter-rouge">-retain</code> in the same function and the object is no longer accessed or returned after the last <code class="language-plaintext highlighter-rouge">release</code>.</li>
+  </ol>
+</blockquote>
+
+<h3 id="not-all-objects-are-autoreleased-in-mulle-objc">Not all objects are autoreleased in mulle-objc</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">NSThread</code> objects typically do not reside in autorelease pools. Very short
+lived objects may never enter an autorelease pool. Static <code class="language-plaintext highlighter-rouge">NSString</code> objects
+are never placed in an autorelease pool. Doing a <code class="language-plaintext highlighter-rouge">-autorelease</code> on a class or a
+<a href="//www.mulle-kybernetik.com/weblog/2016/mulle_objc_boon_or_bane.html">TPS object</a>
+does nothing and there can be more special cases.</p>
+
+<p>Nevertheless as long as these objects are “static” or permanent, they count
+as “implicitly” autoreleased, belonging to a virtual universe autoreleasepool.
+If at any time they would lose their permanence, they would need to be placed
+into a true autorelease pool.</p>
+
+<blockquote>
+  <p>This was probably the most important chapter of this guide. Always autoreleased
+objects are the philosophical foundation of <a href="//mulle-objc.github.io">mulle-objc</a>.</p>
+</blockquote>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/autorelease.html">NSObject: -autorelease</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/init.html">NSObject: -init</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

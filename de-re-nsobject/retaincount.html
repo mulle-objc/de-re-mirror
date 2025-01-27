@@ -1,0 +1,396 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>NSObject: -retain / -release &#8211; De Re NSObject</title>
+<meta name="description" content="Let’s dive into the fascinating world of memory management in mulle-objc, a system that sets itself apart with its unique approach to object lifecycle management. As you’ll soon discover, mulle-objc employs a highly efficient Manual Memory Management (MMR) system, eschewing Automatic Reference Counting ( ARC) in favor of a more...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="NSObject: -retain / -release">
+<meta name="twitter:description" content="Let’s dive into the fascinating world of memory management in mulle-objc, a system that sets itself apart with its unique approach to object lifecycle management. As you’ll soon discover, mulle-objc employs a highly efficient Manual Memory Management (MMR) system, eschewing Automatic Reference Counting ( ARC) in favor of a more...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/retaincount.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSObject: -retain / -release">
+<meta property="og:description" content="Let’s dive into the fascinating world of memory management in mulle-objc, a system that sets itself apart with its unique approach to object lifecycle management. As you’ll soon discover, mulle-objc employs a highly efficient Manual Memory Management (MMR) system, eschewing Automatic Reference Counting ( ARC) in favor of a more...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/retaincount.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/retaincount.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/retaincount.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>NSObject: -retain / -release</h1>
+                  <div>
+                  <p>Let’s dive into the fascinating world of memory management in <a href="//mulle-objc.github.io">mulle-objc</a>, a
+system that sets itself apart with its unique approach to object lifecycle
+management. As you’ll soon discover, mulle-objc employs a highly efficient
+Manual Memory Management (MMR) system, eschewing Automatic Reference Counting (
+ARC) in favor of a more predictable and controllable approach.</p>
+
+<p>Have you ever wondered how objects in a programming language know when they’re
+no longer needed? In mulle-objc, this is handled through a sophisticated retain
+counting mechanism. Unlike some contemporary systems that abstract away memory
+management, mulle-objc gives you, the developer, direct control over an object’s
+lifecycle.</p>
+
+<p>At the heart of mulle-objc’s memory management are six core operations. It is
+important to know these operations, but in a well designed system, you will
+rarely use them directly. And there are only two methods you will encounter
+overriding with your own implementations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Override</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+alloc</code> / <code class="language-plaintext highlighter-rouge">+new</code></td>
+      <td>NO</td>
+      <td>Creates an object with an initial reference count of 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-retain</code></td>
+      <td>NO</td>
+      <td>Increments the reference count</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-release</code></td>
+      <td>NO</td>
+      <td>Decrements the reference count</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-retainCount</code></td>
+      <td>NO</td>
+      <td>Returns the current reference count</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-finalize</code></td>
+      <td>YES</td>
+      <td>Called from -release when the reference count reaches zero. Can also be triggered by <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code>. Allows the object to free resources and untie itself from other objects. Runs only once in an object’s lifetime.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-dealloc</code></td>
+      <td>YES</td>
+      <td>Performs final cleanup when the reference count reaches zero</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Anyway, let’s break this down with an example:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Document</span> <span class="o">*</span><span class="n">document</span><span class="p">;</span>
+
+<span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">new</span><span class="p">];</span>          <span class="c1">// count = 1</span>
+<span class="p">[</span><span class="n">document</span> <span class="nf">retain</span><span class="p">];</span>                  <span class="c1">// count = 2</span>
+<span class="p">[</span><span class="n">document</span> <span class="nf">release</span><span class="p">];</span>                 <span class="c1">// count = 1</span>
+<span class="p">[</span><span class="n">document</span> <span class="nf">release</span><span class="p">];</span>                 <span class="c1">// count = 0, triggers finalize and then dealloc</span>
+<span class="c1">// DO NOT MESSAGE document AGAIN</span>
+</code></pre></div></div>
+
+<p>In this sequence, we create a <code class="language-plaintext highlighter-rouge">Document</code> object, increase its retain count, then
+decrease it twice.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">-retainCount</code> reaches zero, the <code class="language-plaintext highlighter-rouge">-release</code> method automatically
+calls <code class="language-plaintext highlighter-rouge">-finalize</code> and then <code class="language-plaintext highlighter-rouge">-dealloc</code> in sequence, ultimately leading to the
+objects destruction.</p>
+
+<p><img src="images/object-lifetime-2.svg" alt="Lifetime" /></p>
+
+<blockquote>
+  <p><strong>LAW</strong>: Once the number of <code class="language-plaintext highlighter-rouge">-release</code> calls to an object exceeds the
+number of <code class="language-plaintext highlighter-rouge">-retain</code> calls, the object becomes deallocated and invalid.</p>
+</blockquote>
+
+<h2 id="when-to-call--retain-and--release">When to call -retain and -release</h2>
+
+<p>When you create another object or receive one as a method or function argument,
+you may want to keep it around with your object. Effectively you
+are keeping a <em>reference</em> to it. Now when you do that, you increase the
+reference count of that object with <code class="language-plaintext highlighter-rouge">-retain</code>. Conversely, when you are done
+with it, you use <code class="language-plaintext highlighter-rouge">-release</code> to relinquish ownership.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@class</span> <span class="nc">Person</span><span class="p">;</span>
+
+<span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+   <span class="n">Person</span>   <span class="o">*</span><span class="n">_author</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setAuthor</span><span class="p">:(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span> <span class="n">person</span>
+<span class="p">{</span>
+   <span class="c1">// THIS CODE IS JUST FOR ILLUSTRATION PURPOSES</span>
+   <span class="c1">// DO NOT WRITE ACCESSORS THAT CALL -release INSTEAD OF -autorelease</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="n">_author</span> <span class="o">!=</span> <span class="n">person</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="p">[</span><span class="n">_author</span> <span class="nf">release</span><span class="p">];</span>         <span class="c1">// remove old author</span>
+      <span class="n">_author</span> <span class="o">=</span> <span class="p">[</span><span class="n">person</span> <span class="nf">retain</span><span class="p">];</span> <span class="c1">// keep new author</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In general though in mulle-objc you use a <a href="//mulle-kybernetik.com/de-re-property/">@property</a> to keep an object reference, which simplifies the proceedings.</p>
+
+<h2 id="caveats">Caveats</h2>
+
+<p>But what about the challenges of this system? While it offers great control, it
+does require careful management from the developer. You must ensure that every
+<code class="language-plaintext highlighter-rouge">-retain</code> is balanced by a <code class="language-plaintext highlighter-rouge">-release</code>, that <code class="language-plaintext highlighter-rouge">-dealloc</code> releases all retained
+objects, and that you never access released objects.</p>
+
+<p>These requirements can potentially lead to memory leaks or crashes, if not
+handled correctly. The next chapter discusses how mulle-objc mitigates many of
+these challenges through its autorelease pools.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/life-and-death.html">NSObject: +alloc / -dealloc</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/autorelease.html">NSObject: -autorelease</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

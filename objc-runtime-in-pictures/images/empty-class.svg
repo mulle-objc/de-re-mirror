@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="389pt" height="283pt" viewBox="0 0 389 283" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" transform="scale(1) translate(4 279)">
+<title>mulle_objc_class</title>
+<polygon points="-4 4 -4 -279 385 -279 385 4" fill="#fff" stroke="transparent"/>
+<g class="node">
+<title>0x6178024c1c40</title>
+<a xlink:href="file:///./Empty.dot" xlink:title="&lt;TABLE&gt;">
+<polygon points="381 -275 0 -275 0 -146 381 -146" fill="none" stroke="#000"/>
+<polygon points="9.5 -252.5 9.5 -269.5 372.5 -269.5 372.5 -252.5" fill="blue" stroke="transparent"/>
+<polygon points="9.5 -252.5 9.5 -269.5 372.5 -269.5 372.5 -252.5" fill="none" stroke="#000"/>
+<text x="167" y="-257.3" fill="white" font-family="Times,serif" font-size="14">Empty</text>
+<polygon points="9.5 -235.5 9.5 -252.5 144.5 -252.5 144.5 -235.5" fill="none" stroke="#000"/>
+<text x="28.5" y="-240.3" font-family="Times,serif" font-size="14">allocationsize</text>
+<polygon points="144.5 -235.5 144.5 -252.5 372.5 -252.5 372.5 -235.5" fill="none" stroke="#000"/>
+<text x="249" y="-240.3" font-family="Times,serif" font-size="14">32</text>
+<polygon points="9.5 -218.5 9.5 -235.5 144.5 -235.5 144.5 -218.5" fill="none" stroke="#000"/>
+<text x="36" y="-223.3" font-family="Times,serif" font-size="14">inheritance</text>
+<polygon points="144.5 -218.5 144.5 -235.5 372.5 -235.5 372.5 -218.5" fill="none" stroke="#000"/>
+<text x="145.5" y="-223.3" font-family="Times,serif" font-size="14">superclass categories protocols</text>
+<polygon points="9.5 -201.5 9.5 -218.5 144.5 -218.5 144.5 -201.5" fill="none" stroke="#000"/>
+<text x="58.5" y="-206.3" font-family="Times,serif" font-size="14">state</text>
+<polygon points="144.5 -201.5 144.5 -218.5 372.5 -218.5 372.5 -201.5" fill="none" stroke="#000"/>
+<text x="245" y="-206.3" font-family="Times,serif" font-size="14">0x0</text>
+<polygon points="9.5 -184.5 9.5 -201.5 144.5 -201.5 144.5 -184.5" fill="none" stroke="#000"/>
+<text x="46" y="-189.3" font-family="Times,serif" font-size="14">ivarhash</text>
+<polygon points="144.5 -184.5 144.5 -201.5 372.5 -201.5 372.5 -184.5" fill="none" stroke="#000"/>
+<text x="215" y="-189.3" font-family="Times,serif" font-size="14">0x11c9dc58</text>
+<polygon points="9.5 -167.5 9.5 -184.5 144.5 -184.5 144.5 -167.5" fill="none" stroke="#000"/>
+<text x="10.5" y="-172.3" font-family="Times,serif" font-size="14">allocatedInstances</text>
+<polygon points="144.5 -167.5 144.5 -184.5 372.5 -184.5 372.5 -167.5" fill="none" stroke="#000"/>
+<text x="253.5" y="-172.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="9.5 -150.5 9.5 -167.5 144.5 -167.5 144.5 -150.5" fill="none" stroke="#000"/>
+<text x="46" y="-155.3" font-family="Times,serif" font-size="14">preloads</text>
+<polygon points="144.5 -150.5 144.5 -167.5 372.5 -167.5 372.5 -150.5" fill="none" stroke="#000"/>
+<text x="253.5" y="-155.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="8 -150 8 -271 373 -271 373 -150" fill="none" stroke="#000"/>
+</a>
+</g>
+<g class="node">
+<title>0x6178024c1e20</title>
+<a xlink:href="file:///./Empty.dot" xlink:title="&lt;TABLE&gt;">
+<polygon points="363 -95 18 -95 18 -91 14 -91 14 -87 18 -87 18 -8 14 -8 14 -4 18 -4 18 0 363 0" fill="none" stroke="#000"/>
+<polyline points="18 -91 22 -91 22 -87 18 -87" fill="none" stroke="#000"/>
+<polyline points="18 -8 22 -8 22 -4 18 -4" fill="none" stroke="#000"/>
+<polygon points="27.5 -72.5 27.5 -89.5 354.5 -89.5 354.5 -72.5" fill="#daa520" stroke="transparent"/>
+<polygon points="27.5 -72.5 27.5 -89.5 354.5 -89.5 354.5 -72.5" fill="none" stroke="#000"/>
+<text x="167" y="-77.3" fill="white" font-family="Times,serif" font-size="14">Empty</text>
+<polygon points="27.5 -55.5 27.5 -72.5 126.5 -72.5 126.5 -55.5" fill="none" stroke="#000"/>
+<text x="28.5" y="-60.3" font-family="Times,serif" font-size="14">allocationsize</text>
+<polygon points="126.5 -55.5 126.5 -72.5 354.5 -72.5 354.5 -55.5" fill="none" stroke="#000"/>
+<text x="226.5" y="-60.3" font-family="Times,serif" font-size="14">352</text>
+<polygon points="27.5 -38.5 27.5 -55.5 126.5 -55.5 126.5 -38.5" fill="none" stroke="#000"/>
+<text x="36" y="-43.3" font-family="Times,serif" font-size="14">inheritance</text>
+<polygon points="126.5 -38.5 126.5 -55.5 354.5 -55.5 354.5 -38.5" fill="none" stroke="#000"/>
+<text x="127.5" y="-43.3" font-family="Times,serif" font-size="14">superclass categories protocols</text>
+<polygon points="27.5 -21.5 27.5 -38.5 126.5 -38.5 126.5 -21.5" fill="none" stroke="#000"/>
+<text x="58.5" y="-26.3" font-family="Times,serif" font-size="14">state</text>
+<polygon points="126.5 -21.5 126.5 -38.5 354.5 -38.5 354.5 -21.5" fill="none" stroke="#000"/>
+<text x="222.5" y="-26.3" font-family="Times,serif" font-size="14">0x40</text>
+<polygon points="27.5 -4.5 27.5 -21.5 126.5 -21.5 126.5 -4.5" fill="none" stroke="#000"/>
+<text x="46" y="-9.3" font-family="Times,serif" font-size="14">preloads</text>
+<polygon points="126.5 -4.5 126.5 -21.5 354.5 -21.5 354.5 -4.5" fill="none" stroke="#000"/>
+<text x="235.5" y="-9.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="26 -4 26 -91 355 -91 355 -4" fill="none" stroke="#000"/>
+</a>
+</g>
+<g class="edge">
+<title>0x6178024c1c40-&gt;0x6178024c1e20</title>
+<path d="m138.97-145.64c-2.97 5.75-5.53 11.66-7.47 17.64-2.61 8.05-2.03 15.94 0.6 23.44" fill="none" stroke="#daa520"/>
+<polygon points="135.37 -105.83 136.45 -95.29 129.03 -102.86" fill="#daa520" stroke="#daa520"/>
+<text x="150" y="-116.8" fill="goldenrod" font-family="Times,serif" font-size="14" text-anchor="middle">isa/meta</text>
+</g>
+<g class="edge">
+<title>0x6178024c1e20-&gt;0x6178024c1c40</title>
+<path d="m190.5-95.28v-40.2" fill="none" stroke="#daa520"/>
+<polygon points="187 -135.87 190.5 -145.87 194 -135.87" fill="#daa520" stroke="#daa520"/>
+<text x="209" y="-116.8" fill="goldenrod" font-family="Times,serif" font-size="14" text-anchor="middle">isa/meta</text>
+</g>
+<g class="edge">
+<title>0x6178024c1e20-&gt;0x6178024c1c40</title>
+<path d="m221.74-95.13c2.76-5.82 5.12-11.85 6.76-17.87 2.04-7.49 2.32-15.19 1.37-22.82" fill="none" stroke="blue"/>
+<polygon points="226.4 -135.31 227.95 -145.79 233.28 -136.63" fill="blue" stroke="blue"/>
+<text x="246.5" y="-116.8" fill="blue" font-family="Times,serif" font-size="14" text-anchor="middle">infra</text>
+</g>
+</g>
+</svg>

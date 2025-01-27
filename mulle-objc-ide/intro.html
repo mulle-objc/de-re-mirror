@@ -1,0 +1,248 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Intro &#8211; mulle-objc Development with IDEs</title>
+<meta name="description" content="mulle-objc is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Intro">
+<meta name="twitter:description" content="mulle-objc is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/mulle-objc-ide/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro">
+<meta property="og:description" content="mulle-objc is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/intro.html">
+<meta property="og:site_name" content="mulle-objc Development with IDEs">
+
+<link href="/mulle-objc-ide/atom.xml" type="application/atom+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+<link href="/mulle-objc-ide/index.rdf" type="application/rss+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/intro.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="home">
+  <div class="container">
+      <div class="row">
+         <div id="home-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/mulle-objc-ide/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/mulle-objc-ide/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-clion.html" title="CLion">CLion</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html" title="Sublime Text">Sublime Text</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-vscode.html" title="Visual Studio Code">Visual Studio Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div> <!-- four columns -->
+         <div id="home-second" class="eight columns">
+                        <div id="main" role="main">
+               <article>
+                  <h1>Intro</h1>
+                  <div>
+                  <p><a href="//mulle-objc.github.io">mulle-objc</a> is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.</p>
+
+<p><img src="images/clion-debug.png" alt="Example Screenshot" /></p>
+
+<h2 id="install-mulle-objc">Install mulle-objc</h2>
+
+<p>You need to install a few packages to get things rolling. These packages
+are common to all IDE setups. As they differ between platforms and are subject
+to change occasionally, the install instructions aren’t replicated here.</p>
+
+<h3 id="foundation-developer">foundation-developer</h3>
+
+<p>Install <a href="//github.com/MulleFoundation/foundation-developer#install">foundation-developer</a>.
+The instructions how to do this are on that given page. If you have problems
+with it put up an issue in the github bugtracker.</p>
+
+<h3 id="mulle-clang">mulle-clang</h3>
+
+<p>This step may not be necessary, if you installed <em>foundation-developer</em> with
+a package manager like <code class="language-plaintext highlighter-rouge">brew</code> or <code class="language-plaintext highlighter-rouge">apt</code>. Fetch the newest mulle-clang version from
+<a href="https://github.com/mulle-cc/mulle-clang-project/tags">mulle-clang-project</a>
+and install.</p>
+
+<h3 id="mulle-gdb">mulle-gdb</h3>
+
+<p>Fetch the newest mulle-gdb version from
+<a href="https://github.com/mulle-cc/mulle-gdb/tags">mulle-gdb</a>
+and install.</p>
+
+<blockquote>
+  <p>Debugging on macOS is likely broken, unless you have 
+<a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection?language=objc">turned off SIP</a></p>
+</blockquote>
+
+<h2 id="the-fork-in-the-road">The fork in the road</h2>
+
+<p>From here choose an IDE or editor and continue:</p>
+
+<ul>
+  <li>Install <a href="//www.jetbrains.com/clion/download/">CLion</a> and <a href="easy-clion.html">continue here</a></li>
+  <li>Install <a href="//www.sublimetext.com/download">Sublime Text</a> and <a href="easy-sublime-text.html">continue here</a></li>
+  <li>Install <a href="//code.visualstudio.com/Download">Visual Studio Code</a> and <a href="easy-vscode.html">continue here</a></li>
+</ul>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+           &nbsp;
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/mulle-objc-ide/easy-clion.html">CLion</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div>
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

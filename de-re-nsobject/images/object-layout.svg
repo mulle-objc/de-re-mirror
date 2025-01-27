@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color-interpolation="auto" color-rendering="auto" fill="black" font-family="'Dialog'" font-size="12px" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" text-rendering="auto" viewBox="0 0 599 405" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="a">
+<path d="m-56 108h599v405h-599v-405z"/>
+</clipPath>
+</defs>
+<g transform="translate(56,-108)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="-56" y="108" width="599" height="405" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="290" y="243" width="238" height="180" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="290" y="243" width="238" height="180" clip-path="url(#a)" fill="none"/>
+<text x="390.9998" y="337.656" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">ivars</text>
+</g>
+<g transform="translate(56 -108)" fill="red" shape-rendering="geometricPrecision" stroke="red" text-rendering="geometricPrecision">
+<rect x="290" y="213" width="238" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="290" y="213" width="238" height="30" clip-path="url(#a)" fill="none"/>
+<text x="398.1999" y="232.656" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">isa</text>
+</g>
+<g transform="translate(56 -108)" fill="red" shape-rendering="geometricPrecision" stroke="red" text-rendering="geometricPrecision">
+<rect x="290" y="183" width="238" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="290" y="183" width="238" height="30" clip-path="url(#a)" fill="none"/>
+<text x="369.3997" y="202.656" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">retainCount</text>
+</g>
+<g transform="translate(56 -108)" fill="#f90" shape-rendering="geometricPrecision" stroke="#f90" text-rendering="geometricPrecision">
+<rect x="290" y="123" width="238" height="60" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="290" y="123" width="238" height="60" clip-path="url(#a)" fill="none"/>
+<text x="358.5996" y="157.656" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">metaExtraBytes</text>
+</g>
+<g transform="translate(56 -108)" fill="silver" shape-rendering="geometricPrecision" stroke="silver" text-rendering="geometricPrecision">
+<rect x="290" y="423" width="238" height="74.531" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="290" y="423" width="238" height="74.531" clip-path="url(#a)" fill="none"/>
+<text x="372.9997" y="464.9217" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">extraBytes</text>
+</g>
+<g transform="translate(56 -108)" fill="silver" shape-rendering="geometricPrecision" stroke="silver" text-rendering="geometricPrecision">
+<rect x="239.22" y="243" width="50.781" height="254.53" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="239.22" y="243" width="50.781" height="254.53" clip-path="url(#a)" fill="none"/>
+<text x="250.2093" y="374.9217" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">self</text>
+</g>
+<g transform="translate(56 -108)" fill="#fc0" shape-rendering="geometricPrecision" stroke="#fc0" text-rendering="geometricPrecision">
+<rect x="239.22" y="123" width="50.781" height="120" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(56 -108)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="239.22" y="123" width="50.781" height="120" clip-path="url(#a)" fill="none"/>
+<text x="250.2093" y="187.656" clip-path="url(#a)" font-family="'Noto Sans Mono'" stroke="none" xml:space="preserve">meta</text>
+<text x="-37.0811" y="249.4746" clip-path="url(#a)" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">p = [NSObject alloc];</text>
+<path d="m117.98 246.28h104.02" clip-path="url(#a)" fill="none"/>
+<path d="m230 246.28-12-5 3 5-3 5z" clip-path="url(#a)" stroke="none"/>
+</g>
+</svg>

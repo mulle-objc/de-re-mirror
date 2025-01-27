@@ -1,0 +1,558 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Sublime Text &#8211; mulle-objc Development with IDEs</title>
+<meta name="description" content="Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using Package Control.
+Use that link for instructions, how to use Package Control. The short
+version is:
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Sublime Text">
+<meta name="twitter:description" content="Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using Package Control.
+Use that link for instructions, how to use Package Control. The short
+version is:
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/mulle-objc-ide/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime Text">
+<meta property="og:description" content="Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using Package Control.
+Use that link for instructions, how to use Package Control. The short
+version is:
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/easy-sublime-text.html">
+<meta property="og:site_name" content="mulle-objc Development with IDEs">
+
+<link href="/mulle-objc-ide/atom.xml" type="application/atom+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+<link href="/mulle-objc-ide/index.rdf" type="application/rss+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/easy-sublime-text.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/mulle-objc-ide/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/mulle-objc-ide/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-clion.html" title="CLion">CLion</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html" title="Sublime Text">Sublime Text</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-vscode.html" title="Visual Studio Code">Visual Studio Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Sublime Text</h1>
+                  <div>
+                  <p>Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using <a href="https://linuxhint.com/install_packages_sublime_text/">Package Control</a>.
+Use that link for instructions, how to use <em>Package Control</em>. The short
+version is:</p>
+
+<ul>
+  <li>open “Sublime Text”</li>
+  <li>use <em>“Tools / Install Package Control…”</em> (or <em>“Tools / Command  Palette… / Install Package Control”</em>)</li>
+  <li>add packages with <em>“Tools / Command  Palette… / Package Control: Install Package”</em></li>
+</ul>
+
+<p>Here is a list of some packages useful for mulle-objc development:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Package</th>
+      <th>Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alignment</td>
+      <td>Go To Definition</td>
+      <td>SublimeLinter</td>
+    </tr>
+    <tr>
+      <td>All Autocomplete</td>
+      <td>Origami</td>
+      <td>SublimeLinter-clang</td>
+    </tr>
+    <tr>
+      <td>AutoFileName</td>
+      <td>ReadonlyProtect</td>
+      <td>Terminus</td>
+    </tr>
+    <tr>
+      <td>CMake</td>
+      <td>SideBarEnhancements</td>
+      <td>Unicode Character Highlighter</td>
+    </tr>
+    <tr>
+      <td>Diffy</td>
+      <td>sublime-text-ignore</td>
+      <td>YcmdCompletion</td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>SublimeGDB</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-sublime-text.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>sublime-text</em> extension. This extension ensures, that Sublime Text ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with <em>mulle-sde</em> and some debugger support
+for the “SublimeGDB” package.</p>
+
+<p>When you create a new project from scratch, add the <em>sublime-text</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add sublime-text
+</code></pre></div></div>
+
+<p>Without the sublime-text extension, there won’t be any
+<code class="language-plaintext highlighter-rouge">my-project.sublime-project</code> file initially in your project.</p>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>From the console, if you have the <code class="language-plaintext highlighter-rouge">subl</code> command in your <code class="language-plaintext highlighter-rouge">PATH</code>, you can
+type <code class="language-plaintext highlighter-rouge">subl my-project.sublime-project</code> and the project will open.
+Otherwise open the project from within Sublime Text with
+<em>“Project /Open Project”</em>.</p>
+
+<p>And there should be your project:</p>
+
+<p><img src="images/sublime-project.png" alt="Project" /></p>
+
+<h3 id="run-tasks">Run Tasks</h3>
+
+<p>To see the list of available tasks choose <em>“Tools / Build With…”</em> and the list
+of commands will look something like this:</p>
+
+<p><img src="images/sublime-build-with-2.png" alt="Tools/Build With" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td>Craft Debug</td>
+      <td>Craft project with build-style Debug</td>
+    </tr>
+    <tr>
+      <td>Craft Release</td>
+      <td>Craft project with build-style Release</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Clean</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>Clean Tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>Clean Download Caches</td>
+      <td>Also clean mirrored git repositories and cached tar archives.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<h3 id="craft">Craft</h3>
+
+<p>Build your project using the “Craft” task (<em>“Tools / Build With… / Craft”</em>).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.</p>
+
+<p><img src="images/sublime-craft.png" alt="Craft" /></p>
+
+<p>In the end you will see the line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Run your executable:
+   /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project
+</code></pre></div></div>
+
+<p>The executable location differs with your local setup. So you will see a
+different path there. If you have the package <strong>Terminus</strong> installed, you can
+now run the executable directly in Sublime Text. Use [CTRL]-[ESCAPE] to open
+Terminus:</p>
+
+<p><img src="images/sublime-terminus.png" alt="Terminus" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p><em>You need the package <strong>SublimeGDB</strong> for this.</em></p>
+
+<p>Navigate to your sources <code class="language-plaintext highlighter-rouge">src/main.m</code> and place a breakpoint in the
+<code class="language-plaintext highlighter-rouge">main</code> function with [F9].</p>
+
+<p><img src="images/sublime-breakpoint.png" alt="Breakpoint" /></p>
+
+<p>You will likely need to edit the <code class="language-plaintext highlighter-rouge">my-object.sublime-project</code> file itself,
+to set the correct executable path for the debugger. At the top of the file:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sublimegdb_workingdir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${folder:kitchen/Debug/my-project}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sublimegdb_commandline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb --interpreter=mi kitchen/Debug/my-project"</span><span class="p">,</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span></code></pre></div></div>
+
+<p>change <code class="language-plaintext highlighter-rouge">kitchen/Debug/my-project</code> in both <code class="language-plaintext highlighter-rouge">"sublimegdb_workingdir"</code> and
+<code class="language-plaintext highlighter-rouge">"sublimegdb_commandline"</code> to your executable path.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sublimegdb_workingdir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${folder:/home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sublimegdb_commandline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb --interpreter=mi /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project"</span><span class="p">,</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint, which now has turned green:</p>
+
+<p><img src="images/sublime-debug.png" alt="Breakpoint" /></p>
+
+<blockquote>
+  <h4 id="debugging-keys">Debugging Keys</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Function</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>[F5]</td>
+        <td>Start / Continue</td>
+      </tr>
+      <tr>
+        <td>[Shift][F5]</td>
+        <td>Show Input Field</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][Shift][F5]</td>
+        <td>Show Raw Input Field</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][F5]</td>
+        <td>Stop Debugging</td>
+      </tr>
+      <tr>
+        <td>[F9]</td>
+        <td>Toggle Breakpoint</td>
+      </tr>
+      <tr>
+        <td>[F10]</td>
+        <td>Step Over</td>
+      </tr>
+      <tr>
+        <td>[F11]</td>
+        <td>Step Into</td>
+      </tr>
+      <tr>
+        <td>[Shift][F11]</td>
+        <td>Step Out</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][F11]</td>
+        <td>Show Disassembly View</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][Alt][G]</td>
+        <td>Show Register View</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<p>From here on use the <a href="//github.com/quarnster/SublimeGDB">SublimeGDB documentation</a>
+for more help.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>We create a new class in “Sublime Text” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “Reflect” task (<em>“Tools / Build With… / Reflect”</em>).
+The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code></p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft-1">Craft</h3>
+
+<p>Now with the syntax error in place, the next craft will immediately preempt
+with an error:</p>
+
+<p><img src="images/sublime-error.png" alt="Error" /></p>
+
+<p>You can step through the errors with <em>“Tools / Build Results / Next Result”</em>.</p>
+
+<p>That wraps it up for Sublime Text here.</p>
+
+<blockquote>
+  <h2 id="important-tip">Important Tip</h2>
+
+  <p>Depending on how your <code class="language-plaintext highlighter-rouge">PATH</code> variable is set up, the environment you are
+in, <em>Sublime Text</em> may not find the <strong>mulle-sde</strong> executables. To fix this
+close all <em>Sublime Text</em> windows, so that the application is actually
+exiting. Then start <em>Sublime Text</em> from a shell, where you know that <code class="language-plaintext highlighter-rouge">PATH</code>
+is set correctly, with <code class="language-plaintext highlighter-rouge">subl</code>.</p>
+</blockquote>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/mulle-objc-ide/easy-clion.html">CLion</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/mulle-objc-ide/easy-vscode.html">Visual Studio Code</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

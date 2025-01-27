@@ -1,0 +1,730 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Good mulle-objc Code &#8211; De Re mulle-objc</title>
+<meta name="description" content="Good Code
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Good mulle-objc Code">
+<meta name="twitter:description" content="Good Code Objective-C is a fairly simple language extension. In this file all available Objective-C keywords and concepts will be discussed. Absent will be library features introduced by the Foundation. The code will be regular Objective-C, unless specifically noted to be an Objective-C extension. Forward Declaration and Import You can...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/good.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Good mulle-objc Code">
+<meta property="og:description" content="Good Code Objective-C is a fairly simple language extension. In this file all available Objective-C keywords and concepts will be discussed. Absent will be library features introduced by the Foundation. The code will be regular Objective-C, unless specifically noted to be an Objective-C extension. Forward Declaration and Import You can...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/good.html">
+<meta property="og:site_name" content="De Re mulle-objc">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/features/good.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-objc/images/logo.png">
+
+
+
+<link href="/de-re-mulle-objc/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-objc Feed">
+<link href="/de-re-mulle-objc/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-objc Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/good.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/intro.html" title="De Re mulle-objc">De Re mulle-objc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern.html" title="Project Setup">Project Setup</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-source.html" title="Generic Headers">Generic Headers</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-dependency.html" title="Dependencies">Dependencies</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modern-complex.html" title="Projects with Multiple Targets">Projects with Multiple Targets</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/good.html" title="Good mulle-objc Code">Good mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/basics.html" title="A complete class">A complete class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/objects.html" title="Objects and Properties">Objects and Properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/printing.html" title="Printing">Printing</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-class.html" title="Plug And Play Class">Plug And Play Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/pnp-category.html" title="Plug And Play Category">Plug And Play Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/overridden.html" title="Advanced: Calling overridden methods">Advanced: Calling overridden methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/forward.html" title="Advanced: -forward:">Advanced: -forward:</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocolclass.html" title="Advanced: Protocolclasses allow default implementations">Advanced: Protocolclasses allow default implementations</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/classcluster.html" title="Advanced: Classcluster Classes">Advanced: Classcluster Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/singleton.html" title="Advanced: Singleton classes">Advanced: Singleton classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tps.html" title="Advanced: Tagged Pointer Classes">Advanced: Tagged Pointer Classes</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/differences.html" title="Porting: Differences to Objective-C 2.0">Porting: Differences to Objective-C 2.0</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/legacy.html" title="Porting: Legacy Workflow">Porting: Legacy Workflow</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/bad.html" title="Porting: Bad mulle-objc Code">Porting: Bad mulle-objc Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/porting.html" title="Porting: General Tips">Porting: General Tips</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/subscripting.html" title="Porting: subscripting">Porting: subscripting</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/arc.html" title="Porting: ARC">Porting: ARC</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/block.html" title="Porting: ^blocks">Porting: ^blocks</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/dotsyntax.html" title="Porting: . syntax for properties">Porting: . syntax for properties</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/generics.html" title="Porting: generics">Porting: generics</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/modules.html" title="Porting: @import">Porting: @import</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/package.html" title="Porting: @package">Porting: @package</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/protocol.html" title="Porting: Protocols are a kind of @selector">Porting: Protocols are a kind of @selector</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/property.html" title="Porting @property">Porting @property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synthesize.html" title="Porting: @synthesize is useless now">Porting: @synthesize is useless now</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/synchronized.html" title="Porting: Synchronized is gone">Porting: Synchronized is gone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/varargs.html" title="Porting: Variable Arguments in Methods">Porting: Variable Arguments in Methods</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/nszone.html" title="Porting: NSZone">Porting: NSZone</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/unichar.html" title="Porting: unichar">Porting: unichar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/cpp.html" title="Porting: Objective-C++">Porting: Objective-C++</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/xcodeproj.html" title="Porting: Xcode projects">Porting: Xcode projects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/tools.html" title="Tooling: mulle-objc Tools">Tooling: mulle-objc Tools</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/coverage.html" title="Tooling: Coverage information">Tooling: Coverage information</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-objc/reduction.html" title="Tooling: Code reduction">Tooling: Code reduction</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-objc&nbsp;<div style="font-size:10px; display: inline-block;">0.50.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Good mulle-objc Code</h1>
+                  <div>
+                  <h2 id="good-code">Good Code</h2>
+
+<p>Objective-C is a fairly simple language extension. In this file all available
+Objective-C keywords and concepts will be discussed. Absent will be library
+features introduced by the Foundation.</p>
+
+<p>The code will be regular Objective-C, unless specifically noted to be an
+Objective-C extension.</p>
+
+<h3 id="forward-declaration-and-import">Forward Declaration and Import</h3>
+
+<p>You can <code class="language-plaintext highlighter-rouge">#import</code>  and forward declare code:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="c1">// forward declarations of a class and a protocol</span>
+<span class="k">@protocol</span> <span class="nc">SomeProtocol</span><span class="p">;</span>
+<span class="k">@class</span> <span class="nc">Foreign</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="protocol">Protocol</h3>
+
+<p>You can declare a protocol with <strong>@optional</strong>  and <strong>@required</strong> methods and
+properties:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// declare a protocol with a required (default)</span>
+<span class="c1">// and an optional method</span>
+<span class="k">@protocol</span> <span class="nc">MethodProtocol</span>
+
+<span class="err">@required</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">Foreign</span> <span class="o">*</span><span class="p">)</span> <span class="n">someMethod</span><span class="p">;</span>
+
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">Foreign</span> <span class="o">*</span><span class="p">)</span> <span class="n">otherMethod</span><span class="p">;</span>
+
+<span class="c1">// properties can be declared in protocols, yet the</span>
+<span class="c1">// class must redeclare them</span>
+
+<span class="k">@property</span><span class="p">(</span> <span class="n">assign</span><span class="p">)</span> <span class="n">NSUInteger</span>  <span class="n">value</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>You can extend forward declared classes with your protocol, but this is rarely
+useful:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// extend Foreign class with this method, so</span>
+<span class="c1">// we know we can message it with that protocol</span>
+<span class="k">@class</span> <span class="nc">Foreign</span><span class="o">&lt;</span> <span class="n">MethodProtocol</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="classes">Classes</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#pragma clang diagnostic ignored "-Wobjc-root-class"
+</span><span class="k">@interface</span> <span class="nc">Foo</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span> <span class="n">MethodProtocol</span><span class="o">&gt;</span>
+<span class="p">{</span>
+<span class="k">@public</span>        <span class="c1">// The usual visibility modifiers except `@package`</span>
+<span class="k">@protected</span>
+<span class="k">@private</span>
+   <span class="n">NSUInteger</span>   <span class="n">_value</span><span class="p">;</span>    <span class="c1">// will be used as property "value" ivar</span>
+<span class="p">}</span>
+
+<span class="c1">// properties and all supported property attributes</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">assign</span><span class="p">)</span> <span class="n">NSUInteger</span>  <span class="n">value</span><span class="p">;</span>      <span class="c1">// reimplement Protocol</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Foreign</span>     <span class="o">*</span><span class="n">foreign</span><span class="p">;</span>   <span class="c1">// creates own ivar</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">NSString</span>    <span class="o">*</span><span class="n">backedByIvar</span><span class="p">;</span> <span class="c1">// creates own ivar</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The implementation can <strong>@synthesize</strong> a property but it is superflous. The name
+of the instance variable is fixed by the compiler to be <code class="language-plaintext highlighter-rouge">'_'&lt;name&gt;</code>.
+<code class="language-plaintext highlighter-rouge">Foo</code> implements the required method from <code class="language-plaintext highlighter-rouge">MethodProtocol</code>.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">Foo</span>
+
+<span class="k">@synthesize</span> <span class="n">foreign</span> <span class="o">=</span> <span class="n">_foreign</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">Foreign</span> <span class="o">*</span><span class="p">)</span> <span class="n">someMethod</span><span class="p">;</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_foreign</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p><strong>@defs</strong> is available and great for writing fast accessors, when you don’t want
+your instance variables to be <strong>@public</strong>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kr">inline</span> <span class="n">Foreign</span>  <span class="o">*</span><span class="nf">FooGetForeign</span><span class="p">(</span> <span class="n">Foo</span> <span class="o">*</span><span class="n">self</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">((</span><span class="k">struct</span><span class="p">{</span> <span class="err">@defs</span><span class="p">(</span> <span class="n">Foo</span><span class="p">);</span> <span class="p">}</span> <span class="o">*</span><span class="p">)</span> <span class="n">self</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">_foreign</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="compatibility_alias">@compatibility_alias</h4>
+
+<p><strong>@compatibility_alias</strong> will work as expected.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// use Foo under alias Foobar</span>
+<span class="err">@compatibility</span><span class="n">_alias</span> <span class="n">Foobar</span> <span class="n">Foo</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="protocolclasses">Protocolclasses</h3>
+
+<p>You can declare <a href="protocolclass.html">protocolclasses</a>. This is a
+mulle-objc extension to the Objective-C language. Protocolclasses will not work
+on other runtimes (though they will compile):</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// protocolclass Description with default implementation of -description</span>
+<span class="k">@class</span> <span class="nc">Description</span><span class="p">;</span>
+<span class="k">@protocol</span> <span class="nc">Description</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">description</span><span class="p">;</span>
+
+<span class="c1">// properties can not be declared in protocolclases yet</span>
+<span class="c1">// @property( assign) NSUInteger  value;</span>
+<span class="k">@end</span>
+<span class="cp">#pragma clang diagnostic ignored "-Wobjc-root-class"
+</span>
+<span class="c1">// protocolclass must implement Protocol of same name</span>
+<span class="k">@interface</span> <span class="nc">Description</span><span class="o">&lt;</span> <span class="n">Description</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="c1">// implementation will serve the default implementation of description</span>
+<span class="k">@implementation</span> <span class="nc">Description</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">description</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="s">@"VfL Bochum 1848"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>Your classes can now inherit the description protocol, but it doesn’t have to
+implement <code class="language-plaintext highlighter-rouge">-description</code>. It can override it though if desired:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Bar</span> <span class="p">:</span> <span class="nc">Foo</span> <span class="o">&lt;</span> <span class="n">Description</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">Bar</span>
+
+<span class="c1">// call super on protocolclass (not superclass)</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">description</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[</span><span class="n">super</span> <span class="nf">description</span><span class="p">]);</span>  <span class="c1">// unvoidable warning for now</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="keywords">Keywords</h3>
+
+<h4 id="protocol-1">PROTOCOL</h4>
+
+<p><strong>PROTOCOL</strong> is a compiler keyword. Objective-C’s <code class="language-plaintext highlighter-rouge">Protocol *</code> does not work, as
+PROTOCOL is a kind of <strong>@selector</strong> in mulle-objc:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span> <span class="nf">knowsThisProtocol</span><span class="p">:(</span><span class="n">PROTOCOL</span><span class="p">)</span> <span class="n">proto</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="k">@protocol</span><span class="err">(</span> <span class="nc">Description</span><span class="p">)</span> <span class="o">==</span> <span class="n">proto</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="instancetype">instancetype</h4>
+
+<p><strong>instancetype</strong> is a standin for <code class="language-plaintext highlighter-rouge">id</code> the generic object pointer:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// instancetype keyword</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="encode">@encode</h4>
+
+<p><strong>@encode</strong> behaves normally and is 90% compatible with the Apple runtime:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @encode keyword</span>
+<span class="k">+</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">type</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="k">@encode</span><span class="p">(</span> <span class="n">Bar</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="autoreleasepool">@autoreleasepool</h4>
+
+<p>You can use <strong>@autoreleasepool</strong> to create nested pool structures:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// keyword autoreleasepool</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">autoreleasepool</span>
+<span class="p">{</span>
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="try-">@try …</h4>
+
+<p>Exception handling can be done with <strong>@try</strong>,<strong>@catch</strong>,<strong>@finally</strong>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">trycatchfinally</span>
+<span class="p">{</span>
+   <span class="k">@try</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+   <span class="k">@catch</span><span class="p">(</span> <span class="n">NSException</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+   <span class="k">@finally</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="ns_during-">NS_DURING …</h4>
+
+<p>Or with old-skool  <strong><code class="language-plaintext highlighter-rouge">NS_DURING</code></strong>,<strong><code class="language-plaintext highlighter-rouge">NS_HANDLER</code></strong>,<strong><code class="language-plaintext highlighter-rouge">NS_ENDHANDLER</code></strong>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// exception handling with nsduring</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">nsduring</span>
+<span class="p">{</span>
+<span class="n">NS_DURING</span>
+<span class="n">NS_HANDLER</span>
+   <span class="p">[</span><span class="n">localException</span> <span class="nf">raise</span><span class="p">];</span>
+<span class="n">NS_ENDHANDLER</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="literals">Literals</h3>
+
+<p>Literals are supported <em>except</em> <strong>@YES</strong> and <strong>@NO</strong>, but boxed versions of those are fine.</p>
+
+<h4 id="18481848ayes">@1848,@18.48,@’A’,@(YES)</h4>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalInteger</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">@1848</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalDouble</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mf">@18.48</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalCharacter</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="sc">@'A'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalBOOL</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="err">@</span><span class="p">(</span><span class="nb">YES</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="-and-">@{} and @[]</h4>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalDictionary</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">@{</span> <span class="s">@"VfL Bochum"</span> <span class="o">:</span> <span class="mi">@1848</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span> <span class="n">literalArray</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">@[</span> <span class="mi">@1848</span><span class="p">,</span> <span class="s">@"VfL Bochum"</span> <span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="protocol-2">@protocol</h4>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">PROTOCOL</span><span class="p">)</span> <span class="n">literalProtocol</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="k">@protocol</span><span class="err">(</span> <span class="nc">Description</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="selector">@selector</h4>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">SEL</span><span class="p">)</span> <span class="n">literalSelector</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="k">@selector</span><span class="p">(</span> <span class="n">whatever</span><span class="o">:</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="fast-enumeration">Fast Enumeration</h3>
+
+<p><em>Fast Enumeration</em> is supported:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fast enumeration</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">fastEnumerate</span><span class="p">:(</span><span class="n">NSArray</span> <span class="o">*</span><span class="p">)</span> <span class="n">array</span>
+<span class="p">{</span>
+   <span class="k">for</span><span class="p">(</span> <span class="n">id</span> <span class="n">p</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Checked against the list of <a href="https://nshipster.com/at-compiler-directives/">NSHipster’s compiler directive</a></p>
+</blockquote>
+
+<h2 id="putting-all-the-pieces-together">Putting all the pieces together</h2>
+
+<p>Run the <code class="language-plaintext highlighter-rouge">main</code> function, to verify the truth of what’s been written (<a href="files/good-code.m">good-code.m</a>).</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+   <span class="n">Bar</span>   <span class="o">*</span><span class="n">bar</span><span class="p">;</span>
+
+   <span class="n">bar</span> <span class="o">=</span> <span class="p">[</span><span class="n">Bar</span> <span class="nf">object</span><span class="p">];</span>
+
+   <span class="p">[</span><span class="n">bar</span> <span class="nf">fastEnumerate</span><span class="p">:[</span><span class="n">NSArray</span> <span class="nf">arrayWithObject</span><span class="p">:</span><span class="s">@"foo"</span><span class="p">]];</span>
+
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"description       : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">description</span><span class="p">]);</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalInteger    : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalInteger</span><span class="p">]);</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalDouble     : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalDouble</span><span class="p">]);</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalCharacter  : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalCharacter</span><span class="p">]);</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalArray      : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalArray</span><span class="p">]);</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalDictionary : %@"</span><span class="p">,</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalDictionary</span><span class="p">]);</span>
+
+<span class="c1">// NSStringFromProtocol is a 8.0.0 feature</span>
+<span class="cp">#if MULLE_FOUNDATION_VERSION  &gt;= ((0 &lt;&lt; 20) | (15 &lt;&lt; 8) | 0)
+</span>   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalProtocol   : %@"</span><span class="p">,</span> <span class="n">NSStringFromProtocol</span><span class="p">(</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalProtocol</span><span class="p">]));</span>
+<span class="cp">#endif
+</span>   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"literalSelector   : %@"</span><span class="p">,</span> <span class="n">NSStringFromSelector</span><span class="p">(</span> <span class="p">[</span><span class="n">bar</span> <span class="nf">literalSelector</span><span class="p">]));</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="expected-output">Expected output</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">description:</span> <span class="n">VfL</span> <span class="n">Bochum</span> <span class="mi">1848</span>
+<span class="n">literalInteger</span><span class="o">:</span> <span class="mi">1848</span>
+<span class="n">literalDouble</span><span class="o">:</span> <span class="mi">18</span><span class="p">.</span><span class="mi">480000</span>
+<span class="n">literalCharacter</span><span class="o">:</span> <span class="mi">65</span>
+<span class="n">literalArray</span><span class="o">:</span> <span class="p">(</span>
+    <span class="mi">1848</span><span class="p">,</span>
+    <span class="n">VfL</span> <span class="n">Bochum</span>
+<span class="p">)</span>
+<span class="n">literalDictionary</span><span class="o">:</span> <span class="p">{</span>
+    <span class="n">VfL</span> <span class="n">Bochum</span> <span class="o">=</span> <span class="mi">1848</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">literalSelector</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">invalid</span> <span class="n">selector</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-objc/modern-complex.html">Projects with Multiple Targets</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-objc/basics.html">A complete class</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

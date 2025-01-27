@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Method &#8211; Objective-C Runtime in Pictures</title>
+<meta name="description" content="Syntax topics
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Method">
+<meta name="twitter:description" content="Syntax topics
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/objc-runtime-in-pictures/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Method">
+<meta property="og:description" content="Syntax topics
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/method.html">
+<meta property="og:site_name" content="Objective-C Runtime in Pictures">
+
+<link href="/objc-runtime-in-pictures/atom.xml" type="application/atom+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+<link href="/objc-runtime-in-pictures/index.rdf" type="application/rss+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/method.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/objc-runtime-in-pictures/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/objc-runtime-in-pictures/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/class.html" title="Class">Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/ivar.html" title="Ivar">Ivar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/method.html" title="Method">Method</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/property.html" title="Property">Property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/category.html" title="Category">Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocol.html" title="Protocol">Protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/inheritance.html" title="Inheritance">Inheritance</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html" title="Protocolclass">Protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/quiz.html" title="Quiz">Quiz</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/appendix.html" title="Appendix">Appendix</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Method</h1>
+                  <div>
+                  <h2 id="syntax-topics">Syntax topics</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">@interface</span> <span class="nc">SomeClass</span>
+ <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span><span class="p">;</span>
+ <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">instanceMethod</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">argument</span><span class="p">;</span>
+ <span class="k">@end</span>
+
+<span class="k">@selector</span><span class="p">(</span> <span class="n">instanceMethod</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">SomeClass</span> <span class="nf">classMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">obj</span> <span class="nf">instanceMethod</span><span class="p">:</span><span class="n">argument</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="method-lists-and-methods">method lists and methods</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Data_structure">data structure</a> in C is a 
+<code class="language-plaintext highlighter-rouge">struct</code> and an assortment of functions. You typically pass a pointer to a 
+struct variable to a function or you pass the whole struct variable by value:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">CGPoint</span> 
+<span class="p">{</span> 
+    <span class="kt">float</span> <span class="n">x</span><span class="p">;</span> 
+    <span class="kt">float</span> <span class="n">y</span><span class="p">;</span> 
+<span class="p">};</span>
+
+<span class="kt">void</span>   <span class="nf">CGPointTranslate</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dy</span><span class="p">);</span>
+<span class="kt">float</span>  <span class="nf">CGPointGetArea</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="n">self</span><span class="p">);</span> <span class="c1">// from 0,0 to x,y</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span>   <span class="nf">CGPointTranslate</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dy</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span><span class="p">;</span> 
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="kt">float</span>   <span class="nf">CGPointGetArea</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="n">point</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="k">return</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">));</span> 
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<p>Generally in MulleObjC, one uses methods to interact with objects:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">CGPoint</span> 
+<span class="p">{</span> 
+   <span class="kt">float</span> <span class="n">x</span><span class="p">;</span> 
+   <span class="kt">float</span> <span class="n">y</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">translateWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dx</span> 
+                      <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dy</span><span class="p">;</span>
+                     
+<span class="k">-</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">area</span><span class="p">;</span> 
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">CGPoint</span> 
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span>
+<span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">translateWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dx</span> 
+                      <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dy</span>
+<span class="p">{</span> 
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span><span class="p">;</span> 
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">area</span>
+<span class="p">{</span> 
+    <span class="k">return</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">));</span> 
+<span class="p">}</span> 
+                     
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<p>The compiler will generate two <strong>methodlists</strong>, one methodlist for
+<strong>instance methods</strong>, which are prefixed with a <code class="language-plaintext highlighter-rouge">-</code>. These are attached to the
+<em>infraclass</em>, and one methodlist for <strong>class methods</strong>,
+which are prefixed with a <code class="language-plaintext highlighter-rouge">+</code> and attached to the <em>metaclass</em>. A class will
+always have at least one <strong>methodlists</strong>, even if its empty.</p>
+
+<p><a href="images/methods.svg"><img src="images/methods.svg" alt="Class with methodlists" /></a></p>
+
+<p>To message the <code class="language-plaintext highlighter-rouge">+new</code> class-method one would write <code class="language-plaintext highlighter-rouge">obj = [CGPoint new]</code>. The 
+result of this method is an instance of the class. This instance can now be
+messaged with instance methods like so: <code class="language-plaintext highlighter-rouge">[obj translateWithX:18 y:48];</code></p>
+
+<h2 id="method">method</h2>
+
+<p>And this is (some) of the information you can get about a class:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>methodid</td>
+      <td>id (hash) of the ivar name for lookup. Tip: use <code class="language-plaintext highlighter-rouge">@selector( name)</code></td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>name</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>type in <a href="https://nshipster.com/type-encodings"><code class="language-plaintext highlighter-rouge">@encode</code></a> format</td>
+    </tr>
+    <tr>
+      <td>bits</td>
+      <td>additional information about the method</td>
+    </tr>
+    <tr>
+      <td>implementation</td>
+      <td>the address of the C function, that implements the method</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Every method implementation receives two hidden parameters: <code class="language-plaintext highlighter-rouge">self</code> and <code class="language-plaintext highlighter-rouge">_cmd</code>. 
+Additional parameters are passed via another hidden parameter <code class="language-plaintext highlighter-rouge">_param</code>, but
+its contents are available as the non hidden parameters.</p>
+
+<p>In C terms the two methods above are uniformly implemented like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span>   <span class="o">*</span><span class="nf">CGPoint_translateWithXY</span><span class="p">(</span> <span class="kt">void</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">SEL</span> <span class="n">_cmd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">_param</span><span class="p">);</span>
+<span class="kt">void</span>   <span class="o">*</span><span class="nf">CGPoint_area</span><span class="p">(</span> <span class="kt">void</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">SEL</span> <span class="n">_cmd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">_param</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">self</code> pointer works just like the struct pointer in C, 
+giving access to instance variables, pointing past the object header. 
+<code class="language-plaintext highlighter-rouge">_cmd</code> contains the method selector, which is a unique hash on the method name. 
+The hash is then used by the runtime to find the method implementation in
+the methodlists.</p>
+
+<p>For example the hash for the method <code class="language-plaintext highlighter-rouge">translateWithX:y:</code> is 0xb7ee7240. The
+mulle-objc compiler will calculate at compile time the hash with
+<code class="language-plaintext highlighter-rouge">@selector( translateWithX:y: )</code>.</p>
+
+<p>The actual arguments and return values are stored in <code class="language-plaintext highlighter-rouge">_param</code>, which is a compiler
+generated structure. The details can be found the <a href="https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html">metaABI</a>
+specification.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCSelectorGetNameUTF8String</code></td>
+      <td>Get method’s selector name as UTF8 string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCCreateSelectorUTF8String</code></td>
+      <td>Create a new selector from UTF8 string</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>NSObject Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-methodForSelector:</code></td>
+      <td>Get implementation address for a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+instanceMethodForSelector:</code></td>
+      <td>Get implementation address for an instance method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-methodSignatureForSelector:</code></td>
+      <td>Get method metadata (parameter/return types)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+instanceMethodSignatureForSelector:</code></td>
+      <td>Get instance method metadata</td>
+    </tr>
+  </tbody>
+</table>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/objc-runtime-in-pictures/ivar.html">Ivar</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/objc-runtime-in-pictures/property.html">Property</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   
+</body>
+</html>

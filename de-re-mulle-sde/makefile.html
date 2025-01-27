@@ -1,0 +1,583 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>💠 Makefile maintainer &#8211; De Re mulle-sde</title>
+<meta name="description" content="There is no better tool to structure a project with, than the filesystem tools you already have. That is either a textual command line terminal or the native GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations are usually a major pain in IDEs, but moving files between folders is...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="💠 Makefile maintainer">
+<meta name="twitter:description" content="There is no better tool to structure a project with, than the filesystem tools you already have. That is either a textual command line terminal or the native GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations are usually a major pain in IDEs, but moving files between folders is...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="💠 Makefile maintainer">
+<meta property="og:description" content="There is no better tool to structure a project with, than the filesystem tools you already have. That is either a textual command line terminal or the native GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations are usually a major pain in IDEs, but moving files between folders is...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/makefile.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/makefile.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/existing-makefile.html" title="🔶 Manage a Makefile project 🆕">🔶 Manage a Makefile project 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/virtual-env.html" title="🌳 Virtual Environment">🌳 Virtual Environment</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/template.html" title="🕋 Template generator">🕋 Template generator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/compositor.html" title="🌲 Project Compositor">🌲 Project Compositor</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/builder.html" title="🚬 Fetch and build">🚬 Fetch and build</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/makefile.html" title="💠 Makefile maintainer">💠 Makefile maintainer</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/test-coverage.html" title="☑︎ Test suite with Coverage 🆕">☑︎ Test suite with Coverage 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/definition.html" title="💄 Definition isolator">💄 Definition isolator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/hecklers-corner.html" title="Hecklers Corner">Hecklers Corner</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>💠 Makefile maintainer</h1>
+                  <div>
+                  <p>There is no better tool to structure a project with, than the filesystem tools
+you already have. That is either a textual command line terminal or the native
+GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations
+are usually a major pain in IDEs, but moving files between folders is a cinch
+in the shell or in the Finder.</p>
+
+<p>mulle-sde as a project maintenance tool examines the file arrangement of your
+project and “reflects” it back into a “Makefile” or “CMakeLists.txt” or any
+other build system of your choice.</p>
+
+<h2 id="demo-nim-and-make">Demo: nim and make</h2>
+
+<p>Let’s create a build system for the <a href="https://nim-lang.org/">nim</a> language
+using <em>make</em>. <em>cmake</em> is more common for mulle-sde, but lets have a challenge
+here.</p>
+
+<h3 id="helloworldnim-and-a-makefile">Helloworld.nim and a Makefile</h3>
+
+<p>Lets start with a “hello world” source, taken from the
+<a href="https://nim-by-example.github.io/hello_world/">nim-by-example</a> website.
+Though sources may reside in the root folder, a subfolder is more convenient
+for technical reasons. So <code class="language-plaintext highlighter-rouge">helloworld.nim</code> is placed into a subdirectory called
+<code class="language-plaintext highlighter-rouge">src</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-demo/src
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/src/helloworld.nim
+echo "Hello World"
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>A simple Makefile for the “helloworld” executable is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=src/helloworld.nim
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+helloworld: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">make</code> run shows this to be working.</p>
+
+<h3 id="mulle-sde-integration-from-scratch">mulle-sde integration (from scratch)</h3>
+
+<p>The first step is to make this a mulle-sde project. As neither <em>nim</em> nor <em>make</em>
+are supported by any mulle-sde extensions yet, only a bare project can be
+created:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> nim-demo <span class="nt">--no-post-init</span> none
+</code></pre></div></div>
+
+<h4 id="let-mulle-sde-manage-the-makefile">Let mulle-sde manage the Makefile</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">mulle-sde -f files</code> command, checks, if a source is identified as an
+interesting file by mulle-sde. The first time the output will be empty though.
+<code class="language-plaintext highlighter-rouge">src/helloworld.nim</code> is not yet considered to be interesting. For that a
+matcher is needed to associate files with the <code class="language-plaintext highlighter-rouge">.nim</code> extension with a
+mulle-sde file type. Lets call the type “sources”.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-d</span> nim-demo match <span class="s1">'*.nim'</span> sources
+</code></pre></div></div>
+
+<p>Now <code class="language-plaintext highlighter-rouge">mulle-sde -d nim-demo -f files</code> will return:</p>
+
+<p><img src="images/manage-files.png" alt="" /></p>
+
+<p>How to get this information into the Makefile ? A tool that edits an
+existing Makefile is complicated to devise and seldom foolproof. Overwriting
+the whole Makefile is undesirable, as it would delete user edits.
+The best idea is to let some parts of the Makefile be generated as
+separate file. This file is then included by the Makefile.
+Thus the Makefile becomes:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+helloworld: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>The file <code class="language-plaintext highlighter-rouge">make/sources.make</code> should be generated by mulle-sde on
+<code class="language-plaintext highlighter-rouge">mulle-sde -f reflect</code>. Lets create a small script to do just that:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/nim-make-reflect
+#! /bin/sh
+
+mkdir -p make
+mulle-match list --format '%T += %f</span><span class="se">\n</span><span class="sh">' &gt; make/sources.make
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-demo/nim-make-reflect
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>mulle-match</strong> is the program that is actually used when <code class="language-plaintext highlighter-rouge">mulle-sde files</code>
+is run. <code class="language-plaintext highlighter-rouge">mulle-sde files</code> is very limited, but <code class="language-plaintext highlighter-rouge">mulle-match list</code> is quite
+powerful. Besides various filter options, you can specify a printf like format
+to be used on each file. In the above format string <code class="language-plaintext highlighter-rouge">%T</code> turns the mulle-sde
+file type into an uppercase identifier and <code class="language-plaintext highlighter-rouge">%f</code> prints the filename.
+Everything else is printed verbatim.</p>
+</blockquote>
+
+<p>To add the script into the reflection mechanism of mulle-sde, a named task has
+to be created. The name “filesystem” is conventional, it is not required.
+The integration with the <code class="language-plaintext highlighter-rouge">mulle-sde reflect</code> mechanism is done
+via the environment <code class="language-plaintext highlighter-rouge">MULLE_SDE_REFLECT_CALLBACKS</code> variable:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> <span class="nt">-d</span> nim-demo task create <span class="nt">--callback</span> filesystem <span class="s2">"</span><span class="k">${</span><span class="nv">PWD</span><span class="k">}</span><span class="s2">/nim-demo/nim-make-reflect"</span>
+mulle-sde <span class="nt">-d</span> nim-demo environment <span class="nt">--global</span> <span class="nb">set </span>MULLE_SDE_REFLECT_CALLBACKS filesystem
+</code></pre></div></div>
+
+<p>After <code class="language-plaintext highlighter-rouge">mulle-sde -d nim-demo reflect</code> the file <code class="language-plaintext highlighter-rouge">cmake/sources.make</code> will have appeared.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde reflect
+<span class="nb">ls </span>cmake
+</code></pre></div></div>
+
+<p>Now “nim” files can be added and deleted. They can be renamed and moved around.
+As long as <code class="language-plaintext highlighter-rouge">mulle-sde reflect</code> is called afterwards, the changes will be picked
+up and the Makefile will be up-to-date.</p>
+
+<h2 id="a-nimmake-mulle-sde-extension">A nim/make mulle-sde extension</h2>
+
+<p>Ideally one wants to be able to create a <em>nim</em>/<em>make</em> project like above
+with a single command line, such as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> nim-demo <span class="nt">-m</span> nim/nim-developer executable
+</code></pre></div></div>
+
+<p>For this a mulle-sde “meta” extension is needed. mulle-sde extensions use the
+<a href="template.html">template</a> capabilities to create boilerplate projects for new
+languages and build systems. There are several different extension types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">extra</code></td>
+      <td>a project can have multiple “extra” extensions. Typical “extra” extensions are “sublime-text” or “vscode”, which add IDE support.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">runtime</code></td>
+      <td>a project can have one “runtime” extension, which is programming language specific</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">oneshot</code></td>
+      <td>“oneshot” extensions are used by the “mulle-sde add” command to add files to a project.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">buildtool</code></td>
+      <td>a project can have one “buildtool” extension, to support tools like “autconf” or “cmake”</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">meta</code></td>
+      <td>a project is initialized with a “meta” extension, which combines buildtool and runtime and extra extensions</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To support <em>make</em> a “buildtool” extension is needed.  Both are combined by a “meta extension”. So
+all in all lets create three extensions:</p>
+
+<h3 id="create-the-runtime-extension">Create the runtime extension</h3>
+
+<p>For the language <em>nim</em> a <em>runtime</em> extension will be used. The runtime
+extension defines the <code class="language-plaintext highlighter-rouge">.nim</code> file extension and adds a default
+“helloworld” source. Extensions are grouped by a “vendor”, so <code class="language-plaintext highlighter-rouge">VENDOR_NAME</code>
+(any word you like) must be specified:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer runtime
+</code></pre></div></div>
+
+<p>Define the language basics with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/language
+# language;dialect;extensions
+nim;;nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Create the demo source file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim/src/me/nim/project/executable/src
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/project/executable/src/PROJECT_NAME.nim
+echo "Hello World"
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Add a tool declaration for <em>nim</em> to be used in restrictive environments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/tool
+nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>That’s it.</p>
+
+<h3 id="create-the-buildtool-extension">Create the buildtool extension</h3>
+
+<p>The buildtool extension is used to setup the <code class="language-plaintext highlighter-rouge">Makefile</code> and the reflection
+mechanism:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim-make <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer buildtool
+</code></pre></div></div>
+
+<p>Create the demo <code class="language-plaintext highlighter-rouge">Makefile</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/project/all
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/project/all/Makefile
+.SUFFIXES:  .&lt;|PROJECT_EXTENSION|&gt;
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.&lt;|PROJECT_EXTENSION|&gt;=.o)
+
+.&lt;|PROJECT_EXTENSION|&gt;.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+&lt;|PROJECT_NAME|&gt;: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Create the match pattern for <code class="language-plaintext highlighter-rouge">.nim</code> files:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/match/match.d
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/match/match.d/20-sources--nim-sources
+*.nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Setup the callback for the reflection mechanism:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/monitor/bin
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+#! /bin/sh
+echo "filesystem"
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+</code></pre></div></div>
+
+<p>Create a task that produces the <code class="language-plaintext highlighter-rouge">make/sources.make</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/monitor/libexec
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+
+#
+# This function will be called by mulle-monitor
+#
+filesystem_task_run()
+{
+	log_entry "filesystem_task_run" "</span><span class="se">\$</span><span class="sh">@"
+
+	mkdir -p make
+	mulle-match list --format '%T += %f</span><span class="se">\n</span><span class="sh">' &gt; make/sources.make
+}
+
+#
+# Convenience to test your script standalone
+#
+if [ -z "</span><span class="se">\$</span><span class="sh">{MULLE_MONITOR_TASK_LOAD}" ]
+then
+	filesystem_task_run "</span><span class="se">\$</span><span class="sh">@"
+fi
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+</code></pre></div></div>
+
+<p>Add the “filesystem” callback to the callbacks executed on reflect with an
+environment setting:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/environment
+MULLE_SDE_REFLECT_CALLBACKS='</span><span class="k">${</span><span class="nv">MULLE_SDE_REFLECT_CALLBACKS</span><span class="k">}</span><span class="sh">:filesystem'
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Add <em>make</em> to the list of tools for restrictive environments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/tool
+make;optional
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<h3 id="create-the-meta-extension">Create the meta extension</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim-developer <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer meta
+</code></pre></div></div>
+
+<p>The meta extension ties the runtime and the buildtool together. And that’s
+it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt;&gt; nim-developer/src/me/nim-developer/inherit
+me/nim;runtime
+me/nim-make;buildtool
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<h3 id="test-the-meta-extension">Test the meta extension</h3>
+
+<p>Add your (uninstalled) extensions to the mulle-sde extension search path.
+Then pick the meta extension “nim-developer” by vendor “me” and create a
+new “executable” project in directory “nim-demo2”:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">MULLE_SDE_EXTENSION_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/nim/src:</span><span class="se">\</span><span class="s2">
+</span><span class="nv">$PWD</span><span class="s2">/nim-make/src:</span><span class="se">\</span><span class="s2">
+</span><span class="nv">$PWD</span><span class="s2">/nim-developer/src:</span><span class="se">\</span><span class="s2">
+</span><span class="k">${</span><span class="nv">MULLE_SDE_EXTENSION_PATH</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+	mulle-sde init <span class="nt">-d</span> nim-demo2 <span class="nt">-m</span> me/nim-developer executable
+
+mulle-sde <span class="nt">-d</span> nim-demo2 run make
+</code></pre></div></div>
+
+<blockquote>
+  <p>As <code class="language-plaintext highlighter-rouge">nim-demo2</code> is now a proper mulle-sde project of type
+“executable”, the <code class="language-plaintext highlighter-rouge">-f</code> flag that was used pervasively on the
+“none” project commands, can now be omitted.</p>
+</blockquote>
+
+<h2 id="final-words">Final Words</h2>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides
+extensive support for maintaining cmake projects. Language support is available
+for C, C++, Objective-C.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-sde/builder.html">🚬 Fetch and build</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-sde/test-coverage.html">☑︎ Test suite with Coverage 🆕</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

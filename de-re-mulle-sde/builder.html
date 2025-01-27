@@ -1,0 +1,429 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>🚬 Fetch and build &#8211; De Re mulle-sde</title>
+<meta name="description" content="With project composition one can embed third party code directly into a project. But often a project needs third party code, that builds separately, possibly with a different build system (say autoconf instead of cmake). More often than not this third party code is a github or gitlab repository, that...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="🚬 Fetch and build">
+<meta name="twitter:description" content="With project composition one can embed third party code directly into a project. But often a project needs third party code, that builds separately, possibly with a different build system (say autoconf instead of cmake). More often than not this third party code is a github or gitlab repository, that...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🚬 Fetch and build">
+<meta property="og:description" content="With project composition one can embed third party code directly into a project. But often a project needs third party code, that builds separately, possibly with a different build system (say autoconf instead of cmake). More often than not this third party code is a github or gitlab repository, that...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/builder.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/builder.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/existing-makefile.html" title="🔶 Manage a Makefile project 🆕">🔶 Manage a Makefile project 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/virtual-env.html" title="🌳 Virtual Environment">🌳 Virtual Environment</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/template.html" title="🕋 Template generator">🕋 Template generator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/compositor.html" title="🌲 Project Compositor">🌲 Project Compositor</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/builder.html" title="🚬 Fetch and build">🚬 Fetch and build</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/makefile.html" title="💠 Makefile maintainer">💠 Makefile maintainer</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/test-coverage.html" title="☑︎ Test suite with Coverage 🆕">☑︎ Test suite with Coverage 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/definition.html" title="💄 Definition isolator">💄 Definition isolator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/hecklers-corner.html" title="Hecklers Corner">Hecklers Corner</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>🚬 Fetch and build</h1>
+                  <div>
+                  <p>With <a href="compositor.html">project composition</a>
+one can embed third party code directly into a project. But often a project
+needs third party code, that builds separately, possibly with a different
+build system (say <em>autoconf</em> instead of <em>cmake</em>). More often than not this
+third party code is a github or gitlab repository, that needs to be downloaded
+and built. It will typically be a library to link the project against and
+one or more header files, which will be included in the project source code.</p>
+
+<p>mulle-sde will fetch these dependencies and will build them
+and install them into a local <code class="language-plaintext highlighter-rouge">dependency</code> folder. That way you have access
+to the headers and libraries in a uniform way.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<h3 id="setup">Setup</h3>
+
+<p>Mix and match a few dependencies:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dependency</th>
+      <th>Build System</th>
+      <th>SCM</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>zlib library</td>
+      <td>cmake</td>
+      <td>git</td>
+      <td>https://github.com/madler/zlib.git</td>
+    </tr>
+    <tr>
+      <td>bison</td>
+      <td>autoconf</td>
+      <td>tar</td>
+      <td>https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz</td>
+    </tr>
+    <tr>
+      <td>mulle-data</td>
+      <td>mulle-sde</td>
+      <td>zip</td>
+      <td>https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For dependency building only the most barebones, unencumbered virtual
+environment is needed to store a few settings. Lets create a new project
+“my-demo”, to be filled with the main code later on:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-demo <span class="nt">--no-post-init</span> <span class="nt">-s</span> none/wild none
+<span class="nb">cd </span>my-demo
+</code></pre></div></div>
+
+<p>Now add the first dependency, a git repository. Dependency order may be
+important, but it isn’t in this case.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://github.com/madler/zlib.git
+</code></pre></div></div>
+
+<p>From the URL, mulle-sde will try to figure out what it needs to do. Sometimes
+more information needs to be given with additional command line options,
+but not in this case.</p>
+
+<p><img src="images/dependency-zlib.png" alt="Zlib" /></p>
+
+<p>As this is a demo, we immediately hit the best case, which is that <em>zlib</em> is
+a known dependency, that has some documentation! The documentation is provided
+by the <a href="//github.com/craftinfo">craftinfo</a> repository.</p>
+
+<blockquote>
+  <p>Clearly the vision of the craftinfo repository is, that millions of developer
+work together in harmony on craftinfos, so that all possible
+dependencies can be added without effort. It’s not quite there yet though.</p>
+</blockquote>
+
+<p>Anyway let’s use the suggestions and continue:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency <span class="nb">set </span>zlib aliases z
+mulle-sde dependency <span class="nb">set </span>zlib include zlib.h
+</code></pre></div></div>
+
+<p>Now add the next dependency <em>bison</em>, which is a tar archive:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz
+</code></pre></div></div>
+
+<p>And add <em>mulle-data</em>, which is a mulle-sde project in a zip archive:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip
+</code></pre></div></div>
+
+<p><img src="images/dependency-bison-data.png" alt="Zlib" /></p>
+
+<h3 id="fetch-and-craft">Fetch and Craft</h3>
+
+<p>If the URLs are wrong or stale in some way, the fetch might not work. Otherwise
+there is no expectation of failure here:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde fetch
+</code></pre></div></div>
+
+<p><img src="images/dependency-fetch.png" alt="Zlib" /></p>
+
+<p>As mulle-data is a mulle-sde project, it can advertise its dependencies
+(mulle-c11). So dependencies of true mulle-sde dependencies will be fetched
+as well. Everything ends up in a directory named “stash”. The separate “fetch”
+step is not really necessary, as the craft step will fetch what is needed. So
+for demonstration let’s do it all over again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde clean tidy
+mulle-sde craft craftorder
+</code></pre></div></div>
+
+<p><img src="images/dependency-craft.png" alt="Zlib" /></p>
+
+<p>The contents of the <code class="language-plaintext highlighter-rouge">dependency/Debug</code> are analogous to the contents of
+a <code class="language-plaintext highlighter-rouge">/usr/local</code> folder, but local to your project:</p>
+
+<blockquote>
+  <p>Find the location of the <code class="language-plaintext highlighter-rouge">dependency</code> folder with <code class="language-plaintext highlighter-rouge">mulle-sde dependency-dir</code>,
+if you can’t find it in your project.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tree -L 3 dependency
+dependency/
+├── Debug
+│   ├── bin
+│   │   ├── bison
+│   │   ├── mulle-fnv1a
+│   │   └── yacc
+│   ├── include
+│   │   ├── mulle-c11
+│   │   ├── mulle-data
+│   │   ├── zconf.h
+│   │   └── zlib.h
+│   ├── lib
+│   │   ├── libmulle-data.a
+│   │   ├── liby.a
+│   │   ├── libz.a
+│   │   ├── libz.so -&gt; libz.so.1
+│   │   ├── libz.so.1 -&gt; libz.so.1.2.13
+│   │   └── libz.so.1.2.13
+│   └── share
+│       ├── aclocal
+│       ├── bison
+│       ├── doc
+│       ├── info
+│       ├── locale
+│       ├── man
+│       └── pkgconfig
+└── etc
+    └── craftorder-Default--Default--Debug
+</code></pre></div></div>
+
+<p>You can get arguments for the linker command line from mulle-sde after a little
+tweaking of the <em>bison</em> dependency. The produced libary by bison is called
+‘liby.a’ and not the default ‘libbison.a’ as would be expected. This can
+be corrected though:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency <span class="nb">set </span>bison aliases y
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde linkorder
+<span class="nt">-L</span><span class="s1">'/tmp/my-demo/dependency/Debug/lib'</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-lz</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-ly</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-lmulle-data</span>
+</code></pre></div></div>
+
+<p>You can also get include source code for your source files from mulle-sde with.
+Again <em>bison</em> is a bit weird, as it produces no header files. To avoid an
+error in the next step, lets mark it as having no header:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency mark bison no-header
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde headerorder
+<span class="nt">-isystem</span> <span class="s1">'/tmp/my-demo/dependency/Debug/include'</span>
+<span class="c">#include &lt;zlib.h&gt;</span>
+<span class="c">#include &lt;mulle-data/mulle-data.h&gt;</span>
+</code></pre></div></div>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>The fetching of archives and git repositories is done with
+<a href="//github.com/mulle-sde/mulle-fetch">mulle-fetch</a>.
+<a href="//github.com/mulle-sde/mulle-domain">mulle-domain</a> provides heuristics based
+on URLs. <a href="//github.com/mulle-sde/mulle-fetch">mulle-make</a> is used to build
+the dependency.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-sde/compositor.html">🌲 Project Compositor</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-sde/makefile.html">💠 Makefile maintainer</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

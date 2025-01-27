@@ -1,0 +1,335 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Property &#8211; Objective-C Runtime in Pictures</title>
+<meta name="description" content="Syntax topic
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Property">
+<meta name="twitter:description" content="Syntax topic
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/objc-runtime-in-pictures/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Property">
+<meta property="og:description" content="Syntax topic
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/property.html">
+<meta property="og:site_name" content="Objective-C Runtime in Pictures">
+
+<link href="/objc-runtime-in-pictures/atom.xml" type="application/atom+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+<link href="/objc-runtime-in-pictures/index.rdf" type="application/rss+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/property.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/objc-runtime-in-pictures/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/objc-runtime-in-pictures/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/class.html" title="Class">Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/ivar.html" title="Ivar">Ivar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/method.html" title="Method">Method</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/property.html" title="Property">Property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/category.html" title="Category">Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocol.html" title="Protocol">Protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/inheritance.html" title="Inheritance">Inheritance</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html" title="Protocolclass">Protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/quiz.html" title="Quiz">Quiz</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/appendix.html" title="Appendix">Appendix</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Property</h1>
+                  <div>
+                  <h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span>
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<h2 id="property-lists">Property Lists</h2>
+
+<p>A <strong>property</strong> is a combination of <em>methods</em> and an <em>ivar</em>.When you declare a property, an instance variable is (usually) created and several messages.
+are auto-generated to support the property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">@interface</span> <span class="nc">CGPoint</span>
+
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">y</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">CGPoint</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The above will create entries in the class’s methodlist and ivarlist:</p>
+
+<p><a href="images/properties.svg"><img src="images/properties.svg" alt="Properties" /></a></p>
+
+<h2 id="property">Property</h2>
+
+<p>A <strong>property</strong> ties the instance variable to the methods.
+This is the information you can get from a <strong>property</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">signature</code></td>
+      <td>type in <a href="https://github.com/mulle-cc/mulle-clang-project/blob/6fa55d0016ce52c8f79167dde22481f473754c60/clang/lib/AST/ASTContext.cpp#L7889">@property attribute</a> format</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">propertyid</code></td>
+      <td>id (hash) of the property name for lookup. Tip: use <code class="language-plaintext highlighter-rouge">@selector( name)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ivarid</code></td>
+      <td>id (hash) of the ivar name for lookup.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getter</code></td>
+      <td>id (hash) of the getter method name for lookup</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setter</code></td>
+      <td>id (hash) of the setter method name for lookup</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bits</code></td>
+      <td>internal state</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The marriage of accessor methods and instance variables allows for simpler and 
+faster key-value coding, due to introspection and not just convention.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassSearchProperty</code></td>
+      <td>Find property in a class by propertyid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceSearchProperty</code></td>
+      <td>Find property in an instance’s class by propertyid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearProperty</code></td>
+      <td>Clear a property value (handles retain/copy/assign)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearPropertyNoReadOnly</code></td>
+      <td>Clear non-readonly property value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCClassWalkClearableProperties</code></td>
+      <td>Walk through all clearable properties of a class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearProperties</code></td>
+      <td>Clear all properties of an instance</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_property_new.html"></a></p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/objc-runtime-in-pictures/method.html">Method</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/objc-runtime-in-pictures/category.html">Category</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   
+</body>
+</html>

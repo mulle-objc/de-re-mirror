@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="700" xmlns="http://www.w3.org/2000/svg">
+    <!-- Shape bounding boxes in blue -->
+    <rect x="600" y="50" width="100" height="100" fill="none" stroke="#0000ff33" stroke-width="1"/>
+    <rect x="300" y="100" width="200" height="80" fill="none" stroke="#0000ff33" stroke-width="1"/>
+    <rect x="150" y="300" width="200" height="80" fill="none" stroke="#0000ff33" stroke-width="1"/>
+    <rect x="450" y="300" width="200" height="80" fill="none" stroke="#0000ff33" stroke-width="1"/>
+    
+    <!-- Label bounding boxes in red -->
+    <rect x="530" y="180" width="240" height="40" fill="none" stroke="#ff000033" stroke-width="1"/>
+    <rect x="300" y="200" width="200" height="40" fill="none" stroke="#ff000033" stroke-width="1"/>
+    <rect x="150" y="400" width="200" height="40" fill="none" stroke="#ff000033" stroke-width="1"/>
+    <rect x="450" y="400" width="200" height="40" fill="none" stroke="#ff000033" stroke-width="1"/>
+
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+        </marker>
+    </defs>
+    
+    <!-- Protocol (Hexagon) -->
+    <polygon points="650,50 700,75 700,125 650,150 600,125 600,75" 
+             fill="#FFD700" stroke="#333" stroke-width="4"/>
+    <text x="650" y="200" text-anchor="middle" 
+          font-family="Poppins, sans-serif" font-size="16" font-weight="bold">
+        MulleObjCClassCluster
+    </text>
+    
+    <!-- Base Class (Rectangle) -->
+    <rect x="300" y="100" width="200" height="80" rx="10" 
+          fill="#4CAF50" stroke="#333" stroke-width="4"/>
+    <text x="400" y="220" text-anchor="middle" 
+          font-family="Poppins, sans-serif" font-size="16" font-weight="bold">
+        MyContainer
+    </text>
+    
+    <!-- Protocol Connection Line -->
+    <line x1="500" y1="140" x2="590" y2="100" 
+          stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Subclass 1 (Rectangle) -->
+    <rect x="150" y="300" width="200" height="80" rx="10" 
+          fill="#2196F3" stroke="#333" stroke-width="4"/>
+    <text x="250" y="420" text-anchor="middle" 
+          font-family="Poppins, sans-serif" font-size="16" font-weight="bold">
+        _MySmallContainer
+    </text>
+    
+    <!-- Subclass 2 (Rectangle) -->
+    <rect x="450" y="300" width="200" height="80" rx="10" 
+          fill="#2196F3" stroke="#333" stroke-width="4"/>
+    <text x="550" y="420" text-anchor="middle" 
+          font-family="Poppins, sans-serif" font-size="16" font-weight="bold">
+        _MyLargeContainer
+    </text>
+    
+    <!-- Inheritance Lines -->
+    <line x1="250" y1="300" x2="375" y2="180" 
+          stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <line x1="550" y1="300" x2="425" y2="180" 
+          stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+</svg>

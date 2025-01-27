@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="902pt" height="611pt" viewBox="0 0 902 611" xmlns="http://www.w3.org/2000/svg">
+<g class="graph" transform="scale(1) translate(36 575)">
+<title>G</title>
+<polygon points="-36 36 -36 -575 866 -575 866 36" fill="#fff" stroke="transparent"/>
+<g class="cluster">
+<title>cluster_thread1</title>
+<polygon points="8 -70 8 -531 411 -531 411 -70" fill="#1e90ff" stroke="#000" stroke-dasharray="5,2" stroke-width="3"/>
+</g>
+<g class="cluster">
+<title>cluster_0</title>
+<path d="m40-135h246c6 0 12-6 12-12v-352c0-6-6-12-12-12h-246c-6 0-12 6-12 12v352c0 6 6 12 12 12" fill="#ffd700" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_1</title>
+</g>
+<g class="cluster">
+<title>cluster_thread2</title>
+<polygon points="419 -70 419 -531 822 -531 822 -70" fill="#ffa07a" stroke="#000" stroke-dasharray="5,2" stroke-width="3"/>
+</g>
+<g class="cluster">
+<title>cluster_2</title>
+<path d="m451-135h246c6 0 12-6 12-12v-352c0-6-6-12-12-12h-246c-6 0-12 6-12 12v352c0 6 6 12 12 12" fill="#ffd700" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_3</title>
+</g>
+<g class="node">
+<title>label1</title>
+<polygon points="390.5 -306 323.5 -306 323.5 -270 390.5 -270" fill="#ffd700" stroke="transparent" stroke-width="6"/>
+<text x="357" y="-281.8" font-family="Poppins" font-size="24" text-anchor="middle">Pool</text>
+</g>
+<g class="node">
+<title>thread_label1</title>
+<polygon points="244 -36 82 -36 82 0 244 0" fill="#1e90ff" stroke="transparent" stroke-width="6"/>
+<text x="163" y="-11.8" font-family="Poppins" font-size="24" text-anchor="middle">Thread #1  </text>
+</g>
+<g class="node">
+<title>label3</title>
+<polygon points="801.5 -306 734.5 -306 734.5 -270 801.5 -270" fill="#ffd700" stroke="transparent" stroke-width="6"/>
+<text x="768" y="-281.8" font-family="Poppins" font-size="24" text-anchor="middle">Pool</text>
+</g>
+<g class="node">
+<title>thread_label2</title>
+<polygon points="657.5 -36 490.5 -36 490.5 0 657.5 0" fill="#ffa07a" stroke="transparent" stroke-width="6"/>
+<text x="574" y="-11.8" font-family="Poppins" font-size="24" text-anchor="middle">Thread #2  </text>
+</g>
+</g>
+</svg>

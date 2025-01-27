@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="491pt" height="614pt" viewBox="0 0 491 614.18" xmlns="http://www.w3.org/2000/svg">
+<g class="graph" transform="scale(1) translate(36 578.18)">
+<title>G</title>
+<polygon points="-36 36 -36 -578.18 455 -578.18 455 36" fill="#fff" stroke="transparent"/>
+<g class="cluster">
+<title>cluster_thread</title>
+<polygon points="8 -8 8 -534.18 411 -534.18 411 -8" fill="#1e90ff" stroke="#000" stroke-dasharray="5,2" stroke-width="3"/>
+</g>
+<g class="cluster">
+<title>cluster_0</title>
+<path d="m40-131.75h246c6 0 12-6 12-12v-358.43c0-6-6-12-12-12h-246c-6 0-12 6-12 12v358.43c0 6 6 12 12 12" fill="#ffd700" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_1</title>
+</g>
+<g class="node">
+<title>A1</title>
+<ellipse cx="91" cy="-467.97" rx="21.43" ry="21.43" fill="#e0115f" stroke="#000" stroke-width="6"/>
+<text x="91" y="-462.97" fill="white" font-family="Times,serif" font-size="20" text-anchor="middle">a</text>
+</g>
+<g class="node">
+<title>label1</title>
+<polygon points="390.5 -302.75 323.5 -302.75 323.5 -266.75 390.5 -266.75" fill="#ffd700" stroke="transparent" stroke-width="6"/>
+<text x="357" y="-278.55" fill="white" font-family="Poppins" font-size="24" text-anchor="middle">Pool</text>
+</g>
+</g>
+</svg>

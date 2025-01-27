@@ -1,0 +1,470 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Appendix &#8211; Objective-C Runtime in Pictures</title>
+<meta name="description" content="Syntax topic
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Appendix">
+<meta name="twitter:description" content="Syntax topic
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/objc-runtime-in-pictures/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appendix">
+<meta property="og:description" content="Syntax topic
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/appendix.html">
+<meta property="og:site_name" content="Objective-C Runtime in Pictures">
+
+<link href="/objc-runtime-in-pictures/atom.xml" type="application/atom+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+<link href="/objc-runtime-in-pictures/index.rdf" type="application/rss+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/appendix.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/objc-runtime-in-pictures/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/objc-runtime-in-pictures/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/class.html" title="Class">Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/ivar.html" title="Ivar">Ivar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/method.html" title="Method">Method</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/property.html" title="Property">Property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/category.html" title="Category">Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocol.html" title="Protocol">Protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/inheritance.html" title="Inheritance">Inheritance</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html" title="Protocolclass">Protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/quiz.html" title="Quiz">Quiz</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/appendix.html" title="Appendix">Appendix</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Appendix</h1>
+                  <div>
+                  <h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">obj</span> <span class="nf">methodWithArgument</span><span class="p">:</span><span class="n">argument</span> <span class="nf">additionalArgument</span><span class="p">:];</span>
+<span class="p">[</span><span class="n">super</span> <span class="nf">method</span><span class="p">:</span><span class="n">argument</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="method-call"><code class="language-plaintext highlighter-rouge">[method call]</code></h2>
+
+<p>When you invoke or call an Objective-C method on an object, the object is 
+the <strong>receiver</strong> of a message. This is just nomenclature.</p>
+
+<p>The receiver appears first in the method call, followed by the selector 
+interspersed with arguments in square brackets. So a call to method <code class="language-plaintext highlighter-rouge">- (void) insertObject:(id) obj atIndex:(NSUInteger) index</code> will look like this:</p>
+
+<p><a href="images/method-call.svg"><img src="images/method-call.svg" alt="Method call deconstructed" /></a></p>
+
+<h3 id="method-search">Method search</h3>
+
+<p>So what does a method call do ? First it looks at the <a href="https://alwaysprocessing.blog/2023/01/19/objc-class-isa">isa</a> 
+pointer of the object. This will be a pointer to a <a href="class.html">class</a>  object. 
+The class has 
+at least one methodlist. It can have multiple methodlists, if some were added 
+by <a href="category.html">categories</a>. The search order goes from back to front, so the most
+recently added category methodlist comes first.</p>
+
+<p>If no method has been found, the class may inherit methodlists from its
+<a href="protocolclass.html">protocolclasses</a> and its <a href="inheritance.html">superclass</a>.
+Again, the search order is back to first, the latest defined protocolclass is
+searched first, then the others and the superclass last.</p>
+
+<p>The superclass itself can be the same mixture of categories, protocolclasses 
+and a possible superclass.</p>
+
+<p>Finally after the rootclass has been reached, and no method has been found yet, 
+the runtime will turn to forwarding (not part of this pamphlet) and if that 
+fails, the runtime will crash.</p>
+
+<h3 id="super-method-search">Super method search</h3>
+
+<p>The special super call, starts the message search from the “place” of
+implementation. It will ignore all sibling methodlists of its implementation
+class and then start a regular method search in the protocolclasses 
+and superclass.</p>
+
+<h3 id="clobber-method-search">Clobber method search</h3>
+
+<p>Only available with MulleObjC C runtime functions. This search stops at the 
+implementation class boundary. It searches backwards from the current 
+methodlist.</p>
+
+<h3 id="override-method-search">Override method search</h3>
+
+<p>Like the Clobber method search, but does not stop at the class boundary.</p>
+
+<h2 id="case-studies">Case studies</h2>
+
+<p><em>Only instance methodlists are shown for simplicity.</em></p>
+
+<h3 id="class-a-the-simplest-case">Class A, the simplest case</h3>
+
+<p><strong>A</strong> contains a method <code class="language-plaintext highlighter-rouge">instanceMethod</code>, its <code class="language-plaintext highlighter-rouge">@implementation</code> is not shown, 
+as it’s boring:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">A</span> 
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p><a href="images/A.svg"><img src="images/A.svg" alt="A" /></a></p>
+
+<p>This is just for warming up. There is no <strong>super</strong> method in a root class,
+and nothing has been overridden. So its <code class="language-plaintext highlighter-rouge">-instanceMethod</code> only.</p>
+
+<h3 id="subclass-b-of-a-and-categories-on-b">Subclass B of A and categories on B</h3>
+
+<p>B overrides the superclass method <code class="language-plaintext highlighter-rouge">instanceMethod</code>. And so do the two 
+categories P and Q on B. Again, implementations are not shown:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">B</span> <span class="p">:</span> <span class="nc">A</span>  
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">B</span><span class="p">(</span> <span class="nl">P</span><span class="p">)</span>   
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">B</span><span class="p">(</span> <span class="nl">Q</span><span class="p">)</span>   
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>this will result in more complex layout:</p>
+
+<p><a href="images/B.svg"><img src="images/B.svg" alt="B" /></a></p>
+
+<p>As explained before, the search order will be from  back to front.
+So <em>methodlist #2</em> of B comes first, then <em>methodlist #1</em> of B, then 
+<em>methodlist #0</em> of B. The final search is through <em>methodlist #0</em> of A.</p>
+
+<p>In short notation the various searches result in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: B(Q) -&gt; A
+  clobber chain: B(Q) -&gt; B(P) -&gt; B
+ override chain: B(Q) -&gt; B(P) -&gt; B -&gt; A
+</code></pre></div></div>
+
+<h3 id="subclass-c-of-b-and-multiple-inheritance-with-protocolclasses">Subclass C of B and multiple inheritance with protocolclasses</h3>
+
+<p>The next class <code class="language-plaintext highlighter-rouge">C</code> builds on <code class="language-plaintext highlighter-rouge">B</code> and has two protocolclasses added to the mix:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">X</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">X</span> <span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="nc">Y</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">Y</span> <span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">C</span> <span class="p">:</span> <span class="nc">B</span> <span class="o">&lt;</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The result looks like this:</p>
+
+<p><a href="images/C.svg"><img src="images/C.svg" alt="C" /></a></p>
+
+<p>Now with methodlist of <code class="language-plaintext highlighter-rouge">C</code> as the starting point, we get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: C -&gt; Y -&gt; X -&gt; B(Q) -&gt; A
+  clobber chain: C
+ override chain: C -&gt; Y -&gt; X -&gt; B(Q) -&gt; B(P) -&gt; B -&gt; A
+</code></pre></div></div>
+
+<h3 id="class-d-inheritance-with-duplicate-protocolclasses">Class D, inheritance with duplicate protocolclasses</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">D</span> <span class="p">:</span> <span class="nc">C</span> <span class="o">&lt;</span> <span class="n">Y</span><span class="p">,</span> <span class="n">X</span> <span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">D</span><span class="p">(</span> <span class="nl">P</span><span class="p">)</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">D</span><span class="p">(</span> <span class="nl">Q</span><span class="p">)</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p><a href="images/D.svg"><img src="images/D.svg" alt="D" /></a></p>
+
+<p>Before we go on, lets reconsider, that a protocolclass is a root class and 
+has no business calling “super” by itself. But if you were, here is what 
+would happen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: D(Q) -&gt; X -&gt; Y -&gt; C -&gt; Y -&gt; C -&gt; ... -&gt; INFINITE LOOP CRASH
+  clobber chain: D(Q) -&gt; D(P) -&gt; D
+ override chain: D(Q) -&gt; D(P) -&gt; D -&gt; X -&gt; Y -&gt; C -&gt; Y -&gt; C -&gt; ... -&gt; INFINITE LOOP CRASH
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:</code></td>
+      <td>Perform method taking no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:withObject:</code></td>
+      <td>Perform method taking one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:withObject:withObject:</code></td>
+      <td>Perform method taking two arguments</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector0</code></td>
+      <td>Call method with no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector</code></td>
+      <td>Call method with one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector2</code></td>
+      <td>Call method with two arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall0</code></td>
+      <td>Call implementation with no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall</code></td>
+      <td>Call implementation with one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall2</code></td>
+      <td>Call implementation with two arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithFloat</code></td>
+      <td>Call implementation with float argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithDouble</code></td>
+      <td>Call implementation with double argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithLong</code></td>
+      <td>Call implementation with long argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector0</code></td>
+      <td>Call method on array of objects with no args</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector</code></td>
+      <td>Call method on array of objects with one arg</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector2</code></td>
+      <td>Call method on array of objects with two args</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchSuperIMP</code></td>
+      <td>Find superclass implementation of a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchSpecificIMP</code></td>
+      <td>Find method implementation in specific class/category</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchOverriddenIMP</code></td>
+      <td>Find overridden implementation of a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchClobberedIMP</code></td>
+      <td>Find implementation clobbered by a category</td>
+    </tr>
+  </tbody>
+</table>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/objc-runtime-in-pictures/outro.html">Outro</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            &nbsp;
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   
+</body>
+</html>

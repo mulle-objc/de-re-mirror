@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>De Re mulle-objc</title>
+        <description>The Developer Guide for MulleObjC and the mulle-objc runtime.</description>
+        <link>https://www.mulle-kybernetik.com/</link>
+        <atom:link href="https://www.mulle-kybernetik.com/atom.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Sun, 26 Jan 2025 22:37:34 +0100</pubDate>
+        <lastBuildDate>Sun, 26 Jan 2025 22:37:34 +0100</lastBuildDate>
+        <generator>Jekyll v4.3.4</generator>
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+&lt;/style&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;h1&gt;404&lt;/h1&gt;
+
+  &lt;p&gt;&lt;strong&gt;Page not found :(&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;The requested page could not be found.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/404.html</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/404.html</guid>
+            
+         </item>
+          
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot; xml:lang=&quot;en&quot;&gt;
+&lt;title type=&quot;text&quot;&gt;De Re mulle-objc&lt;/title&gt;
+&lt;generator uri=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&lt;/generator&gt;
+&lt;link rel=&quot;self&quot; type=&quot;application/atom+xml&quot; href=&quot;https://www.mulle-kybernetik.com/atom.xml&quot; /&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com&quot; /&gt;
+&lt;updated&gt;2025-01-26T22:37:34+01:00&lt;/updated&gt;
+&lt;id&gt;https://www.mulle-kybernetik.com/&lt;/id&gt;
+&lt;author&gt;
+  &lt;name&gt;Nat!&lt;/name&gt;
+  &lt;uri&gt;https://www.mulle-kybernetik.com/&lt;/uri&gt;
+  &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+&lt;/author&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Tooling: Code reduction]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/reduction.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/reduction.html&lt;/id&gt;
+  &lt;published&gt;2024-06-29T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-29T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;reduction&amp;quot;&amp;gt;Reduction&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;With the coverage information gained in the previous chapter, we can now
+extract the required &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;.o&amp;lt;/code&amp;gt; files from the static libraries and create a
+custom static library, that contains only the necessary files.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;todo&amp;quot;&amp;gt;TODO&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Explain how this is done with the cmake &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;OBJC_COVERAGE_OPTIMIZED_LIBS&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;I have this already written somewhere…&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Tooling: Coverage information]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/coverage.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/coverage.html&lt;/id&gt;
+  &lt;published&gt;2024-06-24T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-24T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;coverage&amp;quot;&amp;gt;Coverage&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;You can create Objective-C coverage information for any mulle-objc program.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Coverage files will be are generated when you run the program with
+with the environment variables &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;MULLE_OBJC_PEDANTIC_EXIT&amp;lt;/code&amp;gt; and
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;MULLE_OBJC_COVERAGE&amp;lt;/code&amp;gt; set to YES:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-bash highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;nv&amp;quot;&amp;gt;MULLE_OBJC_PEDANTIC_EXIT&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt;YES &amp;lt;span class=&amp;quot;nv&amp;quot;&amp;gt;MULLE_OBJC_COVERAGE&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt;YES myexe
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;This will produce two coverage files &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;class-coverage.csv&amp;lt;/code&amp;gt; and
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;method-coverage.csv&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; Your executable needs to properly terminate, to generate
+coverage information. If that isn’t possible, call
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_objc_csvdump_methodcoverage()&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_objc_csvdump_classcoverage()&amp;lt;/code&amp;gt;
+yourself, when you know the runtime system is quiescent.&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;extending-coverage-files&amp;quot;&amp;gt;Extending coverage files&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;A second “coverage” run will append to previously existing coverage files.
+But you can also concatenate coverage files from various source with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cat&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-bash highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;cat &amp;lt;/span&amp;gt;coverage&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;.txt | &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;sort&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-u&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;gt;&amp;lt;/span&amp;gt; class-coverage.csv
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Tooling: mulle-objc Tools]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/tools.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/tools.html&lt;/id&gt;
+  &lt;published&gt;2024-06-20T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-20T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;mulle-objc-listmulle-objc-lista&amp;quot;&amp;gt;mulle-objc-list/mulle-objc-lista&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;mulle-objc-list&amp;lt;/strong&amp;gt; generates CSV style information from dynamic libraries,
+that contain mulle-objc code. You can list the contained classes, methods and
+properties. It’s the backbone of the mulle-objc tool set.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;mulle-objc-lista&amp;lt;/strong&amp;gt; is the variant that handles static libraries.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-runtime&amp;quot;&amp;gt;mulle-objc-runtime&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-uniqueid&amp;quot;&amp;gt;mulle-objc-uniqueid&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Generates the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@selector()&amp;lt;/code&amp;gt; hash value from a string. This can be useful when
+writing C code, that calls Objective-C.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-console highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;$&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;mulle-objc-uniqueid alloc
+&amp;lt;span class=&amp;quot;go&amp;quot;&amp;gt;ab1bb16b
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-c highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_objc_object_call&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mh&amp;quot;&amp;gt;0xab1bb16b&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;nil&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-runtime&amp;quot;&amp;gt;mulle-objc-runtime&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-loader-tool&amp;quot;&amp;gt;mulle-objc-loader-tool&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Generates the required &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;MulleObjCLoader&amp;lt;/code&amp;gt; category files for a library.
+This tool is used in the &amp;lt;a href=&amp;quot;modern&amp;quot;&amp;gt;modern workflow&amp;lt;/a&amp;gt; to generate the
+proper dependency information.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-list&amp;quot;&amp;gt;mulle-objc-list&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-signature&amp;quot;&amp;gt;mulle-objc-signature&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Separates an ‘@encode()’ Objective-C type into constituents, separated by ‘;’.
+This can be useful for creating inspection tools.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-console highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;$&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;mulle-objc-uniqueid alloc ^v@:@&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;NSString&amp;quot;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;^v;&amp;lt;/span&amp;gt;@&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;:&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;@&amp;lt;span class=&amp;quot;s2&amp;quot;&amp;gt;&amp;quot;NSString&amp;quot;&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-runtime&amp;quot;&amp;gt;mulle-objc-runtime&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-printline&amp;quot;&amp;gt;mulle-objc-printline&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;A little utility to fake a “class-coverage.csv” entry.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-console highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;$&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;mulle-objc-printline &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--method&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--category&amp;lt;/span&amp;gt; Foo Bar
+&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;bbc7dbad;&amp;lt;/span&amp;gt;Bar&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;c7e16770&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;Foo&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;9f37ed7a&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-foo&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;coverage.html&amp;quot;&amp;gt;Coverage&amp;lt;/a&amp;gt; for more details about mulle-objc
+coverage information.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-searchid&amp;quot;&amp;gt;mulle-objc-searchid&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Grep through libraries to find the matching string for a selector, classid,
+protocol et.c.  This can be useful when debugging optimized code.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-console highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;gp&amp;quot;&amp;gt;$&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;w&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;mulle-objc-searchid ab1bb16b
+&amp;lt;span class=&amp;quot;go&amp;quot;&amp;gt;@selector( alloc) is ab1bb16b
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-list&amp;quot;&amp;gt;mulle-objc-list&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-unarchive&amp;quot;&amp;gt;mulle-objc-unarchive&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Used by the library optimization process, that unpacks and repacks static
+libraries to only contain required classes and categories.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;//github.com/mulle-objc/mulle-objc-list&amp;quot;&amp;gt;mulle-objc-list&amp;lt;/a&amp;gt; for more
+details.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-objc-uncovered-methods&amp;quot;&amp;gt;mulle-objc-uncovered-methods&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Creates a list of methods not being messaged during a programs run. This can
+be useful for finding missing tests.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;coverage.html&amp;quot;&amp;gt;Coverage&amp;lt;/a&amp;gt; for more details about mulle-objc coverage information.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: Xcode projects]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/xcodeproj.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/xcodeproj.html&lt;/id&gt;
+  &lt;published&gt;2024-06-19T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-19T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;As &amp;lt;strong&amp;gt;mulle-objc&amp;lt;/strong&amp;gt; evolves, more and more Xcode projects will be portable
+without effort. For now Foundation based Tool and Library targets are
+the candidates for porting.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;mulle-xcode-to-cmake&amp;quot;&amp;gt;mulle-xcode-to-cmake&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Getting an existing Xcode project to run with &amp;lt;strong&amp;gt;mulle-objc&amp;lt;/strong&amp;gt; can be very easy
+with &amp;lt;a href=&amp;quot;//github.com/mulle-nat/mulle-xcode-to-cmake&amp;quot;&amp;gt;mulle-xcode-to-cmake&amp;lt;/a&amp;gt;.
+Assuming  that your Xcode project file is named “project.xcodeproj”, these
+steps may already be sufficient:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-bash highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-xcode-to-cmake &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;export &amp;lt;/span&amp;gt;project.xcodeproj &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;gt;&amp;lt;/span&amp;gt; CMakeLists.txt
+mulle-sde init &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-m&amp;lt;/span&amp;gt; foundation/objc-porter executable
+mulle-sde craft
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;To install:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-bash highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;mulle-sde craft craftorder
+mulle-sde run mulle-make &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;install&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;--prefix&amp;lt;/span&amp;gt; /tmp/whereever
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;converting-to-the-modern-workflow&amp;quot;&amp;gt;Converting to the modern workflow&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;If your project contains one or many libraries, it is best to split them
+up into multiple projects.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Replace the &amp;lt;em&amp;gt;objc-porter&amp;lt;/em&amp;gt; environment with the &amp;lt;em&amp;gt;objc-developer&amp;lt;/em&amp;gt; environment:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-bash highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;rm&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-rf&amp;lt;/span&amp;gt; .mulle
+mulle-sde init &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;-m&amp;lt;/span&amp;gt; foundation/objc-developer executable
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;And then you are ready to setup a &amp;lt;a href=&amp;quot;modern.html&amp;quot;&amp;gt;project&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: Objective-C++]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/cpp.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/cpp.html&lt;/id&gt;
+  &lt;published&gt;2024-06-14T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-14T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; C++ is already the most complex language in the
+world and adding Objective-C on top of it, is like the worst of both worlds.&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-c-from-objective-c&amp;quot;&amp;gt;Use C++ from Objective-C&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Create a C code wrapper to call the C++ functions. Then call the C code from
+Objective-C.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;C++&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;cpp.h:&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-c++ highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __cplusplus
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;extern&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;&amp;quot;C&amp;quot;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;  &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;call_cpp1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;char&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;char&amp;lt;/span&amp;gt;  &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;call_cpp2&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __cplusplus
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;};&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Objective-C&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;foo.m&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#include&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;cpf&amp;quot;&amp;gt;&amp;amp;lt;cpp.h&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@implementation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nc&amp;quot;&amp;gt;Foo&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;callCPlusPlus1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;char&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;call_cpp1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;char&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;callCPlusPlus2&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;call_cpp2&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@end&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-objective-c-from-c&amp;quot;&amp;gt;Use Objective-C from C++&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;This is possible too, but you need to link against the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle-objc-runtime.h&amp;lt;/code&amp;gt;
+only:&amp;lt;/p&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;TODO: test this does this work with mulle-c11 ?&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __cplusplus
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;extern&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;&amp;quot;C&amp;quot;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#include&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;cpf&amp;quot;&amp;gt;&amp;amp;lt;mulle-objc/mulle-objc-runtime.h&amp;amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;};&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Now you can use the runtime functions to create instances and call them.
+It’s very cumbersome though.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: unichar]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/unichar.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/unichar.html&lt;/id&gt;
+  &lt;published&gt;2024-06-11T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-11T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Apple Foundation uses UTF-16 as &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;unichar&amp;lt;/code&amp;gt;, whereas the mulle-objc Foundation used
+UTF-32 as &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;unichar&amp;lt;/code&amp;gt;. As long as your code is not assuming 16-bit for its size,
+there should be no problem.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;When accessing string contents as &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;unichar *&amp;lt;/code&amp;gt; with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;dataUsingEncoding:&amp;lt;/code&amp;gt; use the
+generic &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSUnicodeStringEncoding&amp;lt;/code&amp;gt; instead of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSUTF32StringEncoding&amp;lt;/code&amp;gt;/&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSUTF16StringEncoding&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;  data = [s dataUsingEncoding:NSUnicodeStringEncoding];
+  here_some_unichars( (unichar *) [data bytes], [data length] / sizeof( unichar));
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;TODO:  How about &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;printf&amp;lt;/code&amp;gt; with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;%S&amp;lt;/code&amp;gt; ?&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: NSZone]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/nszone.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/nszone.html&lt;/id&gt;
+  &lt;published&gt;2024-06-09T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-09T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Zones are dead. Do not use the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;withZone:&amp;lt;/code&amp;gt; methods anymore.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;mulle-objc will work well enough if you use them, but they are just superflous.
+Incidentally I don’t think Apple Objective-C uses zones either anymore.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;compiler-transforms--zone-calls&amp;quot;&amp;gt;Compiler transforms -zone calls&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;With that being said, the &amp;lt;strong&amp;gt;mulle-clang&amp;lt;/strong&amp;gt; compiler will transform any
+call to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-zone&amp;lt;/code&amp;gt; into &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NULL&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: Variable Arguments in Methods]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/varargs.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/varargs.html&lt;/id&gt;
+  &lt;published&gt;2024-06-04T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-06-04T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;intro&amp;quot;&amp;gt;Intro&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Variable arguments in methods follow the Mulle MetaABI and are incompatible
+with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;va_list&amp;lt;/code&amp;gt;. C functions continue to use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;va_list&amp;lt;/code&amp;gt; though. So mulle-objc
+will support both formats.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;a-typical-variable-argument-method&amp;quot;&amp;gt;A typical variable argument method&amp;lt;/h3&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;va_list&amp;quot;&amp;gt;va_list&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;This is the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+[NSString stringWithFormat:]&amp;lt;/code&amp;gt; method as presumably coded in the
+Apple Foundation. Conventionally the &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;va_list&amp;lt;/code&amp;gt; parameter in Apple Foundation
+methods is called “arguments:”:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;...&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;va_list&amp;lt;/span&amp;gt;    &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;va_start&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+              &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;arguments:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;va_end&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;mulle_vararg_list&amp;quot;&amp;gt;mulle_vararg_list&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;In mulle-objc the type is &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_vararg_list&amp;lt;/code&amp;gt;. And if it is used as a
+parameter its called “mulleVarargList:” by convention. &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;va_list&amp;lt;/code&amp;gt; which is still
+a possibility type due to C code (e.g. &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSLog&amp;lt;/code&amp;gt;), is called  &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;varargList:&amp;lt;/code&amp;gt;
+instead for discrimination.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;This is how &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+[NSString stringWithFormat:]&amp;lt;/code&amp;gt; is actually coded in
+MulleFoundation:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;...&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt;             &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_vararg_list&amp;lt;/span&amp;gt;    &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_vararg_start&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+              &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;mulleVarargList:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_vararg_end&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;So that’s pretty similar.&amp;lt;/p&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;mulle-objc-supports-both&amp;quot;&amp;gt;mulle-objc supports both&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;It’s not an either or scenarion, as mulle-objc supports both:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+                  &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulleVarargList&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_vararg_list&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;arguments&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[[[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;alloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;initWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+                         &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;mulleVarargList:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;arguments&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;autorelease&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;stringWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSString&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+                       &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;varargList&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;va_list&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[[[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;alloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;initWithFormat&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;format&amp;lt;/span&amp;gt;
+                                 &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;varargList:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;args&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;autorelease&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;accessing-variable-arguments&amp;quot;&amp;gt;Accessing variable arguments&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;The actual access of variable arguments of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_vararg_list&amp;lt;/code&amp;gt; is very
+different though.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;See &amp;lt;a href=&amp;quot;https://github.com/MulleFoundation/objc-compat&amp;quot;&amp;gt;objc-compat&amp;lt;/a&amp;gt; for some
+details on how to achieve this portably.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: Synchronized is gone]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/synchronized.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/synchronized.html&lt;/id&gt;
+  &lt;published&gt;2024-05-30T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-30T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; See &amp;lt;a href=&amp;quot;https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafety/ThreadSafety.html#//apple_ref/doc/uid/10000057i-CH8-SW16&amp;quot;&amp;gt;Threading Programming Guide&amp;lt;/a&amp;gt; for more information about &amp;lt;tt&amp;gt;@synchronized&amp;lt;/tt&amp;gt;.&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-mulle-thread-for-least-hassle&amp;quot;&amp;gt;Use mulle-thread for least hassle.&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;//github.com/mulle-concurrent/mulle-thread&amp;quot;&amp;gt;mulle-thread&amp;lt;/a&amp;gt;
+is available on all platforms, that run Objective-C.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_thread_mutex_t&amp;lt;/code&amp;gt; to transform&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;myFunction&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@synchronized&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;()&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;to&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;static&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_thread_mutex_t&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;load&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_thread_mutex_init&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;unload&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_thread_mutex_done&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;myFunction&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_thread_mutex_lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;mulle_thread_mutex_unlock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-nslock-instead&amp;quot;&amp;gt;Use NSLock instead&amp;lt;/h2&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;static&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSLock&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;initialize&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;if&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;!&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;
+      &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSLock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;new&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;deinitialize&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;if&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+      &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;release&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+      &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;nil&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;myFunction&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;lock&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;unlock&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;good-points&amp;quot;&amp;gt;Good points&amp;lt;/h3&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;code works in all runtimes without another dependency&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+deinitialize&amp;lt;/code&amp;gt; will not be called by other runtimes, it’s a harmless addition&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;bad-points&amp;quot;&amp;gt;Bad points&amp;lt;/h3&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;A &amp;lt;strong&amp;gt;NSLock&amp;lt;/strong&amp;gt; is slower than a &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;mulle_thread_mutex_t&amp;lt;/code&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;The lock has not become a proper mulle-objc root object, so this code will leak in tests.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;p&amp;gt;You could fix this with deleting &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+deinitialize&amp;lt;/code&amp;gt; and rewriting &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+initialize&amp;lt;/code&amp;gt; as:&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;``` objc&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;(void) initialize
+{
+ if( ! lock)
+ {
+    lock = [NSLock new];
+#ifdef &amp;lt;strong&amp;gt;MULLE_OBJC&amp;lt;/strong&amp;gt;
+    [lock _becomeRootObject];
+    [lock release;]
+#endif
+ }
+}&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;p&amp;gt;// + (void) deinitialize clashes with  _becomeRootObject and must be removed&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: @synthesize is useless now]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/synthesize.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/synthesize.html&lt;/id&gt;
+  &lt;published&gt;2024-05-25T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-25T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;If &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@synthesize&amp;lt;/code&amp;gt; renames the instance variable, you will unfortunately have to
+actually rename the instance variable to the name of the property prefixed
+with an underscore, otherwise it won’t work. Do best is to just delete the
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@synthesize&amp;lt;/code&amp;gt; and fix the errors.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting @property]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/property.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/property.html&lt;/id&gt;
+  &lt;published&gt;2024-05-20T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-20T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Porting properties in a fashion that works in ARC code and in mulle-objc is
+tricky. It is best if you can restrict yourself to &amp;lt;strong&amp;gt;assign&amp;lt;/strong&amp;gt;, &amp;lt;strong&amp;gt;copy&amp;lt;/strong&amp;gt; and &amp;lt;strong&amp;gt;retain&amp;lt;/strong&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;property-deallocation&amp;quot;&amp;gt;Property deallocation&amp;lt;/h2&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; This is a rare case, where mulle-objc is compatible with ARC, but incompatible with MMR.&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;In Apple ARC, properties are automatically cleared during &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;. In Apple Manual Retain-Release Mode (MRR)
+you have to do it yourself during &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;In mulle-objc all properties that reference objects or pointers are cleared during &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-finalize&amp;lt;/code&amp;gt; by
+setting them to &amp;lt;strong&amp;gt;0&amp;lt;/strong&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;readonly&amp;lt;/strong&amp;gt; properties - they have no setter - are not cleared. But in mulle-objc &amp;lt;em&amp;gt;they are backed by an &amp;lt;strong&amp;gt;ivar&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt;.
+It is open to discussion if you want to release them in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; for compatibility or use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-finalize&amp;lt;/code&amp;gt; to break
+possible retain cycles.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Here is how to write &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; for compatiblity with MMR (also see &amp;lt;a href=&amp;quot;arc.html&amp;quot;&amp;gt;ARC Porting tips&amp;lt;/a&amp;gt;):&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;#if __has_feature(objc_arc) || defined( __MULLE_OBJC__)
+# define PROPERTY_RELEASE( p)
+#else
+# define PROPERTY_RELEASE( p)  [_p release]
+#endif
+#if __has_feature(objc_arc)
+# define SUPER_DEALLOC()
+#else
+# define SUPER_DEALLOC( p)  [super dealloc]
+#endif
+
+- (void) dealloc
+{
+    PROPERTY_RELEASE( a)
+    PROPERTY_RELEASE( b)
+    PROPERTY_RELEASE( c)
+    SUPER_DEALLOC()
+}
+
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;missing-attributes&amp;quot;&amp;gt;Missing Attributes&amp;lt;/h2&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;atomic&amp;quot;&amp;gt;atomic&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Yup it’s gone. Use locking or the atomic operations provided by
+&amp;lt;a href=&amp;quot;//github.com/mulle-concurrent/mulle-thread&amp;quot;&amp;gt;mulle-thread&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;weak&amp;quot;&amp;gt;weak&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Use &amp;lt;strong&amp;gt;assign&amp;lt;/strong&amp;gt; instead.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; Use C containers to manage weak references
+instead. They won’t &amp;lt;em&amp;gt;magically&amp;lt;/em&amp;gt; cleanup though.&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;strong&amp;quot;&amp;gt;strong&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;When declaring a property use &amp;lt;strong&amp;gt;copy&amp;lt;/strong&amp;gt; or &amp;lt;strong&amp;gt;retain&amp;lt;/strong&amp;gt;. You usually
+use &amp;lt;strong&amp;gt;copy&amp;lt;/strong&amp;gt; for &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSValue&amp;lt;/code&amp;gt;, &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSDate&amp;lt;/code&amp;gt;, &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSNumber&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSString&amp;lt;/code&amp;gt; arguments,
+and &amp;lt;strong&amp;gt;retain&amp;lt;/strong&amp;gt; for everything else.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;nullable&amp;quot;&amp;gt;nullable&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;One of the strong points of Objective-C is its gracious handling of
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt; values, which simplifies coding a lot. Remember that messaging &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt;
+also produces &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt;. With the introduction of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nonnull&amp;lt;/code&amp;gt; &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nullable&amp;lt;/code&amp;gt; was
+also introduced. It is superflous.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;You can easily get rid of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nullable&amp;lt;/code&amp;gt; compile errors with:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;#define nullable
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; Tedious checks for &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt; means you are optimizing
+your code for the error case. Use &amp;lt;strong&amp;gt;nonnull&amp;lt;/strong&amp;gt; sparingly. If a &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt; parameter
+has no ill effect, don’t mark the code &amp;lt;strong&amp;gt;nonnull&amp;lt;/strong&amp;gt;.&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;unsafe_unretained&amp;quot;&amp;gt;unsafe_unretained&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Use &amp;lt;strong&amp;gt;assign&amp;lt;/strong&amp;gt; instead.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;class&amp;quot;&amp;gt;class&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Remove the property. Use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;static&amp;lt;/code&amp;gt; variables in your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@implementation&amp;lt;/code&amp;gt;
+then write and declare &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+&amp;lt;/code&amp;gt; accessors for them.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;class&amp;lt;/code&amp;gt; is likely to make a comeback in a future version.&amp;lt;/div&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: Protocols are a kind of @selector]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/protocol.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/protocol.html&lt;/id&gt;
+  &lt;published&gt;2024-05-15T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-15T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;This will be tricky, but it is a very rare occurence. In Objective-C you
+can actually treat a &amp;lt;strong&amp;gt;@protocol&amp;lt;/strong&amp;gt; as an object and assign it to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;id&amp;lt;/code&amp;gt;.
+You can not in mulle-objc.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;There are no good tips for this yet.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: @package]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/package.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/package.html&lt;/id&gt;
+  &lt;published&gt;2024-05-10T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-10T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Replace with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@public&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: @import]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/modules.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/modules.html&lt;/id&gt;
+  &lt;published&gt;2024-05-05T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-05T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;You will have to use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;#import&amp;lt;/code&amp;gt; instead.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: generics]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/generics.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/generics.html&lt;/id&gt;
+  &lt;published&gt;2024-05-02T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-05-02T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;rewrite-by-removing-generics-typing&amp;quot;&amp;gt;Rewrite by removing generics typing&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;If your parameter is specified as &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSArray&amp;amp;lt;NSNumber *&amp;amp;gt;&amp;lt;/code&amp;gt; reduce the type
+to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSArray *&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;validate-content-at-runtime&amp;quot;&amp;gt;Validate content at runtime&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;The way to validate array content in Objective-C is at runtime, when you
+are inserting a value:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSParameterAssert&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;isKindOfClass&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSNumber&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;class&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]]);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;array&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;addObject&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-id-for-truely-generic-algorithms&amp;quot;&amp;gt;Use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;id&amp;lt;/code&amp;gt; for truely generic algorithms&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;If you want true generic algorithms, consider replacing your type with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;id&amp;lt;/code&amp;gt;.
+You can also then specify the methods your algorithm requires using a
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@protocol&amp;lt;/code&amp;gt; and then type your methods with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;id &amp;amp;lt;protocol&amp;amp;gt;&amp;lt;/code&amp;gt;.
+This keeps the algorithm the most resusable.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: . syntax for properties]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/dotsyntax.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/dotsyntax.html&lt;/id&gt;
+  &lt;published&gt;2024-04-30T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-04-30T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;Hopefully there will be a code-conversion tool in the future, but for now
+translate dot syntax to Objective-C calls.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;e.g.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;setup&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyA&amp;lt;/span&amp;gt;         &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;0&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;numberC&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;numberD&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;2&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;setup&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;id&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;setPropertyA&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;0&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;setNumberC&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;propertyB&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;setNumberD&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;2&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;This is also better code.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: ^blocks]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/block.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/block.html&lt;/id&gt;
+  &lt;published&gt;2024-04-25T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-04-25T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;disable-blocks&amp;quot;&amp;gt;Disable blocks&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;A good first step is to wrap all method declarations and definitions with&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-c highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __has_extension(blocks)
+#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;If you are lucky, blocks are just a non-integral,value-added feature
+in the ported library.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;rewrite&amp;quot;&amp;gt;Rewrite&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Generally at this point, you should check &amp;lt;em&amp;gt;how much&amp;lt;/em&amp;gt; blocks code there is.
+If it is used only a few places, here are some ideas how to convert the code
+for mulle-objc.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;transform-to-nsinvocation&amp;quot;&amp;gt;Transform to NSInvocation&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Blocks that are stored for later execution, are basically a form of
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSInvocation&amp;lt;/code&amp;gt;. Transform your blocks code into a method and create an
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSInvocation&amp;lt;/code&amp;gt; for it.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;transform-to-c-function&amp;quot;&amp;gt;Transform to C function&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;If the block is used immediately, perhaps to map it to an NSArray,
+extract the code into a C function. Encapsulate the parameters into a C
+struct.&amp;lt;/p&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: ARC]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/arc.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/arc.html&lt;/id&gt;
+  &lt;published&gt;2024-04-20T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-04-20T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;ARC as a technology is not available in &amp;lt;strong&amp;gt;mulle-objc&amp;lt;/strong&amp;gt; and never will be.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Ideally though, code should remain functional in ARC but work flawlessly in
+mulle-objc.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;use-convenience-constructors&amp;quot;&amp;gt;Use convenience constructors&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Outside of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-init&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;, replace &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[[obj alloc] init]&amp;lt;/code&amp;gt; calls with
+convenience constructors like &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+[NSArray array]&amp;lt;/code&amp;gt;, if available.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;create-your-own-convenience-constructors&amp;quot;&amp;gt;Create your own convenience constructors&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;If a convenience constructor is not available, it might be useful to
+create your own with a category. Consider this if there is a lot of calls
+for the same class/method combination.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;This is the code to replace a &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[[Foo alloc] initWithRandomNumber]&amp;lt;/code&amp;gt; with
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[Foo fooWithRandomNumber]&amp;lt;/code&amp;gt;:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@interface&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nc&amp;quot;&amp;gt;Foo&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;Convenience&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;fooWithRandomNumber&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@end&amp;lt;/span&amp;gt;
+
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@implementation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nc&amp;quot;&amp;gt;Foo&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nl&amp;quot;&amp;gt;Convenience&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;fooWithRandomNumber&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;id&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;Foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;alloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;initWithRandomNumber&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;rand&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;()];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#if ! __has_feature(objc_arc)
+&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;autorelease&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;@end&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;wrap-allocinit-calls&amp;quot;&amp;gt;Wrap alloc/init calls&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;You could also use this idea to wrap your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[[obj alloc] init]&amp;lt;/code&amp;gt; code&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#if __has_feature(objc_arc)
+# define AUTORELEASE( x)  x
+#else
+# define AUTORELEASE( x)  NSAutoreleaseObject( x)
+#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;So you can simplify the above written &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+fooWithRandomNumber&amp;lt;/code&amp;gt; like this:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;+&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;instancetype&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;fooWithRandomNumber&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;AUTORELEASE&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;Foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;alloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;initWithRandomNumber&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;rand&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;()]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;));&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;add-super-dealloc-to--dealloc&amp;quot;&amp;gt;Add &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[super dealloc]&amp;lt;/code&amp;gt; to &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;You could use this idea to modify your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; code&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#if __has_feature(objc_arc)
+# define SUPER_DEALLOC()
+#else
+# define SUPER_DEALLOC()  [super dealloc]
+#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;dealloc&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;SUPER_DEALLOC&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;();&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;fix-convenience-constructors-in--init&amp;quot;&amp;gt;Fix convenience constructors in -init&amp;lt;/h2&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;id&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;init&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;super&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;init&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;if&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt;
+      &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;_foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSArray&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;array&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;return&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Here an instance variable is initialized with an autoreleased &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSArray&amp;lt;/code&amp;gt;, which
+will soon be unavailable.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Write &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;_foo = [[NSArray alloc] init];&amp;lt;/code&amp;gt; to make your code ARC and mulle-objc
+compatible.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;release-instance-variables-manually&amp;quot;&amp;gt;Release instance variables manually&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;There is often no &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; method in ARC code. That is fine if the
+class has only properties. Then mulle-objc will clean up automatically.
+If your class has non-property instance variables, they must be released in
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; or &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-finalize&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Since &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-finalize&amp;lt;/code&amp;gt; isn’t used in ARC code, it can be a good place to do it.
+Othewise you could use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;#if __has_feature( objc_arc)&amp;lt;/code&amp;gt; in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __MULLE_OBJC__
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;-&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;finalize&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;{&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;_foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;autorelease&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;_foo&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nb&amp;quot;&amp;gt;nil&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+   &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;super&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;finalize&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;}&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;Remember to use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-autorelease&amp;lt;/code&amp;gt; instead of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-release&amp;lt;/code&amp;gt;. Also &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;nil&amp;lt;/code&amp;gt; out the instance variable in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-finalize&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-info-circle&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; &amp;lt;b&amp;gt;Note:&amp;lt;/b&amp;gt; You would not nil out in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt; and you
+would use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-release&amp;lt;/code&amp;gt; in &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dealloc&amp;lt;/code&amp;gt;.&amp;lt;/div&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: subscripting]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/subscripting.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/subscripting.html&lt;/id&gt;
+  &lt;published&gt;2024-04-15T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-04-15T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;p&amp;gt;The use of [] to index into an Objective-C array like into a C array is known
+as “subscripting”. It will never be supported by &amp;lt;strong&amp;gt;mulle-objc&amp;lt;/strong&amp;gt;, because it
+introduces an un-C like ambiguity. This also precludes subscripting for
+dictionaries.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;translate-array-0&amp;quot;&amp;gt;Translate array[ 0]&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[array objectAtIndex:0]&amp;lt;/code&amp;gt; or the mulle-objc shortcut &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[array :0]&amp;lt;/code&amp;gt;. The latter
+will make your code incompatible with other runtimes though.&amp;lt;/p&amp;gt;
+
+&amp;lt;h2 id=&amp;quot;translate-dictionary-key&amp;quot;&amp;gt;Translate dictionary[ @”key”]&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[dictionary objectForKey:@&amp;quot;key&amp;quot;]&amp;lt;/code&amp;gt; or the mulle-objc shortcut &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;[dictionary :@&amp;quot;key&amp;quot;]&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+&lt;/content&gt;
+&lt;/entry&gt;
+
+
+&lt;entry&gt;
+  &lt;title type=&quot;html&quot;&gt;&lt;![CDATA[Porting: General Tips]]&gt;&lt;/title&gt;
+  &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;https://www.mulle-kybernetik.com/porting.html&quot; /&gt;
+  &lt;id&gt;https://www.mulle-kybernetik.com/porting.html&lt;/id&gt;
+  &lt;published&gt;2024-04-10T00:00:00+02:00&lt;/published&gt;
+  &lt;updated&gt;2024-04-10T00:00:00+02:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Nat!&lt;/name&gt;
+    &lt;uri&gt;https://www.mulle-kybernetik.com&lt;/uri&gt;
+    &lt;email&gt;nat-objects@emulle-kybernetik.com&lt;/email&gt;
+  &lt;/author&gt;
+  &lt;content type=&quot;html&quot;&gt;&amp;lt;h2 id=&amp;quot;tips&amp;quot;&amp;gt;Tips&amp;lt;/h2&amp;gt;
+
+&amp;lt;p&amp;gt;Use the Foundation as your base and not the MulleFoundation, as Foundation also
+include &amp;lt;a href=&amp;quot;//github.com/mulle-objc/objc-compat&amp;quot;&amp;gt;objc-compat&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;use-envelope-headers&amp;quot;&amp;gt;Use envelope headers&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Rewrite code that imports specific headers to use the envelope header.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;Example: Rewrite&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#import &amp;amp;lt;Foundation/NSObject.h&amp;amp;gt;
+#import &amp;amp;lt;Foundation/NSString.h&amp;amp;gt;
+&amp;lt;/span&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;to&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;#import &amp;quot;import.h&amp;quot; // or &amp;amp;lt;Foundation/Foundation.h&amp;amp;gt; without the modern workflow
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;The exception being &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;amp;lt;Foundation/NSDebug.h&amp;amp;gt;&amp;lt;/code&amp;gt; or any other header not exposed by
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;amp;lt;Foundation/Foundation.h&amp;amp;gt;&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;find-and-correct-uses-of-class_getinstancesize&amp;quot;&amp;gt;Find and correct uses of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;class_getInstanceSize&amp;lt;/code&amp;gt;&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Two typical uses for &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;class_getInstanceSize&amp;lt;/code&amp;gt; are&amp;lt;/p&amp;gt;
+
+&amp;lt;ol&amp;gt;
+  &amp;lt;li&amp;gt;retrieve the amount of memory required to create an instance&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;locate the “extra” bytes allocated by &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSAllocateObject&amp;lt;/code&amp;gt; at the end of an instance&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;instance-creation&amp;quot;&amp;gt;Instance creation&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;The number of bytes returned by &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;class_getInstanceSize&amp;lt;/code&amp;gt; is the amount of bytes
+required to hold an instance (including mulle-objc runtime overhead).
+But the actual object will be at an offset. Pass the allocated memory to
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;objc_constructInstance&amp;lt;/code&amp;gt; and use the return value as the instance pointer.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;id&amp;lt;/span&amp;gt;        &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;size_t&amp;lt;/span&amp;gt;    &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;      &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;       &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;class_getInstanceSize&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;cls&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;calloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mi&amp;quot;&amp;gt;1&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;        &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;objc_constructInstance&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;cls&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;,&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;...&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __MULLE_OBJC__
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;object_getAlloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#else
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;free&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;access-extra-bytes&amp;quot;&amp;gt;Access extra bytes&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;Remember that your class may be subclassed. An offset from the last known instance variable
+in your class implementation may not be correct.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;The proper and portable way to get a pointer to the extra bytes is:&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;size_t&amp;lt;/span&amp;gt;    &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;      &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;void&amp;lt;/span&amp;gt;      &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;extra&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+
+&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;       &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;class_getInstanceSize&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;object_getClass&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;self&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;));&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#ifdef __MULLE_OBJC__
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;object_getAlloc&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;);&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#else
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;obj&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;;&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;#endif
+&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;extra&amp;lt;/span&amp;gt;      &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;((&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;kt&amp;quot;&amp;gt;char&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;allocation&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)[&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;size&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;If you use &amp;lt;a href=&amp;quot;https://github.com/MulleFoundation/objc-compat&amp;quot;&amp;gt;objc-compat&amp;lt;/a&amp;gt;, you
+can use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;object_getExtraBytes&amp;lt;/code&amp;gt;, which does exactly the above.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;register-composed-selectors-before-using-messaging&amp;quot;&amp;gt;Register composed selectors before using messaging&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;If you compose a selector from a C string, you must then use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;sel_registerName&amp;lt;/code&amp;gt;
+to acquire a &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;SEL&amp;lt;/code&amp;gt; from the string. Then use this &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;SEL&amp;lt;/code&amp;gt; for messaging.
+(You can also use &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSSelectorFromString&amp;lt;/code&amp;gt;)&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;find-and-correct-uses-of-objc_msgsend-and-objc_msgsend_stret&amp;quot;&amp;gt;Find and correct uses of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;objc_msgSend&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;objc_msgSend_stret&amp;lt;/code&amp;gt;&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Use the &amp;lt;a href=&amp;quot;https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html&amp;quot;&amp;gt;mulle-objc MetaABI&amp;lt;/a&amp;gt;
+convention to pass parameters and inspect return values.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;find-and-correct-uses-of-protocol&amp;quot;&amp;gt;Find and correct uses of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;Protocol&amp;lt;/code&amp;gt;&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;Protocol *&amp;lt;/code&amp;gt; does not exist. Replace it with &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PROTOCOL&amp;lt;/code&amp;gt;. You can not treat
+&amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;PROTOCOL&amp;lt;/code&amp;gt; as an object and message it.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;find-initialize-and-load-methods-and-add-dependency-information&amp;quot;&amp;gt;Find &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+initialize&amp;lt;/code&amp;gt; and &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+load&amp;lt;/code&amp;gt; methods and add dependency information&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;The proper dependencies must be declared, the only known dependency to exist is the runtime during loading and initialization. Everything else must be declared.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;MULLE_OBJC_DEPENDS_ON_LIBRARY( Foundation);
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;move-class-extension-code-to-the-interface&amp;quot;&amp;gt;Move class extension code to the @interface&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;TODO&amp;lt;/p&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;fix-mismatching-property-and-ivar-names-rename-ivars&amp;quot;&amp;gt;Fix mismatching property and ivar names (rename ivars)&amp;lt;/h4&amp;gt;
+
+&amp;lt;p&amp;gt;TODO&amp;lt;/p&amp;gt;
+
+&amp;lt;h4 id=&amp;quot;issues&amp;quot;&amp;gt;Issues&amp;lt;/h4&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;the runtime only knows about protocols that are adopted by a class&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;PROTOCOL in mulle-objc is a hash value (like a selector) a different type&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;you can not message protocols&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;there-is-no-enveloping-nsautoreleasepool-around-load-in-mulle-objc&amp;quot;&amp;gt;There is no enveloping NSAutoreleasePool around &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+load&amp;lt;/code&amp;gt; in mulle-objc&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;If you create ephemeral instances in your &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;+load&amp;lt;/code&amp;gt; method, you should wrap
+the code yourself inside an &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSAutoreleasePool&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;sizeof-unichar-is-different&amp;quot;&amp;gt;sizeof( unichar) is different&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;Apple Foundation uses UTF-16 as unichar, whereas the mulle-objc Foundation
+uses UTF-32 as unichar. As long as your code is not assuming 16-bit for its
+size, there should be no problem.&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;When accessing string contents as &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;unichar *&amp;lt;/code&amp;gt; with say &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;-dataUsingEncoding:&amp;lt;/code&amp;gt;
+use the generic &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSUnicodeStringEncoding&amp;lt;/code&amp;gt; instead of &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;NSUTF32StringEncoding/NSUTF16StringEncoding&amp;lt;/code&amp;gt;.&amp;lt;/p&amp;gt;
+
+&amp;lt;div class=&amp;quot;language-objc highlighter-rouge&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;code&amp;gt;  &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;data&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;s&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;dataUsingEncoding&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;:&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;NSUnicodeStringEncoding&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;];&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;here_some_unichars&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;unichar&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;*&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;data&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;bytes&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;],&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;[&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;data&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nf&amp;quot;&amp;gt;length&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;]&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;/&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;k&amp;quot;&amp;gt;sizeof&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;unichar&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;));&amp;lt;/span&amp;gt;
+&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;TODO: How about printf with %S ?&amp;lt;/p&amp;gt;
+
+&amp;lt;h3 id=&amp;quot;inout-&amp;quot;&amp;gt;inout …&amp;lt;/h3&amp;gt;
+
+&amp;lt;p&amp;gt;These &amp;lt;code class=&amp;quot;language-plaintext highlighter-rouge&amp;quot;&amp;gt;@encode&amp;lt;/code&amp;gt; adornments should still work, but they are not encoded
+and decoded:&amp;lt;/p&amp;gt;
+
+&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;in&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;out&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;inout&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;bycopy&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;byref&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;oneway&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;blockquote&amp;gt;
+  &amp;lt;p&amp;gt;See: &amp;lt;a href=&amp;quot;https://stackoverflow.com/questions/5609564/objective-c-in-out-inout-byref-byval-and-so-on-what-are-they&amp;quot;&amp;gt;Stack Overflow&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&lt;/content&gt;
+&lt;/entry&gt;
+
+&lt;/feed&gt;
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/atom.xml</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/atom.xml</guid>
+            
+         </item>
+          
+        
+           
+        
+           
+         <item>
+            <title></title>
+            <description>
+</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/</guid>
+            
+         </item>
+          
+        
+           
+        
+           
+         <item>
+            <title></title>
+            <description>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;{% if page.xsl %}&lt;?xml-stylesheet type=&quot;text/xml&quot; href=&quot;{{ &apos;/feed.xslt.xml&apos; | absolute_url }}&quot;?&gt;{% endif %}&lt;feed xmlns=&quot;http://www.w3.org/2005/Atom&quot; {% if site.lang %}xml:lang=&quot;{{ site.lang }}&quot;{% endif %}&gt;&lt;generator uri=&quot;https://jekyllrb.com/&quot; version=&quot;{{ jekyll.version }}&quot;&gt;Jekyll&lt;/generator&gt;&lt;link href=&quot;{{ page.url | absolute_url }}&quot; rel=&quot;self&quot; type=&quot;application/atom+xml&quot; /&gt;&lt;link href=&quot;{{ &apos;/&apos; | absolute_url }}&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot; {% if site.lang %}hreflang=&quot;{{ site.lang }}&quot; {% endif %}/&gt;&lt;updated&gt;{{ site.time | date_to_xmlschema }}&lt;/updated&gt;&lt;id&gt;{{ page.url | absolute_url | xml_escape }}&lt;/id&gt;{% assign title = site.title | default: site.name %}{% if page.collection != &quot;posts&quot; %}{% assign collection = page.collection | capitalize %}{% assign title = title | append: &quot; | &quot; | append: collection %}{% endif %}{% if page.category %}{% assign category = page.category | capitalize %}{% assign title = title | append: &quot; | &quot; | append: category %}{% endif %}{% if title %}&lt;title type=&quot;html&quot;&gt;{{ title | smartify | xml_escape }}&lt;/title&gt;{% endif %}{% if site.description %}&lt;subtitle&gt;{{ site.description | xml_escape }}&lt;/subtitle&gt;{% endif %}{% if site.author %}&lt;author&gt;&lt;name&gt;{{ site.author.name | default: site.author | xml_escape }}&lt;/name&gt;{% if site.author.email %}&lt;email&gt;{{ site.author.email | xml_escape }}&lt;/email&gt;{% endif %}{% if site.author.uri %}&lt;uri&gt;{{ site.author.uri | xml_escape }}&lt;/uri&gt;{% endif %}&lt;/author&gt;{% endif %}{% if page.tags %}{% assign posts = site.tags[page.tags] %}{% else %}{% assign posts = site[page.collection] %}{% endif %}{% if page.category %}{% assign posts = posts | where: &quot;categories&quot;, page.category %}{% endif %}{% unless site.show_drafts %}{% assign posts = posts | where_exp: &quot;post&quot;, &quot;post.draft != true&quot; %}{% endunless %}{% assign posts = posts | sort: &quot;date&quot; | reverse %}{% assign posts_limit = site.feed.posts_limit | default: 10 %}{% for post in posts limit: posts_limit %}&lt;entry{% if post.lang %}{{&quot; &quot;}}xml:lang=&quot;{{ post.lang }}&quot;{% endif %}&gt;{% assign post_title = post.title | smartify | strip_html | normalize_whitespace | xml_escape %}&lt;title type=&quot;html&quot;&gt;{{ post_title }}&lt;/title&gt;&lt;link href=&quot;{{ post.url | absolute_url }}&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot; title=&quot;{{ post_title }}&quot; /&gt;&lt;published&gt;{{ post.date | date_to_xmlschema }}&lt;/published&gt;&lt;updated&gt;{{ post.last_modified_at | default: post.date | date_to_xmlschema }}&lt;/updated&gt;&lt;id&gt;{{ post.id | absolute_url | xml_escape }}&lt;/id&gt;{% assign excerpt_only = post.feed.excerpt_only | default: site.feed.excerpt_only %}{% unless excerpt_only %}&lt;content type=&quot;html&quot; xml:base=&quot;{{ post.url | absolute_url | xml_escape }}&quot;&gt;&lt;![CDATA[{{ post.content | strip }}]]&gt;&lt;/content&gt;{% endunless %}{% assign post_author = post.author | default: post.authors[0] | default: site.author %}{% assign post_author = site.data.authors[post_author] | default: post_author %}{% assign post_author_email = post_author.email | default: nil %}{% assign post_author_uri = post_author.uri | default: nil %}{% assign post_author_name = post_author.name | default: post_author %}&lt;author&gt;&lt;name&gt;{{ post_author_name | default: &quot;&quot; | xml_escape }}&lt;/name&gt;{% if post_author_email %}&lt;email&gt;{{ post_author_email | xml_escape }}&lt;/email&gt;{% endif %}{% if post_author_uri %}&lt;uri&gt;{{ post_author_uri | xml_escape }}&lt;/uri&gt;{% endif %}&lt;/author&gt;{% if post.category %}&lt;category term=&quot;{{ post.category | xml_escape }}&quot; /&gt;{% elsif post.categories %}{% for category in post.categories %}&lt;category term=&quot;{{ category | xml_escape }}&quot; /&gt;{% endfor %}{% endif %}{% for tag in post.tags %}&lt;category term=&quot;{{ tag | xml_escape }}&quot; /&gt;{% endfor %}{% assign post_summary = post.description | default: post.excerpt %}{% if post_summary and post_summary != empty %}&lt;summary type=&quot;html&quot;&gt;&lt;![CDATA[{{ post_summary | strip_html | normalize_whitespace }}]]&gt;&lt;/summary&gt;{% endif %}{% assign post_image = post.image.path | default: post.image %}{% if post_image %}{% unless post_image contains &quot;://&quot; %}{% assign post_image = post_image | absolute_url %}{% endunless %}&lt;media:thumbnail xmlns:media=&quot;http://search.yahoo.com/mrss/&quot; url=&quot;{{ post_image | xml_escape }}&quot; /&gt;&lt;media:content medium=&quot;image&quot; url=&quot;{{ post_image | xml_escape }}&quot; xmlns:media=&quot;http://search.yahoo.com/mrss/&quot; /&gt;{% endif %}&lt;/entry&gt;{% endfor %}&lt;/feed&gt;</description>
+            <pubDate></pubDate>
+            <link>https://www.mulle-kybernetik.com/feed.xml</link>
+            <guid isPermaLink="true">https://www.mulle-kybernetik.com/feed.xml</guid>
+            
+         </item>
+          
+        
+    </channel>
+</rss>

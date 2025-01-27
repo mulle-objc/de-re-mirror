@@ -1,0 +1,304 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>🌲 Project Compositor &#8211; De Re mulle-sde</title>
+<meta name="description" content="Project composition adds remote or local files (and directories) to a project. The project, as stored in a source code management sytem like git, would commonly not include these files. These files would typically be part of your build process (Makefile) though. So after a checkout, you need to run...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="🌲 Project Compositor">
+<meta name="twitter:description" content="Project composition adds remote or local files (and directories) to a project. The project, as stored in a source code management sytem like git, would commonly not include these files. These files would typically be part of your build process (Makefile) though. So after a checkout, you need to run...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🌲 Project Compositor">
+<meta property="og:description" content="Project composition adds remote or local files (and directories) to a project. The project, as stored in a source code management sytem like git, would commonly not include these files. These files would typically be part of your build process (Makefile) though. So after a checkout, you need to run...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/compositor.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/compositor.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/existing-makefile.html" title="🔶 Manage a Makefile project 🆕">🔶 Manage a Makefile project 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/virtual-env.html" title="🌳 Virtual Environment">🌳 Virtual Environment</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/template.html" title="🕋 Template generator">🕋 Template generator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/compositor.html" title="🌲 Project Compositor">🌲 Project Compositor</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/builder.html" title="🚬 Fetch and build">🚬 Fetch and build</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/makefile.html" title="💠 Makefile maintainer">💠 Makefile maintainer</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/test-coverage.html" title="☑︎ Test suite with Coverage 🆕">☑︎ Test suite with Coverage 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/definition.html" title="💄 Definition isolator">💄 Definition isolator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/hecklers-corner.html" title="Hecklers Corner">Hecklers Corner</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>🌲 Project Compositor</h1>
+                  <div>
+                  <p>Project composition adds remote or local files (and directories) to
+a project. The project, as stored in a source code management sytem like git,
+would commonly <strong><em>not</em></strong> include these files. These files <em>would</em> typically be part
+of your build process (Makefile) though. So after a checkout, you need to run the
+project composition to complete the project complete.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<p>For project composition only the most barebones, unencumbered virtual
+environment is needed to store a few settings. On the assumption, that we are
+in the right place already, prepare the virtual environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">--no-post-init</span> <span class="nt">-s</span> none/wild none
+</code></pre></div></div>
+<p>As mulle-sde will not be used for building, its most convenient to use the
+<code class="language-plaintext highlighter-rouge">none/wild</code> environment style. This makes the virtual environment completely
+unencumbered.</p>
+
+<h3 id="add-a-license-file">Add a LICENSE file</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">dependency add --embedded</code> command a LICENSE file will be downloaded
+from a remote source and placed into the project root at a later time:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add <span class="nt">--embedded</span> <span class="se">\</span>
+                         <span class="nt">--address</span> LICENSE <span class="se">\</span>
+                         https://www.gnu.org/licenses/gpl-3.0.txt
+</code></pre></div></div>
+
+<blockquote>
+  <p>If there was a <code class="language-plaintext highlighter-rouge">gpl-latest.txt</code>, we would be up to date with the latest
+GPL automatically.</p>
+</blockquote>
+
+<h3 id="add-some-source-code">Add some source code</h3>
+
+<p>Add a small hash library from the “mulle-c” project and place it into <code class="language-plaintext highlighter-rouge">src</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add <span class="se">\</span>
+   <span class="nt">--embedded</span> <span class="se">\</span>
+   <span class="nt">--address</span> src/farmhash <span class="se">\</span>
+   https://github.com/mulle-c/farmhash-c/archive/refs/tags/latest.tar.gz
+</code></pre></div></div>
+
+<h3 id="run-the-composition">Run the composition</h3>
+
+<p>With these dependency definitions in place, it’s now time to run
+<code class="language-plaintext highlighter-rouge">mulle-sde fetch</code> to compose the project.</p>
+
+<p><img src="images/composition-fetch.png" alt="" /></p>
+
+<p>To get rid of the embedded files, use <code class="language-plaintext highlighter-rouge">mulle-sde clean tidy</code>.  Project
+composition is fairly powerful. You can add and remove embedded dependencies
+and change their URLs at will. A new <code class="language-plaintext highlighter-rouge">mulle-sde fetch</code> will track the
+changes and synchronize your project.</p>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>If you don’t need any other functionality from mulle-sde, you can get project
+composition from <a href="//github.com/mulle-sde/mulle-sourcetree">mulle-sourcetree</a>
+only. You would not need to run <code class="language-plaintext highlighter-rouge">mulle-sde init</code> then.</p>
+
+<p>The fetching of archives and git repositories is done with
+<a href="//github.com/mulle-sde/mulle-fetch">mulle-fetch</a>. mulle-fetch relies on
+heuristics to save typework. This will work fine in common cases, but needs
+explicitness, when it fails. Nevertheless just having to type
+<code class="language-plaintext highlighter-rouge">mulle-fetch --github mulle-c mulle-container</code> to fetch a repository or
+<code class="language-plaintext highlighter-rouge">mulle-fetch https://github.com/mulle-c/mulle-buffer/archive/refs/tags/latest.tar.gz</code>
+to download and unpack a github tar link is handy.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-sde/template.html">🕋 Template generator</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-sde/builder.html">🚬 Fetch and build</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

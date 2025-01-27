@@ -1,0 +1,502 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>🕋 Template generator &#8211; De Re mulle-sde</title>
+<meta name="description" content="mulle-sde has a template generator to create source files and populate new
+projects. But it can be useful in other scenarios. Here are three different
+examples:
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="🕋 Template generator">
+<meta name="twitter:description" content="mulle-sde has a template generator to create source files and populate new projects. But it can be useful in other scenarios. Here are three different examples: Example: Create a serial email Lets create a little email template. In case we only have an email address of the recipient and no...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🕋 Template generator">
+<meta property="og:description" content="mulle-sde has a template generator to create source files and populate new projects. But it can be useful in other scenarios. Here are three different examples: Example: Create a serial email Lets create a little email template. In case we only have an email address of the recipient and no...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/template.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/default-thumb.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/template.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/existing-makefile.html" title="🔶 Manage a Makefile project 🆕">🔶 Manage a Makefile project 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/virtual-env.html" title="🌳 Virtual Environment">🌳 Virtual Environment</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/template.html" title="🕋 Template generator">🕋 Template generator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/compositor.html" title="🌲 Project Compositor">🌲 Project Compositor</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/builder.html" title="🚬 Fetch and build">🚬 Fetch and build</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/makefile.html" title="💠 Makefile maintainer">💠 Makefile maintainer</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/test-coverage.html" title="☑︎ Test suite with Coverage 🆕">☑︎ Test suite with Coverage 🆕</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/definition.html" title="💄 Definition isolator">💄 Definition isolator</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-mulle-sde/hecklers-corner.html" title="Hecklers Corner">Hecklers Corner</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>🕋 Template generator</h1>
+                  <div>
+                  <p>mulle-sde has a template generator to create source files and populate new
+projects. But it can be useful in other scenarios. Here are three different
+examples:</p>
+
+<h2 id="example-create-a-serial-email">Example: Create a serial email</h2>
+
+<p>Lets create a little email template. In case we only have an email address of
+the recipient and no other information, we will address the recipient as
+“Friend”:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; serial-email.txt
+From: me@me.com
+To: &lt;|EMAIL|&gt;
+Subject: This is a personal email
+
+Dear &lt;|TITLE|&gt; &lt;|FIRSTNAME|&gt; &lt;|LASTNAME:-Friend|&gt;,
+
+Happy holidays!
+
+Yours
+	A friend
+.
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>If you read the previous chapter, you probably already guessed what’s coming
+next: we need some environment variables to fill the template.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">TITLE</span><span class="o">=</span><span class="s2">"Mr."</span>
+<span class="nb">export </span><span class="nv">FIRSTNAME</span><span class="o">=</span><span class="s2">"Joe"</span>
+<span class="nb">export </span><span class="nv">LASTNAME</span><span class="o">=</span><span class="s2">"Shmoe"</span>
+<span class="nb">export </span><span class="nv">EMAIL</span><span class="o">=</span><span class="s2">"joe.schmoe@shmoester-consult.gg"</span>
+</code></pre></div></div>
+
+<p>Now we can run <code class="language-plaintext highlighter-rouge">mulle-template -v generate serial-email.txt -</code> to
+get the filled out template:</p>
+
+<p><img src="images/template-email.png" alt="Email" /></p>
+
+<blockquote>
+  <p>To see the effect of the <code class="language-plaintext highlighter-rouge">&lt;|LASTNAME:-Friend|&gt;</code> default value, you must
+<code class="language-plaintext highlighter-rouge">unset LASTNAME</code>. An empty string still counts as value. (If you don’t like
+the <code class="language-plaintext highlighter-rouge">&lt;| |&gt;</code> tags, you can change them to anything, which doesn’t
+interfere with the other text).</p>
+</blockquote>
+
+<h2 id="example-a-boilerplate-c-project-from-templates">Example: A boilerplate C project from templates</h2>
+
+<p>Let’s create a simple C project template, with a Makefile:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>PROJECT_NAME
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; PROJECT_NAME/PROJECT_NAME.c
+#include &lt;stdio.h&gt;
+
+
+int  main( int argc, char *argv[])
+{
+   printf( "VfL Bochum 1848</span><span class="se">\n</span><span class="sh">");
+   return( 0);
+}
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; PROJECT_NAME/Makefile
+.PHONY: all
+
+all:  &lt;|PROJECT_NAME|&gt;
+
+&lt;|PROJECT_NAME|&gt;:  &lt;|PROJECT_NAME|&gt;.o
+
+clean:
+	rm &lt;|PROJECT_NAME|&gt; &lt;|PROJECT_NAME|&gt;.o  # must be TAB in front of rm
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Now with the template directory in place generate the C project with
+<code class="language-plaintext highlighter-rouge">mulle-template -DPROJECT_NAME=caramba generate PROJECT_NAME .</code>. You can define
+environment variables on the command line as well.</p>
+
+<p><img src="images/template-caramba.png" alt="C Project" /></p>
+
+<h2 id="example-a-script-file-from-a-template">Example: A script file from a template</h2>
+
+<p>mulle-sde ships with a number of file templates. More templates can be added
+with <em>extensions</em> (more on that later).
+For example <code class="language-plaintext highlighter-rouge">mulle-sde add foo.sh</code> creates a template generated shell script
+file “foo.sh” for use with
+<a href="/github.com/mulle-nat/mulle-bashfunctions">mulle-bashfunctions</a>.</p>
+
+<p>Here is how “foo.sh” looks like at the time of writing (contents are subject to
+change with general progress):</p>
+
+<pre><code class="language-txt">#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+#
+#
+#  foo.sh
+#  serial-letter
+#
+#  Copyright (c) 2022 Nat! - Mulle kybernetiK.
+#  All rights reserved.
+#
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions are met:
+#
+#  Redistributions of source code must retain the above copyright notice, this
+#  list of conditions and the following disclaimer.
+#
+#  Redistributions in binary form must reproduce the above copyright notice,
+#  this list of conditions and the following disclaimer in the documentation
+#  and/or other materials provided with the distribution.
+#
+#  Neither the name of Mulle kybernetiK nor the names of its contributors
+#  may be used to endorse or promote products derived from this software
+#  without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+#  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+#  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+[ "${TRACE}" = 'YES' -o "${FOO_TRACE}" = 'YES' ] \
+&amp;&amp; set -x  \
+&amp;&amp; : "$0" "$@"
+
+#
+# Versioning of this script
+#
+MULLE_EXECUTABLE_VERSION="0.0.0"
+
+
+foo::print_flags()
+{
+	echo "   -f    : force operation"
+
+	##
+	## ADD YOUR FLAGS DESCRIPTIONS HERE
+	##
+
+	options_technical_flags_usage \
+			  "      : "
+}
+
+
+foo::usage()
+{
+	[ $# -ne 0 ] &amp;&amp; log_error "$*"
+
+
+	cat &lt;&lt;EOF &gt;&amp;2
+Usage:
+	foo [flags]
+
+	##
+	## ADD YOUR USAGE DESCRIPTION HERE
+	##
+
+Flags:
+EOF
+	foo::print_flags | LC_ALL=C sort &gt;&amp;2
+
+	exit 1
+}
+
+
+foo::main()
+{
+	#
+	# simple option/flag handling
+	#
+	local OPTION_VALUE
+
+	while [ $# -ne 0 ]
+	do
+		if options_technical_flags "$1"
+		then
+			shift
+			continue
+		fi
+
+		case "$1" in
+			-f|--force)
+				MULLE_FLAG_MAGNUM_FORCE='YES'
+			;;
+
+			-h*|--help|help)
+				foo::usage
+			;;
+
+			--value)
+				[ $# -eq 1 ] &amp;&amp; match_list_usage "missing argument to $1"
+				shift
+
+				OPTION_VALUE="$1"
+			;;
+
+			--version)
+				printf "%s\n" "${MULLE_EXECUTABLE_VERSION}"
+				exit 0
+			;;
+
+
+			##
+			## ADD YOUR FLAGS HERE
+			##
+
+			-*)
+				foo::usage "Unknown flag \"$1\""
+			;;
+
+			*)
+				break
+			;;
+		esac
+
+		shift
+	done
+
+	options_setup_trace "${MULLE_TRACE}" &amp;&amp; set -x
+
+	##
+	## ADD YOUR CODE HERE
+	##
+	log_info "Does nothing, but will soon"
+}
+
+#
+# You can also use the function `call_with_flags`, which has been defined
+# during mulle-boot. It lets you call 'foo::main'
+# with FOO_FLAGS interposed.
+#
+# call_with_flags "foo::main" "${FOO_FLAGS}" "$@"
+
+foo::main "$@"
+</code></pre>
+
+<p>The BSD license header on top is taken from a file
+<code class="language-plaintext highlighter-rouge">~/.config/mulle/etc/sde/header.sh</code>, that is included by the template
+via a <code class="language-plaintext highlighter-rouge">&lt;|HEADER|&gt;</code> tag:</p>
+
+<blockquote>
+  <p>You can execute <code class="language-plaintext highlighter-rouge">mulle-sde add</code> anywhere. The “add” command does not require
+a virtual environment unlike most mulle-sde commands.</p>
+</blockquote>
+
+<h2 id="final-words">Final words</h2>
+
+<p>That is templating with mulle-sde. The most exciting feature is probably, the
+way that filenames are also subject to templating. The templating features
+are provided by <a href="//github.com/mulle-sde/mulle-template">mulle-template</a>, which
+can be used outside of mulle-sde.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-mulle-sde/virtual-env.html">🌳 Virtual Environment</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-mulle-sde/compositor.html">🌲 Project Compositor</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Class &#8211; Objective-C Runtime in Pictures</title>
+<meta name="description" content="Syntax topics
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Class">
+<meta name="twitter:description" content="Syntax topics
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/objc-runtime-in-pictures/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class">
+<meta property="og:description" content="Syntax topics
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/class.html">
+<meta property="og:site_name" content="Objective-C Runtime in Pictures">
+
+<link href="/objc-runtime-in-pictures/atom.xml" type="application/atom+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+<link href="/objc-runtime-in-pictures/index.rdf" type="application/rss+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/class.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/objc-runtime-in-pictures/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/objc-runtime-in-pictures/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/class.html" title="Class">Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/ivar.html" title="Ivar">Ivar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/method.html" title="Method">Method</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/property.html" title="Property">Property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/category.html" title="Category">Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocol.html" title="Protocol">Protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/inheritance.html" title="Inheritance">Inheritance</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html" title="Protocolclass">Protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/quiz.html" title="Quiz">Quiz</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/appendix.html" title="Appendix">Appendix</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Class</h1>
+                  <div>
+                  <h2 id="syntax-topics">Syntax topics</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">SomeClass</span>
+<span class="k">@end</span> 
+
+<span class="n">NSString</span>   <span class="o">*</span><span class="n">helloWorld</span> <span class="o">=</span> <span class="s">@"VfL Bochum 1848"</span><span class="p">;</span>
+
+<span class="n">NSString</span>   <span class="o">*</span><span class="n">key</span> <span class="o">=</span> <span class="s">@"name"</span><span class="p">;</span>
+
+<span class="n">id</span>          <span class="n">obj</span><span class="p">;</span>
+<span class="n">Class</span>       <span class="n">cls</span><span class="p">;</span>
+<span class="n">SomeClass</span>   <span class="o">*</span><span class="n">instance</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="classes-interface-and-implementation">Classes: @interface and @implementation</h2>
+
+<p>In mulle-objc, you define a <strong>class</strong> with <code class="language-plaintext highlighter-rouge">@interface</code>. This is very
+similar to a <code class="language-plaintext highlighter-rouge">struct</code> definition in C:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@interface Empty
+@end
+</code></pre></div></div>
+
+<p>and once you write</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@implementation Empty
+@end
+</code></pre></div></div>
+
+<p>the compiler will create the following data for the runtime:</p>
+
+<p><a href="images/empty-class.svg"><img src="images/empty-class.svg" alt="Two classes" /></a></p>
+
+<p>The blue structure on top is the <strong>infraclass</strong> and the yellow structure
+below is the <strong>metaclass</strong>. The infraclass is the part you will be interacting
+with most of the time. infraclass and metaclass together form what is known as 
+a <strong>classpair</strong>.The term “class” is used interchangeably for infraclass, metaclass, and classpair. The differentiation rarely matters.</p>
+
+<p>And this is (some) of the information you can get about a class:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">allocationsize</code></td>
+      <td>amount of memory to allocate for instance <em>excluding</em> header</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">inheritance</code></td>
+      <td>where the class inherits methods from</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">state</code></td>
+      <td>internal state of the class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ivarhash</code></td>
+      <td>a hash over the ivars of the class to prevent fragility problems</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">allocatedInstances</code></td>
+      <td>number of instances “in flight” (not yet deallocated)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">preloads</code></td>
+      <td>number of methods to preload into the cache</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="objects">Objects</h2>
+
+<p>In C you use <a href="https://en.cppreference.com/w/c/memory/malloc"><code class="language-plaintext highlighter-rouge">malloc</code></a> to 
+reserve a memory block for a struct variable on the <a href="https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap">heap</a>. In Objective-C you create an
+<strong>instance</strong> of a class. Both class and instance fall under the moniker
+<strong>object</strong>.</p>
+
+<p>Objects are uniformly accessed via a pointer, which is either of type <code class="language-plaintext highlighter-rouge">id</code> 
+for instances, or of type <code class="language-plaintext highlighter-rouge">Class</code> for classes. Every Objective-C class is its 
+own type, which you can use instead of <code class="language-plaintext highlighter-rouge">id</code> .e.g. <code class="language-plaintext highlighter-rouge">Empty *emptyInstance</code>.</p>
+
+<p>Every Objective-C object belongs to a class. For that it needs to be able
+to reference it somehow. That somehow is usually the <code class="language-plaintext highlighter-rouge">isa</code> pointer.</p>
+
+<h3 id="heap-instances">Heap instances</h3>
+
+<p>The most common type of an Objective-C object is an instance that resides on 
+the heap i.e. was malloced. The general memory layout of a heap instance 
+(at address 0x10000 in this case) is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        .               .
+header: +---------------+
+        :               :
+        :               :
+        +---------------+ 0xFFFF8
+        |    isa        |
+ivars:  +---------------+ 0x10000  &lt;----  pointer to heap instance
+        |    ivar 0     |
+        |    ivar 1     |
+        :    ...        :
+        +---------------+
+        .               .
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">isa</code> pointer will point to the infraclass of the instance.</p>
+
+<h3 id="nil-instance">nil instance</h3>
+
+<p>The <strong>nil</strong> instance is just the NULL pointer. Is it really an object ? Nobody
+knows. It has a cousin the <strong>Nil</strong> class, which is also just the NULL pointer.</p>
+
+<h3 id="tps-instances">TPS instances</h3>
+
+<p>TPS stands for <a href="https://alwaysprocessing.blog/2023/03/19/objc-tagged-ptr"><strong>T</strong>agged <strong>P</strong>ointer<strong>S</strong></a>.
+mulle-objc has some special instance pointers that encode the class in the
+lower bits of the pointer. These bits are then used to index a table to
+retrieve the proper infraclass</p>
+
+<p><img src="images/tps-pointer.svg" alt="TPS instances" /></p>
+
+<p>For example very small strings and most integers are small enough to fit into
+a TPS pointer. This saves allocation time and space.</p>
+
+<h3 id="static-nsstring-instances">static NSString instances</h3>
+
+<p>There is a special kind of instance that exists in the data segment and not
+on the heap. It is the static string, created with <code class="language-plaintext highlighter-rouge">@"..."</code>. Its memory layout
+is just like a heap instance. These static instances are created by the
+compiler only.</p>
+
+<h3 id="class-objects">Class objects</h3>
+
+<p>Classes are also objects, they always reside on the heap (sic!) in mulle-objc.
+Classes also have an <code class="language-plaintext highlighter-rouge">isa</code> pointers. This is one of the reasons for the
+classpair. Since the infraclass is an object it needs a valid value for <code class="language-plaintext highlighter-rouge">isa</code>,
+and that is the metaclass. The metaclass has also an <code class="language-plaintext highlighter-rouge">isa</code> pointer, and this
+references back to the infraclass. (See: <a href="inheritance.html">Special case: the root class</a>
+for more on this topic).</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectGetClass</code></td>
+      <td>Get the Class of an object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceGetClass</code></td>
+      <td>Get the Class of an instance (same as ObjectGetClass)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectIsInstance</code></td>
+      <td>Check if object is an instance (not a class)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectIsInstanceOrNil</code></td>
+      <td>Check if object is an instance or nil</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectIsClass</code></td>
+      <td>Check if object is a class (not an instance)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectIsClassOrNil</code></td>
+      <td>Check if object is a class or nil</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassIsMetaClass</code></td>
+      <td>Check if a Class is a metaclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceGetClassNameUTF8String</code></td>
+      <td>Get class name of an instance as C string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectGetClassNameUTF8String</code></td>
+      <td>Get class name of any object as C string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassIsSubclassOfClass</code></td>
+      <td>Check class inheritance relationship (C function)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NSObjectIsKindOfClass</code></td>
+      <td>Check instance/class relationship (C function)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceIsMemberOfClass</code></td>
+      <td>Check direct instance/class relationship (C function)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>NSObject Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-class</code></td>
+      <td>Get receiver’s class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+class</code></td>
+      <td>Get class object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-superclass </code></td>
+      <td>Get receiver’s superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+isSubclassOfClass:</code></td>
+      <td>Check if class inherits from given class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isKindOfClass:</code></td>
+      <td>Check if receiver is instance of class or inherits from it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isMemberOfClass:</code></td>
+      <td>Check if receiver is direct instance of given class</td>
+    </tr>
+  </tbody>
+</table>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/objc-runtime-in-pictures/intro.html">Intro</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/objc-runtime-in-pictures/ivar.html">Ivar</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   
+</body>
+</html>

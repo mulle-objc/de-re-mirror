@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/" rel="alternate" type="text/html" /><updated>2025-01-26T22:59:24+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/feed.xml</id><title type="html">mulle-objc Development with IDEs</title><subtitle>Developing mulle-objc projects with IDEs like Jetbrains CLion . Setup, Usage and Pitfalls.</subtitle><entry><title type="html">Outro</title><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/outro.html" rel="alternate" type="text/html" title="Outro" /><published>2022-11-01T00:00:00+01:00</published><updated>2022-11-01T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/outro</id><content type="html" xml:base="https://www.mulle-kybernetik.com/mulle-objc-ide/outro.html"><![CDATA[<p>So that should get you up an running.
+The <a href="//mulle-objc.github.io/De-Re-mulle-objc/">De Re mulle-sde</a>
+developer guide might be a good next read. To get deeper into <em>mulle-sde</em>
+check out the <a href="//mulle-sde.github.io/De-Re-mulle-sde/">De Re mulle-sde</a>
+guide.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="//mulle-objc.github.io/">mulle-objc</a> homepage</li>
+  <li>A simple example <a href="//github.com/MulleWeb/mulle-markdown">mulle-markdown</a> shows off many of the capabilities of mulle-objc development.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[So that should get you up an running. The De Re mulle-sde developer guide might be a good next read. To get deeper into mulle-sde check out the De Re mulle-sde guide.]]></summary></entry><entry><title type="html">CLion</title><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-clion.html" rel="alternate" type="text/html" title="CLion" /><published>2022-02-02T00:00:00+01:00</published><updated>2022-02-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/easy_clion</id><content type="html" xml:base="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-clion.html"><![CDATA[<p><a href="//www.jetbrains.com/clion/download/">CLion</a>) is an IDE by Jetbrains.
+It’s a commercial offering, but you get a 30 day evaluation license the first
+time you download it. So it’s perfect for playing around with mulle-objc. Well
+almost perfect. We need a special setup, otherwise CLion will develop the
+annoying tendency to hang up your system.</p>
+
+<h2 id="first-start">First Start</h2>
+
+<p>The first time you start CLion it will come up with a window like this:</p>
+
+<p align="center">
+<img src="images/clion-intro.png" style="height:200px !important;" />
+</p>
+
+<p>Let’s just keep it this way for now. There is no “New Project” support for
+mulle-objc (yet ?), so we have to create the project in the terminal.</p>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-idea.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>idea</em> extension. This extension ensures, that CLion ignores
+files that are non-editable.</p>
+
+<p>When you create a new project from scratch, add the <em>idea</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add idea
+</code></pre></div></div>
+
+<p>The <em>idea</em> extension is not required for mulle-objc projects, but makes them
+a bit nicer in CLion. Without the idea extension, you will not see an
+<code class="language-plaintext highlighter-rouge">.idea</code> folder in your project initially.</p>
+
+<h3 id="change-the-build-environment">Change the build environment</h3>
+
+<p>CLion has an indexer, that continually checks your project directory for
+changes. Though you can tell the indexer to not index certain places, in
+practicality that doesn’t always seem to work.
+<em>mulle-sde</em> will create three folders <code class="language-plaintext highlighter-rouge">stash</code>, <code class="language-plaintext highlighter-rouge">dependency</code>, <code class="language-plaintext highlighter-rouge">kitchen</code>.
+When the indexer hits <code class="language-plaintext highlighter-rouge">stash</code>, with its large amount of sources and possible
+symlinks between each project, you may incur slowness or worse.</p>
+
+<p>The most foolproof method to keep the Clion indexer away from those folders, is
+to store them outside of the project. So lets the create in the <code class="language-plaintext highlighter-rouge">my-project</code>
+folder, these mulle-sde settings to store build folders under
+<code class="language-plaintext highlighter-rouge">~/.mulle/var/...</code> or wherever you find convenient:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>DEPENDENCY_DIR <span class="s1">'${HOME}/.mulle/var/dependency-${PROJECT_NAME}'</span>
+mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>KITCHEN_DIR <span class="s1">'${HOME}/.mulle/var/kitchen-${PROJECT_NAME}'</span>
+mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>MULLE_SOURCETREE_STASH_DIR <span class="s1">'${HOME}/.mulle/var/stash-${PROJECT_NAME}'</span>
+</code></pre></div></div>
+
+<p>It is important to make these changes before opening the project, as the
+indexer and the build process will start right away.</p>
+
+<p>You can place these commands in a file called <code class="language-plaintext highlighter-rouge">~/bin/post-mulle-sde-init</code>.
+Then you will not need to execute these commands for every new project created
+with <code class="language-plaintext highlighter-rouge">mulle-sde init</code>.</p>
+
+<p>The following command will give you the location of the <code class="language-plaintext highlighter-rouge">dependency</code> folder
+on the file system, which will be needed in the next step:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde environment get <span class="nt">--output-eval</span> DEPENDENCY_DIR
+</code></pre></div></div>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>Open the project from within Clion now with <em>“File /Open Project”</em>. At this
+time the “Open Project Wizard” should run. It will let you choose the default
+toolchain or you can  configure a new “System” toolchain.</p>
+
+<p><img src="images/clion-wizard.png" alt="Wizard" /></p>
+
+<p>This is an important step. You should change the C compiler to <code class="language-plaintext highlighter-rouge">mulle-clang</code>.
+Usually <strong>mulle-clang</strong> should be in your PATH and you can just type it in.
+If not, you can enter the installation path by clicking the folder button.
+(Tip: look in <code class="language-plaintext highlighter-rouge">/opt/mulle-clang-project/&lt;version&gt;/bin</code> or <code class="language-plaintext highlighter-rouge">/usr/local/bin</code>)
+Do the same for the debugger <strong>mulle-gdb</strong> (<em>“Disclosure Triangle / Custom executable”</em>,
+even though it’s grayed out).</p>
+
+<p>Next up is the <strong>cmake</strong> configuration screen. Here you have to configure the
+“Toolchain” to the toolchain you setup in the previous step. And you also
+enter the ‘DEPENDENCY_DIR’ environment variable.</p>
+
+<p>I would recommend to check <em>“Reload CMake project on …“</em>.</p>
+
+<p><img src="images/clion-wizard-2.png" alt="Wizard" /></p>
+
+<p>The IDE will immediately spring into action and build your project.</p>
+
+<blockquote>
+  <p>If you chose to keep the <code class="language-plaintext highlighter-rouge">dependency</code> folder in project, you don’t need
+to set the <code class="language-plaintext highlighter-rouge">DEPENDENCY_DIR</code>.</p>
+</blockquote>
+
+<h3 id="run-configurations">Run configurations</h3>
+
+<p>To see the list of available configurations click the disclosure button on the
+Clion configurations / target bar:</p>
+
+<p>
+<img src="images/clion-configurations.png" style="width:150px !important;" />
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mulle_sde_reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>mulle_sde_clean_all</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>mulle_sde_clean_tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>mulle_sde_craft_craftorder</td>
+      <td>Rebuild dependencies</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>mulle_sde_upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>CLion will have picked up these configuration from targets in the cmake files.
+Not all configurations are interesting. You can safely configuration any target 
+that is preceeded with an <code class="language-plaintext highlighter-rouge">_</code> underscore.</p>
+
+<p>You run a configuration by selecting it and then using the “green hammer”,
+to the left of the selector box.</p>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<p>At this point the IDE should be in the process of fetching and building the
+dependencies, or maybe its already done. Watch the status line on the bottom to
+see what’s happening. So lets get right into debugging.</p>
+
+<p><img src="images/clion-opened.png" alt="Breakpoint" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p>Navigate to <code class="language-plaintext highlighter-rouge">src/main.m</code> now and click besides the line number to set a (red)
+breakpoint. Now run your program in the debugger with <em>“Run / Debug…“</em>.
+The debugger should immediately stop on the breakpoint:</p>
+
+<p><img src="images/clion-debug.png" alt="Breakpoint" /></p>
+
+<p>From here on use the <a href="https://blog.jetbrains.com/clion/2020/10/clion-debugging-part-1-fundamentals/">CLion documentation</a>
+for more help. The CLion debugger is very nice and makes this a standout
+feature in my opinion.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>Create a new class in “Sublime Text” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “mulle_sde_reflect” configuration. Choose it from the configuration
+selector box and then press the green hammer, to the left of it.</p>
+
+<p>The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code>.</p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft">Craft</h3>
+
+<p>Return to the default configuration “my-project”. Now with the syntax error in
+place, the next craft will immediately preempt with an error:</p>
+
+<p><img src="images/clion-error.png" alt="Error" /></p>
+
+<blockquote>
+  <h2 id="important-tip">Important Tip</h2>
+
+  <p>Clion caches a lot. If you make some changes outside of the IDE to the 
+project, you need to clean its <strong>CMake cache</strong> 
+(Menu: “Tools/CMake/Reset Cache and Reload Project”). Then run the 
+“Configuration” <code class="language-plaintext highlighter-rouge">mulle_sde_clean_all</code>, to rebuild everything.</p>
+
+  <p>There is another cache cleaner (“Menu: “File/Invalidate Caches…”), but it 
+does not affect CMake. It might be good to run this too, if something appears 
+wonky.</p>
+
+</blockquote>
+
+<p>That wraps it up for CLion here.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[CLion) is an IDE by Jetbrains. It’s a commercial offering, but you get a 30 day evaluation license the first time you download it. So it’s perfect for playing around with mulle-objc. Well almost perfect. We need a special setup, otherwise CLion will develop the annoying tendency to hang up your system.]]></summary></entry><entry><title type="html">Sublime Text</title><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-sublime-text.html" rel="alternate" type="text/html" title="Sublime Text" /><published>2022-02-02T00:00:00+01:00</published><updated>2022-02-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/easy_sublime_text</id><content type="html" xml:base="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-sublime-text.html"><![CDATA[<p>Sublime Text is an editor, which can be enhanced to a simple IDE with some
+custom extensions using <a href="https://linuxhint.com/install_packages_sublime_text/">Package Control</a>.
+Use that link for instructions, how to use <em>Package Control</em>. The short
+version is:</p>
+
+<ul>
+  <li>open “Sublime Text”</li>
+  <li>use <em>“Tools / Install Package Control…”</em> (or <em>“Tools / Command  Palette… / Install Package Control”</em>)</li>
+  <li>add packages with <em>“Tools / Command  Palette… / Package Control: Install Package”</em></li>
+</ul>
+
+<p>Here is a list of some packages useful for mulle-objc development:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Package</th>
+      <th>Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alignment</td>
+      <td>Go To Definition</td>
+      <td>SublimeLinter</td>
+    </tr>
+    <tr>
+      <td>All Autocomplete</td>
+      <td>Origami</td>
+      <td>SublimeLinter-clang</td>
+    </tr>
+    <tr>
+      <td>AutoFileName</td>
+      <td>ReadonlyProtect</td>
+      <td>Terminus</td>
+    </tr>
+    <tr>
+      <td>CMake</td>
+      <td>SideBarEnhancements</td>
+      <td>Unicode Character Highlighter</td>
+    </tr>
+    <tr>
+      <td>Diffy</td>
+      <td>sublime-text-ignore</td>
+      <td>YcmdCompletion</td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>SublimeGDB</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-sublime-text.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>sublime-text</em> extension. This extension ensures, that Sublime Text ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with <em>mulle-sde</em> and some debugger support
+for the “SublimeGDB” package.</p>
+
+<p>When you create a new project from scratch, add the <em>sublime-text</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add sublime-text
+</code></pre></div></div>
+
+<p>Without the sublime-text extension, there won’t be any
+<code class="language-plaintext highlighter-rouge">my-project.sublime-project</code> file initially in your project.</p>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>From the console, if you have the <code class="language-plaintext highlighter-rouge">subl</code> command in your <code class="language-plaintext highlighter-rouge">PATH</code>, you can
+type <code class="language-plaintext highlighter-rouge">subl my-project.sublime-project</code> and the project will open.
+Otherwise open the project from within Sublime Text with
+<em>“Project /Open Project”</em>.</p>
+
+<p>And there should be your project:</p>
+
+<p><img src="images/sublime-project.png" alt="Project" /></p>
+
+<h3 id="run-tasks">Run Tasks</h3>
+
+<p>To see the list of available tasks choose <em>“Tools / Build With…”</em> and the list
+of commands will look something like this:</p>
+
+<p><img src="images/sublime-build-with-2.png" alt="Tools/Build With" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td>Craft Debug</td>
+      <td>Craft project with build-style Debug</td>
+    </tr>
+    <tr>
+      <td>Craft Release</td>
+      <td>Craft project with build-style Release</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Clean</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>Clean Tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>Clean Download Caches</td>
+      <td>Also clean mirrored git repositories and cached tar archives.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<h3 id="craft">Craft</h3>
+
+<p>Build your project using the “Craft” task (<em>“Tools / Build With… / Craft”</em>).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.</p>
+
+<p><img src="images/sublime-craft.png" alt="Craft" /></p>
+
+<p>In the end you will see the line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Run your executable:
+   /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project
+</code></pre></div></div>
+
+<p>The executable location differs with your local setup. So you will see a
+different path there. If you have the package <strong>Terminus</strong> installed, you can
+now run the executable directly in Sublime Text. Use [CTRL]-[ESCAPE] to open
+Terminus:</p>
+
+<p><img src="images/sublime-terminus.png" alt="Terminus" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p><em>You need the package <strong>SublimeGDB</strong> for this.</em></p>
+
+<p>Navigate to your sources <code class="language-plaintext highlighter-rouge">src/main.m</code> and place a breakpoint in the
+<code class="language-plaintext highlighter-rouge">main</code> function with [F9].</p>
+
+<p><img src="images/sublime-breakpoint.png" alt="Breakpoint" /></p>
+
+<p>You will likely need to edit the <code class="language-plaintext highlighter-rouge">my-object.sublime-project</code> file itself,
+to set the correct executable path for the debugger. At the top of the file:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sublimegdb_workingdir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${folder:kitchen/Debug/my-project}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sublimegdb_commandline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb --interpreter=mi kitchen/Debug/my-project"</span><span class="p">,</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span></code></pre></div></div>
+
+<p>change <code class="language-plaintext highlighter-rouge">kitchen/Debug/my-project</code> in both <code class="language-plaintext highlighter-rouge">"sublimegdb_workingdir"</code> and
+<code class="language-plaintext highlighter-rouge">"sublimegdb_commandline"</code> to your executable path.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"settings"</span><span class="p">:</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sublimegdb_workingdir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${folder:/home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project}"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sublimegdb_commandline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb --interpreter=mi /home/nat/.mulle/var/peschel/kitchen-my-project/Debug/my-project"</span><span class="p">,</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint, which now has turned green:</p>
+
+<p><img src="images/sublime-debug.png" alt="Breakpoint" /></p>
+
+<blockquote>
+  <h4 id="debugging-keys">Debugging Keys</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Function</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>[F5]</td>
+        <td>Start / Continue</td>
+      </tr>
+      <tr>
+        <td>[Shift][F5]</td>
+        <td>Show Input Field</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][Shift][F5]</td>
+        <td>Show Raw Input Field</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][F5]</td>
+        <td>Stop Debugging</td>
+      </tr>
+      <tr>
+        <td>[F9]</td>
+        <td>Toggle Breakpoint</td>
+      </tr>
+      <tr>
+        <td>[F10]</td>
+        <td>Step Over</td>
+      </tr>
+      <tr>
+        <td>[F11]</td>
+        <td>Step Into</td>
+      </tr>
+      <tr>
+        <td>[Shift][F11]</td>
+        <td>Step Out</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][F11]</td>
+        <td>Show Disassembly View</td>
+      </tr>
+      <tr>
+        <td>[Ctrl][Alt][G]</td>
+        <td>Show Register View</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+
+<p>From here on use the <a href="//github.com/quarnster/SublimeGDB">SublimeGDB documentation</a>
+for more help.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>We create a new class in “Sublime Text” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “Reflect” task (<em>“Tools / Build With… / Reflect”</em>).
+The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code></p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft-1">Craft</h3>
+
+<p>Now with the syntax error in place, the next craft will immediately preempt
+with an error:</p>
+
+<p><img src="images/sublime-error.png" alt="Error" /></p>
+
+<p>You can step through the errors with <em>“Tools / Build Results / Next Result”</em>.</p>
+
+<p>That wraps it up for Sublime Text here.</p>
+
+<blockquote>
+  <h2 id="important-tip">Important Tip</h2>
+
+  <p>Depending on how your <code class="language-plaintext highlighter-rouge">PATH</code> variable is set up, the environment you are
+in, <em>Sublime Text</em> may not find the <strong>mulle-sde</strong> executables. To fix this
+close all <em>Sublime Text</em> windows, so that the application is actually
+exiting. Then start <em>Sublime Text</em> from a shell, where you know that <code class="language-plaintext highlighter-rouge">PATH</code>
+is set correctly, with <code class="language-plaintext highlighter-rouge">subl</code>.</p>
+</blockquote>]]></content><author><name></name></author><summary type="html"><![CDATA[Sublime Text is an editor, which can be enhanced to a simple IDE with some custom extensions using Package Control. Use that link for instructions, how to use Package Control. The short version is:]]></summary></entry><entry><title type="html">Visual Studio Code</title><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-vscode.html" rel="alternate" type="text/html" title="Visual Studio Code" /><published>2022-02-02T00:00:00+01:00</published><updated>2022-02-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/easy_vscode</id><content type="html" xml:base="https://www.mulle-kybernetik.com/mulle-objc-ide/easy-vscode.html"><![CDATA[<p><a href="//code.visualstudio.com/Download">Visual Studio Code</a> and it’s
+<a href="https://itsfoss.com/vscodium/">FOSS</a> sibling
+<a href="https://github.com/VSCodium/vscodium/releases">VSCodium</a> are primarily
+Web IDEs that can also be used to develop C projects.</p>
+
+<p>To get VSCode cooking though, you need to pep it up with extensions. Here is a 
+list of some extensions, that are useful for mulle-objc development:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C/C++ (ms-vscode)</td>
+      <td>Not easily <a href="https://github.com/VSCodium/vscodium/issues/493">available</a> on VSCodium</td>
+    </tr>
+    <tr>
+      <td>CMake (twxs)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Markdown Preview Github Styling (bierner)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Native Debug (webfreak)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Click on the “Extension” icon on the left and search for extensions:</p>
+
+<p><img src="images/vscode-extension.png" alt="" /></p>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-vscode.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>vscode-clang</em> extension. This extension ensures, that VSCode ignores
+files that are non-editable. The extension also provides a couple of
+build targets for interfacing with <em>mulle-sde</em> and some debugger support
+for the “Native Debug” extension.</p>
+
+<p>When you create a new project from scratch, add the <em>vscode.clang</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add vscode-clang
+</code></pre></div></div>
+
+<p>Without the vscode extension, there won’t be any
+<code class="language-plaintext highlighter-rouge">.vscode</code> file initially in your project.</p>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>From the console, if you have the <code class="language-plaintext highlighter-rouge">vscode</code> command in your <code class="language-plaintext highlighter-rouge">PATH</code>, you can
+type <code class="language-plaintext highlighter-rouge">vscode my-project</code> and the project should open.
+Otherwise open the project from within VSCode with <em>“File /Open Folder…“</em>.</p>
+
+<p>And there should be your project:</p>
+
+<p><img src="images/vscode-project.png" alt="Project" /></p>
+
+<p>But… there may be errors. There are various paths in the <code class="language-plaintext highlighter-rouge">.vscode</code>
+folder that may need fixing. Edit the file <code class="language-plaintext highlighter-rouge">.vscode/c_cpp_properties.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linux"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mac"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Win32"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"includePath"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/src/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/dependency/include/**"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"${workspaceFolder}/addiction/include/**"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"defines"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+         </span><span class="nl">"compilerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-clang-cl.exe"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"cStandard"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c11"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"intelliSenseMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clang-x64"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"compileCommands"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/compile_commands.json"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>For your platform, adjust to the proper compiler path. Type <code class="language-plaintext highlighter-rouge">which mulle-clang</code>
+and it should give you the proper path. (Otherwise look in
+<code class="language-plaintext highlighter-rouge">/opt/mulle-clang-project/&lt;version&gt;/bin</code> or <code class="language-plaintext highlighter-rouge">/usr/local/bin</code>).</p>
+
+<h3 id="run-tasks">Run Tasks</h3>
+
+<p>To see the list of available tasks choose <em>“Terminal / Run Task…”</em> and the list
+of commands will look something like this:</p>
+
+<p><img src="images/vscode-tasks.png" alt="Tasks" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td>Debug</td>
+      <td>The default build-style for crafting is Debug</td>
+    </tr>
+    <tr>
+      <td>Release</td>
+      <td>Use Release build-style for crafting</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Clean</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>Clean Tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>Clean Download Caches</td>
+      <td>Also clean mirrored git repositories and cached tar archives.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<h3 id="craft">Craft</h3>
+
+<p><em>You need the package <strong>C/C++</strong> for this.</em></p>
+
+<p>Build your project using the “Craft Debug” task (<em>“Terminal / Run Build Task…“</em>).
+This can take a minute or more, depending on your machines capabilities. On
+the initial craft, dependencies will be fetched and built.</p>
+
+<p><img src="images/vscode-craft.png" alt="Craft" /></p>
+
+<p>In the end you will see the line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Run your executable:
+   kitchen/Debug/my-project
+</code></pre></div></div>
+
+<p>The executable location may differ with your local setup. So you might see a
+different path there. You can now run the executable directly in VSCode.
+Use <em>Terminal / New Termial</em> to open a terminal:</p>
+
+<p><img src="images/vscode-run.png" alt="Terminals" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p>Navigate to your sources <code class="language-plaintext highlighter-rouge">src/main.m</code> and place a breakpoint in the
+<code class="language-plaintext highlighter-rouge">main</code> by clicking to the left of the linenumber:</p>
+
+<p><img src="images/vscode-breakpoint.png" alt="Breakpoint" /></p>
+
+<p>You may have to edit the <code class="language-plaintext highlighter-rouge">.vscode/launch.json</code> file at this point,
+to set the correct executable path for the debugger.</p>
+
+<blockquote>
+  <p><strong>Webfreak or C/C++ (ms-vscode) ?</strong></p>
+
+  <p>There are two extensions to enable debugging in Visual Studio Code. 
+One is <code class="language-plaintext highlighter-rouge">webfreak.debug</code> (<strong>Native Debug by Webfreak</strong>) the other
+is <code class="language-plaintext highlighter-rouge">ms-vscode.cpptool</code> (<strong>C/C++ from Microsoft</strong>). 
+In terms of this guide, the main differentiator in the <code class="language-plaintext highlighter-rouge">launch.json</code>
+between both extensions is the <code class="language-plaintext highlighter-rouge">type</code>. It’s <code class="language-plaintext highlighter-rouge">"cppdbg"</code> for Microsoft and 
+“gdb” for Webfreak.</p>
+</blockquote>
+
+<h4 id="ms-vscodecpptool">ms-vscode.cpptool</h4>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">miDebuggerPath</code> path to the mulle-gdb path (<code class="language-plaintext highlighter-rouge">which mulle-gdb</code>) on
+your platform:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"_comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All? It's often convenient in library projects too"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cppdbg"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"stopAtEntry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"environment"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"additionalSOLibSearchPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/dependency/Debug/lib:${workspaceFolder}/dependency/lib"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"windows"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C:</span><span class="se">\\</span><span class="s2">mingw64</span><span class="se">\\</span><span class="s2">bin</span><span class="se">\\</span><span class="s2">mulle-gdb.exe"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"program"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/kitchen/Debug/my-project.exe"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"osx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lldb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/local/bin/lldb-mi"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"linux"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"MIMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"miDebuggerPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-gdb"</span><span class="w">
+             </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"preLaunchTask"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="webfreakdebug">webfreak.debug</h4>
+
+<p>Edit the <code class="language-plaintext highlighter-rouge">gdbpath</code> path to the mulle-gdb path (<code class="language-plaintext highlighter-rouge">which mulle-gdb</code>) on
+your platform:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"gdbpath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/usr/local/bin/mulle-gdb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debug my-project"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceRoot}/kitchen/Debug/my-project.exe"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceRoot}"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valuesFormatting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"parseText"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now hit [F5] to run your program in the debugger. It should immediately stop
+on the breakpoint:</p>
+
+<p><img src="images/vscode-debug.png" alt="Breakpoint" /></p>
+
+<p>From here on use either the <a href="//marketplace.visualstudio.com/items?itemName=webfreak.debug">Native Debug documentation</a>
+or <a href="https://code.visualstudio.com/docs/cpp/cpp-debug">Debug C in Visual Studio Code</a> for more help.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>We create a new class in “VSCode” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “Reflect” task (<em>“Terminal / Run Task… / Reflect”</em>).
+The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code></p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft-1">Craft</h3>
+
+<p>Now with the syntax error in place, the next craft will immediately preempt
+with an error:</p>
+
+<p><img src="images/vscode-error.png" alt="Error" /></p>
+
+<p>If Visual Studio can’t find the source file, you may have to tweak the
+“problemmatcher” in <code class="language-plaintext highlighter-rouge">.vscode/tasks.json</code>:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Craft"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mulle-sde"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"craft"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"problemMatcher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"base"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$gcc"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"fileLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"relative"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"${workspaceFolder}/kitchen/Debug"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>change the <code class="language-plaintext highlighter-rouge">"relative"</code> in “tasks/problemMatcher/fileLocation” to
+<code class="language-plaintext highlighter-rouge">"absolute"</code>.  Do this for the tasks “Craft”, “Debug”, “Release”.</p>
+
+<p>That wraps it up for VSCode here.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Visual Studio Code and it’s FOSS sibling VSCodium are primarily Web IDEs that can also be used to develop C projects.]]></summary></entry><entry><title type="html">Intro</title><link href="https://www.mulle-kybernetik.com/mulle-objc-ide/intro.html" rel="alternate" type="text/html" title="Intro" /><published>2022-01-01T00:00:00+01:00</published><updated>2022-01-01T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/mulle-objc-ide/intro</id><content type="html" xml:base="https://www.mulle-kybernetik.com/mulle-objc-ide/intro.html"><![CDATA[<p><a href="//mulle-objc.github.io">mulle-objc</a> is a derivative of Objective-C, which by
+itself is an extension of the C language. Objective-C support is quite good
+in various IDEs. This little pamphlet shows how to setup various editors and
+IDEs to good effect to develop mulle-objc programs.</p>
+
+<p><img src="images/clion-debug.png" alt="Example Screenshot" /></p>
+
+<h2 id="install-mulle-objc">Install mulle-objc</h2>
+
+<p>You need to install a few packages to get things rolling. These packages
+are common to all IDE setups. As they differ between platforms and are subject
+to change occasionally, the install instructions aren’t replicated here.</p>
+
+<h3 id="foundation-developer">foundation-developer</h3>
+
+<p>Install <a href="//github.com/MulleFoundation/foundation-developer#install">foundation-developer</a>.
+The instructions how to do this are on that given page. If you have problems
+with it put up an issue in the github bugtracker.</p>
+
+<h3 id="mulle-clang">mulle-clang</h3>
+
+<p>This step may not be necessary, if you installed <em>foundation-developer</em> with
+a package manager like <code class="language-plaintext highlighter-rouge">brew</code> or <code class="language-plaintext highlighter-rouge">apt</code>. Fetch the newest mulle-clang version from
+<a href="https://github.com/mulle-cc/mulle-clang-project/tags">mulle-clang-project</a>
+and install.</p>
+
+<h3 id="mulle-gdb">mulle-gdb</h3>
+
+<p>Fetch the newest mulle-gdb version from
+<a href="https://github.com/mulle-cc/mulle-gdb/tags">mulle-gdb</a>
+and install.</p>
+
+<blockquote>
+  <p>Debugging on macOS is likely broken, unless you have 
+<a href="https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection?language=objc">turned off SIP</a></p>
+</blockquote>
+
+<h2 id="the-fork-in-the-road">The fork in the road</h2>
+
+<p>From here choose an IDE or editor and continue:</p>
+
+<ul>
+  <li>Install <a href="//www.jetbrains.com/clion/download/">CLion</a> and <a href="easy-clion.html">continue here</a></li>
+  <li>Install <a href="//www.sublimetext.com/download">Sublime Text</a> and <a href="easy-sublime-text.html">continue here</a></li>
+  <li>Install <a href="//code.visualstudio.com/Download">Visual Studio Code</a> and <a href="easy-vscode.html">continue here</a></li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[mulle-objc is a derivative of Objective-C, which by itself is an extension of the C language. Objective-C support is quite good in various IDEs. This little pamphlet shows how to setup various editors and IDEs to good effect to develop mulle-objc programs.]]></summary></entry></feed>

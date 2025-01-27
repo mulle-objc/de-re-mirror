@@ -1,0 +1,1804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">De Re NSObject</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="https://www.mulle-kybernetik.com/atom.xml" />
+<link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com" />
+<updated>2025-01-26T22:43:12+01:00</updated>
+<id>https://www.mulle-kybernetik.com/</id>
+<author>
+  <name>Nat!</name>
+  <uri>https://www.mulle-kybernetik.com/</uri>
+  <email>nat-objects@emulle-kybernetik.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Outro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/outro.html" />
+  <id>https://www.mulle-kybernetik.com/outro.html</id>
+  <published>2025-10-01T00:00:00+02:00</published>
+  <updated>2025-10-01T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;your-nsobject-property-is-in-another-castle&quot;&gt;Your NSObject @property is in another castle&lt;/h2&gt;
+
+&lt;p&gt;This guide did not tell you how to reference other objects and maintain those
+relationships using a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@property&lt;/code&gt; though.&lt;/p&gt;
+
+&lt;p&gt;That’s the topic of another whole guide called
+&lt;a href=&quot;//www.mulle-kybernetik.com/de-re-property&quot;&gt;De Re @property&lt;/a&gt; that explains,
+how @property and their attributes handle object relationships
+automatically like:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;automatic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;differences-to-apple-objective-c&quot;&gt;Differences to Apple Objective-C&lt;/h2&gt;
+
+&lt;p&gt;Now, you might be curious about how mulle-objc’s NSObject differs from its
+counterpart in Apple’s Objective-C. There are several key distinctions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Memory Management: While Apple’s implementation has moved towards Automatic
+Reference Counting (ARC), mulle-objc sticks to explicit retain/release
+counting. This gives you more control over object lifecycles, albeit with
+increased responsibility.&lt;/li&gt;
+  &lt;li&gt;Platform Independence: The runtime messaging system in mulle-objc is designed
+for cross-platform compatibility, unlike Apple’s version which is more
+tightly coupled to specific platforms.&lt;/li&gt;
+  &lt;li&gt;Instance Variable Handling: mulle-objc uses a different memory layout for
+instance variables, which can impact how you structure your classes and
+manage object state.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;ai-tip&quot;&gt;AI Tip&lt;/h2&gt;
+
+&lt;p&gt;You can ask any AI like &lt;a href=&quot;https://perplexity.ai&quot;&gt;perplexity.ai&lt;/a&gt;, just tell it
+that you are using “mulle-objc” instead of Apple “Objective-C”.
+Most of them are quite good at explaining the concepts.&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading&lt;/h2&gt;
+
+&lt;p&gt;Otherwise you could try any of the following sources given in &lt;a href=&quot;https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_links.html&quot;&gt;De Re mulle-objc&lt;/a&gt; or check out the
+project page &lt;a href=&quot;https://mulle-objc.github.io/&quot;&gt;mulle-objc&lt;/a&gt;&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[MulleObject]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/mulleobject.html" />
+  <id>https://www.mulle-kybernetik.com/mulleobject.html</id>
+  <published>2025-06-01T00:00:00+02:00</published>
+  <updated>2025-06-01T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Welcome to the world of &lt;strong&gt;MulleObject&lt;/strong&gt;, a powerful extension of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleDynamicObject&lt;/code&gt;
+that brings thread-safety to the forefront of Objective-C programming. As you
+delve into this advanced concept, you’ll discover how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObject&lt;/code&gt; not only
+inherits the dynamic capabilities of its parent class but also introduces a
+robust thread-safety layer through the MulleObjCThreadsafe protocol
+implementation.&lt;/p&gt;
+
+&lt;p&gt;Let’s begin by examining the core functionality of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObject&lt;/code&gt;. You might be
+wondering, “How does MulleObject achieve thread-safety in multi-threaded
+environments?” The answer lies in its innovative shared lock mechanism. This
+system allows multiple related objects to operate under a single lock, a concept
+known as “lock cohesion” or “synchronized object groups.”&lt;/p&gt;
+
+&lt;p&gt;Consider this hierarchical structure:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   RootView (lock A)
+   ├── HeaderView (uses lock A)
+   │   ├── TitleLabel (uses lock A)
+   │   └── MenuButton (uses lock A)
+   └── ContentView (uses lock A)
+       ├── ImageView (uses lock A)
+       └── DescriptionLabel (uses lock A)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this example, instead of each view maintaining its own lock, the entire
+hierarchy shares a single lock from the RootView. This approach offers several
+significant advantages:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Prevention of lock explosion: In deep view trees, you won’t end up with an
+overwhelming number of locks.&lt;/li&gt;
+  &lt;li&gt;Consistency maintenance: The entire hierarchy maintains a consistent state.&lt;/li&gt;
+  &lt;li&gt;Reduced memory overhead: Fewer locks mean less memory usage.&lt;/li&gt;
+  &lt;li&gt;Simplified synchronization logic: With a shared lock, you can avoid complex
+lock management scenarios.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now, let’s dive into some code to see how you might use MulleObject in practice:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyView&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MulleObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleAutolockingObjectProtocols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;          &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nop&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;MULLE_OBJC_THREADSAFE_METHOD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyView&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nop&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// inherently thread safe code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The default “MulleObject” without &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleAutolockingObjectProtocols&lt;/code&gt; will NOT
+be thread-safe. You need to adopt those protocol to activate the thread-safe
+locking wrapping functionality.&lt;/p&gt;
+
+&lt;p&gt;You can see how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyView&lt;/code&gt; uses a dynamic property “name” and a conventional
+instance variable based property “title”. But both properties’ accessors,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setName:&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; as well as the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setTitle:&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;, use the locking provided by MulleObject.&lt;/p&gt;
+
+&lt;p&gt;The method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nop&lt;/code&gt; is labeled as a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_OBJC_THREADSAFE_METHOD&lt;/code&gt; therefore is
+outside of the locking mechanism of MulleObject”&lt;/p&gt;
+
+&lt;h2 id=&quot;lock-sharing&quot;&gt;Lock Sharing&lt;/h2&gt;
+
+&lt;p&gt;The lock sharing model in MulleObject is particularly efficient for:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;View hierarchies&lt;/li&gt;
+  &lt;li&gt;Document object models&lt;/li&gt;
+  &lt;li&gt;Composite data structures&lt;/li&gt;
+  &lt;li&gt;Parent-child relationships&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These scenarios naturally involve related objects that need to maintain
+consistent state, making them ideal candidates for shared lock synchronization.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MulleObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleAutolockingObjectProtocols&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shareRecursiveLockWithObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now whenever you access either ‘a’ or ‘b’, you will effectively lock both
+objects. Because of the recursive nature of the lock, subsequent method
+calls during the lock duration, will not deadlock and will be much cheaper in
+terms of runtime execution.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;In conclusion, MulleObject represents a significant advancement in Objective-C
+programming, offering a powerful solution for creating thread-safe, dynamic
+objects. By leveraging its capabilities, you can build robust, efficient, and
+scalable applications that can handle complex multi-threaded scenarios with
+ease.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[MulleDynamicObject]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/dynamic.html" />
+  <id>https://www.mulle-kybernetik.com/dynamic.html</id>
+  <published>2025-05-15T00:00:00+02:00</published>
+  <updated>2025-05-15T00:00:00+02:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In the world of Objective-C, dynamic behavior is a powerful feature that sets it
+apart from more static languages like C++. &lt;strong&gt;MulleDynamicObject&lt;/strong&gt; is a class
+that extends &lt;strong&gt;NSObject&lt;/strong&gt; to provide flexible runtime method resolution and a
+dynamic instance variable store. Are you ready to explore the
+cutting-edge capabilities of &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;Let’s break down its key mechanisms:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Instance variable storage in a dictionary-like structure&lt;/li&gt;
+  &lt;li&gt;Dynamic method resolution using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-forward:&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Method lookup interception before standard method dispatch&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;instance-variable-storage&quot;&gt;Instance variable storage&lt;/h2&gt;
+
+&lt;p&gt;Each MulleDynamicObject maintains an internal storage for dynamic instance
+variables. This storage is created on-demand when the first dynamic property is accessed. This lazy initialization approach saves memory for objects that might
+never use the dynamic ivar feature.&lt;/p&gt;
+
+&lt;p&gt;One particularly powerful feature of MulleDynamicObject is its ability to add
+properties via categories at compile-time. Simply mark the property as
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;, and you’re good to go. This can be incredibly useful for extending
+existing classes without subclassing – a technique that’s otherwise not
+possible:&lt;/p&gt;
+
+&lt;p&gt;Here’s a quick example to illustrate:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MulleDynamicObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;OneMoreProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;OneMoreProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;Hello, Dynamic World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;mulle_printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this code, we’re adding a dynamic property “title” to Document without
+explicitly implementing the getter and setter. Since it is dynamic, no instance
+variable will be generated. This allows us to add the property via a category,
+which can only be done with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dynamic&lt;/code&gt; properties.&lt;/p&gt;
+
+&lt;h2 id=&quot;dynamic-method-resolution&quot;&gt;Dynamic Method resolution&lt;/h2&gt;
+
+&lt;p&gt;The method resolution sequence is where things get really interesting:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First, MulleDynamicObject checks if the selector is implemented normally.&lt;/li&gt;
+  &lt;li&gt;If not, it attempts dynamic resolution through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolveInstanceMethod:&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Unresolved messages are then forwarded through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forwardInvocation:&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Finally, it handles method missing cases with specific error behavior.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This multi-step process allows for incredible flexibility. You can intercept
+method calls, dynamically create methods, or even forward calls to other
+objects. It’s like having a Swiss Army knife for method dispatch!&lt;/p&gt;
+
+&lt;p&gt;But what about performance, you ask? While dynamic dispatch does introduce some
+overhead, mulle-objc’s implementation is highly optimized. In many cases, the
+performance impact is negligible, especially when weighed against the
+flexibility gained.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary-argh&quot;&gt;Summary (Argh)&lt;/h2&gt;
+
+&lt;p&gt;It’s important to note that while MulleDynamicObject provides great flexibility,
+it’s not without its challenges. Dynamic dispatch can make code harder to
+understand and debug. It’s also not suitable for performance-critical code paths
+where every microsecond counts.&lt;/p&gt;
+
+&lt;p&gt;As you explore MulleDynamicObject, remember that with great power comes great
+fun. But use these dynamic features judiciously, and always consider the
+trade-offs between flexibility and complexity.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Object Lifecycle]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/lifecycle.html" />
+  <id>https://www.mulle-kybernetik.com/lifecycle.html</id>
+  <published>2025-03-12T00:00:00+01:00</published>
+  <updated>2025-03-12T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In the realm of Objective-C, and particularly within the &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; framework,
+objects undergo a fascinating journey through various lifecycle phases. Each
+phase carries its own set of implications for memory management and thread
+safety. Let’s dive deeper into this technical landscape and explore some of
+the implications.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/lifecycle.svg&quot; alt=&quot;Lifecycle&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;initial-creation-the-single-threaded-genesis&quot;&gt;Initial Creation: The Single-Threaded Genesis&lt;/h2&gt;
+
+&lt;p&gt;When you create an object in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; you’re still in a phase of
+single-threaded bliss. This initial stage is crucial for setup of immutable
+objects.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;LAW: Any object passed to another thread must be placed into the
+autoreleasepool stack of that thread.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;During this phase, if you need to dispose of the object, you should use
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; rather than &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt;. This direct approach aligns with the
+single-threaded nature of the object at this point.&lt;/p&gt;
+
+&lt;h2 id=&quot;autorelease-phase-stepping-into-the-multi-threaded-arena&quot;&gt;Autorelease Phase: Stepping into the Multi-threaded Arena&lt;/h2&gt;
+
+&lt;p&gt;The next phase begins when an object is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autoreleased&lt;/code&gt;. This is a critical
+juncture in the object’s lifecycle. Once autoreleased, the object is primed for
+a potential multi-threaded existence (assuming it supports multi-threading).&lt;/p&gt;
+
+&lt;p&gt;Consider this scenario:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSObject&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point, you need to be prepared for the possibility that any thread could
+call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mullePerformFinalize&lt;/code&gt; on the object. This method is designed to “disable”
+the object. Let’s illustrate this with an example:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;NSFileHandle&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSFileHandle&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fileHandleForWritingAtPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@&quot;/tmp/example.txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// At any point after this, mullePerformFinalize could be called,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// closing the file handle...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mullePerformFinalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;During this multi-threaded phase, it’s crucial to balance &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; calls with
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt;. Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; directly is considered a mistake in mulle-objc,
+unlike in some other Objective-C implementations.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-1&quot;&gt;Example 1&lt;/h3&gt;
+
+&lt;p&gt;Consider this code snippet:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #1&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is what happens:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-2.svg&quot; alt=&quot;2&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#1&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-3a.svg&quot; alt=&quot;3&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-1.svg&quot; alt=&quot;1&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#3&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A document in the root pool of a hierarchy with a fresh inferior pool&lt;/td&gt;
+      &lt;td&gt;The document gets (retained and) autoreleased into the new pool&lt;/td&gt;
+      &lt;td&gt;The new pool disappears again. The document remains in its old pool&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;example-2&quot;&gt;Example 2&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #2&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-1.svg&quot; alt=&quot;1&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#1&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-2.svg&quot; alt=&quot;2&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-3.svg&quot; alt=&quot;3&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#3&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The initial setup with &lt;em&gt;document&lt;/em&gt; in its pool&lt;/td&gt;
+      &lt;td&gt;An inferior pool is created&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;person&lt;/em&gt; is created in the inferior pool and ownership is given to &lt;em&gt;document&lt;/em&gt; via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-setPerson:&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Continuing on:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #2&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #3&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #4&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #5&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #6&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-4.svg&quot; alt=&quot;4&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#4&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-5.svg&quot; alt=&quot;5&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#5&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-6.svg&quot; alt=&quot;6&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#6&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The creation pool disappears. &lt;em&gt;person&lt;/em&gt; is still alive&lt;/td&gt;
+      &lt;td&gt;A new inferior pool appears&lt;/td&gt;
+      &lt;td&gt;Document relinquishes ownership when receiving &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-setPerson:nil&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In frame #4 &lt;em&gt;person&lt;/em&gt; is implicitly in the same pool as &lt;em&gt;document&lt;/em&gt;, through the ownership by &lt;em&gt;document&lt;/em&gt;. But its not explicitly in the pool. &lt;em&gt;person&lt;/em&gt; didn’t “magically” get an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; from somewhere, when its creation pool went down.&lt;/p&gt;
+
+&lt;h3 id=&quot;lifting-an-object-to-a-parent-pool&quot;&gt;Lifting an object to a parent pool&lt;/h3&gt;
+
+&lt;p&gt;Inside a function or method scope you can &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; objects,
+as long as you keep it balanced.&lt;/p&gt;
+
+&lt;p&gt;Though you are advised to never call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; directly, you may do so, if you
+previously called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; on the same object. This is a special case, that is
+hardly ever useful.&lt;/p&gt;
+
+&lt;p&gt;Somewhat more useful is the ability to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; in the same
+function or method scope.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This can be used to lift an object into a parent pool and therefore extend its lifetime:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-3b.svg&quot; alt=&quot;4&quot; width=&quot;240&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;the-return-to-single-threaded-life&quot;&gt;The Return to Single-threaded Life&lt;/h2&gt;
+
+&lt;p&gt;An interesting aspect of mulle-objc’s object lifecycle is the potential return
+to single-threaded existence. This occurs when an object’s retain count reaches 1.
+On occasion it can be useful to check for this condition in your code:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retainCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// Object is back to single-threaded life&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-final-act-deallocation&quot;&gt;The Final Act: Deallocation&lt;/h2&gt;
+
+&lt;p&gt;The deallocation phase always occurs while the object is single-threaded. During
+-dealloc we also know that the objects is not in a pool, so objects that are still
+retained by the object, must be released now. As they are also not implicitly in
+a pool anymore (from the perspective of the instance executing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;) it would be wrong to call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; on them.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cleanup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Last chance for cleanup&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_data&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The distinction between &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;finalize&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dealloc&lt;/code&gt; is crucial in mulle-objc:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;finalize&lt;/code&gt;: Closes resources and cleans up state. It can run early via
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mullePerformFinalize&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dealloc&lt;/code&gt;: Releases retained objects.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This two-step cleanup process allows for more flexible and robust resource
+management compared to simpler models used in languages like C++.&lt;/p&gt;
+
+&lt;p&gt;Understanding this lifecycle is paramount for several reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It allows for precise performance optimization.&lt;/li&gt;
+  &lt;li&gt;It provides clear thread-safety guarantees.&lt;/li&gt;
+  &lt;li&gt;It enables efficient resource management.&lt;/li&gt;
+  &lt;li&gt;It helps prevent memory leaks.&lt;/li&gt;
+  &lt;li&gt;It ensures clean object cleanup.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As you work with mulle-objc, you’ll find that this sophisticated lifecycle
+management system provides powerful tools for creating efficient, thread-safe,
+and resource-conscious applications. How will you leverage these capabilities in
+your next project?&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: +alloc]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/alloc.html" />
+  <id>https://www.mulle-kybernetik.com/alloc.html</id>
+  <published>2025-03-12T00:00:00+01:00</published>
+  <updated>2025-03-12T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;You will only very, very rarely be interested in overriding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt;
+method, but now is a good time to learn about allocators in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; and the layout of objects in memory. If you are
+interested in the more nitty-gritty details of mulle-objc, check out
+&lt;a href=&quot;https://www.mulle-kybernetik.com/objc-runtime-in-pictures/&quot;&gt;Objective-C Runtime in Pictures&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;struct-mulle_allocator&quot;&gt;struct mulle_allocator&lt;/h2&gt;
+
+&lt;p&gt;First up, every allocation in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; is done through a mulle-allocator.
+Using the (hidden) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle_default_allocator&lt;/code&gt;, C code simplifies from&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1848&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;perror&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;malloc:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;to&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1848&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;With mulle-allocator you get leak checking during tests as well.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If you want to know why and how this works, read the
+mulle-allocator &lt;a href=&quot;//github.com/mulle-c/mulle-allocator/blob/release/README.md&quot;&gt;README.md&lt;/a&gt;.
+For leak checking refer to the &lt;a href=&quot;//github.com/mulle-core/mulle-testallocator/blob/release/README.md&quot;&gt;mulle-testallocator README.md&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;alloc-implementation&quot;&gt;+alloc implementation&lt;/h2&gt;
+
+&lt;p&gt;Classes create instances. Both classes and instances are objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/object-class-instance.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The default implementation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; is:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alloc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_MulleObjCClassAllocateInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCClassAllocateInstance&lt;/code&gt; destills down to the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_allocator&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_mulle_objc_infraclass_get_allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// extra bytes: 0 in +alloc case as seen above&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__mulle_objc_infraclass_alloc_instance_extra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;infra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each class has its own allocator, that is used to allocate instances. Usually
+this is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle_default_allocator&lt;/code&gt;. But that may vary on a per-class
+basis.&lt;/p&gt;
+
+&lt;p&gt;If your instance needs some extra memory to store data you should use the same
+allocator, so use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceAllocateMemory&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithLength&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSUInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCInstanceAllocateMemory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MulleObjCInstanceDeallocateMemory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;MulleObjC Instance Function&lt;/th&gt;
+      &lt;th&gt;C equivalent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceAllocateNonZeroedMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;malloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceReallocateNonZeroedMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;realloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceAllocateMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceDuplicateUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strdup&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceDeallocateMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;free&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The same functions are also available, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Class&lt;/code&gt; as the first parameter.
+These can be used in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt; class methods.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;MulleObjC Class Function&lt;/th&gt;
+      &lt;th&gt;C equivalent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassAllocateNonZeroedMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;malloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassReallocateNonZeroedMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;realloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassAllocateMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calloc&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassDuplicateUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strdup&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassDeallocateMemory&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;free&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;extrabytes-and-metaextrabytes&quot;&gt;extraBytes and metaExtraBytes&lt;/h3&gt;
+
+&lt;p&gt;An instance in memory looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/object-layout.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The address returned by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alloc&lt;/code&gt; is not the beginning of the memory block
+allocated for the instance. It is the address after the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; pointer.
+The memory block is divided into the user accessible ivars and extraBytes
+“self” block and the “meta” block with negative offsets from “self”.&lt;/p&gt;
+
+&lt;p&gt;The “extraBytes” are the second parameter of  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCClassAllocateInstance&lt;/code&gt;.
+Each instance can therefore have a unique size. The amount of metaExtraBytes
+is fixed for every class and instance at the start of the program. Currently
+this is an experimental and unused mulle-objc-runtime feature.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-an-instance-in-pre-allocated-memory&quot;&gt;Creating an instance in pre-allocated memory&lt;/h2&gt;
+
+&lt;p&gt;If you have sufficient memory already allocated, you can use
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassConstructInstance&lt;/code&gt; to turn this memory into one or as
+many instances as can fit.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassGetInstanceSize&lt;/code&gt; calculates the size needed for the memory
+allocation and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassConstructInstance&lt;/code&gt; zeroes the memory and
+initializes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;retainCount&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;myClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCClassGetInstanceSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCClassConstructInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;my_free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// not obj!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There are a lot of caveats:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ascertain that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; doesn’t interfere with your memory scheme&lt;/li&gt;
+  &lt;li&gt;ascertain that all instance variables are freed before deallocing&lt;/li&gt;
+  &lt;li&gt;calling &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; may trigger &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;  and therefore &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; in an error case&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reasonably, this scheme can only be used for very simple value type objects.&lt;/p&gt;
+
+&lt;h3 id=&quot;tidbits&quot;&gt;Tidbits&lt;/h3&gt;
+
+&lt;p&gt;If you want to create an object, whose property objects are allocated with the
+same custom allocator as the owner object, you will have to subclass a lot.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: -finalize]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/finalize.html" />
+  <id>https://www.mulle-kybernetik.com/finalize.html</id>
+  <published>2025-03-11T00:00:00+01:00</published>
+  <updated>2025-03-11T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;One of the most intriguing aspects of &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;’s memory management is the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; method. This method serves a crucial role in resource management,
+particularly for cleaning up external resources like file handles. It’s
+guaranteed to run only once in an object’s lifetime, either through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;
+or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt;. Here’s how you might implement it:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_fileHandle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_fileHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_fileHandle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// release properties&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_address&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// always call super last&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice how &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; handles resource cleanup, while &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; focuses on
+releasing retained objects. This separation of concerns allows for more robust
+and predictable cleanup processes.&lt;/p&gt;
+
+&lt;h2 id=&quot;-mulleperformfinalize-runs--finalize-on-demand&quot;&gt;-mullePerformFinalize runs -finalize on demand&lt;/h2&gt;
+
+&lt;p&gt;You can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt; to finalize an object “manually”:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/object-finalize.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The finalization can happen in the “middle of the lifetime” of the object.
+And it is guaranteed that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; is only called once.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;LAW: Never call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; directly, always use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A finalized object is still useable in the object hierarchy,
+but it is not active anymore. An example, where this is useful, is a window
+controller, where the window close button has been clicked. It may still
+redraw, but it doesn’t react to any event actions any more.&lt;/p&gt;
+
+&lt;h2 id=&quot;-finalize-runs-automatically-before--dealloc&quot;&gt;-finalize runs automatically before -dealloc&lt;/h2&gt;
+
+&lt;p&gt;When the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retainCount&lt;/code&gt; is decremented to zero via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;, an object gets
+the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; message, unless &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt; has been called on it
+already:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/object-lifetime.svg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retainCount&lt;/code&gt; remains unchanged throughout &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;, then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;
+is called afterwards.&lt;/p&gt;
+
+&lt;p&gt;During &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; all &lt;a href=&quot;//www.mulle-kybernetik.com/de-re-property/&quot;&gt;@properties&lt;/a&gt; will be cleared. So &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; is used to free resources and cut links to other objects. Objects that are cleared by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;  will be released with  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; and not with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; will ideally at most contain &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; calls and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super dealloc]&lt;/code&gt;. Anything else can be done in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;important--finalize-considerations&quot;&gt;Important -finalize considerations&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; can happen at any time, so the rules differ from those of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;
+which is guaranteed to run only single-threaded with a retainCount of 1. In
+contrast to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; to release instance variables and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt; them&lt;/li&gt;
+  &lt;li&gt;You can use using property setters for the release of instance variables.&lt;/li&gt;
+  &lt;li&gt;Call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super finalize]&lt;/code&gt; when convenient, or omit if you handle all properties
+yourself&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;you-can-write--finalize-dealloc-portably&quot;&gt;You can write -finalize/-dealloc portably&lt;/h2&gt;
+
+&lt;p&gt;If you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;, you will be incompatible with non-ARC Apple. This can be
+remedied, by structuring your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize/-dealloc&lt;/code&gt; code like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dealloc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#ifndef __MULLE_OBJC__
+&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#endif
+&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;caveat&quot;&gt;Caveat&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; is single-threaded, just like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; when called
+during &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;. When you invoke &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt; it can only be
+guaranteed, that no other thread will be executing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; (ever). But it
+is &lt;em&gt;not guaranteed&lt;/em&gt; that no other thread is accessing the object. That’s
+different to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;, where the guarantee is that no other thread will
+ever call this object again.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: +object]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/factory.html" />
+  <id>https://www.mulle-kybernetik.com/factory.html</id>
+  <published>2025-03-10T00:00:00+01:00</published>
+  <updated>2025-03-10T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In the world of &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;, creating object instances is a fundamental
+operation. The user of a class should not be burdened with the details of
+how to create an instance and the memory management with &lt;a href=&quot;autorelease.html&quot;&gt;autorelease pools&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;That’s why factory methods are an important part of a well written
+mulle-objc class. It is bad class design to not provide a factory method for
+all published init methods.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-power-of-factory-methods&quot;&gt;The Power of Factory Methods&lt;/h2&gt;
+
+&lt;p&gt;When it comes to creating objects in mulle-objc, factory methods reign supreme.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSObject&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This simple line of code creates an autoreleased object, initialized with
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;crafting-sophisticated-factory-methods&quot;&gt;Crafting Sophisticated Factory Methods&lt;/h2&gt;
+
+&lt;p&gt;In mulle-objc, factory methods are designed with a two-part structure. This
+design pattern enhances readability and maintainability. Let’s examine a more
+complex example:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// factory method&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;personWithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;age:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// worker method&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;_age&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-elegance-of-literals&quot;&gt;The Elegance of Literals&lt;/h2&gt;
+
+&lt;p&gt;mulle-objc takes object creation a step further with literals, a powerful
+compiler feature. Consider the following examples:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;literal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a_char_pointer_variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NSNumber&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;@42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NSNumber&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;some_numeric_variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NSArray&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@[&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;@1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;@2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;@3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NSDictionary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@{&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;key1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;value1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+                     &lt;span class=&quot;s&quot;&gt;@&quot;key2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;value2&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;These literals provide a concise and readable way to create objects.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: -init]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/init.html" />
+  <id>https://www.mulle-kybernetik.com/init.html</id>
+  <published>2025-03-05T00:00:00+01:00</published>
+  <updated>2025-03-05T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Coming back to object initialization. In Objective-C, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; method is
+crucial for initializing an object after
+it has been allocated. It is important to write an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt; routine properly to
+ensure that the object is in a valid state before it is used.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;multiple-initializers&quot;&gt;Multiple initializers&lt;/h2&gt;
+
+&lt;p&gt;It is not uncommon to have multiple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt; methods with varying
+arguments. All these initializers should funnel into a designated initializer to
+ensure that there is one place to override in subclasses. This approach promotes
+code reuse and maintains a clear initialization flow. By following this pattern,
+you can ensure that all properties are set correctly and that your
+initialization logic remains consistent across different initializers.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;objectWithValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NSInteger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MyClass&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// call super not self&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initWithValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// call self not super!&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-initWithValue:&lt;/code&gt; is the designated initializer. You would document this in
+the header file of your class.&lt;/p&gt;
+
+&lt;h2 id=&quot;important--init-conventions&quot;&gt;Important -init conventions&lt;/h2&gt;
+
+&lt;p&gt;Here are some rules to follow when writing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt; methods:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;If you cannot initialize the object, do a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[self release]&lt;/code&gt; and then return
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Do not throw exceptions in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; method&lt;/li&gt;
+  &lt;li&gt;Do not pass &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; to other objects during initialization.&lt;/li&gt;
+  &lt;li&gt;Avoid using property setters for initialization of instance variables.&lt;/li&gt;
+  &lt;li&gt;Always call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super init]&lt;/code&gt; (or any other initialize of the superclass) unless
+your base class is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt;, in which case you can skip it. You must call
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super init] on &lt;/code&gt;MulleDynamicObject&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt; and &lt;/code&gt;MulleObject&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;. This exception is
+only valid for &lt;/code&gt;NSObject`.&lt;/li&gt;
+  &lt;li&gt;For immutable objects, the -init method is really the only time, where you
+cann set the instance variables.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;important--dealloc-conventions&quot;&gt;Important -dealloc conventions&lt;/h2&gt;
+
+&lt;p&gt;The setup code in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; is mirrored by the teardown code in&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;. The
+rules for similar to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; to release instance variables. Avoid &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Do not throw exceptions&lt;/li&gt;
+  &lt;li&gt;Avoid passing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; to other objects&lt;/li&gt;
+  &lt;li&gt;Avoid using property setters for release of instance variables.&lt;/li&gt;
+  &lt;li&gt;Avoid locking of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; during the scope of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Always call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super dealloc]&lt;/code&gt; last&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[AAO: Always autoreleased objects]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/always-autoreleased.html" />
+  <id>https://www.mulle-kybernetik.com/always-autoreleased.html</id>
+  <published>2025-03-02T00:00:00+01:00</published>
+  <updated>2025-03-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;In mulle-objc the &lt;em&gt;expectation&lt;/em&gt; is that all objects are created autoreleased.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RULE: Objects are passed autoreleased to functions and methods and objects
+are also returned autoreleased from functions and methods.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When you &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; an object, typically during creation, you are tieing
+the lifetime of your object to the lifetime of the current autorelease pool.
+This is an &lt;strong&gt;explicitly&lt;/strong&gt; autoreleased object, as the autorelease
+pool contains a pointer to it.&lt;/p&gt;
+
+&lt;p&gt;Your object is now guaranteed to live at least as long as the autorelease pool.
+It will live longer, if it is directly or indirectly part of another autorelease
+pool.&lt;/p&gt;
+
+&lt;p&gt;In a method, you know the incoming objects are autoreleased. So you don’t
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; them. If you want to return a new object,
+you return an autoreleased object only.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;improvedDocument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;improved&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPerfect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// incoming is autoreleased, outgoing therefore too&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;improved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// do something smart ...&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;improved&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerfect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;YES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To keep an object alive longer, another objects needs to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; it,
+to obtain ownership. As the owning object is oblidged to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; it
+before the death of the owner, it will need to keep a reference to this object
+for as long as it needs to hold unto it.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@public&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAuthor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;autorelease&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #1&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// #2&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;mulle_printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPerson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// #3&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The drawings show the fate of the &lt;em&gt;person&lt;/em&gt; object:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-3.svg&quot; alt=&quot;1&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#1&lt;/code&gt; &lt;strong&gt;explicit&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-7.svg&quot; alt=&quot;2&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#2&lt;/code&gt; &lt;strong&gt;implicit&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/pool-object-ownership-8.svg&quot; alt=&quot;6&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#3&lt;/code&gt; &lt;strong&gt;explicit&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;em&gt;person&lt;/em&gt; is created in an inferior pool and referenced by &lt;em&gt;document&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;The inferior pool is gone, &lt;em&gt;person&lt;/em&gt; is still alive through a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; by &lt;em&gt;document&lt;/em&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;em&gt;document&lt;/em&gt; relinquishes ownership with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; of &lt;em&gt;person&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Your retained object is now an &lt;strong&gt;implicitly&lt;/strong&gt; autoreleased object. When the
+owner cuts the reference, it will &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; your object, therefore turning
+it back into an &lt;strong&gt;expliticly&lt;/strong&gt; autoreleased object.&lt;/p&gt;
+
+&lt;p&gt;These basic relationships form the foundation of mulle-objc’s object ownership
+convention.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RULE: The only times that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; calls are made on an object&lt;/p&gt;
+  &lt;ol&gt;
+    &lt;li&gt;if it is not part of any autorelease pool either explicitly or implicitly&lt;/li&gt;
+    &lt;li&gt;during the death of an autorelease pool (including &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;)&lt;/li&gt;
+    &lt;li&gt;in the scope of a function or method, if each &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt; undoes a preceeding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; in the same function and the object is no longer accessed or returned after the last &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;not-all-objects-are-autoreleased-in-mulle-objc&quot;&gt;Not all objects are autoreleased in mulle-objc&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSThread&lt;/code&gt; objects typically do not reside in autorelease pools. Very short
+lived objects may never enter an autorelease pool. Static &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSString&lt;/code&gt; objects
+are never placed in an autorelease pool. Doing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; on a class or a
+&lt;a href=&quot;//www.mulle-kybernetik.com/weblog/2016/mulle_objc_boon_or_bane.html&quot;&gt;TPS object&lt;/a&gt;
+does nothing and there can be more special cases.&lt;/p&gt;
+
+&lt;p&gt;Nevertheless as long as these objects are “static” or permanent, they count
+as “implicitly” autoreleased, belonging to a virtual universe autoreleasepool.
+If at any time they would lose their permanence, they would need to be placed
+into a true autorelease pool.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This was probably the most important chapter of this guide. Always autoreleased
+objects are the philosophical foundation of &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: -autorelease]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/autorelease.html" />
+  <id>https://www.mulle-kybernetik.com/autorelease.html</id>
+  <published>2025-03-01T00:00:00+01:00</published>
+  <updated>2025-03-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Welcome to the world of &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;’s memory management, where &lt;strong&gt;NSAutoreleasePool&lt;/strong&gt; reigns supreme.&lt;/p&gt;
+
+&lt;p&gt;You learned about the retain counting and the lifetime of objects in a previous
+chapter, and now comes the chapter that will try to sell you, that you don’t
+need to worry about retain counting. As now, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSAutoreleasePool&lt;/code&gt; makes its
+appearance on the scene.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-nsautoreleasepool-class&quot;&gt;The NSAutoreleasePool class&lt;/h2&gt;
+
+&lt;p&gt;Basically a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSAutoreleasePool&lt;/code&gt; just manages an array of pointers to objects.
+You can add objects to the pool by using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt; convenience
+method on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt;. This method locates the current pool for the running
+thread and adds the object to the array.&lt;/p&gt;
+
+&lt;p&gt;The autorelease pool has one operational method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-drain&lt;/code&gt;, which iterates
+through this array, sending a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; message to each object. You usually
+call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-drain&lt;/code&gt; only indirectly, once a NSAutoreleasePool expires.&lt;/p&gt;
+
+&lt;p&gt;Creating an pool in your code is never necessary, but it can be
+a useful optimization, when you create lots of short lived objects. But you
+can if you want with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@autoreleasepool&lt;/code&gt; directive. More on this later.&lt;/p&gt;
+
+&lt;h3 id=&quot;thread-specific-pool-stacks&quot;&gt;Thread-Specific Pool Stacks&lt;/h3&gt;
+
+&lt;p&gt;Each thread in mulle-objc maintains its own stack of autorelease pools. This
+design ensures thread safety without the need for expensive locking mechanisms.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/thread_2-pool_1-obj_0.svg&quot; alt=&quot;Pools And Threads&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As shown above, Thread #1 and Thread #2 each manage their own pools
+independently, preventing any cross-thread interference.
+Each thread under mulle-objc control, even the main thread creates an
+autorelease pool when it starts up.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RULE: An object can only be messaged by a thread, if the object resides
+in the autoreleasepool stack of that thread.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This ensures that autoreleased objects always have a pool to be added to, even
+in the absence of explicit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@autoreleasepool&lt;/code&gt; directives.&lt;/p&gt;
+
+&lt;h2 id=&quot;nested-pool-management&quot;&gt;Nested Pool Management&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/thread_1-pool_2-obj_0.svg&quot; alt=&quot;Single Nested Pool&quot; width=&quot;250&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/thread_1-pool_2-obj_1.svg&quot; alt=&quot;One Object Added&quot; width=&quot;250&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pools can be nested within each other, creating a hierarchical structure for fine-grained memory management&lt;/td&gt;
+      &lt;td&gt;Objects are always added to the innermost pool in the current thread’s stack.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The next code snippet and the accompanying drwawing visualize how nested
+autorelease pools collect and dispose of objects during program execution.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE: The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+object&lt;/code&gt; method creates an instance and then calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-autorelease&lt;/code&gt;
+on it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// pool 1 starts&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// #1#&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;@autoreleasepool&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// pool 2 starts&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// #2&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// c added to pool 2&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// pool 2 drains, c released // #3&lt;/span&gt;
+
+                                   &lt;span class=&quot;c1&quot;&gt;// #4&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;mulle_printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;a %@ and b %@ are still alive&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;// this would crash likely&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// mulle_printf( &quot;c %@ is dead\n&quot;, c);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// pool 1 drains&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When an autorelease pool is drained, it releases all the objects it contains.
+This happens automatically at the end of an @autoreleasepool scope.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;images/nested-pools-2.svg&quot; alt=&quot;1&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#1&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/nested-pools-3.svg&quot; alt=&quot;2&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/nested-pools-4.svg&quot; alt=&quot;3&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#3&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;images/nested-pools-2.svg&quot; alt=&quot;4&quot; width=&quot;120&quot; /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#4&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;creating-autoreleased-and-zeroed-c-memory&quot;&gt;Creating autoreleased and zeroed C memory&lt;/h3&gt;
+
+&lt;p&gt;An autoreleasepool can also facilitate C coding. You can use
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCCallocAutoreleased&lt;/code&gt; to create an autoreleased and zeroed
+block of memory:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCCallocAutoreleased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;whatever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is like a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;calloc&lt;/code&gt; you don’t have to free. Remember though, you can’
+retain an allocation like this.&lt;/p&gt;
+
+&lt;h3 id=&quot;caveat&quot;&gt;Caveat&lt;/h3&gt;
+
+&lt;p&gt;While mulle-objc’s autorelease system offers great convenience, it’s important
+to be aware of potential pitfalls. For instance, creating and keeping
+to many autoreleased objects and never getting to a pool drain will lead to
+increased memory usage.&lt;/p&gt;
+
+&lt;p&gt;This can happen for example in long-running operations, like a database import
+from JSON for example. The remedy is to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@autoreleasepool&lt;/code&gt; blocks or
+to manually drain pools once in a while.&lt;/p&gt;
+
+&lt;h3 id=&quot;discussion-on-nsautoreleasepool-vs-garbage-collection&quot;&gt;Discussion on NSAutoreleasePool vs Garbage Collection&lt;/h3&gt;
+
+&lt;p&gt;NSAutoreleasePool offers several advantages over garbage collection,
+particularly in terms of performance and predictability.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deterministic Memory Management&lt;/strong&gt;: With NSAutoreleasePool, developers have
+control over when memory is released, allowing for more predictable memory
+usage patterns. In contrast, garbage collection can introduce latency as it
+runs in the background, potentially leading to unpredictable pauses in
+application performance.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Lower Overhead&lt;/strong&gt;: NSAutoreleasePool has a lower runtime overhead compared to
+garbage collection. It does not require the additional resources needed to
+track object references and manage cycles, which can be particularly
+beneficial in resource-constrained environments.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fine-Grained Control&lt;/strong&gt;: Developers can create and drain autorelease pools at
+specific points in their code, allowing for fine-tuned memory management
+strategies. This is especially useful in applications with varying memory
+demands, where developers can optimize memory usage based on the current
+workload.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Control over Resource&lt;/strong&gt;: Developers can release resources (like file
+handles) when they want with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt;, compared to garbage
+collection which is unpredictable.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: -retain / -release]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/retaincount.html" />
+  <id>https://www.mulle-kybernetik.com/retaincount.html</id>
+  <published>2025-02-15T00:00:00+01:00</published>
+  <updated>2025-02-15T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Let’s dive into the fascinating world of memory management in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;, a
+system that sets itself apart with its unique approach to object lifecycle
+management. As you’ll soon discover, mulle-objc employs a highly efficient
+Manual Memory Management (MMR) system, eschewing Automatic Reference Counting (
+ARC) in favor of a more predictable and controllable approach.&lt;/p&gt;
+
+&lt;p&gt;Have you ever wondered how objects in a programming language know when they’re
+no longer needed? In mulle-objc, this is handled through a sophisticated retain
+counting mechanism. Unlike some contemporary systems that abstract away memory
+management, mulle-objc gives you, the developer, direct control over an object’s
+lifecycle.&lt;/p&gt;
+
+&lt;p&gt;At the heart of mulle-objc’s memory management are six core operations. It is
+important to know these operations, but in a well designed system, you will
+rarely use them directly. And there are only two methods you will encounter
+overriding with your own implementations:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Operation&lt;/th&gt;
+      &lt;th&gt;Override&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+new&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Creates an object with an initial reference count of 1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Increments the reference count&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Decrements the reference count&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retainCount&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Returns the current reference count&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Called from -release when the reference count reaches zero. Can also be triggered by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mullePerformFinalize&lt;/code&gt;. Allows the object to free resources and untie itself from other objects. Runs only once in an object’s lifetime.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Performs final cleanup when the reference count reaches zero&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Anyway, let’s break this down with an example:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// count = 1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;                  &lt;span class=&quot;c1&quot;&gt;// count = 2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// count = 1&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// count = 0, triggers finalize and then dealloc&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// DO NOT MESSAGE document AGAIN&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this sequence, we create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Document&lt;/code&gt; object, increase its retain count, then
+decrease it twice.&lt;/p&gt;
+
+&lt;p&gt;When &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retainCount&lt;/code&gt; reaches zero, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; method automatically
+calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; and then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; in sequence, ultimately leading to the
+objects destruction.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/object-lifetime-2.svg&quot; alt=&quot;Lifetime&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;LAW&lt;/strong&gt;: Once the number of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; calls to an object exceeds the
+number of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; calls, the object becomes deallocated and invalid.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;when-to-call--retain-and--release&quot;&gt;When to call -retain and -release&lt;/h2&gt;
+
+&lt;p&gt;When you create another object or receive one as a method or function argument,
+you may want to keep it around with your object. Effectively you
+are keeping a &lt;em&gt;reference&lt;/em&gt; to it. Now when you do that, you increase the
+reference count of that object with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt;. Conversely, when you are done
+with it, you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt; to relinquish ownership.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAuthor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// THIS CODE IS JUST FOR ILLUSTRATION PURPOSES&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// DO NOT WRITE ACCESSORS THAT CALL -release INSTEAD OF -autorelease&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;// remove old author&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;_author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// keep new author&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In general though in mulle-objc you use a &lt;a href=&quot;//mulle-kybernetik.com/de-re-property/&quot;&gt;@property&lt;/a&gt; to keep an object reference, which simplifies the proceedings.&lt;/p&gt;
+
+&lt;h2 id=&quot;caveats&quot;&gt;Caveats&lt;/h2&gt;
+
+&lt;p&gt;But what about the challenges of this system? While it offers great control, it
+does require careful management from the developer. You must ensure that every
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-retain&lt;/code&gt; is balanced by a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-release&lt;/code&gt;, that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; releases all retained
+objects, and that you never access released objects.&lt;/p&gt;
+
+&lt;p&gt;These requirements can potentially lead to memory leaks or crashes, if not
+handled correctly. The next chapter discusses how mulle-objc mitigates many of
+these challenges through its autorelease pools.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[NSObject: +alloc / -dealloc]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/life-and-death.html" />
+  <id>https://www.mulle-kybernetik.com/life-and-death.html</id>
+  <published>2025-01-10T00:00:00+01:00</published>
+  <updated>2025-01-10T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Lets start with the absolute basics of creating and disposing of
+objects. We are talking about objects that are either of the class
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; or any of its subclasses.&lt;/p&gt;
+
+&lt;p&gt;e.g.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;creation-and-destruction&quot;&gt;Creation and destruction&lt;/h2&gt;
+
+&lt;p&gt;These are the most basic methods provided by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt;. A user of a
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; derived class, would not actually need to call any of these methods
+directly, as they are too low level. But we are building  from the ground up:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Method&lt;/th&gt;
+      &lt;th&gt;Override&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Creates an object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;MAYBE&lt;/td&gt;
+      &lt;td&gt;Initializes the object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;MAYBE&lt;/td&gt;
+      &lt;td&gt;Release resources and owned objects&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;MAYBE&lt;/td&gt;
+      &lt;td&gt;Deallocates the object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+new&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Convenience combining alloc with init&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+Let’s declare a class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Document&lt;/code&gt; based on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; and write the most simple
+demo:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#import &amp;lt;MulleObjC/MulleObjC.h&amp;gt;
+&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NSObject&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Document&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;alloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// calling -finalize manually, just for demo purposes&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;finalize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// calling -dealloc manually, just for demo purposes&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;document&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dealloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// DO NOT MESSAGE document ANYMORE!&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;An instance of Document is created with the class method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt;.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; will unfailingly return an object pointer to an instance, whose
+content has been zeroed out. You can rely on both facts. If the system runs
+out of memory, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; will throw an exception.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/document-alloc.svg&quot; alt=&quot;Alloc&quot; height=&quot;200&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The next step is the initialization of the instance with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt;. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; is
+free to return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt; though. It’s an indicator that initialization was not
+possible. If this can be the case should be noted in the documentation of
+a class header file.&lt;/p&gt;
+
+&lt;p&gt;The default &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; method does nothing but return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For illustrative purposes, the code does now, what you &lt;em&gt;never&lt;/em&gt; should do,
+that is, it calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; manually.&lt;/p&gt;
+
+&lt;p&gt;With &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; you can lop off any references to any other objects that are
+kept in properties (more on this later):&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finalize&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;_MulleObjCInstanceClearProperties&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;LAW&lt;/strong&gt; A NSObject based instance has the guarantee, that it will get an
+initializing call before autorelease. That being &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; or a &lt;a href=&quot;init.html&quot;&gt;variant&lt;/a&gt;
+of init. It is guaranteed that its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; method will be called once and
+only once before the object receives a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt;.&lt;/p&gt;
+
+  &lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-finalize&lt;/code&gt; can happen at any time after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt; though.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Finally &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; is called to free the instances memory.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;LAW&lt;/strong&gt;: Once an instance has gone through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dealloc&lt;/code&gt;, it must not be messaged
+again.&lt;/p&gt;
+
+  &lt;p&gt;Doing so is called messaging a zombie and it can crash your program.
+It will definitely crash, when you set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSZombieEnabled&lt;/code&gt; environment
+variable to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YES&lt;/code&gt;, which is recommended during development.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;new&quot;&gt;+new&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+new&lt;/code&gt; method is essentially a combination of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-init&lt;/code&gt;, which
+simplifies the creation of instances a bit. In general you will not use it very
+often either, when we introduce &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+object&lt;/code&gt; in one of the next chapters.&lt;/p&gt;
+
+&lt;h2 id=&quot;lifetime&quot;&gt;Lifetime&lt;/h2&gt;
+
+&lt;p&gt;The time between the call to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+alloc&lt;/code&gt; and the final &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-dealloc&lt;/code&gt; of an object is
+called the object’s &lt;strong&gt;lifetime&lt;/strong&gt;. We will use this concept later on quite a bit.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Intro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/intro.html" />
+  <id>https://www.mulle-kybernetik.com/intro.html</id>
+  <published>2025-01-01T00:00:00+01:00</published>
+  <updated>2025-01-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-objects@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;img src=&quot;images/image-4.jpg&quot; alt=&quot;Gratuitous banner&quot; class=&quot;banner-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This guide is all about the proper management of objects, how they are created
+how they are destroyed and all things inbetween. Your &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; coding will be much more fruitful after you have read this guide.
+The absolute minimum to take out of this guide is the &lt;a href=&quot;always-autoreleased.html&quot;&gt;AAO&lt;/a&gt; chapter. The rest of the guide will serve to deepen your understanding of
+the mulle-objc runtime. For even more information visit &lt;a href=&quot;https://www.mulle-kybernetik.com/objc-runtime-in-pictures/&quot;&gt;The Objective-C runtime in pictures&lt;/a&gt; or the
+developer guide &lt;a href=&quot;https://mulle-objc.github.io/De-Re-mulle-objc/&quot;&gt;De Re mulle-objc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;nsobject&quot;&gt;NSObject&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; serves as the primary root class in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;, implementing a
+sophisticated object model that forms the bedrock of the entire framework. It
+defines a universal interface for how objects interact with the runtime system
+and with each other, encompassing crucial aspects such as message passing,
+memory management, and type information handling.&lt;/p&gt;
+
+&lt;p&gt;Virtually every class you’ll work with in &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;
+will be a subclass of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt;. In fact, only a handful of highly specialized
+classes deviate from this norm, to the extent that you can safely assume any
+object you’re dealing with in your day to day code is an NSObject descendant.&lt;/p&gt;
+
+&lt;h2 id=&quot;nsobject-in-more-detail&quot;&gt;NSObject in more detail&lt;/h2&gt;
+
+&lt;p&gt;Let’s break down the core mechanisms that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; provides:&lt;/p&gt;
+
+&lt;p&gt;Here’s a markdown table of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; facilities, organized by topic:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Topic&lt;/th&gt;
+      &lt;th&gt;Facilities&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Memory Management&lt;/td&gt;
+      &lt;td&gt;- Manual reference counting methods (retain, release, autorelease)&lt;br /&gt;- Deallocation method (dealloc)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Runtime Interaction&lt;/td&gt;
+      &lt;td&gt;- Class introspection (e.g., isKindOfClass:, isMemberOfClass:)&lt;br /&gt;- Method invocation and forwarding&lt;br /&gt;- Selector handling (e.g., respondsToSelector:)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Object Comparison and Equality&lt;/td&gt;
+      &lt;td&gt;- Equality checking (isEqual: method)&lt;br /&gt;- Hashing support (hash method)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Serialization and Copying&lt;/td&gt;
+      &lt;td&gt;- Support for object copying (copy and mutableCopy methods)&lt;br /&gt;- Encoding and decoding for object serialization&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Threading and Concurrency&lt;/td&gt;
+      &lt;td&gt;- Thread-safety mechanisms&lt;br /&gt;- Main thread execution methods (e.g., performSelectorOnMainThread:)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObject&lt;/code&gt; has a minimal memory footprint, it contains no instance variables.
+Each instance is prefixed by an object header, that carries only the essential
+overhead: an &lt;a href=&quot;alloc.html#extrabytes-and-metaextrabytes&quot;&gt;isa&lt;/a&gt; pointer that ties
+the instance to its class, the &lt;a href=&quot;retaincount&quot;&gt;retainCount&lt;/a&gt; and sometimes
+additional meta data required by the runtime for debugging operations.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE: This guide was partly written by AI (specifically cody) and then
+      mostly rewritten by Nat! Therefore the writing style of this pamphlet
+      is all over the place 😩&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+</entry>
+
+</feed>

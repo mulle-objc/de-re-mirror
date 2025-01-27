@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color-interpolation="auto" color-rendering="auto" fill="black" font-family="'Dialog'" font-size="12px" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" text-rendering="auto" viewBox="0 0 645 302" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="a">
+<path d="m151 192h645v302h-645v-302z"/>
+</clipPath>
+</defs>
+<g transform="translate(-151 -192)" fill="#9cf" shape-rendering="geometricPrecision" stroke="#9cf" text-rendering="geometricPrecision">
+<rect x="385" y="207.25" width="179" height="55" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="385" y="207.25" width="179" height="55" clip-path="url(#a)" fill="none"/>
+<text x="465.0459" y="238.9043" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">foo</text>
+</g>
+<g transform="translate(-151 -192)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<rect x="166" y="418.25" width="184" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="166" y="418.25" width="184" height="30" clip-path="url(#a)" fill="none"/>
+<text x="181.8633" y="437.4043" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">.mulle/etc/craft/definition</text>
+</g>
+<g transform="translate(-151 -192)" fill="#cfc" shape-rendering="geometricPrecision" stroke="#cfc" text-rendering="geometricPrecision">
+<rect x="597" y="416.75" width="184" height="33" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="597" y="416.75" width="184" height="33" clip-path="url(#a)" fill="none"/>
+<text x="612.8633" y="437.4043" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">.mulle/etc/craft/definition</text>
+</g>
+<g transform="translate(-151 -192)" fill="lime" shape-rendering="geometricPrecision" stroke="lime" text-rendering="geometricPrecision">
+<rect x="602" y="312" width="179" height="55" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="602" y="312" width="179" height="55" clip-path="url(#a)" fill="none"/>
+<text x="663.4424" y="343.6543" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">stash/bar</text>
+</g>
+<g transform="translate(-151 -192)" fill="gray" shape-rendering="geometricPrecision" stroke="gray" text-rendering="geometricPrecision">
+<rect x="166" y="448.25" width="63" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="166" y="448.25" width="63" height="30" clip-path="url(#a)" fill="none"/>
+<text x="175.8965" y="466.4434" clip-path="url(#a)" fill="white" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">CFLAGS</text>
+</g>
+<g transform="translate(-151 -192)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="229" y="448.25" width="121" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="229" y="448.25" width="121" height="30" clip-path="url(#a)" fill="none"/>
+<text x="242.6924" y="466.4434" clip-path="url(#a)" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">-DVERSION="1"</text>
+</g>
+<g transform="translate(-151 -192)" fill="gray" shape-rendering="geometricPrecision" stroke="gray" text-rendering="geometricPrecision">
+<rect x="597" y="449.75" width="63" height="28.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="597" y="449.75" width="63" height="28.5" clip-path="url(#a)" fill="none"/>
+<text x="606.8965" y="467.1934" clip-path="url(#a)" fill="white" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">CFLAGS</text>
+</g>
+<g transform="translate(-151 -192)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="660" y="449.75" width="121" height="28.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="660" y="449.75" width="121" height="28.5" clip-path="url(#a)" fill="none"/>
+<text x="673.6924" y="467.1934" clip-path="url(#a)" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">-DVERSION="2"</text>
+</g>
+<g transform="translate(-151 -192)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<rect x="380" y="416.75" width="184" height="33" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="380" y="416.75" width="184" height="33" clip-path="url(#a)" fill="none"/>
+<text x="404.6025" y="437.4043" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">craftinfo/bar/definition</text>
+</g>
+<g transform="translate(-151 -192)" fill="gray" shape-rendering="geometricPrecision" stroke="gray" text-rendering="geometricPrecision">
+<rect x="380" y="448.25" width="63" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="380" y="448.25" width="63" height="30" clip-path="url(#a)" fill="none"/>
+<text x="389.8965" y="466.4434" clip-path="url(#a)" fill="white" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">CFLAGS</text>
+</g>
+<g transform="translate(-151 -192)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="443" y="448.25" width="121" height="30" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-151 -192)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<rect x="443" y="448.25" width="121" height="30" clip-path="url(#a)" fill="none"/>
+<text x="456.6924" y="466.4434" clip-path="url(#a)" font-family="'Liberation Mono'" stroke="none" xml:space="preserve">-DVERSION="3"</text>
+<path d="m444.51 262.25-164.25 150.59" clip-path="url(#a)" fill="none"/>
+<path d="m274.36 418.25 12.224-4.4242-5.5902-1.658-1.1678-5.7128z" clip-path="url(#a)" stroke="none"/>
+<path d="m531.47 262.25 95.858 46.272" clip-path="url(#a)" fill="none"/>
+<path d="m634.53 312-8.6332-9.7195 0.5281 5.807-4.8753 3.1987z" clip-path="url(#a)" stroke="none"/>
+<path d="m690.77 367-1.1134 41.753" clip-path="url(#a)" fill="none"/>
+<path d="m689.44 416.75 5.3181-11.862-5.0782 2.8657-4.9182-3.1322z" clip-path="url(#a)" stroke="none"/>
+<path d="m474.15 262.25-1.8451 146.5" clip-path="url(#a)" fill="none"/>
+<path d="m472.21 416.75 5.1508-11.936-5.0374 2.9368-4.9619-3.0627z" clip-path="url(#a)" stroke="none"/>
+</g>
+</svg>

@@ -1,0 +1,384 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>MulleObject &#8211; De Re NSObject</title>
+<meta name="description" content="Welcome to the world of MulleObject, a powerful extension of MulleDynamicObject that brings thread-safety to the forefront of Objective-C programming. As you delve into this advanced concept, you’ll discover how MulleObject not only inherits the dynamic capabilities of its parent class but also introduces a robust thread-safety layer through the...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="MulleObject">
+<meta name="twitter:description" content="Welcome to the world of MulleObject, a powerful extension of MulleDynamicObject that brings thread-safety to the forefront of Objective-C programming. As you delve into this advanced concept, you’ll discover how MulleObject not only inherits the dynamic capabilities of its parent class but also introduces a robust thread-safety layer through the...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/mulleobject.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MulleObject">
+<meta property="og:description" content="Welcome to the world of MulleObject, a powerful extension of MulleDynamicObject that brings thread-safety to the forefront of Objective-C programming. As you delve into this advanced concept, you’ll discover how MulleObject not only inherits the dynamic capabilities of its parent class but also introduces a robust thread-safety layer through the...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/mulleobject.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/mulleobject.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/mulleobject.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>MulleObject</h1>
+                  <div>
+                  <p>Welcome to the world of <strong>MulleObject</strong>, a powerful extension of <code class="language-plaintext highlighter-rouge">MulleDynamicObject</code>
+that brings thread-safety to the forefront of Objective-C programming. As you
+delve into this advanced concept, you’ll discover how <code class="language-plaintext highlighter-rouge">MulleObject</code> not only
+inherits the dynamic capabilities of its parent class but also introduces a
+robust thread-safety layer through the MulleObjCThreadsafe protocol
+implementation.</p>
+
+<p>Let’s begin by examining the core functionality of <code class="language-plaintext highlighter-rouge">MulleObject</code>. You might be
+wondering, “How does MulleObject achieve thread-safety in multi-threaded
+environments?” The answer lies in its innovative shared lock mechanism. This
+system allows multiple related objects to operate under a single lock, a concept
+known as “lock cohesion” or “synchronized object groups.”</p>
+
+<p>Consider this hierarchical structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   RootView (lock A)
+   ├── HeaderView (uses lock A)
+   │   ├── TitleLabel (uses lock A)
+   │   └── MenuButton (uses lock A)
+   └── ContentView (uses lock A)
+       ├── ImageView (uses lock A)
+       └── DescriptionLabel (uses lock A)
+</code></pre></div></div>
+
+<p>In this example, instead of each view maintaining its own lock, the entire
+hierarchy shares a single lock from the RootView. This approach offers several
+significant advantages:</p>
+
+<ol>
+  <li>Prevention of lock explosion: In deep view trees, you won’t end up with an
+overwhelming number of locks.</li>
+  <li>Consistency maintenance: The entire hierarchy maintains a consistent state.</li>
+  <li>Reduced memory overhead: Fewer locks mean less memory usage.</li>
+  <li>Simplified synchronization logic: With a shared lock, you can avoid complex
+lock management scenarios.</li>
+</ol>
+
+<p>Now, let’s dive into some code to see how you might use MulleObject in practice:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="nc">MulleObject</span> <span class="o">&lt;</span> <span class="n">MulleAutolockingObjectProtocols</span><span class="o">&gt;</span>
+
+<span class="k">@property</span><span class="p">(</span> <span class="n">dynamic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span>   <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">copy</span><span class="p">)</span>          <span class="n">NSString</span>   <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">nop</span>   <span class="n">MULLE_OBJC_THREADSAFE_METHOD</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">MyView</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">nop</span>
+<span class="p">{</span>
+   <span class="c1">// inherently thread safe code</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The default “MulleObject” without <code class="language-plaintext highlighter-rouge">MulleAutolockingObjectProtocols</code> will NOT
+be thread-safe. You need to adopt those protocol to activate the thread-safe
+locking wrapping functionality.</p>
+
+<p>You can see how <code class="language-plaintext highlighter-rouge">MyView</code> uses a dynamic property “name” and a conventional
+instance variable based property “title”. But both properties’ accessors,
+<code class="language-plaintext highlighter-rouge">setName:</code> and <code class="language-plaintext highlighter-rouge">name</code> as well as the
+<code class="language-plaintext highlighter-rouge">setTitle:</code> and <code class="language-plaintext highlighter-rouge">title</code>, use the locking provided by MulleObject.</p>
+
+<p>The method <code class="language-plaintext highlighter-rouge">nop</code> is labeled as a <code class="language-plaintext highlighter-rouge">MULLE_OBJC_THREADSAFE_METHOD</code> therefore is
+outside of the locking mechanism of MulleObject”</p>
+
+<h2 id="lock-sharing">Lock Sharing</h2>
+
+<p>The lock sharing model in MulleObject is particularly efficient for:</p>
+
+<ol>
+  <li>View hierarchies</li>
+  <li>Document object models</li>
+  <li>Composite data structures</li>
+  <li>Parent-child relationships</li>
+</ol>
+
+<p>These scenarios naturally involve related objects that need to maintain
+consistent state, making them ideal candidates for shared lock synchronization.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Foo</span> <span class="p">:</span> <span class="nc">MulleObject</span> <span class="o">&lt;</span> <span class="n">MulleAutolockingObjectProtocols</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+<span class="k">@end</span>
+
+<span class="kt">int</span>  <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+   <span class="n">Foo</span>   <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+
+   <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">Foo</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">Foo</span> <span class="nf">object</span><span class="p">];</span>
+
+   <span class="p">[</span><span class="n">b</span> <span class="nf">shareRecursiveLockWithObject</span><span class="p">:</span><span class="n">a</span><span class="p">];</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now whenever you access either ‘a’ or ‘b’, you will effectively lock both
+objects. Because of the recursive nature of the lock, subsequent method
+calls during the lock duration, will not deadlock and will be much cheaper in
+terms of runtime execution.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In conclusion, MulleObject represents a significant advancement in Objective-C
+programming, offering a powerful solution for creating thread-safe, dynamic
+objects. By leveraging its capabilities, you can build robust, efficient, and
+scalable applications that can handle complex multi-threaded scenarios with
+ease.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/dynamic.html">MulleDynamicObject</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/outro.html">Outro</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

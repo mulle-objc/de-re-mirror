@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="458pt" height="234pt" viewBox="0 0 457.5 234" xmlns="http://www.w3.org/2000/svg">
+<g class="graph" transform="scale(1) translate(4 230)">
+<title>mulle_objc_class</title>
+<polygon points="-4 4 -4 -230 453.5 -230 453.5 4" fill="#fff" stroke="transparent"/>
+<g class="node">
+<title>0x61abca0fc640</title>
+<polygon points="261.5 -226 161.5 -226 161.5 -190 261.5 -190" fill="none" stroke="#000"/>
+<polygon points="170.5 -199 170.5 -216 252.5 -216 252.5 -199" fill="blue" stroke="transparent"/>
+<polygon points="170.5 -199 170.5 -216 252.5 -216 252.5 -199" fill="none" stroke="#000"/>
+<text x="172" y="-203.8" fill="white" font-family="Times,serif" font-size="14">SomeClass</text>
+<polygon points="169.5 -198.5 169.5 -217.5 253.5 -217.5 253.5 -198.5" fill="none" stroke="#000"/>
+</g>
+<g class="node">
+<title>0x61abca0fbc40</title>
+<polygon points="128.5 -135 36.5 -135 36.5 -99 128.5 -99" fill="none" stroke="#000"/>
+<polygon points="45.5 -108 45.5 -125 119.5 -125 119.5 -108" fill="blue" stroke="transparent"/>
+<polygon points="45.5 -108 45.5 -125 119.5 -125 119.5 -108" fill="none" stroke="#000"/>
+<text x="46.5" y="-112.8" fill="white" font-family="Times,serif" font-size="14">RootClass</text>
+<polygon points="44.5 -107.5 44.5 -126.5 120.5 -126.5 120.5 -107.5" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x61abca0fc640-&gt;0x61abca0fbc40</title>
+<path d="m186.63-189.84c-20.17 13.91-48.77 33.65-70.9 48.91" fill="none" stroke="#000" stroke-width="3"/>
+<polygon points="117.51 -137.91 107.3 -135.11 113.54 -143.67" stroke="#000" stroke-width="3"/>
+<text x="180" y="-160.8" font-family="Times,serif" font-size="14" text-anchor="middle">super</text>
+</g>
+<g class="node">
+<title>0x61abca0fc110</title>
+<polygon points="271.5 -135 153.5 -135 153.5 -99 271.5 -99" fill="none" stroke="#000"/>
+<polygon points="162.5 -108 162.5 -125 262.5 -125 262.5 -108" fill="blue" stroke="transparent"/>
+<polygon points="162.5 -108 162.5 -125 262.5 -125 262.5 -108" fill="none" stroke="#000"/>
+<text x="163.5" y="-112.8" fill="white" font-family="Times,serif" font-size="14">ProtocolClass</text>
+<polygon points="161.5 -107.5 161.5 -126.5 263.5 -126.5 263.5 -107.5" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x61abca0fc640-&gt;0x61abca0fc110</title>
+<path d="m211.69-189.84c0.14 12.56 0.34 29.86 0.5 44.34" fill="none" stroke="#000"/>
+<polygon points="215.7 -145.15 212.31 -135.11 208.7 -145.07" stroke="#000"/>
+<text x="274.5" y="-160.8" font-family="Times,serif" font-size="14" text-anchor="middle">protocol class #0</text>
+</g>
+<g class="node">
+<title>0x61ab987c53d0</title>
+<polygon points="300.5 -117 300.5 -134 417.5 -134 417.5 -117" stroke="transparent"/>
+<polygon points="300.5 -117 300.5 -134 417.5 -134 417.5 -117" fill="none" stroke="#000"/>
+<text x="320.5" y="-121.8" fill="white" font-family="Times,serif" font-size="14">methodlist</text>
+<polygon points="300.5 -100 300.5 -117 417.5 -117 417.5 -100" fill="none" stroke="#000"/>
+<text x="301.5" y="-104.8" font-family="Times,serif" font-size="14">instanceMethod</text>
+<polygon points="299 -99 299 -135 418 -135 418 -99" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x61abca0fc640-&gt;0x61ab987c53d0</title>
+<path d="m261.53-203.32c25.1 4.21 54.45 13.02 74.97 31.32 6.92 6.17 11.7 14.83 14.99 23.42" fill="none" stroke="#000"/>
+<polygon points="354.82 -149.66 354.61 -139.06 348.17 -147.48" stroke="#000"/>
+<text x="398" y="-160.8" font-family="Times,serif" font-size="14" text-anchor="middle">methodlist #0</text>
+</g>
+<g class="node">
+<title>0x61ab987c5250</title>
+<polygon points="9.5 -22 9.5 -39 126.5 -39 126.5 -22" stroke="transparent"/>
+<polygon points="9.5 -22 9.5 -39 126.5 -39 126.5 -22" fill="none" stroke="#000"/>
+<text x="29.5" y="-26.8" fill="white" font-family="Times,serif" font-size="14">methodlist</text>
+<polygon points="9.5 -5 9.5 -22 126.5 -22 126.5 -5" fill="none" stroke="#000"/>
+<text x="10.5" y="-9.8" font-family="Times,serif" font-size="14">instanceMethod</text>
+<polygon points="8 -4 8 -40 127 -40 127 -4" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x61abca0fbc40-&gt;0x61ab987c5250</title>
+<path d="m79.75-98.94c-2.02 12.52-4.82 29.89-7.24 44.86" fill="none" stroke="#000"/>
+<polygon points="75.97 -53.51 70.92 -44.19 69.06 -54.62" stroke="#000"/>
+<text x="128" y="-65.8" font-family="Times,serif" font-size="14" text-anchor="middle">methodlist #0</text>
+</g>
+<g class="node">
+<title>0x61ab987c5310</title>
+<polygon points="162.5 -22 162.5 -39 279.5 -39 279.5 -22" stroke="transparent"/>
+<polygon points="162.5 -22 162.5 -39 279.5 -39 279.5 -22" fill="none" stroke="#000"/>
+<text x="182.5" y="-26.8" fill="white" font-family="Times,serif" font-size="14">methodlist</text>
+<polygon points="162.5 -5 162.5 -22 279.5 -22 279.5 -5" fill="none" stroke="#000"/>
+<text x="163.5" y="-9.8" font-family="Times,serif" font-size="14">instanceMethod</text>
+<polygon points="161 -4 161 -40 280 -40 280 -4" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x61abca0fc110-&gt;0x61ab987c5310</title>
+<path d="m213.97-98.94c1.06 12.4 2.54 29.56 3.82 44.43" fill="none" stroke="#000"/>
+<polygon points="221.31 -54.46 218.68 -44.19 214.33 -53.86" stroke="#000"/>
+<text x="269" y="-65.8" font-family="Times,serif" font-size="14" text-anchor="middle">methodlist #0</text>
+</g>
+</g>
+</svg>

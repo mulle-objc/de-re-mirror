@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="476pt" height="606pt" viewBox="0 0 476 606" xmlns="http://www.w3.org/2000/svg">
+<g class="graph" transform="scale(1) translate(36 570)">
+<title>G</title>
+<polygon points="-36 36 -36 -570 440 -570 440 36" fill="#fff" stroke="transparent"/>
+<g class="cluster">
+<title>cluster_thread</title>
+<polygon points="8 -70 8 -526 396 -526 396 -70" fill="#add8e6" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_0</title>
+<polygon points="28 -140 28 -506 288 -506 288 -140" fill="#ff0" stroke="#000" stroke-width="6"/>
+</g>
+<g class="cluster">
+<title>cluster_1</title>
+<polygon points="48 -160 48 -326 268 -326 268 -160" fill="#7fff00" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>A1</title>
+<ellipse cx="86" cy="-468" rx="18" ry="18" fill="#fff" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>B1</title>
+<ellipse cx="158" cy="-468" rx="18" ry="18" fill="#fff" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>D1</title>
+<ellipse cx="86" cy="-378" rx="18" ry="18" fill="#1e90ff" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>C1</title>
+<ellipse cx="230" cy="-468" rx="18" ry="18" fill="#1e90ff" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>A2</title>
+<ellipse cx="86" cy="-288" rx="18" ry="18" fill="red" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>label1</title>
+<polygon points="375.5 -306 308.5 -306 308.5 -270 375.5 -270" fill="#ff0" stroke="transparent" stroke-width="6"/>
+<text x="342" y="-281.8" font-family="Poppins" font-size="24" text-anchor="middle">Pool</text>
+</g>
+<g class="node">
+<title>B2</title>
+<ellipse cx="158" cy="-288" rx="18" ry="18" fill="red" stroke="#000" stroke-width="6"/>
+</g>
+<g class="node">
+<title>label2</title>
+<polygon points="191.5 -126 124.5 -126 124.5 -90 191.5 -90" fill="#7fff00" stroke="transparent" stroke-width="6"/>
+<text x="158" y="-101.8" font-family="Poppins" font-size="24" text-anchor="middle">Pool</text>
+</g>
+<g class="node">
+<title>thread_label</title>
+<polygon points="227 -36 89 -36 89 0 227 0" fill="#add8e6" stroke="transparent" stroke-width="6"/>
+<text x="158" y="-11.8" font-family="Poppins" font-size="24" text-anchor="middle">Thread #1</text>
+</g>
+</g>
+</svg>

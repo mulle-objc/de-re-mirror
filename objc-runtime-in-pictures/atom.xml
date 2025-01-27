@@ -1,0 +1,2009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Objective-C Runtime in Pictures</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="https://www.mulle-kybernetik.com/atom.xml" />
+<link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com" />
+<updated>2025-01-26T22:58:03+01:00</updated>
+<id>https://www.mulle-kybernetik.com/</id>
+<author>
+  <name>Nat!</name>
+  <uri>https://www.mulle-kybernetik.com/</uri>
+  <email>nat-pictures@emulle-kybernetik.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Appendix]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/appendix.html" />
+  <id>https://www.mulle-kybernetik.com/appendix.html</id>
+  <published>2024-12-01T00:00:00+01:00</published>
+  <updated>2024-12-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;methodWithArgument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;additionalArgument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;method-call&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[method call]&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;When you invoke or call an Objective-C method on an object, the object is 
+the &lt;strong&gt;receiver&lt;/strong&gt; of a message. This is just nomenclature.&lt;/p&gt;
+
+&lt;p&gt;The receiver appears first in the method call, followed by the selector 
+interspersed with arguments in square brackets. So a call to method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;- (void) insertObject:(id) obj atIndex:(NSUInteger) index&lt;/code&gt; will look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/method-call.svg&quot;&gt;&lt;img src=&quot;images/method-call.svg&quot; alt=&quot;Method call deconstructed&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;method-search&quot;&gt;Method search&lt;/h3&gt;
+
+&lt;p&gt;So what does a method call do ? First it looks at the &lt;a href=&quot;https://alwaysprocessing.blog/2023/01/19/objc-class-isa&quot;&gt;isa&lt;/a&gt; 
+pointer of the object. This will be a pointer to a &lt;a href=&quot;class.html&quot;&gt;class&lt;/a&gt;  object. 
+The class has 
+at least one methodlist. It can have multiple methodlists, if some were added 
+by &lt;a href=&quot;category.html&quot;&gt;categories&lt;/a&gt;. The search order goes from back to front, so the most
+recently added category methodlist comes first.&lt;/p&gt;
+
+&lt;p&gt;If no method has been found, the class may inherit methodlists from its
+&lt;a href=&quot;protocolclass.html&quot;&gt;protocolclasses&lt;/a&gt; and its &lt;a href=&quot;inheritance.html&quot;&gt;superclass&lt;/a&gt;.
+Again, the search order is back to first, the latest defined protocolclass is
+searched first, then the others and the superclass last.&lt;/p&gt;
+
+&lt;p&gt;The superclass itself can be the same mixture of categories, protocolclasses 
+and a possible superclass.&lt;/p&gt;
+
+&lt;p&gt;Finally after the rootclass has been reached, and no method has been found yet, 
+the runtime will turn to forwarding (not part of this pamphlet) and if that 
+fails, the runtime will crash.&lt;/p&gt;
+
+&lt;h3 id=&quot;super-method-search&quot;&gt;Super method search&lt;/h3&gt;
+
+&lt;p&gt;The special super call, starts the message search from the “place” of
+implementation. It will ignore all sibling methodlists of its implementation
+class and then start a regular method search in the protocolclasses 
+and superclass.&lt;/p&gt;
+
+&lt;h3 id=&quot;clobber-method-search&quot;&gt;Clobber method search&lt;/h3&gt;
+
+&lt;p&gt;Only available with MulleObjC C runtime functions. This search stops at the 
+implementation class boundary. It searches backwards from the current 
+methodlist.&lt;/p&gt;
+
+&lt;h3 id=&quot;override-method-search&quot;&gt;Override method search&lt;/h3&gt;
+
+&lt;p&gt;Like the Clobber method search, but does not stop at the class boundary.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-studies&quot;&gt;Case studies&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Only instance methodlists are shown for simplicity.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;class-a-the-simplest-case&quot;&gt;Class A, the simplest case&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt; contains a method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceMethod&lt;/code&gt;, its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implementation&lt;/code&gt; is not shown, 
+as it’s boring:&lt;/p&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/A.svg&quot;&gt;&lt;img src=&quot;images/A.svg&quot; alt=&quot;A&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is just for warming up. There is no &lt;strong&gt;super&lt;/strong&gt; method in a root class,
+and nothing has been overridden. So its &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-instanceMethod&lt;/code&gt; only.&lt;/p&gt;
+
+&lt;h3 id=&quot;subclass-b-of-a-and-categories-on-b&quot;&gt;Subclass B of A and categories on B&lt;/h3&gt;
+
+&lt;p&gt;B overrides the superclass method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceMethod&lt;/code&gt;. And so do the two 
+categories P and Q on B. Again, implementations are not shown:&lt;/p&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;  
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;this will result in more complex layout:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/B.svg&quot;&gt;&lt;img src=&quot;images/B.svg&quot; alt=&quot;B&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As explained before, the search order will be from  back to front.
+So &lt;em&gt;methodlist #2&lt;/em&gt; of B comes first, then &lt;em&gt;methodlist #1&lt;/em&gt; of B, then 
+&lt;em&gt;methodlist #0&lt;/em&gt; of B. The final search is through &lt;em&gt;methodlist #0&lt;/em&gt; of A.&lt;/p&gt;
+
+&lt;p&gt;In short notation the various searches result in:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    super chain: B(Q) -&amp;gt; A
+  clobber chain: B(Q) -&amp;gt; B(P) -&amp;gt; B
+ override chain: B(Q) -&amp;gt; B(P) -&amp;gt; B -&amp;gt; A
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;subclass-c-of-b-and-multiple-inheritance-with-protocolclasses&quot;&gt;Subclass C of B and multiple inheritance with protocolclasses&lt;/h3&gt;
+
+&lt;p&gt;The next class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt; builds on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B&lt;/code&gt; and has two protocolclasses added to the mix:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;X&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Y&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/C.svg&quot;&gt;&lt;img src=&quot;images/C.svg&quot; alt=&quot;C&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now with methodlist of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C&lt;/code&gt; as the starting point, we get:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    super chain: C -&amp;gt; Y -&amp;gt; X -&amp;gt; B(Q) -&amp;gt; A
+  clobber chain: C
+ override chain: C -&amp;gt; Y -&amp;gt; X -&amp;gt; B(Q) -&amp;gt; B(P) -&amp;gt; B -&amp;gt; A
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;class-d-inheritance-with-duplicate-protocolclasses&quot;&gt;Class D, inheritance with duplicate protocolclasses&lt;/h3&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/D.svg&quot;&gt;&lt;img src=&quot;images/D.svg&quot; alt=&quot;D&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Before we go on, lets reconsider, that a protocolclass is a root class and 
+has no business calling “super” by itself. But if you were, here is what 
+would happen:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    super chain: D(Q) -&amp;gt; X -&amp;gt; Y -&amp;gt; C -&amp;gt; Y -&amp;gt; C -&amp;gt; ... -&amp;gt; INFINITE LOOP CRASH
+  clobber chain: D(Q) -&amp;gt; D(P) -&amp;gt; D
+ override chain: D(Q) -&amp;gt; D(P) -&amp;gt; D -&amp;gt; X -&amp;gt; Y -&amp;gt; C -&amp;gt; Y -&amp;gt; C -&amp;gt; ... -&amp;gt; INFINITE LOOP CRASH
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-performSelector:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Perform method taking no arguments&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-performSelector:withObject:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Perform method taking one argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-performSelector:withObject:withObject:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Perform method taking two arguments&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectPerformSelector0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method with no arguments&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectPerformSelector&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method with one argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectPerformSelector2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method with two arguments&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCall0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with no arguments&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCall&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with one argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCall2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with two arguments&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCallWithFloat&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with float argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCallWithDouble&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with double argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCIMPCallWithLong&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call implementation with long argument&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCMakeObjectsPerformSelector0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method on array of objects with no args&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCMakeObjectsPerformSelector&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method on array of objects with one arg&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCMakeObjectsPerformSelector2&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Call method on array of objects with two args&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchSuperIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find superclass implementation of a method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchSpecificIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find method implementation in specific class/category&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchOverriddenIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find overridden implementation of a method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchClobberedIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find implementation clobbered by a category&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Outro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/outro.html" />
+  <id>https://www.mulle-kybernetik.com/outro.html</id>
+  <published>2024-11-30T00:00:00+01:00</published>
+  <updated>2024-11-30T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;how-to-create-your-own-runtime-pictures&quot;&gt;How to create your own runtime pictures&lt;/h2&gt;
+
+&lt;p&gt;Create a new &lt;a href=&quot;https://mulle-objc.github.io/&quot;&gt;mulle-objc&lt;/a&gt;  with
+&lt;a href=&quot;https://github/mulle-sde&quot;&gt;mulle-sde&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;mulle-sde init -d picture -m mulle-objc/objc-developer executable
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main.m&lt;/code&gt; with a class hierarchy of your choice, then change &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; to:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;MulleObjCDotdumpClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MyClass&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now build and run:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;mulle-sde craft
+mulle-sde run
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally run the output &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyClass.dot&lt;/code&gt; through &lt;a href=&quot;https://graphviz.org/&quot;&gt;graphviz&lt;/a&gt;
+to produce a graphics file:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;dot -Tsvg -o MyClass.svg MyClass.dot
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Quiz]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/quiz.html" />
+  <id>https://www.mulle-kybernetik.com/quiz.html</id>
+  <published>2024-11-29T00:00:00+01:00</published>
+  <updated>2024-11-29T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Armed with this knowledge, here is an example project. Assume that
+you are only linking against the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-objc-runtime&lt;/code&gt;, which doesn’t provide
+any classes.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_objc_infraclass_alloc_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@optional&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;C&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;quiz_container&quot;&gt;
+  &lt;!-- Question 1 --&gt;
+  &lt;div class=&quot;quiz_question&quot;&gt;
+    &lt;p&gt;1. How many &lt;i&gt;metaclasses&lt;/i&gt; will exist at runtime ?&lt;/p&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;wrong&quot; /&gt; none&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;wrong&quot; /&gt; two&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;right&quot; /&gt; three&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q1&quot; value=&quot;wrong&quot; /&gt; four&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Question 2 --&gt;
+  &lt;div class=&quot;quiz_question&quot;&gt;
+    &lt;p&gt;2. How many &lt;i&gt;methods&lt;/i&gt; does &lt;i&gt;infraclass&lt;/i&gt; &lt;b&gt;C&lt;/b&gt; have in its &lt;i&gt;methodlists&lt;/i&gt; ?&lt;/p&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;right&quot; /&gt; none&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;wrong&quot; /&gt; one&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;wrong&quot; /&gt; two&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q2&quot; value=&quot;wrong&quot; /&gt; &lt;b&gt;C&lt;/b&gt; has no methodlists&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Question 3 --&gt;
+  &lt;div class=&quot;quiz_question&quot;&gt;
+    &lt;p&gt;3. What is the result of &lt;code&gt;[[C new] x]&lt;/code&gt; ?&lt;/p&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;right&quot; /&gt; -[A x]&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;wrong&quot; /&gt; -[B x]&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;wrong&quot; /&gt; NULL&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q3&quot; value=&quot;wrong&quot; /&gt; a crash&lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Question 4 --&gt;
+  &lt;div class=&quot;quiz_question&quot;&gt;
+    &lt;p&gt;4. What is the result of &lt;code&gt;[C x]&lt;/code&gt; ?&lt;/p&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;wrong&quot; /&gt; +[A x]&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;right&quot; /&gt; -[A x]&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;wrong&quot; /&gt; -[B x]&lt;/label&gt;
+    &lt;label class=&quot;quiz_label&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;q4&quot; value=&quot;wrong&quot; /&gt; a crash&lt;/label&gt;
+  &lt;/div&gt;
+
+
+  &lt;!-- Submit Button --&gt;
+  &lt;button class=&quot;quiz_button&quot; onclick=&quot;calculateScore()&quot;&gt;Submit Quiz&lt;/button&gt;
+
+  &lt;!-- Result --&gt;
+  &lt;div class=&quot;quiz_result&quot; id=&quot;quiz_result&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  function calculateScore() {
+    let score = 0;
+    let allAnswered = true;
+    const questions = [&quot;q1&quot;, &quot;q2&quot;, &quot;q3&quot;, &quot;q4&quot;];
+
+    questions.forEach((question) =&gt; {
+      const selectedAnswer = document.querySelector(`input[name=&quot;${question}&quot;]:checked`);
+      if (!selectedAnswer) {
+        allAnswered = false;
+      } else if (selectedAnswer.value === &quot;right&quot;) {
+        score++;
+      }
+    });
+
+    const resultDiv = document.getElementById(&quot;quiz_result&quot;);
+
+    // Array of messages for each possible score
+    const messages = [
+      &quot;Why don&apos;t you find yourself a nice scripting language ?&quot;,
+      &quot;Don&apos;t worry, there are other programming languages in the sea. Maybe rather checkout Go or Rust.&quot;,
+      &quot;Well the test is tricky, it can&apos;t hurt to peruse the pamphlet one more time.&quot;,
+      &quot;Almost there, but you had to guess at one time. And you chose poorly.&quot;,
+      &quot;Welcome to the Objective-C Pantheon!&quot;
+    ];
+
+    // Check if all questions were answered
+    if (!allAnswered) {
+      resultDiv.textContent = &quot;Please answer all questions before submitting.&quot;;
+    } else {
+      // Display result with corresponding message
+      resultDiv.textContent = `${messages[score]}`;
+    }
+  }
+   document.querySelector(&apos;.quiz_button&apos;).addEventListener(&apos;click&apos;, function(e) {
+     this.classList.add(&apos;clicked&apos;);
+     setTimeout(() =&gt; this.classList.remove(&apos;clicked&apos;), 300);
+   });
+&lt;/script&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Protocolclass]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/protocolclass.html" />
+  <id>https://www.mulle-kybernetik.com/protocolclass.html</id>
+  <published>2024-11-09T00:00:00+01:00</published>
+  <updated>2024-11-09T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeProtocolClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeProtocolClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SomeProtocolClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SomeProtocolClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;protocolclass&quot;&gt;protocolclass&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;protocolclass&lt;/strong&gt; is a &lt;em&gt;rootclass&lt;/em&gt; that implements a &lt;em&gt;protocol&lt;/em&gt; of the same 
+name. The methods declared as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@optional&lt;/code&gt; will be defined by the protocolclass,
+for reuse by protocol adopting classes:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RootClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RootClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProtocolClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@optional&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProtocolClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ProtocolClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProtocolClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;IMP&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// can&apos;t call super&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCOverriddenIMP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;MulleObjCIMPCall0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RootClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ProtocolClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This turns out to be akin to multiple inheritance.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/protocolclass.svg&quot; alt=&quot;protocolclass&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[instance instanceMethod]&lt;/code&gt; the output will be:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;-[SomeClass instanceMethod]
+-[ProtocolClass instanceMethod]
+-[RootClass instanceMethod]
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The protocolclass “wedged” itself between the superclass and the adopting class.. The super call actually reached the protocolclass method, not the superclass
+method.&lt;/p&gt;
+
+&lt;p&gt;Interestingly, adding protocolclasses to a rootclass is 
+possible, but the compiler will not allow you to call super in the adopting
+rootclass. A protocolclass will not want to call &lt;em&gt;super&lt;/em&gt; as it has no idea what the 
+superclass of the protocol adopting class is. Nevertheless, mulle-objc does not stand in 
+the way of a good hack, so you can  reach the superclass method with 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCOverriddenIMP&lt;/code&gt;, if so desired.&lt;/p&gt;
+
+&lt;p&gt;What is obviously missing is the possibility to add instance variables.There are other solutions for this, but that is a topic for another pamphlet.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-order-of-protocolclasses-is-important&quot;&gt;The order of protocolclasses is important&lt;/h3&gt;
+
+&lt;p&gt;Like the &lt;em&gt;methodlists&lt;/em&gt; of a class, the search order of protocolclasses is
+back to front:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@protocol A
+
+@optional
+- (void) instanceMethod;
+
+@end
+
+
+@interface A &amp;lt; A&amp;gt;
+@end
+
+@implementation A
+
+- (void) instanceMethod
+{
+   IMP   imp;
+
+   printf( &quot;%s\n&quot;, __FUNCTION__);
+   imp = MulleObjCOverriddenIMP;
+   if( imp)
+      MulleObjCIMPCall0( imp, self, _cmd);
+}
+
+@end
+
+
+@protocol B
+
+@optional
+- (void) instanceMethod;
+
+@end
+
+
+@interface B &amp;lt; B&amp;gt;
+@end
+
+@implementation B
+
+- (void) instanceMethod
+{
+   IMP   imp;
+
+   printf( &quot;%s\n&quot;, __FUNCTION__);
+   imp = MulleObjCOverriddenIMP;
+   if( imp)
+      MulleObjCIMPCall0( imp, self, _cmd);
+}
+
+@end
+
+
+@interface SomeClass &amp;lt; A, B&amp;gt;
+@end
+
+
+@implementation SomeClass
+@end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This produces a class hierarchy:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/protocolclass-order.svg&quot; alt=&quot;protocolclass&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[obj instanceMethod]&lt;/code&gt; on a “SomeClass” instance, “B” will be
+found first. So the output is:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;-[B instanceMethod]
+-[A instanceMethod]
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_PROTOCOLCLASS_INTERFACE0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Define protocol class without protocols&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROTOCOLCLASS_INTERFACE0&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Define protocol class with NSObject protocol&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_PROTOCOLCLASS_INTERFACE&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Define protocol class with custom protocols&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROTOCOLCLASS_INTERFACE&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Define protocol class with NSObject and custom protocols&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROTOCOLCLASS_END&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;End protocol class definition&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PROTOCOLCLASS_IMPLEMENTATION&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Begin protocol class implementation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCOverriddenIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get overridden implementation in protocol class chain&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClobberedIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get clobbered implementation (stops at class boundary)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Inheritance]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/inheritance.html" />
+  <id>https://www.mulle-kybernetik.com/inheritance.html</id>
+  <published>2024-11-08T00:00:00+01:00</published>
+  <updated>2024-11-08T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeSuperClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;inheritance&quot;&gt;Inheritance&lt;/h2&gt;
+
+&lt;p&gt;In terms of a C &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt;, inheritance is akin to nesting a struct within another
+struct:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The Objective-C syntax &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@interface &amp;lt;class&amp;gt; : &amp;lt;otherClass&amp;gt;&lt;/code&gt; is used 
+to define the inheritance:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getU&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getV&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;B&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getV&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getW&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The runtime will now look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/inheritance.svg&quot; alt=&quot;Inheritance&quot; /&gt;There is a uni-directional relationship &lt;strong&gt;super&lt;/strong&gt; between the class B and its &lt;strong&gt;superclass&lt;/strong&gt; A..&lt;/p&gt;
+
+&lt;p&gt;The instance variables and methods of class A are &lt;em&gt;inherited&lt;/em&gt; by B.As you can see, the contents of the ivarlists and methodlists of A are not copied down to B.Nevertheless, all methods and instance variables of A are now available in B.&lt;/p&gt;
+
+&lt;h3 id=&quot;super&quot;&gt;super&lt;/h3&gt;
+
+&lt;p&gt;With the special &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super method]&lt;/code&gt; syntax, a method of a superclass can be
+invoked, even if there is a method with the same name in the current class.&lt;/p&gt;
+
+&lt;h3 id=&quot;special-case-the-root-class&quot;&gt;Special case: the root class&lt;/h3&gt;
+
+&lt;p&gt;A root class is a class that does not have a superclass. There is a special
+treatment for ‘+’ class methods on these root classes.&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RootClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;classMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RootClass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;classMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__FUNCTION__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When you run&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;classMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;classMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;the output will be:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;+[RootClass classMethod]
+-[RootClass instanceMethod]
+-[RootClass instanceMethod]
+mulle_objc_universe 0x5B74C1D11080 fatal: unknown method c3074566 &quot;-classMethod&quot; in class 4b9217f9 &quot;RootClass&quot;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So what is going on here?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/RootClass.svg&quot; alt=&quot;Root class&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you follow the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa/meta&lt;/code&gt; path, you will see that the metaclass of the
+metaclass as actually the infraclass again. So a rootclass class methods
+are augmented with the infraclass methods.&lt;/p&gt;
+
+&lt;p&gt;This is something to be aware of. So root classes usually have
+a class method implementation for every instance method to avoid surprises.
+Another option is to put a empty root class on top.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-superclass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get receiver’s superclass&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+superclass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get class’s superclass&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+isSubclassOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if class inherits from given class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-isKindOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver inherits from or is instance of class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-isMemberOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver is direct instance of class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[super ...]&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Language feature to call superclass implementation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassIsSubclassOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;C function to check class inheritance relationship&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObjectIsKindOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;C function for instance/class relationship check&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceIsMemberOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;C function for direct instance/class check&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCSuperIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get superclass implementation of current method&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Protocol]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/protocol.html" />
+  <id>https://www.mulle-kybernetik.com/protocol.html</id>
+  <published>2024-11-07T00:00:00+01:00</published>
+  <updated>2024-11-07T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topics&quot;&gt;Syntax topics&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeProtocol&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SomeProtocol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;objc&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conformsToProtocol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeProtocol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;protocol&quot;&gt;@protocol&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;protocol&lt;/strong&gt; is a way to declare a set of methods. A class that
+&lt;em&gt;adopts&lt;/em&gt; a protocol, declares that it implements all of the methods in the
+protocol:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@protocol&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EmptyProtocol&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmptyProtocol&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// protocol EmptyProtocol is empty, so no need to implement anything&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The actual output of the compiler is just an identifier that can be queried
+with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[Someclass conformsToProtocol:@protocol( EmptyProtocol)]&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/protocol.svg&quot;&gt;&lt;img src=&quot;images/protocol.svg&quot; alt=&quot;Protocol&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;At runtime, the information is lost, which methods are part of a protocol..&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCProtocolGetNameUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get protocol name as UTF8 string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-conformsToProtocol:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver conforms to protocol (including inheritance)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mulleContainsProtocol:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver directly implements protocol (no inheritance)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Category]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/category.html" />
+  <id>https://www.mulle-kybernetik.com/category.html</id>
+  <published>2024-11-06T00:00:00+01:00</published>
+  <updated>2024-11-06T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h3 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h3&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Additions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;additionalClassMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Additions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;IMP&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MulleObjCOverriddenIMP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;category&quot;&gt;Category&lt;/h2&gt;
+
+&lt;p&gt;A category adds methodlists to an existing class:&lt;/p&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Additions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;newWithX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rotateWithRadians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;Additions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;newWithX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_objc_infraclass_alloc_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rotateWithRadians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;cos_rad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;sin_rad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;rotated_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;rotated_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;cos_rad&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cosf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;sin_rad&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sinf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;rotated_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos_rad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sin_rad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;rotated_y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sin_rad&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos_rad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rotated_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rotated_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The category can be in the same file as the class, or in a separate file, and
+even in a different library.. The category is attached to the class at
+runtime.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/category.svg&quot;&gt;&lt;img src=&quot;images/category.svg&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The order of the methodlists is important. The search direction for a method
+is from the back to the front. So a category has the option to override methods 
+in the class.&lt;/p&gt;
+
+&lt;p&gt;The order of the categories is therefore also important. You specify them with one of the &lt;a href=&quot;https://github.com/mulle-objc/MulleObjC/blob/master/src/protocol/MulleObjCRuntimeObject.h#L71C1-L71C67&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_OBJC_DEPENDS_...&lt;/code&gt; macros&lt;/a&gt;..&lt;/p&gt;
+
+&lt;p&gt;To retrieve a overridden method, you can use 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCOverriddenIMP&lt;/code&gt;or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClobberedIMP&lt;/code&gt; in your category 
+implementation. (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClobberedIMP&lt;/code&gt; stops at the class boundary).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;caveat&quot;&gt;Caveat&lt;/h4&gt;
+
+  &lt;p&gt;You need some knowledge about the &lt;a href=&quot;https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html&quot;&gt;metaABI&lt;/a&gt; 
+though to pass more than one argument or arguments that are not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void *&lt;/code&gt;
+compatible.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Category ids are stored separately and are available from the classpair of
+infraclass and metaclass. They are very rarely used by the API programmer.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mulleInterposeBeforeClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Insert category methods before another class (method version)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchOverriddenIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find method implementation overridden by category&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSearchClobberedIMP&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find method implementation clobbered by category (stops at class boundary)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassInterposeBeforeClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Insert category methods before another class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_OBJC_DEPENDS_ON_CLASS&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Declare category dependency on a class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_OBJC_DEPENDS_ON_CATEGORY&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Declare category dependency on another category&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_OBJC_DEPENDS_ON_LIBRARY&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Declare category dependency on a library&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Property]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/property.html" />
+  <id>https://www.mulle-kybernetik.com/property.html</id>
+  <published>2024-11-05T00:00:00+01:00</published>
+  <updated>2024-11-05T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h2&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;property-lists&quot;&gt;Property Lists&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;property&lt;/strong&gt; is a combination of &lt;em&gt;methods&lt;/em&gt; and an &lt;em&gt;ivar&lt;/em&gt;.When you declare a property, an instance variable is (usually) created and several messages.
+are auto-generated to support the property:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@property&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_objc_infraclass_alloc_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above will create entries in the class’s methodlist and ivarlist:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/properties.svg&quot;&gt;&lt;img src=&quot;images/properties.svg&quot; alt=&quot;Properties&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;property&quot;&gt;Property&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;property&lt;/strong&gt; ties the instance variable to the methods.
+This is the information you can get from a &lt;strong&gt;property&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Field&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;signature&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;type in &lt;a href=&quot;https://github.com/mulle-cc/mulle-clang-project/blob/6fa55d0016ce52c8f79167dde22481f473754c60/clang/lib/AST/ASTContext.cpp#L7889&quot;&gt;@property attribute&lt;/a&gt; format&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;propertyid&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;id (hash) of the property name for lookup. Tip: use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@selector( name)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ivarid&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;id (hash) of the ivar name for lookup.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getter&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;id (hash) of the getter method name for lookup&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setter&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;id (hash) of the setter method name for lookup&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bits&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;internal state&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The marriage of accessor methods and instance variables allows for simpler and 
+faster key-value coding, due to introspection and not just convention.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassSearchProperty&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find property in a class by propertyid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceSearchProperty&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Find property in an instance’s class by propertyid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCInstanceClearProperty&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Clear a property value (handles retain/copy/assign)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCInstanceClearPropertyNoReadOnly&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Clear non-readonly property value&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCClassWalkClearableProperties&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Walk through all clearable properties of a class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCInstanceClearProperties&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Clear all properties of an instance&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_property_new.html&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Method]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/method.html" />
+  <id>https://www.mulle-kybernetik.com/method.html</id>
+  <published>2024-11-03T00:00:00+01:00</published>
+  <updated>2024-11-03T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topics&quot;&gt;Syntax topics&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;classMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SomeClass&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;classMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;instanceMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;method-lists-and-methods&quot;&gt;method lists and methods&lt;/h2&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Data_structure&quot;&gt;data structure&lt;/a&gt; in C is a 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt; and an assortment of functions. You typically pass a pointer to a 
+struct variable to a function or you pass the whole struct variable by value:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;   &lt;span class=&quot;nf&quot;&gt;CGPointTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;nf&quot;&gt;CGPointGetArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// from 0,0 to x,y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;   &lt;span class=&quot;nf&quot;&gt;CGPointTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;   &lt;span class=&quot;nf&quot;&gt;CGPointGetArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fabs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Generally in MulleObjC, one uses methods to interact with objects:&lt;/p&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;translateWithX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; 
+                      &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                     
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instancetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle_objc_infraclass_alloc_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;translateWithX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; 
+                      &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;area&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fabs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+                     
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The compiler will generate two &lt;strong&gt;methodlists&lt;/strong&gt;, one methodlist for
+&lt;strong&gt;instance methods&lt;/strong&gt;, which are prefixed with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;. These are attached to the
+&lt;em&gt;infraclass&lt;/em&gt;, and one methodlist for &lt;strong&gt;class methods&lt;/strong&gt;,
+which are prefixed with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt; and attached to the &lt;em&gt;metaclass&lt;/em&gt;. A class will
+always have at least one &lt;strong&gt;methodlists&lt;/strong&gt;, even if its empty.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/methods.svg&quot;&gt;&lt;img src=&quot;images/methods.svg&quot; alt=&quot;Class with methodlists&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To message the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+new&lt;/code&gt; class-method one would write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;obj = [CGPoint new]&lt;/code&gt;. The 
+result of this method is an instance of the class. This instance can now be
+messaged with instance methods like so: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[obj translateWithX:18 y:48];&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;method&lt;/h2&gt;
+
+&lt;p&gt;And this is (some) of the information you can get about a class:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Field&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;methodid&lt;/td&gt;
+      &lt;td&gt;id (hash) of the ivar name for lookup. Tip: use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@selector( name)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;name&lt;/td&gt;
+      &lt;td&gt;name&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;signature&lt;/td&gt;
+      &lt;td&gt;type in &lt;a href=&quot;https://nshipster.com/type-encodings&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@encode&lt;/code&gt;&lt;/a&gt; format&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bits&lt;/td&gt;
+      &lt;td&gt;additional information about the method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;implementation&lt;/td&gt;
+      &lt;td&gt;the address of the C function, that implements the method&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Every method implementation receives two hidden parameters: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_cmd&lt;/code&gt;. 
+Additional parameters are passed via another hidden parameter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_param&lt;/code&gt;, but
+its contents are available as the non hidden parameters.&lt;/p&gt;
+
+&lt;p&gt;In C terms the two methods above are uniformly implemented like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CGPoint_translateWithXY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SEL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CGPoint_area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SEL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self&lt;/code&gt; pointer works just like the struct pointer in C, 
+giving access to instance variables, pointing past the object header. 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_cmd&lt;/code&gt; contains the method selector, which is a unique hash on the method name. 
+The hash is then used by the runtime to find the method implementation in
+the methodlists.&lt;/p&gt;
+
+&lt;p&gt;For example the hash for the method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;translateWithX:y:&lt;/code&gt; is 0xb7ee7240. The
+mulle-objc compiler will calculate at compile time the hash with
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@selector( translateWithX:y: )&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The actual arguments and return values are stored in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_param&lt;/code&gt;, which is a compiler
+generated structure. The details can be found the &lt;a href=&quot;https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html&quot;&gt;metaABI&lt;/a&gt;
+specification.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function/Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCSelectorGetNameUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get method’s selector name as UTF8 string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCCreateSelectorUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Create a new selector from UTF8 string&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;NSObject Method Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-methodForSelector:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get implementation address for a method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+instanceMethodForSelector:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get implementation address for an instance method&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-methodSignatureForSelector:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get method metadata (parameter/return types)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+instanceMethodSignatureForSelector:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get instance method metadata&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Ivar]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/ivar.html" />
+  <id>https://www.mulle-kybernetik.com/ivar.html</id>
+  <published>2024-11-02T00:00:00+01:00</published>
+  <updated>2024-11-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topic&quot;&gt;Syntax topic&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;        
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ivarlists&quot;&gt;ivarlists&lt;/h2&gt;
+
+&lt;p&gt;In C, you declare a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt; type to define the layout of a block of memory,
+say like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So you can have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct CGPoint *&lt;/code&gt; pointer, pointing to a memory area and
+access the &lt;strong&gt;x&lt;/strong&gt; and &lt;strong&gt;y&lt;/strong&gt; fields.
+Furthermore you can access the next struct by just incrementing the pointer:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   .       .
+   +---+------+   &amp;lt;----  pointer
+   |  0| x    |
+   +---+------+
+   |  4| y    |
+   +...+......+   &amp;lt;----  pointer + 1
+   .  8| x    .
+   +...+......+
+   . 12| y    .
+   +...+......+
+   .       .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;An &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@interface&lt;/code&gt; declaration is quite like a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt; declaration as it defines the memory layout of its instances. In the runtime, this information is kept
+in &lt;strong&gt;ivarlists&lt;/strong&gt; which contain  &lt;strong&gt;ivars&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;This source code:&lt;/p&gt;
+
+&lt;div class=&quot;language-objc highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// `struct` and `@interface` have separate namespaces&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;// so `struct CGPoint` and a CGPoint class can coexist&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@public&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+   &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CGPoint&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;creates this runtime data:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/CGPoint-ivars.svg&quot;&gt;&lt;img src=&quot;images/CGPoint-ivars.svg&quot; alt=&quot;Instance variables&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;An &lt;em&gt;infraclass&lt;/em&gt; will always have an &lt;strong&gt;ivarslist&lt;/strong&gt;, even if it’s empty.&lt;/p&gt;
+
+&lt;h2 id=&quot;ivars&quot;&gt;Ivars&lt;/h2&gt;
+
+&lt;p&gt;This is the information you can get from an &lt;strong&gt;ivar&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Field&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ivarid&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;id (hash) of the ivar name for lookup. Tip: use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@selector( name)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;name of the instance variable&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;signature&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;type in &lt;a href=&quot;https://nshipster.com/type-encodings&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@encode&lt;/code&gt;&lt;/a&gt; format, describes the data type&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;offset&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;byte offset from start of ivars section. First ivar starts at 0, each subsequent ivar follows based on its size&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@public&lt;/code&gt; keyword allows direct access to the instance variables, 
+like you would with a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt;. So you access them the same:&lt;/p&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CGPoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%f,%f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%f,%f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Without &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@public&lt;/code&gt;, the instance variables become &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@protected&lt;/code&gt; and inaccessible
+from the compiler outside of an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@implemenation&lt;/code&gt; block.&lt;/p&gt;
+
+&lt;p&gt;The memory layout of an instance looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        .               .
+header: +---|-------------+
+        |-24| thread      |
+        +---|-------------+
+        |-16| retainCount |
+        +---|-------------+
+        | -8| isa         |
+ivars:  +---|-------------+  &amp;lt;----  pointer to CGPoint instance
+        |  0| x           |
+        +---|-------------+
+        | +4| y           |
+        +---|-------------+
+        .               .  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Do not use pointer arithmetic on an Objective-C object though, as the 
+hidden object header will not be factored in by the compiler.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCObjectSetIvar&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Set raw ivar value by copying bytes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_MulleObjCObjectGetIvar&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get raw ivar value by copying bytes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectGetObjectIvar&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get object ivar with proper retain/release semantics&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSetObjectIvar&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Set object ivar with proper retain/release semantics&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectSetDuplicatedUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Set string ivar with memory management (duplicates string)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Types&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle_atomic_id_t&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Type for atomic object references&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Class]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/class.html" />
+  <id>https://www.mulle-kybernetik.com/class.html</id>
+  <published>2024-11-01T00:00:00+01:00</published>
+  <updated>2024-11-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;syntax-topics&quot;&gt;Syntax topics&lt;/h2&gt;
+
+&lt;div class=&quot;language-objective-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@end&lt;/span&gt; 
+
+&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;helloWorld&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;VfL Bochum 1848&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;@&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;          &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SomeClass&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;classes-interface-and-implementation&quot;&gt;Classes: @interface and @implementation&lt;/h2&gt;
+
+&lt;p&gt;In mulle-objc, you define a &lt;strong&gt;class&lt;/strong&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@interface&lt;/code&gt;. This is very
+similar to a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;struct&lt;/code&gt; definition in C:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@interface Empty
+@end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and once you write&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@implementation Empty
+@end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;the compiler will create the following data for the runtime:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;images/empty-class.svg&quot;&gt;&lt;img src=&quot;images/empty-class.svg&quot; alt=&quot;Two classes&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The blue structure on top is the &lt;strong&gt;infraclass&lt;/strong&gt; and the yellow structure
+below is the &lt;strong&gt;metaclass&lt;/strong&gt;. The infraclass is the part you will be interacting
+with most of the time. infraclass and metaclass together form what is known as 
+a &lt;strong&gt;classpair&lt;/strong&gt;.The term “class” is used interchangeably for infraclass, metaclass, and classpair. The differentiation rarely matters.&lt;/p&gt;
+
+&lt;p&gt;And this is (some) of the information you can get about a class:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Field&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allocationsize&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;amount of memory to allocate for instance &lt;em&gt;excluding&lt;/em&gt; header&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inheritance&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;where the class inherits methods from&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;internal state of the class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ivarhash&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a hash over the ivars of the class to prevent fragility problems&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;allocatedInstances&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;number of instances “in flight” (not yet deallocated)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;preloads&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;number of methods to preload into the cache&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;objects&quot;&gt;Objects&lt;/h2&gt;
+
+&lt;p&gt;In C you use &lt;a href=&quot;https://en.cppreference.com/w/c/memory/malloc&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;malloc&lt;/code&gt;&lt;/a&gt; to 
+reserve a memory block for a struct variable on the &lt;a href=&quot;https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap&quot;&gt;heap&lt;/a&gt;. In Objective-C you create an
+&lt;strong&gt;instance&lt;/strong&gt; of a class. Both class and instance fall under the moniker
+&lt;strong&gt;object&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Objects are uniformly accessed via a pointer, which is either of type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id&lt;/code&gt; 
+for instances, or of type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Class&lt;/code&gt; for classes. Every Objective-C class is its 
+own type, which you can use instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id&lt;/code&gt; .e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Empty *emptyInstance&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Every Objective-C object belongs to a class. For that it needs to be able
+to reference it somehow. That somehow is usually the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; pointer.&lt;/p&gt;
+
+&lt;h3 id=&quot;heap-instances&quot;&gt;Heap instances&lt;/h3&gt;
+
+&lt;p&gt;The most common type of an Objective-C object is an instance that resides on 
+the heap i.e. was malloced. The general memory layout of a heap instance 
+(at address 0x10000 in this case) is:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;        .               .
+header: +---------------+
+        :               :
+        :               :
+        +---------------+ 0xFFFF8
+        |    isa        |
+ivars:  +---------------+ 0x10000  &amp;lt;----  pointer to heap instance
+        |    ivar 0     |
+        |    ivar 1     |
+        :    ...        :
+        +---------------+
+        .               .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; pointer will point to the infraclass of the instance.&lt;/p&gt;
+
+&lt;h3 id=&quot;nil-instance&quot;&gt;nil instance&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;nil&lt;/strong&gt; instance is just the NULL pointer. Is it really an object ? Nobody
+knows. It has a cousin the &lt;strong&gt;Nil&lt;/strong&gt; class, which is also just the NULL pointer.&lt;/p&gt;
+
+&lt;h3 id=&quot;tps-instances&quot;&gt;TPS instances&lt;/h3&gt;
+
+&lt;p&gt;TPS stands for &lt;a href=&quot;https://alwaysprocessing.blog/2023/03/19/objc-tagged-ptr&quot;&gt;&lt;strong&gt;T&lt;/strong&gt;agged &lt;strong&gt;P&lt;/strong&gt;ointer&lt;strong&gt;S&lt;/strong&gt;&lt;/a&gt;.
+mulle-objc has some special instance pointers that encode the class in the
+lower bits of the pointer. These bits are then used to index a table to
+retrieve the proper infraclass&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/tps-pointer.svg&quot; alt=&quot;TPS instances&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For example very small strings and most integers are small enough to fit into
+a TPS pointer. This saves allocation time and space.&lt;/p&gt;
+
+&lt;h3 id=&quot;static-nsstring-instances&quot;&gt;static NSString instances&lt;/h3&gt;
+
+&lt;p&gt;There is a special kind of instance that exists in the data segment and not
+on the heap. It is the static string, created with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&quot;...&quot;&lt;/code&gt;. Its memory layout
+is just like a heap instance. These static instances are created by the
+compiler only.&lt;/p&gt;
+
+&lt;h3 id=&quot;class-objects&quot;&gt;Class objects&lt;/h3&gt;
+
+&lt;p&gt;Classes are also objects, they always reside on the heap (sic!) in mulle-objc.
+Classes also have an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; pointers. This is one of the reasons for the
+classpair. Since the infraclass is an object it needs a valid value for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt;,
+and that is the metaclass. The metaclass has also an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isa&lt;/code&gt; pointer, and this
+references back to the infraclass. (See: &lt;a href=&quot;inheritance.html&quot;&gt;Special case: the root class&lt;/a&gt;
+for more on this topic).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;api&quot;&gt;API&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectGetClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get the Class of an object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceGetClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get the Class of an instance (same as ObjectGetClass)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectIsInstance&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if object is an instance (not a class)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectIsInstanceOrNil&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if object is an instance or nil&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectIsClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if object is a class (not an instance)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectIsClassOrNil&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if object is a class or nil&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassIsMetaClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if a Class is a metaclass&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceGetClassNameUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get class name of an instance as C string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCObjectGetClassNameUTF8String&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get class name of any object as C string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCClassIsSubclassOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check class inheritance relationship (C function)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NSObjectIsKindOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check instance/class relationship (C function)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MulleObjCInstanceIsMemberOfClass&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check direct instance/class relationship (C function)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;NSObject Method&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-class&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get receiver’s class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+class&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get class object&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-superclass &lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Get receiver’s superclass&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+isSubclassOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if class inherits from given class&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-isKindOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver is instance of class or inherits from it&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-isMemberOfClass:&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Check if receiver is direct instance of given class&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Intro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/intro.html" />
+  <id>https://www.mulle-kybernetik.com/intro.html</id>
+  <published>2024-10-30T00:00:00+01:00</published>
+  <updated>2024-10-30T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-pictures@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;img src=&quot;images/image-2.jpg&quot; alt=&quot;Gratuitous AI generated banner&quot; class=&quot;banner-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;the-objective-c-runtime-in-pictures&quot;&gt;The Objective-C runtime in pictures&lt;/h1&gt;
+
+&lt;p&gt;Objective-C, born in the early 1980s, merged Smalltalk’s object-oriented
+paradigm with C’s efficiency. It powered NeXTSTEP and later became the
+foundation of Apple’s macOS and iOS development.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt; is a clean-room implementation of
+the Objective-C runtime that eliminates the dependency on Apple’s runtime,
+but deviates in a few important aspects…&lt;/p&gt;
+
+&lt;p&gt;The actual runtime is written in C and contained in
+&lt;a href=&quot;https://github.com/mulle-objc/mulle-objc-runtime&quot;&gt;mulle-objc-runtime&lt;/a&gt;. The
+API though is &lt;a href=&quot;https://github.com/mulle-objc/MulleObjC&quot;&gt;MulleObjC&lt;/a&gt; which
+also contains a few basic building block classes.&lt;/p&gt;
+
+&lt;p&gt;This little pamphlet explores the relationship between, what you type in
+your editor as Objective-C syntax, and what ends up in your running
+mulle-objc application, after passing the compilation and linking stage.&lt;/p&gt;
+
+&lt;p&gt;Read how&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;class.html&quot;&gt;classes&lt;/a&gt; with class &lt;a href=&quot;inheritance.html&quot;&gt;inheritance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;category.html&quot;&gt;categories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;protocol.html&quot;&gt;protocols&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;protocolclass.html&quot;&gt;protocolclasses&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;ivar.html&quot;&gt;ivars&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;method.html&quot;&gt;methods&lt;/a&gt; and method &lt;a href=&quot;appendix.html&quot;&gt;calls&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;property.html&quot;&gt;properties&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;are represented at runtime. Once you got it, you can
+take a small&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;quiz.html&quot;&gt;quiz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;to test your knowledge. If you like the pictures, you can easily
+create them yourself as explained in the&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;outro.html&quot;&gt;outro&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+</entry>
+
+</feed>

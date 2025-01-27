@@ -1,0 +1,421 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>NSObject: -autorelease &#8211; De Re NSObject</title>
+<meta name="description" content="Welcome to the world of mulle-objc’s memory management, where NSAutoreleasePool reigns supreme.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="NSObject: -autorelease">
+<meta name="twitter:description" content="Welcome to the world of mulle-objc’s memory management, where NSAutoreleasePool reigns supreme. You learned about the retain counting and the lifetime of objects in a previous chapter, and now comes the chapter that will try to sell you, that you don’t need to worry about retain counting. As now, the...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/autorelease.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSObject: -autorelease">
+<meta property="og:description" content="Welcome to the world of mulle-objc’s memory management, where NSAutoreleasePool reigns supreme. You learned about the retain counting and the lifetime of objects in a previous chapter, and now comes the chapter that will try to sell you, that you don’t need to worry about retain counting. As now, the...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/autorelease.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/autorelease.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/autorelease.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>NSObject: -autorelease</h1>
+                  <div>
+                  <p>Welcome to the world of <a href="//mulle-objc.github.io">mulle-objc</a>’s memory management, where <strong>NSAutoreleasePool</strong> reigns supreme.</p>
+
+<p>You learned about the retain counting and the lifetime of objects in a previous
+chapter, and now comes the chapter that will try to sell you, that you don’t
+need to worry about retain counting. As now, the <code class="language-plaintext highlighter-rouge">NSAutoreleasePool</code> makes its
+appearance on the scene.</p>
+
+<h2 id="the-nsautoreleasepool-class">The NSAutoreleasePool class</h2>
+
+<p>Basically a <code class="language-plaintext highlighter-rouge">NSAutoreleasePool</code> just manages an array of pointers to objects.
+You can add objects to the pool by using the <code class="language-plaintext highlighter-rouge">-autorelease</code> convenience
+method on <code class="language-plaintext highlighter-rouge">NSObject</code>. This method locates the current pool for the running
+thread and adds the object to the array.</p>
+
+<p>The autorelease pool has one operational method <code class="language-plaintext highlighter-rouge">-drain</code>, which iterates
+through this array, sending a <code class="language-plaintext highlighter-rouge">-release</code> message to each object. You usually
+call <code class="language-plaintext highlighter-rouge">-drain</code> only indirectly, once a NSAutoreleasePool expires.</p>
+
+<p>Creating an pool in your code is never necessary, but it can be
+a useful optimization, when you create lots of short lived objects. But you
+can if you want with the <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> directive. More on this later.</p>
+
+<h3 id="thread-specific-pool-stacks">Thread-Specific Pool Stacks</h3>
+
+<p>Each thread in mulle-objc maintains its own stack of autorelease pools. This
+design ensures thread safety without the need for expensive locking mechanisms.</p>
+
+<p><img src="images/thread_2-pool_1-obj_0.svg" alt="Pools And Threads" height="300" /></p>
+
+<p>As shown above, Thread #1 and Thread #2 each manage their own pools
+independently, preventing any cross-thread interference.
+Each thread under mulle-objc control, even the main thread creates an
+autorelease pool when it starts up.</p>
+
+<blockquote>
+  <p>RULE: An object can only be messaged by a thread, if the object resides
+in the autoreleasepool stack of that thread.</p>
+</blockquote>
+
+<p>This ensures that autoreleased objects always have a pool to be added to, even
+in the absence of explicit <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> directives.</p>
+
+<h2 id="nested-pool-management">Nested Pool Management</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/thread_1-pool_2-obj_0.svg" alt="Single Nested Pool" width="250" /></td>
+      <td><img src="images/thread_1-pool_2-obj_1.svg" alt="One Object Added" width="250" /></td>
+    </tr>
+    <tr>
+      <td>Pools can be nested within each other, creating a hierarchical structure for fine-grained memory management</td>
+      <td>Objects are always added to the innermost pool in the current thread’s stack.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The next code snippet and the accompanying drwawing visualize how nested
+autorelease pools collect and dispose of objects during program execution.</p>
+
+<blockquote>
+  <p>NOTE: The <code class="language-plaintext highlighter-rouge">+object</code> method creates an instance and then calls <code class="language-plaintext highlighter-rouge">-autorelease</code>
+on it.</p>
+</blockquote>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@autoreleasepool</span>
+<span class="p">{</span>                 <span class="c1">// pool 1 starts</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">c</span><span class="p">;</span>
+
+   <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>          <span class="c1">// #1#</span>
+
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>  <span class="c1">// pool 2 starts</span>
+
+      <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>       <span class="c1">// #2</span>
+      <span class="c1">// c added to pool 2</span>
+   <span class="p">}</span>  <span class="c1">// pool 2 drains, c released // #3</span>
+
+                                   <span class="c1">// #4</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"a %@ and b %@ are still alive</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+
+   <span class="c1">// this would crash likely</span>
+   <span class="c1">// mulle_printf( "c %@ is dead\n", c);</span>
+<span class="p">}</span>                 <span class="c1">// pool 1 drains</span>
+</code></pre></div></div>
+
+<p>When an autorelease pool is drained, it releases all the objects it contains.
+This happens automatically at the end of an @autoreleasepool scope.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/nested-pools-2.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code></td>
+      <td><img src="images/nested-pools-3.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code></td>
+      <td><img src="images/nested-pools-4.svg" alt="3" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code></td>
+      <td><img src="images/nested-pools-2.svg" alt="4" width="120" /> <code class="language-plaintext highlighter-rouge">#4</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="creating-autoreleased-and-zeroed-c-memory">Creating autoreleased and zeroed C memory</h3>
+
+<p>An autoreleasepool can also facilitate C coding. You can use
+<code class="language-plaintext highlighter-rouge">MulleObjCCallocAutoreleased</code> to create an autoreleased and zeroed
+block of memory:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">MulleObjCCallocAutoreleased</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="k">struct</span> <span class="n">whatever</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>This is like a <code class="language-plaintext highlighter-rouge">calloc</code> you don’t have to free. Remember though, you can’
+retain an allocation like this.</p>
+
+<h3 id="caveat">Caveat</h3>
+
+<p>While mulle-objc’s autorelease system offers great convenience, it’s important
+to be aware of potential pitfalls. For instance, creating and keeping
+to many autoreleased objects and never getting to a pool drain will lead to
+increased memory usage.</p>
+
+<p>This can happen for example in long-running operations, like a database import
+from JSON for example. The remedy is to use <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> blocks or
+to manually drain pools once in a while.</p>
+
+<h3 id="discussion-on-nsautoreleasepool-vs-garbage-collection">Discussion on NSAutoreleasePool vs Garbage Collection</h3>
+
+<p>NSAutoreleasePool offers several advantages over garbage collection,
+particularly in terms of performance and predictability.</p>
+
+<ul>
+  <li><strong>Deterministic Memory Management</strong>: With NSAutoreleasePool, developers have
+control over when memory is released, allowing for more predictable memory
+usage patterns. In contrast, garbage collection can introduce latency as it
+runs in the background, potentially leading to unpredictable pauses in
+application performance.</li>
+  <li><strong>Lower Overhead</strong>: NSAutoreleasePool has a lower runtime overhead compared to
+garbage collection. It does not require the additional resources needed to
+track object references and manage cycles, which can be particularly
+beneficial in resource-constrained environments.</li>
+  <li><strong>Fine-Grained Control</strong>: Developers can create and drain autorelease pools at
+specific points in their code, allowing for fine-tuned memory management
+strategies. This is especially useful in applications with varying memory
+demands, where developers can optimize memory usage based on the current
+workload.</li>
+  <li><strong>Control over Resource</strong>: Developers can release resources (like file
+handles) when they want with <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code>, compared to garbage
+collection which is unpredictable.</li>
+</ul>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/retaincount.html">NSObject: -retain / -release</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/always-autoreleased.html">AAO: Always autoreleased objects</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

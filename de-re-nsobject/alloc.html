@@ -1,0 +1,483 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>NSObject: +alloc &#8211; De Re NSObject</title>
+<meta name="description" content="You will only very, very rarely be interested in overriding the +alloc
+method, but now is a good time to learn about allocators in mulle-objc and the layout of objects in memory. If you are
+interested in the more nitty-gritty details of mulle-objc, check out
+Objective-C Runtime in Pictures.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="NSObject: +alloc">
+<meta name="twitter:description" content="You will only very, very rarely be interested in overriding the +alloc method, but now is a good time to learn about allocators in mulle-objc and the layout of objects in memory. If you are interested in the more nitty-gritty details of mulle-objc, check out Objective-C Runtime in Pictures. struct...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/alloc.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSObject: +alloc">
+<meta property="og:description" content="You will only very, very rarely be interested in overriding the +alloc method, but now is a good time to learn about allocators in mulle-objc and the layout of objects in memory. If you are interested in the more nitty-gritty details of mulle-objc, check out Objective-C Runtime in Pictures. struct...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/alloc.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/alloc.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/alloc.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>NSObject: +alloc</h1>
+                  <div>
+                  <p>You will only very, very rarely be interested in overriding the <code class="language-plaintext highlighter-rouge">+alloc</code>
+method, but now is a good time to learn about allocators in <a href="//mulle-objc.github.io">mulle-objc</a> and the layout of objects in memory. If you are
+interested in the more nitty-gritty details of mulle-objc, check out
+<a href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/">Objective-C Runtime in Pictures</a>.</p>
+
+<h2 id="struct-mulle_allocator">struct mulle_allocator</h2>
+
+<p>First up, every allocation in <a href="//mulle-objc.github.io">mulle-objc</a> is done through a mulle-allocator.
+Using the (hidden) <code class="language-plaintext highlighter-rouge">mulle_default_allocator</code>, C code simplifies from</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span> <span class="o">!</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">perror</span><span class="p">(</span> <span class="s">"malloc:"</span><span class="p">);</span>
+   <span class="n">exit</span><span class="p">(</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">mulle_malloc</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>With mulle-allocator you get leak checking during tests as well.</p>
+
+<blockquote>
+  <p>If you want to know why and how this works, read the
+mulle-allocator <a href="//github.com/mulle-c/mulle-allocator/blob/release/README.md">README.md</a>.
+For leak checking refer to the <a href="//github.com/mulle-core/mulle-testallocator/blob/release/README.md">mulle-testallocator README.md</a></p>
+</blockquote>
+
+<h2 id="alloc-implementation">+alloc implementation</h2>
+
+<p>Classes create instances. Both classes and instances are objects.</p>
+
+<p><img src="images/object-class-instance.svg" alt="" /></p>
+
+<p>The default implementation of <code class="language-plaintext highlighter-rouge">+alloc</code> is:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">alloc</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_MulleObjCClassAllocateInstance</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_MulleObjCClassAllocateInstance</code> destills down to the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">struct</span> <span class="n">mulle_allocator</span>   <span class="o">*</span><span class="n">allocator</span><span class="p">;</span>
+
+   <span class="n">allocator</span> <span class="o">=</span> <span class="n">_mulle_objc_infraclass_get_allocator</span><span class="p">(</span> <span class="n">infra</span><span class="p">);</span>
+   <span class="c1">// extra bytes: 0 in +alloc case as seen above</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">__mulle_objc_infraclass_alloc_instance_extra</span><span class="p">(</span> <span class="n">infra</span><span class="p">,</span> <span class="n">extra</span><span class="p">,</span> <span class="n">allocator</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Each class has its own allocator, that is used to allocate instances. Usually
+this is the <code class="language-plaintext highlighter-rouge">mulle_default_allocator</code>. But that may vary on a per-class
+basis.</p>
+
+<p>If your instance needs some extra memory to store data you should use the same
+allocator, so use <code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateMemory</code>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Foo</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+   <span class="kt">void</span>   <span class="o">*</span><span class="n">_buffer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">bytes</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">initWithLength</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">length</span>
+<span class="p">{</span>
+   <span class="n">_buffer</span> <span class="o">=</span> <span class="n">MulleObjCInstanceAllocateMemory</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">bytes</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+   <span class="n">MulleObjCInstanceDeallocateMemory</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">_buffer</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>MulleObjC Instance Function</th>
+      <th>C equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">malloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceReallocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">realloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">calloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceDuplicateUTF8String</code></td>
+      <td><code class="language-plaintext highlighter-rouge">strdup</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceDeallocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">free</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The same functions are also available, with <code class="language-plaintext highlighter-rouge">Class</code> as the first parameter.
+These can be used in <code class="language-plaintext highlighter-rouge">+</code> class methods.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MulleObjC Class Function</th>
+      <th>C equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassAllocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">malloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassReallocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">realloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassAllocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">calloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassDuplicateUTF8String</code></td>
+      <td><code class="language-plaintext highlighter-rouge">strdup</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassDeallocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">free</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="extrabytes-and-metaextrabytes">extraBytes and metaExtraBytes</h3>
+
+<p>An instance in memory looks like this:</p>
+
+<p><img src="images/object-layout.svg" alt="" /></p>
+
+<p>The address returned by <code class="language-plaintext highlighter-rouge">alloc</code> is not the beginning of the memory block
+allocated for the instance. It is the address after the <code class="language-plaintext highlighter-rouge">isa</code> pointer.
+The memory block is divided into the user accessible ivars and extraBytes
+“self” block and the “meta” block with negative offsets from “self”.</p>
+
+<p>The “extraBytes” are the second parameter of  <code class="language-plaintext highlighter-rouge">_MulleObjCClassAllocateInstance</code>.
+Each instance can therefore have a unique size. The amount of metaExtraBytes
+is fixed for every class and instance at the start of the program. Currently
+this is an experimental and unused mulle-objc-runtime feature.</p>
+
+<h2 id="creating-an-instance-in-pre-allocated-memory">Creating an instance in pre-allocated memory</h2>
+
+<p>If you have sufficient memory already allocated, you can use
+<code class="language-plaintext highlighter-rouge">MulleObjCClassConstructInstance</code> to turn this memory into one or as
+many instances as can fit.</p>
+
+<p><code class="language-plaintext highlighter-rouge">MulleObjCClassGetInstanceSize</code> calculates the size needed for the memory
+allocation and <code class="language-plaintext highlighter-rouge">MulleObjCClassConstructInstance</code> zeroes the memory and
+initializes <code class="language-plaintext highlighter-rouge">isa</code> and the <code class="language-plaintext highlighter-rouge">retainCount</code>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span>   <span class="n">size</span><span class="p">;</span>
+<span class="kt">void</span>     <span class="o">*</span><span class="n">block</span><span class="p">;</span>
+<span class="n">Class</span>    <span class="n">myClass</span><span class="p">;</span>
+<span class="n">id</span>       <span class="n">obj</span><span class="p">;</span>
+
+<span class="p">...</span>
+<span class="n">size</span>  <span class="o">=</span> <span class="n">MulleObjCClassGetInstanceSize</span><span class="p">(</span> <span class="n">myClass</span><span class="p">);</span>
+<span class="n">block</span> <span class="o">=</span> <span class="n">my_malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="n">obj</span>   <span class="o">=</span> <span class="n">MulleObjCClassConstructInstance</span><span class="p">(</span> <span class="n">myClass</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">NO</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">my_free</span><span class="p">(</span> <span class="n">block</span><span class="p">);</span>  <span class="c1">// not obj!</span>
+</code></pre></div></div>
+
+<p>There are a lot of caveats:</p>
+
+<ul>
+  <li>ascertain that <code class="language-plaintext highlighter-rouge">-dealloc</code> doesn’t interfere with your memory scheme</li>
+  <li>ascertain that all instance variables are freed before deallocing</li>
+  <li>calling <code class="language-plaintext highlighter-rouge">-init</code> may trigger <code class="language-plaintext highlighter-rouge">-release</code>  and therefore <code class="language-plaintext highlighter-rouge">-dealloc</code> in an error case</li>
+</ul>
+
+<p>Reasonably, this scheme can only be used for very simple value type objects.</p>
+
+<h3 id="tidbits">Tidbits</h3>
+
+<p>If you want to create an object, whose property objects are allocated with the
+same custom allocator as the owner object, you will have to subclass a lot.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/finalize.html">NSObject: -finalize</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/lifecycle.html">Object Lifecycle</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

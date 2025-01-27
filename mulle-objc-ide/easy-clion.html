@@ -1,0 +1,468 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>CLion &#8211; mulle-objc Development with IDEs</title>
+<meta name="description" content="CLion) is an IDE by Jetbrains. It’s a commercial offering, but you get a 30 day evaluation license the first time you download it. So it’s perfect for playing around with mulle-objc. Well almost perfect. We need a special setup, otherwise CLion will develop the annoying tendency to hang up...">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="CLion">
+<meta name="twitter:description" content="CLion) is an IDE by Jetbrains. It’s a commercial offering, but you get a 30 day evaluation license the first time you download it. So it’s perfect for playing around with mulle-objc. Well almost perfect. We need a special setup, otherwise CLion will develop the annoying tendency to hang up...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/mulle-objc-ide/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CLion">
+<meta property="og:description" content="CLion) is an IDE by Jetbrains. It’s a commercial offering, but you get a 30 day evaluation license the first time you download it. So it’s perfect for playing around with mulle-objc. Well almost perfect. We need a special setup, otherwise CLion will develop the annoying tendency to hang up...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/easy-clion.html">
+<meta property="og:site_name" content="mulle-objc Development with IDEs">
+
+<link href="/mulle-objc-ide/atom.xml" type="application/atom+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+<link href="/mulle-objc-ide/index.rdf" type="application/rss+xml" rel="alternate" title="mulle-objc Development with IDEs Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/easy-clion.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/mulle-objc-ide/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/mulle-objc-ide/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objc-ide@mulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/mulle-objc-ide/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-clion.html" title="CLion">CLion</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html" title="Sublime Text">Sublime Text</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/easy-vscode.html" title="Visual Studio Code">Visual Studio Code</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/mulle-objc-ide/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>mulle-objc Development with IDEs&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="/mulle-objc-ide/feed.xml"><img class="inline-img" src="/mulle-objc-ide/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2022 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>CLion</h1>
+                  <div>
+                  <p><a href="//www.jetbrains.com/clion/download/">CLion</a>) is an IDE by Jetbrains.
+It’s a commercial offering, but you get a 30 day evaluation license the first
+time you download it. So it’s perfect for playing around with mulle-objc. Well
+almost perfect. We need a special setup, otherwise CLion will develop the
+annoying tendency to hang up your system.</p>
+
+<h2 id="first-start">First Start</h2>
+
+<p>The first time you start CLion it will come up with a window like this:</p>
+
+<p align="center">
+<img src="images/clion-intro.png" style="height:200px !important;" />
+</p>
+
+<p>Let’s just keep it this way for now. There is no “New Project” support for
+mulle-objc (yet ?), so we have to create the project in the terminal.</p>
+
+<h3 id="create-a-mulle-objc-project">Create a mulle-objc project</h3>
+
+<blockquote>
+  <p>If you haven’t installed mulle-sde go back to the
+<a href="intro.html">Intro</a> and follow the
+instructions there.</p>
+</blockquote>
+
+<p>You need a terminal to create a <em>mulle-objc</em> project. Maybe the easiest
+way is to clone an existing mulle-objc project and modify it like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/mulle-cc/mulle-objc-idea.git my-project
+<span class="nb">cd </span>my-project
+mulle-sde upgrade
+mulle-sde project rename my-project
+</code></pre></div></div>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides the
+<em>idea</em> extension. This extension ensures, that CLion ignores
+files that are non-editable.</p>
+
+<p>When you create a new project from scratch, add the <em>idea</em>
+extension:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-project <span class="nt">-m</span> foundation/objc-developer executable
+<span class="nb">cd </span>my-project
+mulle-sde extension add idea
+</code></pre></div></div>
+
+<p>The <em>idea</em> extension is not required for mulle-objc projects, but makes them
+a bit nicer in CLion. Without the idea extension, you will not see an
+<code class="language-plaintext highlighter-rouge">.idea</code> folder in your project initially.</p>
+
+<h3 id="change-the-build-environment">Change the build environment</h3>
+
+<p>CLion has an indexer, that continually checks your project directory for
+changes. Though you can tell the indexer to not index certain places, in
+practicality that doesn’t always seem to work.
+<em>mulle-sde</em> will create three folders <code class="language-plaintext highlighter-rouge">stash</code>, <code class="language-plaintext highlighter-rouge">dependency</code>, <code class="language-plaintext highlighter-rouge">kitchen</code>.
+When the indexer hits <code class="language-plaintext highlighter-rouge">stash</code>, with its large amount of sources and possible
+symlinks between each project, you may incur slowness or worse.</p>
+
+<p>The most foolproof method to keep the Clion indexer away from those folders, is
+to store them outside of the project. So lets the create in the <code class="language-plaintext highlighter-rouge">my-project</code>
+folder, these mulle-sde settings to store build folders under
+<code class="language-plaintext highlighter-rouge">~/.mulle/var/...</code> or wherever you find convenient:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>DEPENDENCY_DIR <span class="s1">'${HOME}/.mulle/var/dependency-${PROJECT_NAME}'</span>
+mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>KITCHEN_DIR <span class="s1">'${HOME}/.mulle/var/kitchen-${PROJECT_NAME}'</span>
+mulle-sde <span class="nt">--search-nearest</span> environment <span class="nt">--host-this</span> <span class="se">\</span>
+   <span class="nb">set </span>MULLE_SOURCETREE_STASH_DIR <span class="s1">'${HOME}/.mulle/var/stash-${PROJECT_NAME}'</span>
+</code></pre></div></div>
+
+<p>It is important to make these changes before opening the project, as the
+indexer and the build process will start right away.</p>
+
+<p>You can place these commands in a file called <code class="language-plaintext highlighter-rouge">~/bin/post-mulle-sde-init</code>.
+Then you will not need to execute these commands for every new project created
+with <code class="language-plaintext highlighter-rouge">mulle-sde init</code>.</p>
+
+<p>The following command will give you the location of the <code class="language-plaintext highlighter-rouge">dependency</code> folder
+on the file system, which will be needed in the next step:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde environment get <span class="nt">--output-eval</span> DEPENDENCY_DIR
+</code></pre></div></div>
+
+<h3 id="open-the-project">Open the project</h3>
+
+<p>Open the project from within Clion now with <em>“File /Open Project”</em>. At this
+time the “Open Project Wizard” should run. It will let you choose the default
+toolchain or you can  configure a new “System” toolchain.</p>
+
+<p><img src="images/clion-wizard.png" alt="Wizard" /></p>
+
+<p>This is an important step. You should change the C compiler to <code class="language-plaintext highlighter-rouge">mulle-clang</code>.
+Usually <strong>mulle-clang</strong> should be in your PATH and you can just type it in.
+If not, you can enter the installation path by clicking the folder button.
+(Tip: look in <code class="language-plaintext highlighter-rouge">/opt/mulle-clang-project/&lt;version&gt;/bin</code> or <code class="language-plaintext highlighter-rouge">/usr/local/bin</code>)
+Do the same for the debugger <strong>mulle-gdb</strong> (<em>“Disclosure Triangle / Custom executable”</em>,
+even though it’s grayed out).</p>
+
+<p>Next up is the <strong>cmake</strong> configuration screen. Here you have to configure the
+“Toolchain” to the toolchain you setup in the previous step. And you also
+enter the ‘DEPENDENCY_DIR’ environment variable.</p>
+
+<p>I would recommend to check <em>“Reload CMake project on …“</em>.</p>
+
+<p><img src="images/clion-wizard-2.png" alt="Wizard" /></p>
+
+<p>The IDE will immediately spring into action and build your project.</p>
+
+<blockquote>
+  <p>If you chose to keep the <code class="language-plaintext highlighter-rouge">dependency</code> folder in project, you don’t need
+to set the <code class="language-plaintext highlighter-rouge">DEPENDENCY_DIR</code>.</p>
+</blockquote>
+
+<h3 id="run-configurations">Run configurations</h3>
+
+<p>To see the list of available configurations click the disclosure button on the
+Clion configurations / target bar:</p>
+
+<p>
+<img src="images/clion-configurations.png" style="width:150px !important;" />
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mulle_sde_reflect</td>
+      <td>When you add or remove files from the project, you need to run “Reflect” so changes will be picked up. You do not need to edit <code class="language-plaintext highlighter-rouge">CMakeLists.txt</code></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>mulle_sde_clean_all</td>
+      <td>Clean your projects build products and intermediate files</td>
+    </tr>
+    <tr>
+      <td>mulle_sde_clean_tidy</td>
+      <td>Also clean downloaded dependencies. They will need to be refetched.</td>
+    </tr>
+    <tr>
+      <td>mulle_sde_craft_craftorder</td>
+      <td>Rebuild dependencies</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>mulle_sde_upgrade</td>
+      <td>After installing a new mulle-sde version, upgrade the project. Cleans caches…</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>CLion will have picked up these configuration from targets in the cmake files.
+Not all configurations are interesting. You can safely configuration any target 
+that is preceeded with an <code class="language-plaintext highlighter-rouge">_</code> underscore.</p>
+
+<p>You run a configuration by selecting it and then using the “green hammer”,
+to the left of the selector box.</p>
+
+<h2 id="development-cycle">Development Cycle</h2>
+
+<p>At this point the IDE should be in the process of fetching and building the
+dependencies, or maybe its already done. Watch the status line on the bottom to
+see what’s happening. So lets get right into debugging.</p>
+
+<p><img src="images/clion-opened.png" alt="Breakpoint" /></p>
+
+<h3 id="debug">Debug</h3>
+
+<p>Navigate to <code class="language-plaintext highlighter-rouge">src/main.m</code> now and click besides the line number to set a (red)
+breakpoint. Now run your program in the debugger with <em>“Run / Debug…“</em>.
+The debugger should immediately stop on the breakpoint:</p>
+
+<p><img src="images/clion-debug.png" alt="Breakpoint" /></p>
+
+<p>From here on use the <a href="https://blog.jetbrains.com/clion/2020/10/clion-debugging-part-1-fundamentals/">CLion documentation</a>
+for more help. The CLion debugger is very nice and makes this a standout
+feature in my opinion.</p>
+
+<h3 id="edit">Edit</h3>
+
+<p>Create a new class in “Sublime Text” to demonstrate the
+“Edit-&gt;Reflect-&gt;Craft(-&gt;Debug)” cycle that is the key development cycle of
+mulle-sde projects.
+First up create two new files in <code class="language-plaintext highlighter-rouge">src</code> namely <code class="language-plaintext highlighter-rouge">src/Foo.h</code> and <code class="language-plaintext highlighter-rouge">src/Foo.m</code>.
+(Right click on the <code class="language-plaintext highlighter-rouge">src</code> folder and “New File”).</p>
+
+<p>Let’s put an error into the file for demonstration purposes:</p>
+
+<pre><code class="language-Foo.h">#import "import.h"
+
+
+@interphase Foo : NSObject  // misspelled @interface
+
+- (void) hello;
+
+@end
+</code></pre>
+
+<pre><code class="language-Foo.m">#import "Foo.h"
+
+#import "import-private.h"
+
+
+@implementation Foo
+
+- (void) hello
+{
+   mulle_printf( "Hello\n");
+}
+
+@end
+</code></pre>
+
+<blockquote>
+  <h4 id="tip">Tip</h4>
+
+  <p>If you like a class with template code, you can use <code class="language-plaintext highlighter-rouge">mulle-sde add src/Foo.m</code>
+instead. This will also make the next “Reflect” step superflous.</p>
+</blockquote>
+
+<h3 id="reflect">Reflect</h3>
+
+<p>Now run the “mulle_sde_reflect” configuration. Choose it from the configuration
+selector box and then press the green hammer, to the left of it.</p>
+
+<p>The reflection places your source files into the <em>cmake</em> build system and adds
+them to your list of C headers. You can observe the change in
+<code class="language-plaintext highlighter-rouge">cmake/reflect/_Sources</code> and <code class="language-plaintext highlighter-rouge">cmake/reflect/_Headers</code> as well as in
+<code class="language-plaintext highlighter-rouge">src/reflect/_my-project.export.h</code>.</p>
+
+<p>You only need to “Reflect” if you have added or deleted files from the project.</p>
+
+<h3 id="craft">Craft</h3>
+
+<p>Return to the default configuration “my-project”. Now with the syntax error in
+place, the next craft will immediately preempt with an error:</p>
+
+<p><img src="images/clion-error.png" alt="Error" /></p>
+
+<blockquote>
+  <h2 id="important-tip">Important Tip</h2>
+
+  <p>Clion caches a lot. If you make some changes outside of the IDE to the 
+project, you need to clean its <strong>CMake cache</strong> 
+(Menu: “Tools/CMake/Reset Cache and Reload Project”). Then run the 
+“Configuration” <code class="language-plaintext highlighter-rouge">mulle_sde_clean_all</code>, to rebuild everything.</p>
+
+  <p>There is another cache cleaner (“Menu: “File/Invalidate Caches…”), but it 
+does not affect CMake. It might be good to run this too, if something appears 
+wonky.</p>
+
+</blockquote>
+
+<p>That wraps it up for CLion here.</p>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/mulle-objc-ide/intro.html">Intro</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/mulle-objc-ide/easy-sublime-text.html">Sublime Text</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   <!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

@@ -1,0 +1,2019 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">De Re mulle-sde</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="https://www.mulle-kybernetik.com/atom.xml" />
+<link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com" />
+<updated>2025-01-26T22:56:44+01:00</updated>
+<id>https://www.mulle-kybernetik.com/</id>
+<author>
+  <name>Nat!</name>
+  <uri>https://www.mulle-kybernetik.com/</uri>
+  <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Hecklers Corner]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/hecklers-corner.html" />
+  <id>https://www.mulle-kybernetik.com/hecklers-corner.html</id>
+  <published>2022-11-02T00:00:00+01:00</published>
+  <updated>2022-11-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h4 id=&quot;why-dont-you-use-direnv-&quot;&gt;Why don’t you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;direnv&lt;/code&gt; ?&lt;/h4&gt;
+
+&lt;p&gt;I rarely use the interactive subshell for executing virtual environments, but
+instead use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde run&lt;/code&gt; all the time.
+direnv augments the environment, it doesn’t remove environment variables,
+unless you explicity write environment files to do so.
+For lack of a better term, there is no API to add and remove environment
+variables. There is no “tool” functionality.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-dont-you-use-docker-instead-&quot;&gt;Why don’t you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; instead ?&lt;/h4&gt;
+
+&lt;p&gt;Docker is too slow and cumbersome. It’s not that popular on freebsd and I
+doubt it will work in mingw.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-dont-you-use-git-submodules-instead-&quot;&gt;Why don’t you use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git submodules&lt;/code&gt; instead ?&lt;/h4&gt;
+
+&lt;p&gt;One advantage of mulle-sde dependencies over git submodules is, that when you
+are doing git, you are not doing anything else.
+mulle-sde dependencies can be used with various source control management
+systems (SCM). You can mix tar archives with git and svn repositories.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-dont-you-use-my-pet-sandbox-instead-of-mulle-env-&quot;&gt;Why don’t you use &amp;lt;my pet sandbox&amp;gt; instead of mulle-env ?&lt;/h4&gt;
+
+&lt;p&gt;Sandboxing would not help with the environment setting. Sandboxing can be
+an interesting idea on top of mulle-sde. And actually in the newest version
+there is support for linux landlock sandboxing (also there is some support
+for apparmor) See the &lt;a href=&quot;//github.com/mulle-sde/mulle-sde/wiki&quot;&gt;Wiki&lt;/a&gt; for
+more info.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-is-this-written-bash-and-not-in-my-pet-language-&quot;&gt;Why is this written bash and not in &amp;lt;my pet language&amp;gt; ?&lt;/h4&gt;
+
+&lt;p&gt;Actually this used to be written in “sh”, the Bourne Shell.
+I would expect the Bourne Shell to be unbeatable in terms of availabilty and
+long term compatibility (think decades not years). Sadly “sh” must rely on
+external commands, to get anything slightly sophisticated done. This already
+impedes cross-platform portability. But the main reason is that
+running external commands for string operations is &lt;em&gt;just too slow&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So I returned to the “bash”.&lt;/p&gt;
+
+&lt;h4 id=&quot;why-is-this-written-in-fairly-ancient-bash-&quot;&gt;Why is this written in fairly ancient bash ?&lt;/h4&gt;
+
+&lt;p&gt;When this project started on macOS (then as mulle-bootstrap), the “bash” was
+seriously out of date and didn’t even support arrays (this is still noticable
+in the code today). “bash” on macOS a mere decade or so later is still out of
+date and has been officially replaced by “zsh”. So now I need to support two
+shells “bash” and “zsh”. Both are mostly compatible with each other, but not 100%.
+I am loathe to use too many fancy “bash” features to keep “zsh” as a fallback
+option or vice versa.&lt;/p&gt;
+
+&lt;h4 id=&quot;mulle-template-is-just-a-glorified-sed-script&quot;&gt;mulle-template is just a glorified sed script!&lt;/h4&gt;
+
+&lt;p&gt;That’s pretty much what it is!&lt;/p&gt;
+
+&lt;h4 id=&quot;mulle-match-is-just-a-glorified-find-command&quot;&gt;mulle-match is just a glorified find command!&lt;/h4&gt;
+
+&lt;p&gt;That’s really not quite what it is!&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Outro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/outro.html" />
+  <id>https://www.mulle-kybernetik.com/outro.html</id>
+  <published>2022-11-01T00:00:00+01:00</published>
+  <updated>2022-11-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;When all roads have been traveled, the next trip might be the &lt;a href=&quot;https://github-com/mulle-sde/mulle-sde.wiki&quot;&gt;mulle-sde Wiki&lt;/a&gt;. There is still a lot more to discover.&lt;/p&gt;
+
+&lt;p&gt;Some but not all of the topics not covered in this guide are&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;version support (mulle-semver)&lt;/li&gt;
+  &lt;li&gt;platform dependent dependencies&lt;/li&gt;
+  &lt;li&gt;header only dependencies&lt;/li&gt;
+  &lt;li&gt;control of generated cmake statements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The &lt;a href=&quot;//mulle-objc.github.io/De-Re-mulle-objc/&quot;&gt;De Re mulle-objc&lt;/a&gt;
+developer guide might also be a good next read.&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;//mulle-objc.github.io/&quot;&gt;mulle-objc&lt;/a&gt; homepage&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[💄 Definition isolator]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/definition.html" />
+  <id>https://www.mulle-kybernetik.com/definition.html</id>
+  <published>2022-03-07T00:00:00+01:00</published>
+  <updated>2022-03-07T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;The mulle-sde &lt;a href=&quot;virtual_env.html&quot;&gt;virtual environment&lt;/a&gt; shields the project from
+unintentional environment settings. But that is not enough separation, if the
+project is made up of multiple projects (a.k.a. “dependencies”).&lt;/p&gt;
+
+&lt;p&gt;Here is a contrived example. The main project get its current version via the
+commandline like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cc -DVERSION=&apos;&quot;1&quot;&apos;&lt;/code&gt;. Lets use the mulle-sde environment to
+set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CFLAGS&lt;/code&gt;, assuming that this is picked up by the Makefile.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde environment &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;CFLAGS &lt;span class=&quot;s1&quot;&gt;&apos;-DVERSION=&quot;1&quot;&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will work fine, until you add a third-party dependency, which also uses a
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VERSION&lt;/code&gt; definition. As the mulle-sde environment is active during the build
+of the project and the build of the dependency, there will be a clash.&lt;/p&gt;
+
+&lt;h2 id=&quot;definitions-environments-for-a-build&quot;&gt;Definitions: environments for a build&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;mulle-make&lt;/em&gt; is the meta-builder, that uses build systems like &lt;em&gt;cmake&lt;/em&gt; and
+&lt;em&gt;autoconf&lt;/em&gt; and &lt;em&gt;xcodebuild&lt;/em&gt;, to build a dependency or the project itself.
+That may sound fancy, but is really not much more than what this little script
+does:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#! /bin/sh&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; CMakeLists.txt &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;then
+   &lt;/span&gt;cmake &lt;span class=&quot;nt&quot;&gt;-B&lt;/span&gt; build &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+   cmake &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt; build
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# use some other build tool&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;One thing &lt;em&gt;mulle-make&lt;/em&gt; adds to the process, is that it looks at variables that
+start with the string ‘DEFINITION_’ and uses those to create options for
+the individual build tool (unknown options are passed verbatim).&lt;/p&gt;
+
+&lt;p&gt;For example the value of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEFINITION_CFLAGS=&apos;-DVERSION=&quot;1&quot;&apos;&lt;/code&gt; will be used
+by the &lt;em&gt;cmake&lt;/em&gt;  plugin of mulle-make to produce a
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-DCMAKE_C_FLAGS=&apos;-DVERSION=&quot;1&quot;&apos;&lt;/code&gt; command line option for cmake.&lt;/p&gt;
+
+&lt;p&gt;So how are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEFINITION_&lt;/code&gt; variables set in mulle-make ? They are fed to
+mulle-make by another tool mulle-craft. mulle-craft searches for applicable
+definition folders and applies them to the mulle-make call. There can be
+multiple definitions, which enables inheritance schemes.&lt;/p&gt;
+
+&lt;h2 id=&quot;project-definitions&quot;&gt;Project definitions&lt;/h2&gt;
+
+&lt;p&gt;The main project &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;definition&lt;/code&gt; folder is managed with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde definition&lt;/code&gt;
+commands. The values contained in it are only used for the main project and can
+not be overridden.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/definition1.svg&quot; alt=&quot;Project definitions&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo
+cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;1&quot;&apos;&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;dependency-definitions&quot;&gt;Dependency definitions&lt;/h2&gt;
+
+&lt;p&gt;A dependency definition is just a project definition from a different
+perspective. Here a third party project may very well also have a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;definition&lt;/code&gt;
+folder, if it is a mulle-sde project. This definition will be used during
+its build. But it will not interfere with the main project craft.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/definition2.svg&quot; alt=&quot;Dependency definitions&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo/stash/bar
+   cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;2&quot;&apos;&lt;/span&gt; ...
+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo
+cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;1&quot;&apos;&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;project-craftinfos&quot;&gt;Project craftinfos&lt;/h2&gt;
+
+&lt;p&gt;The project has the option to override dependency definitions with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;craftinfos&lt;/code&gt;.
+This is especially useful for third party projects, that are not mulle-sde
+projects. With a &lt;em&gt;craftinfo&lt;/em&gt; you can tweak the build process of that dependency
+to your liking without having to edit the dependency source itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/definition3.svg&quot; alt=&quot;Project craftinfos&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The values in the &lt;em&gt;craftinfo&lt;/em&gt; will usually override the values in the
+&lt;em&gt;definition&lt;/em&gt; of the dependency. So &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-DVERSION=&quot;3&quot;&lt;/code&gt; will be in effect for
+the craft of “bar”.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo/stash/bar
+   cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;3&quot;&apos;&lt;/span&gt; ...
+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo
+cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;1&quot;&apos;&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;inherited-definitions&quot;&gt;Inherited definitions&lt;/h2&gt;
+
+&lt;p&gt;Maybe the most powerful feature of the mulle-sde build system are inherited
+&lt;em&gt;definitions&lt;/em&gt;. These definitions are installed by dependencies into the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency/share&lt;/code&gt; folder and can affect all consecutive dependencies.
+This for example allows the switch of compilers during the craft of
+dependencies.&lt;/p&gt;
+
+&lt;p&gt;Multiple dependencies can add and subtract from these definitions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/definition4.svg&quot; alt=&quot;Inherited craftinfos&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo/stash/bar
+   cc &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;3&quot;&apos;&lt;/span&gt; ...
+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;foo
+mulle-clang &lt;span class=&quot;nt&quot;&gt;-DVERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&quot;1&quot;&apos;&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Inherited definitions can augment the &lt;em&gt;definitions&lt;/em&gt; of the main project, but
+it can not override them.&lt;/p&gt;
+
+&lt;p&gt;Inherited definitions can override the &lt;em&gt;definitions&lt;/em&gt; of dependencies, but
+it does not override &lt;em&gt;craftinfos&lt;/em&gt;.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[☑︎ Test suite with Coverage 🆕]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/test-coverage.html" />
+  <id>https://www.mulle-kybernetik.com/test-coverage.html</id>
+  <published>2022-03-06T00:00:00+01:00</published>
+  <updated>2022-03-06T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Tests for libraries and executables are easily setup with mulle-sde. In
+both cases just run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and a basic test setup should be setup in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;executable-test--coverage&quot;&gt;Executable Test + Coverage&lt;/h2&gt;
+
+&lt;p&gt;There are two simple principles behind mulle-sde tests.&lt;/p&gt;
+
+&lt;p&gt;They are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a non-zero exit code means a failed test (unless a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;testname&amp;gt;.errors&lt;/code&gt; file is present)&lt;/li&gt;
+  &lt;li&gt;if a file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;testname&amp;gt;.stdout&lt;/code&gt; is present, then the output of the test must match the contents of this file exactly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;setting-up-a-test&quot;&gt;Setting up a test&lt;/h3&gt;
+
+&lt;p&gt;To build the executable for testing:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;craft
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each test for an executable is a file named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;testname&amp;gt;.args&lt;/code&gt;. Conversely each
+test for a C library is named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;testname&amp;gt;.c&lt;/code&gt;, for an Objective-C library
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;testname&amp;gt;.m&lt;/code&gt; and so on.&lt;/p&gt;
+
+&lt;p&gt;So a test named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hello.args&lt;/code&gt; file is found in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10-first&lt;/code&gt; folder, so this
+will be the demo test we will run (it will fail):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Rerun it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde test rerun --serial&lt;/code&gt;, it will fail again. Provide
+the proper output in the &lt;testname&gt;.stdout and now all tests will pass.&lt;/testname&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-coverage-information&quot;&gt;Creating coverage information&lt;/h3&gt;
+
+&lt;p&gt;When all tests pass, you can create coverage information:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde test coverage
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will rebuild the project with coverage information and then all tests
+are run again. For a “hello world” executable, the output will look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: /tmp/bbb/src
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+main.c                                         3       3   100%
+------------------------------------------------------------------------------
+TOTAL                                          3       3   100%
+------------------------------------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also get HTML output, check the usage of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;coverage&lt;/code&gt; command for
+more info.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/mulle-sde/mulle-test&quot;&gt;mulle-test&lt;/a&gt; provides much more
+information how to setup and check tests.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[💠 Makefile maintainer]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/makefile.html" />
+  <id>https://www.mulle-kybernetik.com/makefile.html</id>
+  <published>2022-03-05T00:00:00+01:00</published>
+  <updated>2022-03-05T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;There is no better tool to structure a project with, than the filesystem tools
+you already have. That is either a textual command line terminal or the native
+GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations
+are usually a major pain in IDEs, but moving files between folders is a cinch
+in the shell or in the Finder.&lt;/p&gt;
+
+&lt;p&gt;mulle-sde as a project maintenance tool examines the file arrangement of your
+project and “reflects” it back into a “Makefile” or “CMakeLists.txt” or any
+other build system of your choice.&lt;/p&gt;
+
+&lt;h2 id=&quot;demo-nim-and-make&quot;&gt;Demo: nim and make&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a build system for the &lt;a href=&quot;https://nim-lang.org/&quot;&gt;nim&lt;/a&gt; language
+using &lt;em&gt;make&lt;/em&gt;. &lt;em&gt;cmake&lt;/em&gt; is more common for mulle-sde, but lets have a challenge
+here.&lt;/p&gt;
+
+&lt;h3 id=&quot;helloworldnim-and-a-makefile&quot;&gt;Helloworld.nim and a Makefile&lt;/h3&gt;
+
+&lt;p&gt;Lets start with a “hello world” source, taken from the
+&lt;a href=&quot;https://nim-by-example.github.io/hello_world/&quot;&gt;nim-by-example&lt;/a&gt; website.
+Though sources may reside in the root folder, a subfolder is more convenient
+for technical reasons. So &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helloworld.nim&lt;/code&gt; is placed into a subdirectory called
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim-demo/src
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-demo/src/helloworld.nim
+echo &quot;Hello World&quot;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A simple Makefile for the “helloworld” executable is:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=src/helloworld.nim
+OBJECTS=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+
+helloworld: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(OBJECTS)
+	ld -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt; run shows this to be working.&lt;/p&gt;
+
+&lt;h3 id=&quot;mulle-sde-integration-from-scratch&quot;&gt;mulle-sde integration (from scratch)&lt;/h3&gt;
+
+&lt;p&gt;The first step is to make this a mulle-sde project. As neither &lt;em&gt;nim&lt;/em&gt; nor &lt;em&gt;make&lt;/em&gt;
+are supported by any mulle-sde extensions yet, only a bare project can be
+created:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde init &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; none
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;let-mulle-sde-manage-the-makefile&quot;&gt;Let mulle-sde manage the Makefile&lt;/h4&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde -f files&lt;/code&gt; command, checks, if a source is identified as an
+interesting file by mulle-sde. The first time the output will be empty though.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/helloworld.nim&lt;/code&gt; is not yet considered to be interesting. For that a
+matcher is needed to associate files with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.nim&lt;/code&gt; extension with a
+mulle-sde file type. Lets call the type “sources”.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo match &lt;span class=&quot;s1&quot;&gt;&apos;*.nim&apos;&lt;/span&gt; sources
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde -d nim-demo -f files&lt;/code&gt; will return:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/manage-files.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;How to get this information into the Makefile ? A tool that edits an
+existing Makefile is complicated to devise and seldom foolproof. Overwriting
+the whole Makefile is undesirable, as it would delete user edits.
+The best idea is to let some parts of the Makefile be generated as
+separate file. This file is then included by the Makefile.
+Thus the Makefile becomes:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+
+helloworld: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(OBJECTS)
+	ld -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make/sources.make&lt;/code&gt; should be generated by mulle-sde on
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde -f reflect&lt;/code&gt;. Lets create a small script to do just that:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-demo/nim-make-reflect
+#! /bin/sh
+
+mkdir -p make
+mulle-match list --format &apos;%T += %f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos; &amp;gt; make/sources.make
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 nim-demo/nim-make-reflect
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;mulle-match&lt;/strong&gt; is the program that is actually used when &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde files&lt;/code&gt;
+is run. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde files&lt;/code&gt; is very limited, but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-match list&lt;/code&gt; is quite
+powerful. Besides various filter options, you can specify a printf like format
+to be used on each file. In the above format string &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%T&lt;/code&gt; turns the mulle-sde
+file type into an uppercase identifier and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%f&lt;/code&gt; prints the filename.
+Everything else is printed verbatim.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To add the script into the reflection mechanism of mulle-sde, a named task has
+to be created. The name “filesystem” is conventional, it is not required.
+The integration with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde reflect&lt;/code&gt; mechanism is done
+via the environment &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_SDE_REFLECT_CALLBACKS&lt;/code&gt; variable:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo task create &lt;span class=&quot;nt&quot;&gt;--callback&lt;/span&gt; filesystem &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PWD&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/nim-demo/nim-make-reflect&quot;&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo environment &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;MULLE_SDE_REFLECT_CALLBACKS filesystem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde -d nim-demo reflect&lt;/code&gt; the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake/sources.make&lt;/code&gt; will have appeared.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde reflect
+&lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;cmake
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now “nim” files can be added and deleted. They can be renamed and moved around.
+As long as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde reflect&lt;/code&gt; is called afterwards, the changes will be picked
+up and the Makefile will be up-to-date.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-nimmake-mulle-sde-extension&quot;&gt;A nim/make mulle-sde extension&lt;/h2&gt;
+
+&lt;p&gt;Ideally one wants to be able to create a &lt;em&gt;nim&lt;/em&gt;/&lt;em&gt;make&lt;/em&gt; project like above
+with a single command line, such as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde init &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; nim/nim-developer executable
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For this a mulle-sde “meta” extension is needed. mulle-sde extensions use the
+&lt;a href=&quot;template.html&quot;&gt;template&lt;/a&gt; capabilities to create boilerplate projects for new
+languages and build systems. There are several different extension types:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Extension&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extra&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a project can have multiple “extra” extensions. Typical “extra” extensions are “sublime-text” or “vscode”, which add IDE support.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;runtime&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a project can have one “runtime” extension, which is programming language specific&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oneshot&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;“oneshot” extensions are used by the “mulle-sde add” command to add files to a project.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buildtool&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a project can have one “buildtool” extension, to support tools like “autconf” or “cmake”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meta&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a project is initialized with a “meta” extension, which combines buildtool and runtime and extra extensions&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;To support &lt;em&gt;make&lt;/em&gt; a “buildtool” extension is needed.  Both are combined by a “meta extension”. So
+all in all lets create three extensions:&lt;/p&gt;
+
+&lt;h3 id=&quot;create-the-runtime-extension&quot;&gt;Create the runtime extension&lt;/h3&gt;
+
+&lt;p&gt;For the language &lt;em&gt;nim&lt;/em&gt; a &lt;em&gt;runtime&lt;/em&gt; extension will be used. The runtime
+extension defines the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.nim&lt;/code&gt; file extension and adds a default
+“helloworld” source. Extensions are grouped by a “vendor”, so &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VENDOR_NAME&lt;/code&gt;
+(any word you like) must be specified:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; init &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim &lt;span class=&quot;nt&quot;&gt;-DVENDOR_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;me &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; mulle-sde/extension-developer runtime
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Define the language basics with:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim/src/me/nim/language
+# language;dialect;extensions
+nim;;nim
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create the demo source file:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim/src/me/nim/project/executable/src
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim/src/me/nim/project/executable/src/PROJECT_NAME.nim
+echo &quot;Hello World&quot;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add a tool declaration for &lt;em&gt;nim&lt;/em&gt; to be used in restrictive environments:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim/src/me/nim/tool
+nim
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-the-buildtool-extension&quot;&gt;Create the buildtool extension&lt;/h3&gt;
+
+&lt;p&gt;The buildtool extension is used to setup the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; and the reflection
+mechanism:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; init &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-make &lt;span class=&quot;nt&quot;&gt;-DVENDOR_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;me &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; mulle-sde/extension-developer buildtool
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create the demo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim-make/src/me/nim-make/project/all
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/project/all/Makefile
+.SUFFIXES:  .&amp;lt;|PROJECT_EXTENSION|&amp;gt;
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(SOURCES:.&amp;lt;|PROJECT_EXTENSION|&amp;gt;=.o)
+
+.&amp;lt;|PROJECT_EXTENSION|&amp;gt;.o:
+	nim -c -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+
+&amp;lt;|PROJECT_NAME|&amp;gt;: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;(OBJECTS)
+	ld -o &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;lt;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create the match pattern for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.nim&lt;/code&gt; files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim-make/src/me/nim-make/share/match/match.d
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/share/match/match.d/20-sources--nim-sources
+*.nim
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Setup the callback for the reflection mechanism:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim-make/src/me/nim-make/share/monitor/bin
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+#! /bin/sh
+echo &quot;filesystem&quot;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a task that produces the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make/sources.make&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; nim-make/src/me/nim-make/share/monitor/libexec
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+
+#
+# This function will be called by mulle-monitor
+#
+filesystem_task_run()
+{
+	log_entry &quot;filesystem_task_run&quot; &quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@&quot;
+
+	mkdir -p make
+	mulle-match list --format &apos;%T += %f&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&apos; &amp;gt; make/sources.make
+}
+
+#
+# Convenience to test your script standalone
+#
+if [ -z &quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;{MULLE_MONITOR_TASK_LOAD}&quot; ]
+then
+	filesystem_task_run &quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;@&quot;
+fi
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the “filesystem” callback to the callbacks executed on reflect with an
+environment setting:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/environment
+MULLE_SDE_REFLECT_CALLBACKS=&apos;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MULLE_SDE_REFLECT_CALLBACKS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;:filesystem&apos;
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add &lt;em&gt;make&lt;/em&gt; to the list of tools for restrictive environments:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; nim-make/src/me/nim-make/tool
+make;optional
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;create-the-meta-extension&quot;&gt;Create the meta extension&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; init &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-developer &lt;span class=&quot;nt&quot;&gt;-DVENDOR_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;me &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; mulle-sde/extension-developer meta
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The meta extension ties the runtime and the buildtool together. And that’s
+it:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt;&amp;gt; nim-developer/src/me/nim-developer/inherit
+me/nim;runtime
+me/nim-make;buildtool
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;test-the-meta-extension&quot;&gt;Test the meta extension&lt;/h3&gt;
+
+&lt;p&gt;Add your (uninstalled) extensions to the mulle-sde extension search path.
+Then pick the meta extension “nim-developer” by vendor “me” and create a
+new “executable” project in directory “nim-demo2”:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;MULLE_SDE_EXTENSION_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/nim/src:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/nim-make/src:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PWD&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/nim-developer/src:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;MULLE_SDE_EXTENSION_PATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+	mulle-sde init &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo2 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; me/nim-developer executable
+
+mulle-sde &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nim-demo2 run make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nim-demo2&lt;/code&gt; is now a proper mulle-sde project of type
+“executable”, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt; flag that was used pervasively on the
+“none” project commands, can now be omitted.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/mulle-sde/mulle-sde-developer&quot;&gt;mulle-sde-developer&lt;/a&gt; provides
+extensive support for maintaining cmake projects. Language support is available
+for C, C++, Objective-C.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[🚬 Fetch and build]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/builder.html" />
+  <id>https://www.mulle-kybernetik.com/builder.html</id>
+  <published>2022-03-04T00:00:00+01:00</published>
+  <updated>2022-03-04T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;With &lt;a href=&quot;compositor.html&quot;&gt;project composition&lt;/a&gt;
+one can embed third party code directly into a project. But often a project
+needs third party code, that builds separately, possibly with a different
+build system (say &lt;em&gt;autoconf&lt;/em&gt; instead of &lt;em&gt;cmake&lt;/em&gt;). More often than not this
+third party code is a github or gitlab repository, that needs to be downloaded
+and built. It will typically be a library to link the project against and
+one or more header files, which will be included in the project source code.&lt;/p&gt;
+
+&lt;p&gt;mulle-sde will fetch these dependencies and will build them
+and install them into a local &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; folder. That way you have access
+to the headers and libraries in a uniform way.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-demo&quot;&gt;Quick Demo&lt;/h2&gt;
+
+&lt;h3 id=&quot;setup&quot;&gt;Setup&lt;/h3&gt;
+
+&lt;p&gt;Mix and match a few dependencies:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Dependency&lt;/th&gt;
+      &lt;th&gt;Build System&lt;/th&gt;
+      &lt;th&gt;SCM&lt;/th&gt;
+      &lt;th&gt;URL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zlib library&lt;/td&gt;
+      &lt;td&gt;cmake&lt;/td&gt;
+      &lt;td&gt;git&lt;/td&gt;
+      &lt;td&gt;https://github.com/madler/zlib.git&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;bison&lt;/td&gt;
+      &lt;td&gt;autoconf&lt;/td&gt;
+      &lt;td&gt;tar&lt;/td&gt;
+      &lt;td&gt;https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;mulle-data&lt;/td&gt;
+      &lt;td&gt;mulle-sde&lt;/td&gt;
+      &lt;td&gt;zip&lt;/td&gt;
+      &lt;td&gt;https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;For dependency building only the most barebones, unencumbered virtual
+environment is needed to store a few settings. Lets create a new project
+“my-demo”, to be filled with the main code later on:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde init &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; my-demo &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; none/wild none
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;my-demo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now add the first dependency, a git repository. Dependency order may be
+important, but it isn’t in this case.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency add https://github.com/madler/zlib.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From the URL, mulle-sde will try to figure out what it needs to do. Sometimes
+more information needs to be given with additional command line options,
+but not in this case.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/dependency-zlib.png&quot; alt=&quot;Zlib&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As this is a demo, we immediately hit the best case, which is that &lt;em&gt;zlib&lt;/em&gt; is
+a known dependency, that has some documentation! The documentation is provided
+by the &lt;a href=&quot;//github.com/craftinfo&quot;&gt;craftinfo&lt;/a&gt; repository.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Clearly the vision of the craftinfo repository is, that millions of developer
+work together in harmony on craftinfos, so that all possible
+dependencies can be added without effort. It’s not quite there yet though.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Anyway let’s use the suggestions and continue:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;zlib aliases z
+mulle-sde dependency &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;zlib include zlib.h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now add the next dependency &lt;em&gt;bison&lt;/em&gt;, which is a tar archive:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency add https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And add &lt;em&gt;mulle-data&lt;/em&gt;, which is a mulle-sde project in a zip archive:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency add https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/dependency-bison-data.png&quot; alt=&quot;Zlib&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;fetch-and-craft&quot;&gt;Fetch and Craft&lt;/h3&gt;
+
+&lt;p&gt;If the URLs are wrong or stale in some way, the fetch might not work. Otherwise
+there is no expectation of failure here:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde fetch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/dependency-fetch.png&quot; alt=&quot;Zlib&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As mulle-data is a mulle-sde project, it can advertise its dependencies
+(mulle-c11). So dependencies of true mulle-sde dependencies will be fetched
+as well. Everything ends up in a directory named “stash”. The separate “fetch”
+step is not really necessary, as the craft step will fetch what is needed. So
+for demonstration let’s do it all over again:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde clean tidy
+mulle-sde craft craftorder
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/dependency-craft.png&quot; alt=&quot;Zlib&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The contents of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency/Debug&lt;/code&gt; are analogous to the contents of
+a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local&lt;/code&gt; folder, but local to your project:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Find the location of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; folder with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde dependency-dir&lt;/code&gt;,
+if you can’t find it in your project.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tree -L 3 dependency
+dependency/
+├── Debug
+│   ├── bin
+│   │   ├── bison
+│   │   ├── mulle-fnv1a
+│   │   └── yacc
+│   ├── include
+│   │   ├── mulle-c11
+│   │   ├── mulle-data
+│   │   ├── zconf.h
+│   │   └── zlib.h
+│   ├── lib
+│   │   ├── libmulle-data.a
+│   │   ├── liby.a
+│   │   ├── libz.a
+│   │   ├── libz.so -&amp;gt; libz.so.1
+│   │   ├── libz.so.1 -&amp;gt; libz.so.1.2.13
+│   │   └── libz.so.1.2.13
+│   └── share
+│       ├── aclocal
+│       ├── bison
+│       ├── doc
+│       ├── info
+│       ├── locale
+│       ├── man
+│       └── pkgconfig
+└── etc
+    └── craftorder-Default--Default--Debug
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can get arguments for the linker command line from mulle-sde after a little
+tweaking of the &lt;em&gt;bison&lt;/em&gt; dependency. The produced libary by bison is called
+‘liby.a’ and not the default ‘libbison.a’ as would be expected. This can
+be corrected though:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;bison aliases y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-sde linkorder
+&lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/tmp/my-demo/dependency/Debug/lib&apos;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,--export-dynamic &lt;span class=&quot;nt&quot;&gt;-lz&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,--export-dynamic &lt;span class=&quot;nt&quot;&gt;-ly&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,--export-dynamic &lt;span class=&quot;nt&quot;&gt;-lmulle-data&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can also get include source code for your source files from mulle-sde with.
+Again &lt;em&gt;bison&lt;/em&gt; is a bit weird, as it produces no header files. To avoid an
+error in the next step, lets mark it as having no header:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency mark bison no-header
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-sde headerorder
+&lt;span class=&quot;nt&quot;&gt;-isystem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/tmp/my-demo/dependency/Debug/include&apos;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#include &amp;lt;zlib.h&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#include &amp;lt;mulle-data/mulle-data.h&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
+
+&lt;p&gt;The fetching of archives and git repositories is done with
+&lt;a href=&quot;//github.com/mulle-sde/mulle-fetch&quot;&gt;mulle-fetch&lt;/a&gt;.
+&lt;a href=&quot;//github.com/mulle-sde/mulle-domain&quot;&gt;mulle-domain&lt;/a&gt; provides heuristics based
+on URLs. &lt;a href=&quot;//github.com/mulle-sde/mulle-fetch&quot;&gt;mulle-make&lt;/a&gt; is used to build
+the dependency.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[🌲 Project Compositor]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/compositor.html" />
+  <id>https://www.mulle-kybernetik.com/compositor.html</id>
+  <published>2022-03-03T00:00:00+01:00</published>
+  <updated>2022-03-03T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;Project composition adds remote or local files (and directories) to
+a project. The project, as stored in a source code management sytem like git,
+would commonly &lt;strong&gt;&lt;em&gt;not&lt;/em&gt;&lt;/strong&gt; include these files. These files &lt;em&gt;would&lt;/em&gt; typically be part
+of your build process (Makefile) though. So after a checkout, you need to run the
+project composition to complete the project complete.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-demo&quot;&gt;Quick Demo&lt;/h2&gt;
+
+&lt;p&gt;For project composition only the most barebones, unencumbered virtual
+environment is needed to store a few settings. On the assumption, that we are
+in the right place already, prepare the virtual environment:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde init &lt;span class=&quot;nt&quot;&gt;--no-post-init&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; none/wild none
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As mulle-sde will not be used for building, its most convenient to use the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none/wild&lt;/code&gt; environment style. This makes the virtual environment completely
+unencumbered.&lt;/p&gt;
+
+&lt;h3 id=&quot;add-a-license-file&quot;&gt;Add a LICENSE file&lt;/h3&gt;
+
+&lt;p&gt;With the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency add --embedded&lt;/code&gt; command a LICENSE file will be downloaded
+from a remote source and placed into the project root at a later time:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency add &lt;span class=&quot;nt&quot;&gt;--embedded&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+                         &lt;span class=&quot;nt&quot;&gt;--address&lt;/span&gt; LICENSE &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+                         https://www.gnu.org/licenses/gpl-3.0.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If there was a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpl-latest.txt&lt;/code&gt;, we would be up to date with the latest
+GPL automatically.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;add-some-source-code&quot;&gt;Add some source code&lt;/h3&gt;
+
+&lt;p&gt;Add a small hash library from the “mulle-c” project and place it into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde dependency add &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;--embedded&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;--address&lt;/span&gt; src/farmhash &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+   https://github.com/mulle-c/farmhash-c/archive/refs/tags/latest.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;run-the-composition&quot;&gt;Run the composition&lt;/h3&gt;
+
+&lt;p&gt;With these dependency definitions in place, it’s now time to run
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde fetch&lt;/code&gt; to compose the project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/composition-fetch.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To get rid of the embedded files, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde clean tidy&lt;/code&gt;.  Project
+composition is fairly powerful. You can add and remove embedded dependencies
+and change their URLs at will. A new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde fetch&lt;/code&gt; will track the
+changes and synchronize your project.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
+
+&lt;p&gt;If you don’t need any other functionality from mulle-sde, you can get project
+composition from &lt;a href=&quot;//github.com/mulle-sde/mulle-sourcetree&quot;&gt;mulle-sourcetree&lt;/a&gt;
+only. You would not need to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde init&lt;/code&gt; then.&lt;/p&gt;
+
+&lt;p&gt;The fetching of archives and git repositories is done with
+&lt;a href=&quot;//github.com/mulle-sde/mulle-fetch&quot;&gt;mulle-fetch&lt;/a&gt;. mulle-fetch relies on
+heuristics to save typework. This will work fine in common cases, but needs
+explicitness, when it fails. Nevertheless just having to type
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-fetch --github mulle-c mulle-container&lt;/code&gt; to fetch a repository or
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-fetch https://github.com/mulle-c/mulle-buffer/archive/refs/tags/latest.tar.gz&lt;/code&gt;
+to download and unpack a github tar link is handy.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[🕋 Template generator]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/template.html" />
+  <id>https://www.mulle-kybernetik.com/template.html</id>
+  <published>2022-03-02T00:00:00+01:00</published>
+  <updated>2022-03-02T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;mulle-sde has a template generator to create source files and populate new
+projects. But it can be useful in other scenarios. Here are three different
+examples:&lt;/p&gt;
+
+&lt;h2 id=&quot;example-create-a-serial-email&quot;&gt;Example: Create a serial email&lt;/h2&gt;
+
+&lt;p&gt;Lets create a little email template. In case we only have an email address of
+the recipient and no other information, we will address the recipient as
+“Friend”:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; serial-email.txt
+From: me@me.com
+To: &amp;lt;|EMAIL|&amp;gt;
+Subject: This is a personal email
+
+Dear &amp;lt;|TITLE|&amp;gt; &amp;lt;|FIRSTNAME|&amp;gt; &amp;lt;|LASTNAME:-Friend|&amp;gt;,
+
+Happy holidays!
+
+Yours
+	A friend
+.
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you read the previous chapter, you probably already guessed what’s coming
+next: we need some environment variables to fill the template.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TITLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Mr.&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Joe&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Shmoe&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EMAIL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;joe.schmoe@shmoester-consult.gg&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-template -v generate serial-email.txt -&lt;/code&gt; to
+get the filled out template:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/template-email.png&quot; alt=&quot;Email&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To see the effect of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;|LASTNAME:-Friend|&amp;gt;&lt;/code&gt; default value, you must
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unset LASTNAME&lt;/code&gt;. An empty string still counts as value. (If you don’t like
+the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;| |&amp;gt;&lt;/code&gt; tags, you can change them to anything, which doesn’t
+interfere with the other text).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;example-a-boilerplate-c-project-from-templates&quot;&gt;Example: A boilerplate C project from templates&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a simple C project template, with a Makefile:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;PROJECT_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; PROJECT_NAME/PROJECT_NAME.c
+#include &amp;lt;stdio.h&amp;gt;
+
+
+int  main( int argc, char *argv[])
+{
+   printf( &quot;VfL Bochum 1848&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;);
+   return( 0);
+}
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt; PROJECT_NAME/Makefile
+.PHONY: all
+
+all:  &amp;lt;|PROJECT_NAME|&amp;gt;
+
+&amp;lt;|PROJECT_NAME|&amp;gt;:  &amp;lt;|PROJECT_NAME|&amp;gt;.o
+
+clean:
+	rm &amp;lt;|PROJECT_NAME|&amp;gt; &amp;lt;|PROJECT_NAME|&amp;gt;.o  # must be TAB in front of rm
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now with the template directory in place generate the C project with
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-template -DPROJECT_NAME=caramba generate PROJECT_NAME .&lt;/code&gt;. You can define
+environment variables on the command line as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/template-caramba.png&quot; alt=&quot;C Project&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;example-a-script-file-from-a-template&quot;&gt;Example: A script file from a template&lt;/h2&gt;
+
+&lt;p&gt;mulle-sde ships with a number of file templates. More templates can be added
+with &lt;em&gt;extensions&lt;/em&gt; (more on that later).
+For example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde add foo.sh&lt;/code&gt; creates a template generated shell script
+file “foo.sh” for use with
+&lt;a href=&quot;/github.com/mulle-nat/mulle-bashfunctions&quot;&gt;mulle-bashfunctions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is how “foo.sh” looks like at the time of writing (contents are subject to
+change with general progress):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-txt&quot;&gt;#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+#
+#
+#  foo.sh
+#  serial-letter
+#
+#  Copyright (c) 2022 Nat! - Mulle kybernetiK.
+#  All rights reserved.
+#
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions are met:
+#
+#  Redistributions of source code must retain the above copyright notice, this
+#  list of conditions and the following disclaimer.
+#
+#  Redistributions in binary form must reproduce the above copyright notice,
+#  this list of conditions and the following disclaimer in the documentation
+#  and/or other materials provided with the distribution.
+#
+#  Neither the name of Mulle kybernetiK nor the names of its contributors
+#  may be used to endorse or promote products derived from this software
+#  without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+#  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+#  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+[ &quot;${TRACE}&quot; = &apos;YES&apos; -o &quot;${FOO_TRACE}&quot; = &apos;YES&apos; ] \
+&amp;amp;&amp;amp; set -x  \
+&amp;amp;&amp;amp; : &quot;$0&quot; &quot;$@&quot;
+
+#
+# Versioning of this script
+#
+MULLE_EXECUTABLE_VERSION=&quot;0.0.0&quot;
+
+
+foo::print_flags()
+{
+	echo &quot;   -f    : force operation&quot;
+
+	##
+	## ADD YOUR FLAGS DESCRIPTIONS HERE
+	##
+
+	options_technical_flags_usage \
+			  &quot;      : &quot;
+}
+
+
+foo::usage()
+{
+	[ $# -ne 0 ] &amp;amp;&amp;amp; log_error &quot;$*&quot;
+
+
+	cat &amp;lt;&amp;lt;EOF &amp;gt;&amp;amp;2
+Usage:
+	foo [flags]
+
+	##
+	## ADD YOUR USAGE DESCRIPTION HERE
+	##
+
+Flags:
+EOF
+	foo::print_flags | LC_ALL=C sort &amp;gt;&amp;amp;2
+
+	exit 1
+}
+
+
+foo::main()
+{
+	#
+	# simple option/flag handling
+	#
+	local OPTION_VALUE
+
+	while [ $# -ne 0 ]
+	do
+		if options_technical_flags &quot;$1&quot;
+		then
+			shift
+			continue
+		fi
+
+		case &quot;$1&quot; in
+			-f|--force)
+				MULLE_FLAG_MAGNUM_FORCE=&apos;YES&apos;
+			;;
+
+			-h*|--help|help)
+				foo::usage
+			;;
+
+			--value)
+				[ $# -eq 1 ] &amp;amp;&amp;amp; match_list_usage &quot;missing argument to $1&quot;
+				shift
+
+				OPTION_VALUE=&quot;$1&quot;
+			;;
+
+			--version)
+				printf &quot;%s\n&quot; &quot;${MULLE_EXECUTABLE_VERSION}&quot;
+				exit 0
+			;;
+
+
+			##
+			## ADD YOUR FLAGS HERE
+			##
+
+			-*)
+				foo::usage &quot;Unknown flag \&quot;$1\&quot;&quot;
+			;;
+
+			*)
+				break
+			;;
+		esac
+
+		shift
+	done
+
+	options_setup_trace &quot;${MULLE_TRACE}&quot; &amp;amp;&amp;amp; set -x
+
+	##
+	## ADD YOUR CODE HERE
+	##
+	log_info &quot;Does nothing, but will soon&quot;
+}
+
+#
+# You can also use the function `call_with_flags`, which has been defined
+# during mulle-boot. It lets you call &apos;foo::main&apos;
+# with FOO_FLAGS interposed.
+#
+# call_with_flags &quot;foo::main&quot; &quot;${FOO_FLAGS}&quot; &quot;$@&quot;
+
+foo::main &quot;$@&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The BSD license header on top is taken from a file
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.config/mulle/etc/sde/header.sh&lt;/code&gt;, that is included by the template
+via a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;|HEADER|&amp;gt;&lt;/code&gt; tag:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You can execute &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde add&lt;/code&gt; anywhere. The “add” command does not require
+a virtual environment unlike most mulle-sde commands.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final words&lt;/h2&gt;
+
+&lt;p&gt;That is templating with mulle-sde. The most exciting feature is probably, the
+way that filenames are also subject to templating. The templating features
+are provided by &lt;a href=&quot;//github.com/mulle-sde/mulle-template&quot;&gt;mulle-template&lt;/a&gt;, which
+can be used outside of mulle-sde.&lt;/p&gt;
+
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[🌳 Virtual Environment]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/virtual-env.html" />
+  <id>https://www.mulle-kybernetik.com/virtual-env.html</id>
+  <published>2022-03-01T00:00:00+01:00</published>
+  <updated>2022-03-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;&lt;a href=&quot;//en.wikipedia.org/wiki/Environment_variable&quot;&gt;Environment variables&lt;/a&gt; are used
+by mulle-sde to store project related information, like the programming
+language to use, the place to search for dependencies and so on.
+If one were to use the global shell environment (setup by a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; or
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.profile&lt;/code&gt; file) for these environment variables, this wouldn’t go very far, as
+different projects would interfere with each other.&lt;/p&gt;
+
+&lt;p&gt;Therefore mulle-sde provides a custom environment. In it, unwanted environment
+settings are hidden and desired settings are added. Furthermore these
+&lt;strong&gt;environment settings can be specific&lt;/strong&gt; to a certain &lt;strong&gt;platform&lt;/strong&gt; or
+&lt;strong&gt;host&lt;/strong&gt; or &lt;strong&gt;user&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-clean-environement-for-consistent-builds&quot;&gt;A clean environement for consistent builds&lt;/h3&gt;
+
+&lt;p&gt;Differences in environment variable values between different developers or
+computers are a source of subtle and hard to find bugs like “Why is the sort
+order different on this machine ?” Development in a consistent environment is
+a time saver.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-demo&quot;&gt;Quick Demo&lt;/h2&gt;
+
+&lt;p&gt;Let’s create a virtual environment in a demo folder “foo”. The virtual
+environment will have a certain &lt;em&gt;style&lt;/em&gt; called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none/inherit&lt;/code&gt;, which filters
+out most environment variables. It will leave the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt; variable intact though.
+The command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde init -d foo -s none/inherit none&lt;/code&gt; will do
+all of that:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/environment-initial.png&quot; alt=&quot;Initial Environment&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde env&lt;/code&gt; command shows the environment variables, that
+are added by the virtual environment configuration. These environment variables
+are grouped by &lt;em&gt;scope&lt;/em&gt; (see below). The complete environment, as available
+to the commands running in the virtual environment, can be seen with:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde run env | sort&lt;/code&gt;. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde run&lt;/code&gt; executes a single command inside
+the virtual environment. You can also get an interactive shell with just
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The “foo” folder will appear empty as the virtual environment is stored in
+a hidden &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.mulle&lt;/code&gt; folder. If mulle-sde finds  no &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.mulle&lt;/code&gt; folder in the
+current directory, a search is made, to find the nearest enclosing virtual
+environment. Thus you can execute mulle-sde commands, wherever you are
+inside the project.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;scopes&quot;&gt;Scopes&lt;/h2&gt;
+
+&lt;p&gt;Environment variables in mulle-sde are scoped. There is a certain order in
+which they are defined, so that settings can inherit or override previous
+setting. For example a mulle-sde plugin may specify a default executable
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FOO_EXE=foo&lt;/code&gt;. But you may need a different tool on macOS. So you specify for
+macOS: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde env --os darwin set FOO_EXE bar&lt;/code&gt;.
+This value will then override the plugin value on macOS only.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How do you know that you need to use “darwin” on macOS ? Run
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde uname&lt;/code&gt; to get the short identifier for the current platform.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The scopes, in order of them being read, are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Scope&lt;/th&gt;
+      &lt;th&gt;Read/Write&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hardcoded&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Variables needed by mulle-sde scripts.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugin&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Variables added by the chosen plugin (see Tool-style).&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugin-os-&amp;lt;uname&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;NO&lt;/td&gt;
+      &lt;td&gt;Variables added by the chosen plugin for specific platforms.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Project specific variables. Usually set once and rarely changed.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;global&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Global project tweaks. This is the default scope for many commands.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;os-&amp;lt;uname&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Platform specific tweaks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host-&amp;lt;hostname&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Host specific tweaks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user-&amp;lt;username&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;User specific tweaks.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post-global&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;YES&lt;/td&gt;
+      &lt;td&gt;Globally incorporate changes from site/user/host tweaks.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The order is important, for example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host-&amp;lt;hostname&amp;gt;&lt;/code&gt; variables can override
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;os-&amp;lt;uname&amp;gt;&lt;/code&gt; variables. They can also expand them.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-os&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;X_PATH &lt;span class=&quot;s1&quot;&gt;&apos;a:b&apos;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-host&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;X_PATH &lt;span class=&quot;s1&quot;&gt;&apos;${X_PATH}:c&apos;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;get &lt;span class=&quot;nt&quot;&gt;--output-eval&lt;/span&gt; X_PATH
+a:b:c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Can you add more scopes ? Yes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;note&quot;&gt;Note&lt;/h4&gt;
+
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;global&lt;/code&gt; settings are still local to the project environment. They are
+global, in that they always apply, no matter the platform, user, or host.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;path-restrictions&quot;&gt;PATH restrictions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt; environment variable is used to find commands to execute. With
+mulle-sde you can prune the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt; down, so that only a very basic set of
+commands is available. This way, your project won’t accidentally rely  on
+features, that are not present on other platforms. With the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde tool add&lt;/code&gt;
+command, you add commands that are necessary:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde tool add &lt;span class=&quot;nt&quot;&gt;--optional&lt;/span&gt; cmake
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can differentiate between &lt;em&gt;required&lt;/em&gt; and &lt;em&gt;optional&lt;/em&gt; tools and you can
+have different tools for different platforms.&lt;/p&gt;
+
+&lt;h3 id=&quot;environment-styles&quot;&gt;Environment Styles&lt;/h3&gt;
+
+&lt;p&gt;Let’s get back to the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde init -d foo -s none/inherit none&lt;/code&gt; command and
+talk about the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none/inherit&lt;/code&gt; style some more.  A style specifies in the first
+part the “tool style” (often provided by a “plugin”) and in the second part
+the “environment style”, also known as the “flavor”.&lt;/p&gt;
+
+&lt;p&gt;Currently there are five known environment styles, ordered from
+restrictive to loose:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Env-style&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;All environment variables must be user defined&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;restrict&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Inherit some environment (like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SSH_TTY&lt;/code&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;relax&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;as “restrict” plus &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/bin&lt;/code&gt; are available via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherit&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;as “restrict”, but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt; is kept intact&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wild&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;no restrictions&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;tool-styles&quot;&gt;Tool Styles&lt;/h3&gt;
+
+&lt;p&gt;The four toolstyles are used to augment the basic environment styles &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt; and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;restrict&lt;/code&gt; with a predefined set of tools. For mulle-sde development tool-style
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle&lt;/code&gt; will be the norm.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tool-style&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;No additions to the tool list&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;minimal&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a minimal set of tools (like cd, ls)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;developer&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;a common set of tools (like cd, ls, awk, man)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Like developer but also adds mulle-sde tools&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Since the contents of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATH&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/bin&lt;/code&gt; aren’t clearly defined and vary on a
+per host and per platform basis, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;relax&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inherit&lt;/code&gt; are relatively blunt
+instruments. The tool styles based on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;restrict&lt;/code&gt; offer more fine
+grained control over the available tools.&lt;/p&gt;
+
+&lt;h2 id=&quot;breaking-out-of-the-environment&quot;&gt;Breaking out of the environment&lt;/h2&gt;
+
+&lt;p&gt;With &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mudo&lt;/code&gt; you can run commands with an unrestricted PATH from inside the
+virtual environment e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mudo subl src/main.m&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final words&lt;/h2&gt;
+
+&lt;p&gt;If virtual environments is all you need, you don’t need the full mulle-sde
+install but can use &lt;a href=&quot;https://github.com/mulle-sde/mulle-env&quot;&gt;mulle-env&lt;/a&gt;
+instead, which is actually responsible for all the environment handling.&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[🔶 Manage a Makefile project 🆕]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/existing-makefile.html" />
+  <id>https://www.mulle-kybernetik.com/existing-makefile.html</id>
+  <published>2022-02-01T00:00:00+01:00</published>
+  <updated>2022-02-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;p&gt;While mulle-sde is most powerful, when setting up new projects, it can also
+be usefully employed, with an existing project. To illustrate this, a small
+demo project is created and then lightly adapted to work seamlessly with
+mulle-sde.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup-of-the-demo-project&quot;&gt;Setup of the demo project&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It’s going to be a C based &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt; project, if that doesn’t interest you and
+you prefer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meson&lt;/code&gt;, you can skip to
+&lt;a href=&quot;#Employ-mulle-sde-to-get-the-custom-library&quot;&gt;Employ mulle-sde to get the custom library&lt;/a&gt;
+and continue from there.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;let-ai-create-a-demo-makefile&quot;&gt;Let AI create a demo Makefile&lt;/h3&gt;
+
+&lt;p&gt;Let an AI (like &lt;a href=&quot;https://phind.com&quot;&gt;ChatGPT&lt;/a&gt;) create a simple
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; for an executable, in a form that could be considered somewhat
+standard &lt;sup&gt;&lt;a href=&quot;#footnote1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Makefile&quot;&gt;# Compiler and linker flags
+CC = gcc
+CFLAGS = -Wall -Wextra
+LDFLAGS = -L/path/to/lib -lmulle-core
+INCLUDES = -I/path/to/includes
+
+# Variables for installation prefixes, extra include directories, and library directories
+PREFIX = /usr/local
+INCDIR = $(PREFIX)/include
+LIBDIR = $(PREFIX)/lib
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(SRCS:.c=.o)
+EXECUTABLE = my.exe
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) $(LDFLAGS) $(INCLUDES) -o $@ $^
+
+# Rule for building the object files
+%.o: %.c
+   $(CC) $(CFLAGS) $(INCLUDES) -c $&amp;lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp libmulle-core.so $(LIBDIR)
+
+# Clean target
+clean:
+   rm -f $(OBJS) $(EXECUTABLE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;let-ai-create-demo-content&quot;&gt;Let AI create demo content&lt;/h3&gt;
+
+&lt;p&gt;I am not sure why the AI wants a header for an executable, but lets play
+along anyway &lt;sup&gt;&lt;a href=&quot;#footnote2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;p&gt;For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my.h&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#ifndef MY_H
+#define MY_H
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;#endif &lt;/span&gt;&lt;span class=&quot;cm&quot;&gt;/* MY_H */&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my.c&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&quot;my.h&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
+#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, World!&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;other.c&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&quot;my.h&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;
+&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;print_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;AI: In this example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my.h&lt;/code&gt; is a header file that declares a function prototype for
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print_message()&lt;/code&gt;. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my.c&lt;/code&gt; is a source file that defines &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print_message()&lt;/code&gt;, and
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;other.c&lt;/code&gt; is another source file that uses &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;print_message()&lt;/code&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;employ-mulle-sde&quot;&gt;Employ mulle-sde&lt;/h2&gt;
+
+&lt;h3 id=&quot;build-project-with-mulle-make&quot;&gt;Build project with mulle-make&lt;/h3&gt;
+
+&lt;p&gt;Run &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-make&lt;/code&gt;&lt;/strong&gt; instead of plain &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt;. What’s the advantage ?
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-make&lt;/code&gt; will automatically create a suitable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-j&lt;/code&gt; argument to
+parallelize the build. Also the output of make will be logged separately into
+a log file in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; folder for later perusal with (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-make log&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;We do error out though, because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-lmulle-core&lt;/code&gt; isn’t installed yet (usually):&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mulle-make
+collect2: error: ld returned 1 &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;status
+make: &lt;span class=&quot;k&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Makefile:25: my.exe] Fehler 1
+/usr/bin/ld: &lt;span class=&quot;nt&quot;&gt;-lmulle-core&lt;/span&gt; kann nicht gefunden werden: Datei oder Verzeichnis nicht gefunden
+collect2: error: ld returned 1 &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;status
+make: &lt;span class=&quot;k&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Makefile:25: my.exe] Fehler 1
+mulle-make fatal error: make failed with 2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;/tmp/xya&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As an intermediate step though, before fixing the link error, it would be
+nicer, if all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.o&lt;/code&gt; files would also end up in the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; folder, so we get parts of the Makefile rewritten by the AI &lt;sup&gt;&lt;a href=&quot;#footnote3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt; too:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Makefile&quot;&gt;...
+
+# Build directory
+BUILD_DIR = build
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+EXECUTABLE = my.exe
+
+...
+
+# Clean target
+clean:
+   rm -rf $(BUILD_DIR) $(EXECUTABLE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now let’s get the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-lmulle-core&lt;/code&gt; working.&lt;/p&gt;
+
+&lt;h3 id=&quot;employ-mulle-sde-to-get-the-custom-library&quot;&gt;Employ mulle-sde to get the custom library&lt;/h3&gt;
+
+&lt;p&gt;To get dependencies (third party libraries) happening, we need to initialize
+this project for &lt;strong&gt;mulle-sde&lt;/strong&gt;. This will add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.mulle&lt;/code&gt; folder to the project.
+As the project already exists, we use:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde init none
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The project type ‘none’ will add no additional files outside of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.mulle&lt;/code&gt;
+folder and mulle-sde will not attempt to build the main project.&lt;/p&gt;
+
+&lt;p&gt;Now we will link our executable with &lt;a href=&quot;htts://github.com/mulle-core/mulle-core&quot;&gt;mulle-core&lt;/a&gt;.
+mulle-core is nice for demo purposes, because its known to work :) But you can
+try out non-mulle libraries as well. If they use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;autoconf&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake&lt;/code&gt;, chances
+are good, that they work without tweaks.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde add github:mulle-core/mulle-core  &lt;span class=&quot;c&quot;&gt;# add .tar suffix to fetch archives&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;what-can-be-added-&quot;&gt;What can be added ?&lt;/h4&gt;
+
+  &lt;p&gt;In principle anything can be added that is based on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;autoconf&lt;/code&gt;.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;meson&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt; projects can work too. Everything can be made to fit
+using additional script though. It needn’t be hosted on github, though
+github is best supported.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So &lt;strong&gt;mulle-sde&lt;/strong&gt; should have cloned the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-core&lt;/code&gt; repository from github
+and already compiled it. But where is it ? It’s in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency/Debug&lt;/code&gt;
+folder. A release build would end up in the root of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; (with
+default settings). That’s more conventional, so lets do a “Release” build
+instead and remove the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency/Debug&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde clean tidy
+mulle-sde &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; craft &lt;span class=&quot;nt&quot;&gt;--release&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# use the -v flag to see log during build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we have to adjust the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; so that the include and library
+directories in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; are found &lt;sup&gt;&lt;a href=&quot;#footnote4&quot;&gt;[4]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Makefile&quot;&gt;...
+
+DEPENDENCY_DIR = dependency
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) -L$(DEPENDENCY_DIR)/lib -lmulle-core -I$(DEPENDENCY_DIR)/include -o $@ $^
+
+# Rule for building the object files
+$(BUILD_DIR)/%.o: %.c
+   $(CC) $(CFLAGS) -I$(DEPENDENCY_DIR)/include -c $&amp;lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp $(DEPENDENCY_DIR)/lib/libmulle-core.so $(LIBDIR)
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I am not a super-fan of the way the AI coded this, but fine enough.
+Lets run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-make&lt;/code&gt; again, and there should be a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my.exe&lt;/code&gt; in the project
+directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;tie-mulle-make-and-mulle-sde-together&quot;&gt;Tie mulle-make and mulle-sde together&lt;/h3&gt;
+
+&lt;p&gt;Now we have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde craft&lt;/code&gt; to build the dependency and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-make&lt;/code&gt; to
+build the project. Lets tie both together, so that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde craft&lt;/code&gt; can
+do both.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# turn on main project builds&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt; remove MULLE_SDE_CRAFT_TARGET
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;PROJECT_TYPE &lt;span class=&quot;s1&quot;&gt;&apos;executable&apos;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ensure that dependency is built &apos;Release&apos;&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-user&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;MULLE_SDE_CRAFTORDER_STYLE &lt;span class=&quot;s1&quot;&gt;&apos;Release&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now the project can be built with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde&lt;/code&gt;. But can it still be built
+on remote systems, where there is only a make and mulle-core installed but no
+mulle-sde ?&lt;/p&gt;
+
+&lt;p&gt;Yes, with a little tweak of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; &lt;sup&gt;&lt;a href=&quot;#footnote3&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Makefile&quot;&gt;# Compiler and linker flags
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+# Variables for installation prefixes, extra include directories, and library directories
+PREFIX = /usr/local
+INCDIR = $(PREFIX)/include
+LIBDIR = $(PREFIX)/lib
+
+# Build directory
+BUILD_DIR = build
+
+# Dependency directory
+DEPENDENCY_DIR = dependency
+
+# Library and include directories
+LIB_DIR = $(DEPENDENCY_DIR)/lib
+INC_DIR = $(DEPENDENCY_DIR)/include
+
+# Check if the dependency directory exists
+ifeq ($(wildcard $(DEPENDENCY_DIR)),$(DEPENDENCY_DIR))
+   LIB_DIR = $(DEPENDENCY_DIR)/lib
+   INC_DIR = $(DEPENDENCY_DIR)/include
+else
+   LIB_DIR = /usr/lib
+   INC_DIR = /usr/include
+endif
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+EXECUTABLE = my.exe
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) -L$(LIB_DIR) -lmulle-core -I$(INC_DIR) -o $@ $^
+
+# Rule for building the object files
+$(BUILD_DIR)/%.o: %.c
+   $(CC) $(CFLAGS) -I$(INC_DIR) -c $&amp;lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp $(LIB_DIR)/libmulle-core.so $(LIBDIR)
+
+# Clean target
+clean:
+   rm -rf $(BUILD_DIR) $(EXECUTABLE)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The AI changed things around for the better IMO.&lt;/p&gt;
+
+&lt;p&gt;Now we are done:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde craft &lt;span class=&quot;nt&quot;&gt;--clean-all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and that’s what you should be seeing:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Clean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Creating&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xya&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;craftorder&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ninja&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Release&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mulle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;core&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Debug&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xya&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The intermediate build files are no longer in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt;, instead the build is now
+done also in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kitchen&lt;/code&gt; where the temporary &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-core&lt;/code&gt; object files (and logs)
+are placed. So &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; is unused now and can be removed.&lt;/p&gt;
+
+&lt;h2 id=&quot;spruce-up-the-project-with-personal-preferences&quot;&gt;Spruce up the project with personal preferences&lt;/h2&gt;
+
+&lt;h3 id=&quot;use-shell-aliases-to-reduce-type-work&quot;&gt;Use shell aliases to reduce type-work&lt;/h3&gt;
+
+&lt;p&gt;As one will by typing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde craft&lt;/code&gt; a lot, create aliases like these:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sde&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;mulle-sde&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;mulle-sde craft&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;separate-release-and-debug-directories-in-dependency&quot;&gt;Separate Release and Debug directories in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-user&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;MULLE_CRAFT_DISPENSE_STYLE &lt;span class=&quot;s1&quot;&gt;&apos;strict&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;or do the opposite and use dispense style &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;none&lt;/code&gt; to also not create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Debug&lt;/code&gt;
+directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;get-stash-kitchen-dependency-out-of-the-way&quot;&gt;Get &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stash&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kitchen&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; out of the way&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Integrated_development_environment&quot;&gt;IDEs&lt;/a&gt; who
+employ indexing, slow down a lot, when they encounter directories with build
+products and third party sources. There is an easy way, to move mulle-sde
+directories out of the project.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mulle-sde clean tidy
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; kitchen stash dependency
+&lt;span class=&quot;nv&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;uuidgen&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-host&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;DEPENDENCY_DIR &lt;span class=&quot;s1&quot;&gt;&apos;${HOME}/.mulle/var/${PROJECT_NAME}-&apos;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/dependency&apos;&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-host&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;KITCHEN_DIR &lt;span class=&quot;s1&quot;&gt;&apos;${HOME}/.mulle/var/${PROJECT_NAME}-&apos;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/kitchen&apos;&lt;/span&gt;
+mulle-sde &lt;span class=&quot;nb&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--this-host&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;MULLE_SOURCETREE_STASH_DIR &lt;span class=&quot;s1&quot;&gt;&apos;${HOME}/.mulle/var/${PROJECT_NAME}-&apos;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/stash&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To guard against clashes with duplicate projects of the same name, use an
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Universally_unique_identifier&quot;&gt;UUID&lt;/a&gt; in the
+directory path:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Makefile&lt;/code&gt; should now get the value from mulle-sde either via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MULLE_SDK_PATH&lt;/code&gt;,
+which will be provided as an argument, or we could be asking:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mulle-sde dependency-dir&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Makefile&quot;&gt;MULLE_SDK_PATH ?=
+
+# Dependency directory
+DEPENDENCY_DIR := $(shell echo $(MULLE_SDK_PATH) | cut -d&apos;:&apos; -f1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;final-words&quot;&gt;Final Words&lt;/h2&gt;
+
+&lt;p&gt;So what was gained ?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;project users can fetch dependencies and build and project in one step&lt;/li&gt;
+  &lt;li&gt;dependencies don’t clutter or conflict with the system or other projects&lt;/li&gt;
+  &lt;li&gt;the possibility of having “build local” environment variables like CC defined&lt;/li&gt;
+  &lt;li&gt;more opportunities await, as there is a lot more to uncover about mulle-sde&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With one dependency, you might shrug it off, but the more dependencies your
+project has, the more useful mulle-sde will become.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;ai-prompts&quot;&gt;AI Prompts&lt;/h4&gt;
+
+&lt;p&gt;&lt;a name=&quot;myfootnote1&quot;&gt;[1]&lt;/a&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;You are a C and Unix expert. Write me
+a Makefile with common conventions that maintains an executable &quot;my.exe&quot; which
+links against a custom library &quot;-lmulle-core&quot; library. We need all and install and
+clean targets as well. Also need some variables for installation prefixes,
+extra include directories and library directories.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;myfootnote2&quot;&gt;[2]&lt;/a&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Please provide some demo content
+for the files in that Makefile: my.h, my.c, other.c.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;myfootnote3&quot;&gt;[3]&lt;/a&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Can we change OBJS = $(SRCS:.c=.o) so
+that the output lands in a &quot;build&quot; folder ?&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;myfootnote4&quot;&gt;[4]&lt;/a&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;The /path/to/ is really a local
+folder called &quot;dependency&quot;, and the header directory in there is called
+&quot;include&quot; not &quot;includes&quot;. Please use an additional variable so we can move
+&quot;dependency&quot; around.&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&quot;myfootnote5&quot;&gt;[5]&lt;/a&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Please modify the Makefile so that,
+if there is no dependency folder in the project, that the default system /usr
+is searched.&lt;/code&gt;&lt;/p&gt;
+</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Intro]]></title>
+  <link rel="alternate" type="text/html" href="https://www.mulle-kybernetik.com/intro.html" />
+  <id>https://www.mulle-kybernetik.com/intro.html</id>
+  <published>2022-01-01T00:00:00+01:00</published>
+  <updated>2022-01-01T00:00:00+01:00</updated>
+  <author>
+    <name>Nat!</name>
+    <uri>https://www.mulle-kybernetik.com</uri>
+    <email>nat-de-re-mulle-sde@emulle-kybernetik.com</email>
+  </author>
+  <content type="html">&lt;h2 id=&quot;is-mulle-sde-an-ide-&quot;&gt;Is mulle-sde an IDE ?&lt;/h2&gt;
+
+&lt;p&gt;According to &lt;a href=&quot;https://en.wikipedia.org/wiki/Integrated_development_environment&quot;&gt;Wikipedia&lt;/a&gt;
+“an IDE normally consists of at least a source code
+editor, build automation tools and a debugger.” Looking at a typical IDE like
+Visual Studio, its easy to identify the “Editor” (the “CalculatorTutorial.cpp”
+pane), a “Debugger/Terminal” (the “Output” pane) and the project manager
+(the “Solution Explorer” pane) all integrated into a single window.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;images/vs2019.png&quot; alt=&quot;Visual Studio&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For me, the “Editor” is not the best editor available, the “Terminal” is not the
+best terminal available, the “Solution Explorer” is not the best explorer
+available. An IDE is an integration of compromises.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/mulle-sde&quot;&gt;mulle-sde&lt;/a&gt; has no editor or debugger. It doesn’t
+integrate, it leaves the tool choices up to me. So it’s not an IDE -
+it’s a software development  environment (SDE). It is a meta-build tool,
+a project compositor, a virtual environment, a template generator and much
+more. It can be used inside IDEs though.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-mulle-sde&quot;&gt;Install mulle-sde&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;//github.com/mulle-sde/mulle-sde-developer&quot;&gt;mulle-sde-developer&lt;/a&gt; has the
+instructions on how to install mulle-sde. There are packages, script installers
+and a Dockerfile. For a quick start the script method is the easiest
+cross-platform method, which installs everything in your ${HOME} directory:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;755 installer-all &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SDE_PROJECTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mulle-sde-developer;latest&quot;&lt;/span&gt; ./installer-all &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; no
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Files will end up in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/bin&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/libexec&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/share&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The basic mulle-sde system knows about C and C++ only. To support other
+languages and frameworks, you’d need additional developer packages like
+&lt;a href=&quot;//github.com/mulle-objc/mulle-objc-developer&quot;&gt;mulle-objc-developer&lt;/a&gt;
+or &lt;a href=&quot;//github.com/MulleFoundation/foundation-developer&quot;&gt;foundation-developer&lt;/a&gt;
+for &lt;a href=&quot;//mulle-objc.github.io&quot;&gt;mulle-objc&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;But for the scope of this pamphlet though, it will be &lt;em&gt;mulle-sde-developer&lt;/em&gt;
+and C projects only.&lt;/p&gt;
+
+&lt;h2 id=&quot;study-a-use-case-&quot;&gt;Study a use case 🆕&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Manage the dependencies of an &lt;a href=&quot;existing-makefile.html&quot;&gt;existing Makefile project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-fork-in-the-road&quot;&gt;The fork in the road&lt;/h2&gt;
+
+&lt;p&gt;Here the intro comes to a fork in the road. Choose your direction, depending on
+how you want to use  mulle-sde:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;as a &lt;a href=&quot;virtual-env.html&quot;&gt;virtual environment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;template.html&quot;&gt;template generator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;compositor.html&quot;&gt;project compositor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;builder.html&quot;&gt;dependency fetcher and builder&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;makefile.html&quot;&gt;Makefile maintainer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;test+coverage.html&quot;&gt;test suite with coverage&lt;/a&gt; 🆕&lt;/li&gt;
+  &lt;li&gt;as a &lt;a href=&quot;definition.html&quot;&gt;definition isolator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A full mulle-sde project encompasses all these concepts.&lt;/p&gt;
+</content>
+</entry>
+
+</feed>

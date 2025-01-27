@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+<rect x="50" y="50" width="350" height="60" fill="#fff" stroke="#000"/>
+<text x="45" y="40" font-size="12">63</text>
+<text x="440" y="40" font-size="12">0</text>
+<text x="100" y="85" font-size="16">...</text>
+<rect x="360" y="50" width="20" height="60" fill="#fff" stroke="#000"/>
+<rect x="380" y="50" width="20" height="60" fill="#fff" stroke="#000"/>
+<rect x="400" y="50" width="20" height="60" fill="#fff" stroke="#000"/>
+<text x="365" y="85" font-size="14">0</text>
+<text x="385" y="85" font-size="14">1</text>
+<text x="405" y="85" font-size="14">0</text>
+<path d="m390 110v40h110" fill="none" marker-end="url(#a)" stroke="#000"/>
+<defs>
+<marker id="a" markerHeight="7" markerWidth="10" orient="auto" refX="9" refY="3.5">
+<polygon points="0 0 10 3.5 0 7"/>
+</marker>
+</defs>
+<rect x="500" y="50" width="450" height="200" fill="#fff" stroke="#000"/>
+<text x="675" y="40" font-size="14" font-weight="bold">TPS infraclasses</text>
+<line x1="500" x2="950" y1="80" y2="80" stroke="#000"/>
+<line x1="500" x2="950" y1="110" y2="110" stroke="#000"/>
+<line x1="500" x2="950" y1="140" y2="140" stroke="#000"/>
+<line x1="500" x2="950" y1="170" y2="170" stroke="#000"/>
+<rect x="501" y="141" width="448" height="29" fill="#ffeb3b" fill-opacity=".3"/>
+<rect x="510" y="85" width="40" height="20" fill="#fff" stroke="#000"/>
+<rect x="510" y="115" width="40" height="20" fill="#fff" stroke="#000"/>
+<rect x="510" y="145" width="40" height="20" fill="#fff" stroke="#000"/>
+<rect x="510" y="175" width="40" height="20" fill="#fff" stroke="#000"/>
+<text x="520" y="100" font-size="12">000</text>
+<text x="520" y="130" font-size="12">001</text>
+<text x="520" y="160" font-size="12">010</text>
+<text x="520" y="190" font-size="12">011</text>
+<text x="520" y="220" font-size="12">...</text>
+<text x="560" y="160" font-size="12">_MulleObjCTaggedPointerIntegerNumber</text>
+</svg>

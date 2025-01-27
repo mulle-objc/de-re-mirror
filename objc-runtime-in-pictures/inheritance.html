@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>Inheritance &#8211; Objective-C Runtime in Pictures</title>
+<meta name="description" content="Syntax topic
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Inheritance">
+<meta name="twitter:description" content="Syntax topic
+">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/objc-runtime-in-pictures/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inheritance">
+<meta property="og:description" content="Syntax topic
+">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/inheritance.html">
+<meta property="og:site_name" content="Objective-C Runtime in Pictures">
+
+<link href="/objc-runtime-in-pictures/atom.xml" type="application/atom+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+<link href="/objc-runtime-in-pictures/index.rdf" type="application/rss+xml" rel="alternate" title="Objective-C Runtime in Pictures Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/inheritance.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="/objc-runtime-in-pictures/images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="/objc-runtime-in-pictures/images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-pictures@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="/objc-runtime-in-pictures/images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+            </div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/class.html" title="Class">Class</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/ivar.html" title="Ivar">Ivar</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/method.html" title="Method">Method</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/property.html" title="Property">Property</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/category.html" title="Category">Category</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocol.html" title="Protocol">Protocol</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/inheritance.html" title="Inheritance">Inheritance</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html" title="Protocolclass">Protocolclass</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/quiz.html" title="Quiz">Quiz</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/outro.html" title="Outro">Outro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/objc-runtime-in-pictures/appendix.html" title="Appendix">Appendix</a>
+               </article>
+            
+            </ul>
+         </div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>Objective-C Runtime in Pictures&nbsp;&nbsp;<a href="/objc-runtime-in-pictures/feed.xml"><img class="inline-img" src="/objc-runtime-in-pictures/images/feed-icon-28x28.png"></a></h2>
+            </div>
+            <h6>© 2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>Inheritance</h1>
+                  <div>
+                  <h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="p">:</span> <span class="nc">SomeSuperClass</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="inheritance">Inheritance</h2>
+
+<p>In terms of a C <code class="language-plaintext highlighter-rouge">struct</code>, inheritance is akin to nesting a struct within another
+struct:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">a</span> 
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">b</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">a</span>   <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span>        <span class="n">w</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>The Objective-C syntax <code class="language-plaintext highlighter-rouge">@interface &lt;class&gt; : &lt;otherClass&gt;</code> is used 
+to define the inheritance:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">A</span>
+<span class="p">{</span>
+   <span class="kt">int</span>   <span class="n">u</span><span class="p">;</span>
+   <span class="kt">int</span>   <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getU</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">A</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getU</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@interface</span> <span class="nc">B</span> <span class="p">:</span> <span class="nc">A</span>
+<span class="p">{</span>
+   <span class="kt">int</span>   <span class="n">w</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getW</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">B</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[</span><span class="n">super</span> <span class="nf">getU</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">super</span> <span class="nf">getV</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getW</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">w</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The runtime will now look like this:</p>
+
+<p><img src="images/inheritance.svg" alt="Inheritance" />There is a uni-directional relationship <strong>super</strong> between the class B and its <strong>superclass</strong> A..</p>
+
+<p>The instance variables and methods of class A are <em>inherited</em> by B.As you can see, the contents of the ivarlists and methodlists of A are not copied down to B.Nevertheless, all methods and instance variables of A are now available in B.</p>
+
+<h3 id="super">super</h3>
+
+<p>With the special <code class="language-plaintext highlighter-rouge">[super method]</code> syntax, a method of a superclass can be
+invoked, even if there is a method with the same name in the current class.</p>
+
+<h3 id="special-case-the-root-class">Special case: the root class</h3>
+
+<p>A root class is a class that does not have a superclass. There is a special
+treatment for ‘+’ class methods on these root classes.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">RootClass</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">RootClass</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>When you run</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">cls</span> <span class="nf">classMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">cls</span> <span class="nf">instanceMethod</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">instance</span> <span class="nf">instanceMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">instance</span> <span class="nf">classMethod</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>the output will be:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">+[RootClass classMethod]
+-[RootClass instanceMethod]
+-[RootClass instanceMethod]
+mulle_objc_universe 0x5B74C1D11080 fatal: unknown method c3074566 "-classMethod" in class 4b9217f9 "RootClass"
+</span></code></pre></div></div>
+<p>So what is going on here?</p>
+
+<p><img src="images/RootClass.svg" alt="Root class" /></p>
+
+<p>If you follow the <code class="language-plaintext highlighter-rouge">isa/meta</code> path, you will see that the metaclass of the
+metaclass as actually the infraclass again. So a rootclass class methods
+are augmented with the infraclass methods.</p>
+
+<p>This is something to be aware of. So root classes usually have
+a class method implementation for every instance method to avoid surprises.
+Another option is to put a empty root class on top.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-superclass</code></td>
+      <td>Get receiver’s superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+superclass</code></td>
+      <td>Get class’s superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+isSubclassOfClass:</code></td>
+      <td>Check if class inherits from given class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isKindOfClass:</code></td>
+      <td>Check if receiver inherits from or is instance of class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isMemberOfClass:</code></td>
+      <td>Check if receiver is direct instance of class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[super ...]</code></td>
+      <td>Language feature to call superclass implementation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassIsSubclassOfClass</code></td>
+      <td>C function to check class inheritance relationship</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NSObjectIsKindOfClass</code></td>
+      <td>C function for instance/class relationship check</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceIsMemberOfClass</code></td>
+      <td>C function for direct instance/class check</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCSuperIMP</code></td>
+      <td>Get superclass implementation of current method</td>
+    </tr>
+  </tbody>
+</table>
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/objc-runtime-in-pictures/protocol.html">Protocol</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/objc-runtime-in-pictures/protocolclass.html">Protocolclass</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+   
+</body>
+</html>

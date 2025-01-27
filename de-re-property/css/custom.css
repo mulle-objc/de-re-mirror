@@ -1,0 +1,187 @@
+
+/* this maps the old jekyll/ minimal mistakes classes to skeleton */
+
+.container {
+   margin-top: 6%
+}
+
+.left-right {
+   display:  flex;
+   flex-direction:  row;
+}
+
+.left-half {
+   flex-grow: 1;
+}
+
+.right-half {
+   flex-grow: 1;
+   text-align: right;
+}
+
+#pn-container {
+   padding: 0px;
+}
+
+.row {
+}
+
+.sideline {
+}
+
+.inline-img {
+   align:  "absmiddle";
+   width:  1.5rem;
+   height: 1.5rem;
+}
+
+.bio {
+   background-color: #EEE;
+   border-radius: 8px;
+   padding: 8px;
+}
+
+.title {
+   margin-top: 2em;
+}
+
+.contents {
+   margin-top: 2em;
+}
+
+.bio-photo {
+   width: 64px;
+   border-radius: 5%;
+}
+
+.author-social {
+  display: block;
+}
+
+.bio-photo-container {
+}
+
+.no-bullet {
+   list-style-type: none;
+   padding-left:  2rem;
+}
+
+.internal-link {
+}
+
+.link {
+}
+
+.markdown-image-160 {
+   width:  160px;
+}
+
+.markdown-image-128 {
+   width:  128px;
+}
+
+.markdown-image-96 {
+   width:  96px;
+}
+.markdown-image-80 {
+   width:  80px;
+}
+.markdown-image-64 {
+   width:  64px;
+}
+
+#main {
+}
+
+#post-second > .title {
+   display : none;
+}
+
+/* other classes should be in skeleton.css */
+
+/* Image handling */
+p img {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+}
+
+.banner-image {
+  max-width: 100% !important;
+  margin: 0;
+}
+
+/* for
+ */
+@media (max-width: 550px) {
+   #post-first {
+      margin-top: 40px;
+      order: 2;
+      width: 100%;
+   }
+
+   #post-second {
+     order: 1;
+     width: 100%;
+   }
+
+   #home-first {
+      order: 1;
+      width: 100%;
+   }
+
+   #home-second {
+     margin-top: 40px;
+     order: 2;
+     width: 100%;
+   }
+
+   .row {
+      display: flex;
+      flex-direction:  column;
+   }
+
+   .sideline {
+      display:  flex;
+      flex-direction:  column;
+   }
+
+   #post-first > .sideline {
+      display : none;
+   }
+
+   #post-second > .title {
+      display : flex;
+   }
+}
+
+
+.copy-button {
+   position: absolute;
+   top: 0.5rem;
+   right: 1.0rem;
+   background: transparent;
+   border: none;
+   color: #6a6a7c;  /* also change in _footer.html */
+   cursor: pointer;
+   padding: 0;
+   width: 1.8rem;
+   height: 2rem;
+   border-radius: 25%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: background-color 0.3s ease-out;
+}
+
+
+.copy-button:hover {
+    color: #aaaa9c; /* Color on hover */
+}
+
+
+.pagebreak {
+  height: 20px;
+  clear: both;
+}

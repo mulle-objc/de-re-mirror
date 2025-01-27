@@ -1,0 +1,420 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>NSObject: +alloc / -dealloc &#8211; De Re NSObject</title>
+<meta name="description" content="Lets start with the absolute basics of creating and disposing of
+objects. We are talking about objects that are either of the class
+NSObject or any of its subclasses.
+">
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="NSObject: +alloc / -dealloc">
+<meta name="twitter:description" content="Lets start with the absolute basics of creating and disposing of objects. We are talking about objects that are either of the class NSObject or any of its subclasses. e.g. @interface Document : NSObject @end Creation and destruction These are the most basic methods provided by NSObject. A user of...">
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/retaincount.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSObject: +alloc / -dealloc">
+<meta property="og:description" content="Lets start with the absolute basics of creating and disposing of objects. We are talking about objects that are either of the class NSObject or any of its subclasses. e.g. @interface Document : NSObject @end Creation and destruction These are the most basic methods provided by NSObject. A user of...">
+<meta property="og:url" content="https://www.mulle-kybernetik.com/life-and-death.html">
+<meta property="og:site_name" content="De Re NSObject">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/features/retaincount.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-nsobject/images/logo.png">
+
+
+
+<link href="/de-re-nsobject/atom.xml" type="application/atom+xml" rel="alternate" title="De Re NSObject Feed">
+<link href="/de-re-nsobject/index.rdf" type="application/rss+xml" rel="alternate" title="De Re NSObject Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/life-and-death.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+<link rel="stylesheet" href="css/poppins.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+  <div class="container">
+      <div class="row">
+         <div id="post-first" class="four columns">
+            <div class="sideline">
+            <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-objects@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <div class="contents">
+            <h4>Contents</h4>
+            <ul>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/intro.html" title="Intro">Intro</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/life-and-death.html" title="NSObject: +alloc / -dealloc">NSObject: +alloc / -dealloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/retaincount.html" title="NSObject: -retain / -release">NSObject: -retain / -release</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/autorelease.html" title="NSObject: -autorelease">NSObject: -autorelease</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/always-autoreleased.html" title="AAO: Always autoreleased objects">AAO: Always autoreleased objects</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/init.html" title="NSObject: -init">NSObject: -init</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/factory.html" title="NSObject: +object">NSObject: +object</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/finalize.html" title="NSObject: -finalize">NSObject: -finalize</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/alloc.html" title="NSObject: +alloc">NSObject: +alloc</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/lifecycle.html" title="Object Lifecycle">Object Lifecycle</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/dynamic.html" title="MulleDynamicObject">MulleDynamicObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/mulleobject.html" title="MulleObject">MulleObject</a>
+               </article>
+            
+               <article>
+                  <li class="no-bullet"><a class="internal-link" href="/de-re-nsobject/outro.html" title="Outro">Outro</a>
+               </article>
+            
+            </ul>
+            <h5>&nbsp;&nbsp;&nbsp;Or read it like a <a href="book.html"><b>book</b></a>.</h6>
+</div> <!-- contents -->
+
+            </div> <!-- sideline -->
+
+         </div>
+         <div id="post-second" class="eight columns">
+            <div class="title">
+            <div>
+               <h2>De Re NSObject&nbsp;<div style="font-size:10px; display: inline-block;">0.0.1</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src='images/feed-icon-28x28.png'></a></h2>
+            </div>
+            <h6>© 2025 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+            <p>
+                        <div id="main" role="main">
+               <article>
+                  <h1>NSObject: +alloc / -dealloc</h1>
+                  <div>
+                  <p>Lets start with the absolute basics of creating and disposing of
+objects. We are talking about objects that are either of the class
+<code class="language-plaintext highlighter-rouge">NSObject</code> or any of its subclasses.</p>
+
+<p>e.g.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="creation-and-destruction">Creation and destruction</h2>
+
+<p>These are the most basic methods provided by <code class="language-plaintext highlighter-rouge">NSObject</code>. A user of a
+<code class="language-plaintext highlighter-rouge">NSObject</code> derived class, would not actually need to call any of these methods
+directly, as they are too low level. But we are building  from the ground up:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Override</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+alloc</code></td>
+      <td>NO</td>
+      <td>Creates an object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-init</code></td>
+      <td>MAYBE</td>
+      <td>Initializes the object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-finalize</code></td>
+      <td>MAYBE</td>
+      <td>Release resources and owned objects</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-dealloc</code></td>
+      <td>MAYBE</td>
+      <td>Deallocates the object</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+new</code></td>
+      <td>NO</td>
+      <td>Convenience combining alloc with init</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+Let’s declare a class <code class="language-plaintext highlighter-rouge">Document</code> based on <code class="language-plaintext highlighter-rouge">NSObject</code> and write the most simple
+demo:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#import &lt;MulleObjC/MulleObjC.h&gt;
+</span>
+
+<span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+<span class="k">@end</span>
+
+
+<span class="kt">int</span>   <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">document</span><span class="p">;</span>
+
+   <span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">alloc</span><span class="p">];</span>
+   <span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">document</span> <span class="nf">init</span><span class="p">];</span>
+   <span class="c1">// calling -finalize manually, just for demo purposes</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">finalize</span><span class="p">];</span>
+   <span class="c1">// calling -dealloc manually, just for demo purposes</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">dealloc</span><span class="p">];</span>
+   <span class="c1">// DO NOT MESSAGE document ANYMORE!</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>An instance of Document is created with the class method <code class="language-plaintext highlighter-rouge">+alloc</code>.
+<code class="language-plaintext highlighter-rouge">+alloc</code> will unfailingly return an object pointer to an instance, whose
+content has been zeroed out. You can rely on both facts. If the system runs
+out of memory, <code class="language-plaintext highlighter-rouge">+alloc</code> will throw an exception.</p>
+
+<p><img src="images/document-alloc.svg" alt="Alloc" height="200" /></p>
+
+<p>The next step is the initialization of the instance with <code class="language-plaintext highlighter-rouge">-init</code>. <code class="language-plaintext highlighter-rouge">-init</code> is
+free to return <code class="language-plaintext highlighter-rouge">nil</code> though. It’s an indicator that initialization was not
+possible. If this can be the case should be noted in the documentation of
+a class header file.</p>
+
+<p>The default <code class="language-plaintext highlighter-rouge">-init</code> method does nothing but return <code class="language-plaintext highlighter-rouge">self</code>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For illustrative purposes, the code does now, what you <em>never</em> should do,
+that is, it calls <code class="language-plaintext highlighter-rouge">-finalize</code> and <code class="language-plaintext highlighter-rouge">-dealloc</code> manually.</p>
+
+<p>With <code class="language-plaintext highlighter-rouge">-finalize</code> you can lop off any references to any other objects that are
+kept in properties (more on this later):</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+   <span class="n">_MulleObjCInstanceClearProperties</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="nb">NO</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>LAW</strong> A NSObject based instance has the guarantee, that it will get an
+initializing call before autorelease. That being <code class="language-plaintext highlighter-rouge">-init</code> or a <a href="init.html">variant</a>
+of init. It is guaranteed that its <code class="language-plaintext highlighter-rouge">-finalize</code> method will be called once and
+only once before the object receives a <code class="language-plaintext highlighter-rouge">-dealloc</code>.</p>
+
+  <p>The <code class="language-plaintext highlighter-rouge">-finalize</code> can happen at any time after <code class="language-plaintext highlighter-rouge">-init</code> though.</p>
+</blockquote>
+
+<p>Finally <code class="language-plaintext highlighter-rouge">-dealloc</code> is called to free the instances memory.</p>
+
+<blockquote>
+  <p><strong>LAW</strong>: Once an instance has gone through <code class="language-plaintext highlighter-rouge">dealloc</code>, it must not be messaged
+again.</p>
+
+  <p>Doing so is called messaging a zombie and it can crash your program.
+It will definitely crash, when you set the <code class="language-plaintext highlighter-rouge">NSZombieEnabled</code> environment
+variable to <code class="language-plaintext highlighter-rouge">YES</code>, which is recommended during development.</p>
+
+</blockquote>
+
+<h2 id="new">+new</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">+new</code> method is essentially a combination of <code class="language-plaintext highlighter-rouge">+alloc</code> and <code class="language-plaintext highlighter-rouge">-init</code>, which
+simplifies the creation of instances a bit. In general you will not use it very
+often either, when we introduce <code class="language-plaintext highlighter-rouge">+object</code> in one of the next chapters.</p>
+
+<h2 id="lifetime">Lifetime</h2>
+
+<p>The time between the call to <code class="language-plaintext highlighter-rouge">+alloc</code> and the final <code class="language-plaintext highlighter-rouge">-dealloc</code> of an object is
+called the object’s <strong>lifetime</strong>. We will use this concept later on quite a bit.</p>
+
+
+                  </div>
+               </article>
+            </div>
+
+            <p>
+            
+   <div class="left-right" id="pn-container">
+      <div class="left-half">
+         
+            <span class="link">
+               Back to <a rel="prev" class="internal-link" href="/de-re-nsobject/intro.html">Intro</a>
+            </span>
+         
+      </div>
+      <div class="right-half">
+         
+            <span class="link">
+               Next <a rel="next" class="internal-link" href="/de-re-nsobject/retaincount.html">NSObject: -retain / -release</a>
+            </span>
+         
+      </div>
+   </div> <!-- left_right -->
+
+         </div> <!-- eight columns -->
+      </div> <!-- row -->
+
+
+   </div> <!-- container -->
+       <script>
+document.querySelectorAll('pre').forEach((block) => {
+    const button = document.createElement('button');
+    button.className = 'copy-button';
+    button.innerHTML = `<svg aria-hidden="true" data-prefix="far" data-icon="copy" class="svg-inline--fa fa-copy fa-fw fa-1x" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500"><path fill="currentColor" d="M384 336H192c-9 0-16-7-16-16V64c0-9 7-16 16-16h140l68 68v204c0 9-7 16-16 16zm-192 48h192c35 0 64-29 64-64V116c0-13-5-25-14-34l-68-68c-9-9-21-14-34-14H192c-35 0-64 29-64 64v256c0 35 29 64 64 64zM64 128c-35 0-64 29-64 64v256c0 35 29 64 64 64h192c35 0 64-29 64-64v-32h-48v32c0 9-7 16-16 16H64c-9 0-16-7-16-16V192c0-9 7-16 16-16h32v-48H64z"/></svg>`;
+
+    block.appendChild(button);
+
+    button.addEventListener('click', () => {
+        const code = block.querySelector('code');
+        navigator.clipboard.writeText(code.textContent).then(() => {
+            // Change icon to checkmark
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M20 5a1 1 0 0 1 0 1l-9 13a1 1 0 0 1-1 0l-7-6a1 1 0 0 1 1-1l5 6 10-13a1 1 0 0 1 1 0z" clip-rule="evenodd"/></svg>';
+
+            // Reset after delay
+            setTimeout(() => {
+                // Restore original icon
+                button.innerHTML = originalHTML;
+                // fidget this for reasons...
+                button.style.color = '#6a6a7c';
+            }, 500);
+        });
+    });
+});
+
+    </script>
+
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

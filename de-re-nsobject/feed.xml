@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://www.mulle-kybernetik.com/de-re-nsobject/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mulle-kybernetik.com/de-re-nsobject/" rel="alternate" type="text/html" /><updated>2025-01-26T22:43:12+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/feed.xml</id><title type="html">De Re NSObject</title><subtitle>How to use NSObject and MulleObject in your Objective-C code for MulleObjC and the mulle-objc runtime.</subtitle><entry><title type="html">Outro</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/outro.html" rel="alternate" type="text/html" title="Outro" /><published>2025-10-01T00:00:00+02:00</published><updated>2025-10-01T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/outro</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/outro.html"><![CDATA[<h2 id="your-nsobject-property-is-in-another-castle">Your NSObject @property is in another castle</h2>
+
+<p>This guide did not tell you how to reference other objects and maintain those
+relationships using a <code class="language-plaintext highlighter-rouge">@property</code> though.</p>
+
+<p>That’s the topic of another whole guide called
+<a href="//www.mulle-kybernetik.com/de-re-property">De Re @property</a> that explains,
+how @property and their attributes handle object relationships
+automatically like:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">retain</span><span class="p">)</span> <span class="n">NSString</span>   <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+<span class="n">automatic</span> <span class="n">retain</span><span class="o">/</span><span class="n">release</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span>     <span class="o">*</span><span class="n">text</span><span class="p">;</span>
+<span class="n">copy</span><span class="o">/</span><span class="n">release</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="differences-to-apple-objective-c">Differences to Apple Objective-C</h2>
+
+<p>Now, you might be curious about how mulle-objc’s NSObject differs from its
+counterpart in Apple’s Objective-C. There are several key distinctions:</p>
+
+<ol>
+  <li>Memory Management: While Apple’s implementation has moved towards Automatic
+Reference Counting (ARC), mulle-objc sticks to explicit retain/release
+counting. This gives you more control over object lifecycles, albeit with
+increased responsibility.</li>
+  <li>Platform Independence: The runtime messaging system in mulle-objc is designed
+for cross-platform compatibility, unlike Apple’s version which is more
+tightly coupled to specific platforms.</li>
+  <li>Instance Variable Handling: mulle-objc uses a different memory layout for
+instance variables, which can impact how you structure your classes and
+manage object state.</li>
+</ol>
+
+<h2 id="ai-tip">AI Tip</h2>
+
+<p>You can ask any AI like <a href="https://perplexity.ai">perplexity.ai</a>, just tell it
+that you are using “mulle-objc” instead of Apple “Objective-C”.
+Most of them are quite good at explaining the concepts.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>Otherwise you could try any of the following sources given in <a href="https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_links.html">De Re mulle-objc</a> or check out the
+project page <a href="https://mulle-objc.github.io/">mulle-objc</a></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Your NSObject @property is in another castle]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22thumb%22=%3E%22images/thumbs/outro.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22thumb%22=%3E%22images/thumbs/outro.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MulleObject</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/mulleobject.html" rel="alternate" type="text/html" title="MulleObject" /><published>2025-06-01T00:00:00+02:00</published><updated>2025-06-01T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/mulleobject</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/mulleobject.html"><![CDATA[<p>Welcome to the world of <strong>MulleObject</strong>, a powerful extension of <code class="language-plaintext highlighter-rouge">MulleDynamicObject</code>
+that brings thread-safety to the forefront of Objective-C programming. As you
+delve into this advanced concept, you’ll discover how <code class="language-plaintext highlighter-rouge">MulleObject</code> not only
+inherits the dynamic capabilities of its parent class but also introduces a
+robust thread-safety layer through the MulleObjCThreadsafe protocol
+implementation.</p>
+
+<p>Let’s begin by examining the core functionality of <code class="language-plaintext highlighter-rouge">MulleObject</code>. You might be
+wondering, “How does MulleObject achieve thread-safety in multi-threaded
+environments?” The answer lies in its innovative shared lock mechanism. This
+system allows multiple related objects to operate under a single lock, a concept
+known as “lock cohesion” or “synchronized object groups.”</p>
+
+<p>Consider this hierarchical structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   RootView (lock A)
+   ├── HeaderView (uses lock A)
+   │   ├── TitleLabel (uses lock A)
+   │   └── MenuButton (uses lock A)
+   └── ContentView (uses lock A)
+       ├── ImageView (uses lock A)
+       └── DescriptionLabel (uses lock A)
+</code></pre></div></div>
+
+<p>In this example, instead of each view maintaining its own lock, the entire
+hierarchy shares a single lock from the RootView. This approach offers several
+significant advantages:</p>
+
+<ol>
+  <li>Prevention of lock explosion: In deep view trees, you won’t end up with an
+overwhelming number of locks.</li>
+  <li>Consistency maintenance: The entire hierarchy maintains a consistent state.</li>
+  <li>Reduced memory overhead: Fewer locks mean less memory usage.</li>
+  <li>Simplified synchronization logic: With a shared lock, you can avoid complex
+lock management scenarios.</li>
+</ol>
+
+<p>Now, let’s dive into some code to see how you might use MulleObject in practice:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">MyView</span> <span class="p">:</span> <span class="nc">MulleObject</span> <span class="o">&lt;</span> <span class="n">MulleAutolockingObjectProtocols</span><span class="o">&gt;</span>
+
+<span class="k">@property</span><span class="p">(</span> <span class="n">dynamic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span>   <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">copy</span><span class="p">)</span>          <span class="n">NSString</span>   <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">nop</span>   <span class="n">MULLE_OBJC_THREADSAFE_METHOD</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">MyView</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">nop</span>
+<span class="p">{</span>
+   <span class="c1">// inherently thread safe code</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The default “MulleObject” without <code class="language-plaintext highlighter-rouge">MulleAutolockingObjectProtocols</code> will NOT
+be thread-safe. You need to adopt those protocol to activate the thread-safe
+locking wrapping functionality.</p>
+
+<p>You can see how <code class="language-plaintext highlighter-rouge">MyView</code> uses a dynamic property “name” and a conventional
+instance variable based property “title”. But both properties’ accessors,
+<code class="language-plaintext highlighter-rouge">setName:</code> and <code class="language-plaintext highlighter-rouge">name</code> as well as the
+<code class="language-plaintext highlighter-rouge">setTitle:</code> and <code class="language-plaintext highlighter-rouge">title</code>, use the locking provided by MulleObject.</p>
+
+<p>The method <code class="language-plaintext highlighter-rouge">nop</code> is labeled as a <code class="language-plaintext highlighter-rouge">MULLE_OBJC_THREADSAFE_METHOD</code> therefore is
+outside of the locking mechanism of MulleObject”</p>
+
+<h2 id="lock-sharing">Lock Sharing</h2>
+
+<p>The lock sharing model in MulleObject is particularly efficient for:</p>
+
+<ol>
+  <li>View hierarchies</li>
+  <li>Document object models</li>
+  <li>Composite data structures</li>
+  <li>Parent-child relationships</li>
+</ol>
+
+<p>These scenarios naturally involve related objects that need to maintain
+consistent state, making them ideal candidates for shared lock synchronization.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Foo</span> <span class="p">:</span> <span class="nc">MulleObject</span> <span class="o">&lt;</span> <span class="n">MulleAutolockingObjectProtocols</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+<span class="k">@end</span>
+
+<span class="kt">int</span>  <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+   <span class="n">Foo</span>   <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+
+   <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">Foo</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">Foo</span> <span class="nf">object</span><span class="p">];</span>
+
+   <span class="p">[</span><span class="n">b</span> <span class="nf">shareRecursiveLockWithObject</span><span class="p">:</span><span class="n">a</span><span class="p">];</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now whenever you access either ‘a’ or ‘b’, you will effectively lock both
+objects. Because of the recursive nature of the lock, subsequent method
+calls during the lock duration, will not deadlock and will be much cheaper in
+terms of runtime execution.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In conclusion, MulleObject represents a significant advancement in Objective-C
+programming, offering a powerful solution for creating thread-safe, dynamic
+objects. By leveraging its capabilities, you can build robust, efficient, and
+scalable applications that can handle complex multi-threaded scenarios with
+ease.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Welcome to the world of MulleObject, a powerful extension of MulleDynamicObject that brings thread-safety to the forefront of Objective-C programming. As you delve into this advanced concept, you’ll discover how MulleObject not only inherits the dynamic capabilities of its parent class but also introduces a robust thread-safety layer through the MulleObjCThreadsafe protocol implementation.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/mulleobject.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/mulleobject.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">MulleDynamicObject</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/dynamic.html" rel="alternate" type="text/html" title="MulleDynamicObject" /><published>2025-05-15T00:00:00+02:00</published><updated>2025-05-15T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/dynamic</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/dynamic.html"><![CDATA[<p>In the world of Objective-C, dynamic behavior is a powerful feature that sets it
+apart from more static languages like C++. <strong>MulleDynamicObject</strong> is a class
+that extends <strong>NSObject</strong> to provide flexible runtime method resolution and a
+dynamic instance variable store. Are you ready to explore the
+cutting-edge capabilities of <a href="//mulle-objc.github.io">mulle-objc</a>?</p>
+
+<p>Let’s break down its key mechanisms:</p>
+
+<ol>
+  <li>Instance variable storage in a dictionary-like structure</li>
+  <li>Dynamic method resolution using <code class="language-plaintext highlighter-rouge">-forward:</code></li>
+  <li>Method lookup interception before standard method dispatch</li>
+</ol>
+
+<h2 id="instance-variable-storage">Instance variable storage</h2>
+
+<p>Each MulleDynamicObject maintains an internal storage for dynamic instance
+variables. This storage is created on-demand when the first dynamic property is accessed. This lazy initialization approach saves memory for objects that might
+never use the dynamic ivar feature.</p>
+
+<p>One particularly powerful feature of MulleDynamicObject is its ability to add
+properties via categories at compile-time. Simply mark the property as
+<code class="language-plaintext highlighter-rouge">dynamic</code>, and you’re good to go. This can be incredibly useful for extending
+existing classes without subclassing – a technique that’s otherwise not
+possible:</p>
+
+<p>Here’s a quick example to illustrate:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">MulleDynamicObject</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Document</span><span class="p">(</span> <span class="nl">OneMoreProperty</span><span class="p">)</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">dynamic</span><span class="p">)</span> <span class="n">NSString</span>   <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span><span class="p">(</span> <span class="nl">OneMoreProperty</span><span class="p">)</span>
+<span class="k">@end</span>
+
+
+<span class="kt">int</span>   <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">obj</span><span class="p">;</span>
+
+   <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="p">[</span><span class="n">obj</span> <span class="nf">setTitle</span><span class="p">:</span><span class="s">@"Hello, Dynamic World!"</span><span class="p">];</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"%@</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">title</span><span class="p">]);</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this code, we’re adding a dynamic property “title” to Document without
+explicitly implementing the getter and setter. Since it is dynamic, no instance
+variable will be generated. This allows us to add the property via a category,
+which can only be done with <code class="language-plaintext highlighter-rouge">dynamic</code> properties.</p>
+
+<h2 id="dynamic-method-resolution">Dynamic Method resolution</h2>
+
+<p>The method resolution sequence is where things get really interesting:</p>
+
+<ol>
+  <li>First, MulleDynamicObject checks if the selector is implemented normally.</li>
+  <li>If not, it attempts dynamic resolution through <code class="language-plaintext highlighter-rouge">resolveInstanceMethod:</code>.</li>
+  <li>Unresolved messages are then forwarded through <code class="language-plaintext highlighter-rouge">forwardInvocation:</code>.</li>
+  <li>Finally, it handles method missing cases with specific error behavior.</li>
+</ol>
+
+<p>This multi-step process allows for incredible flexibility. You can intercept
+method calls, dynamically create methods, or even forward calls to other
+objects. It’s like having a Swiss Army knife for method dispatch!</p>
+
+<p>But what about performance, you ask? While dynamic dispatch does introduce some
+overhead, mulle-objc’s implementation is highly optimized. In many cases, the
+performance impact is negligible, especially when weighed against the
+flexibility gained.</p>
+
+<h2 id="summary-argh">Summary (Argh)</h2>
+
+<p>It’s important to note that while MulleDynamicObject provides great flexibility,
+it’s not without its challenges. Dynamic dispatch can make code harder to
+understand and debug. It’s also not suitable for performance-critical code paths
+where every microsecond counts.</p>
+
+<p>As you explore MulleDynamicObject, remember that with great power comes great
+fun. But use these dynamic features judiciously, and always consider the
+trade-offs between flexibility and complexity.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[In the world of Objective-C, dynamic behavior is a powerful feature that sets it apart from more static languages like C++. MulleDynamicObject is a class that extends NSObject to provide flexible runtime method resolution and a dynamic instance variable store. Are you ready to explore the cutting-edge capabilities of mulle-objc?]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/dynamic.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/dynamic.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">NSObject: +alloc</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/alloc.html" rel="alternate" type="text/html" title="NSObject: +alloc" /><published>2025-03-12T00:00:00+01:00</published><updated>2025-03-12T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/alloc</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/alloc.html"><![CDATA[<p>You will only very, very rarely be interested in overriding the <code class="language-plaintext highlighter-rouge">+alloc</code>
+method, but now is a good time to learn about allocators in <a href="//mulle-objc.github.io">mulle-objc</a> and the layout of objects in memory. If you are
+interested in the more nitty-gritty details of mulle-objc, check out
+<a href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/">Objective-C Runtime in Pictures</a>.</p>
+
+<h2 id="struct-mulle_allocator">struct mulle_allocator</h2>
+
+<p>First up, every allocation in <a href="//mulle-objc.github.io">mulle-objc</a> is done through a mulle-allocator.
+Using the (hidden) <code class="language-plaintext highlighter-rouge">mulle_default_allocator</code>, C code simplifies from</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span> <span class="o">!</span> <span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">perror</span><span class="p">(</span> <span class="s">"malloc:"</span><span class="p">);</span>
+   <span class="n">exit</span><span class="p">(</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">mulle_malloc</span><span class="p">(</span> <span class="mi">1848</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>With mulle-allocator you get leak checking during tests as well.</p>
+
+<blockquote>
+  <p>If you want to know why and how this works, read the
+mulle-allocator <a href="//github.com/mulle-c/mulle-allocator/blob/release/README.md">README.md</a>.
+For leak checking refer to the <a href="//github.com/mulle-core/mulle-testallocator/blob/release/README.md">mulle-testallocator README.md</a></p>
+</blockquote>
+
+<h2 id="alloc-implementation">+alloc implementation</h2>
+
+<p>Classes create instances. Both classes and instances are objects.</p>
+
+<p><img src="images/object-class-instance.svg" alt="" /></p>
+
+<p>The default implementation of <code class="language-plaintext highlighter-rouge">+alloc</code> is:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">alloc</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_MulleObjCClassAllocateInstance</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_MulleObjCClassAllocateInstance</code> destills down to the following code:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">struct</span> <span class="n">mulle_allocator</span>   <span class="o">*</span><span class="n">allocator</span><span class="p">;</span>
+
+   <span class="n">allocator</span> <span class="o">=</span> <span class="n">_mulle_objc_infraclass_get_allocator</span><span class="p">(</span> <span class="n">infra</span><span class="p">);</span>
+   <span class="c1">// extra bytes: 0 in +alloc case as seen above</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">__mulle_objc_infraclass_alloc_instance_extra</span><span class="p">(</span> <span class="n">infra</span><span class="p">,</span> <span class="n">extra</span><span class="p">,</span> <span class="n">allocator</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>Each class has its own allocator, that is used to allocate instances. Usually
+this is the <code class="language-plaintext highlighter-rouge">mulle_default_allocator</code>. But that may vary on a per-class
+basis.</p>
+
+<p>If your instance needs some extra memory to store data you should use the same
+allocator, so use <code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateMemory</code>:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Foo</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+   <span class="kt">void</span>   <span class="o">*</span><span class="n">_buffer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">bytes</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">initWithLength</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">length</span>
+<span class="p">{</span>
+   <span class="n">_buffer</span> <span class="o">=</span> <span class="n">MulleObjCInstanceAllocateMemory</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">bytes</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">buffer</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+   <span class="n">MulleObjCInstanceDeallocateMemory</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">_buffer</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>MulleObjC Instance Function</th>
+      <th>C equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">malloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceReallocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">realloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceAllocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">calloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceDuplicateUTF8String</code></td>
+      <td><code class="language-plaintext highlighter-rouge">strdup</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceDeallocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">free</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The same functions are also available, with <code class="language-plaintext highlighter-rouge">Class</code> as the first parameter.
+These can be used in <code class="language-plaintext highlighter-rouge">+</code> class methods.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MulleObjC Class Function</th>
+      <th>C equivalent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassAllocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">malloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassReallocateNonZeroedMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">realloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassAllocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">calloc</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassDuplicateUTF8String</code></td>
+      <td><code class="language-plaintext highlighter-rouge">strdup</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassDeallocateMemory</code></td>
+      <td><code class="language-plaintext highlighter-rouge">free</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="extrabytes-and-metaextrabytes">extraBytes and metaExtraBytes</h3>
+
+<p>An instance in memory looks like this:</p>
+
+<p><img src="images/object-layout.svg" alt="" /></p>
+
+<p>The address returned by <code class="language-plaintext highlighter-rouge">alloc</code> is not the beginning of the memory block
+allocated for the instance. It is the address after the <code class="language-plaintext highlighter-rouge">isa</code> pointer.
+The memory block is divided into the user accessible ivars and extraBytes
+“self” block and the “meta” block with negative offsets from “self”.</p>
+
+<p>The “extraBytes” are the second parameter of  <code class="language-plaintext highlighter-rouge">_MulleObjCClassAllocateInstance</code>.
+Each instance can therefore have a unique size. The amount of metaExtraBytes
+is fixed for every class and instance at the start of the program. Currently
+this is an experimental and unused mulle-objc-runtime feature.</p>
+
+<h2 id="creating-an-instance-in-pre-allocated-memory">Creating an instance in pre-allocated memory</h2>
+
+<p>If you have sufficient memory already allocated, you can use
+<code class="language-plaintext highlighter-rouge">MulleObjCClassConstructInstance</code> to turn this memory into one or as
+many instances as can fit.</p>
+
+<p><code class="language-plaintext highlighter-rouge">MulleObjCClassGetInstanceSize</code> calculates the size needed for the memory
+allocation and <code class="language-plaintext highlighter-rouge">MulleObjCClassConstructInstance</code> zeroes the memory and
+initializes <code class="language-plaintext highlighter-rouge">isa</code> and the <code class="language-plaintext highlighter-rouge">retainCount</code>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span>   <span class="n">size</span><span class="p">;</span>
+<span class="kt">void</span>     <span class="o">*</span><span class="n">block</span><span class="p">;</span>
+<span class="n">Class</span>    <span class="n">myClass</span><span class="p">;</span>
+<span class="n">id</span>       <span class="n">obj</span><span class="p">;</span>
+
+<span class="p">...</span>
+<span class="n">size</span>  <span class="o">=</span> <span class="n">MulleObjCClassGetInstanceSize</span><span class="p">(</span> <span class="n">myClass</span><span class="p">);</span>
+<span class="n">block</span> <span class="o">=</span> <span class="n">my_malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="n">obj</span>   <span class="o">=</span> <span class="n">MulleObjCClassConstructInstance</span><span class="p">(</span> <span class="n">myClass</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">NO</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">my_free</span><span class="p">(</span> <span class="n">block</span><span class="p">);</span>  <span class="c1">// not obj!</span>
+</code></pre></div></div>
+
+<p>There are a lot of caveats:</p>
+
+<ul>
+  <li>ascertain that <code class="language-plaintext highlighter-rouge">-dealloc</code> doesn’t interfere with your memory scheme</li>
+  <li>ascertain that all instance variables are freed before deallocing</li>
+  <li>calling <code class="language-plaintext highlighter-rouge">-init</code> may trigger <code class="language-plaintext highlighter-rouge">-release</code>  and therefore <code class="language-plaintext highlighter-rouge">-dealloc</code> in an error case</li>
+</ul>
+
+<p>Reasonably, this scheme can only be used for very simple value type objects.</p>
+
+<h3 id="tidbits">Tidbits</h3>
+
+<p>If you want to create an object, whose property objects are allocated with the
+same custom allocator as the owner object, you will have to subclass a lot.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[You will only very, very rarely be interested in overriding the +alloc method, but now is a good time to learn about allocators in mulle-objc and the layout of objects in memory. If you are interested in the more nitty-gritty details of mulle-objc, check out Objective-C Runtime in Pictures.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/alloc.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/alloc.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Object Lifecycle</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/lifecycle.html" rel="alternate" type="text/html" title="Object Lifecycle" /><published>2025-03-12T00:00:00+01:00</published><updated>2025-03-12T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/lifecycle</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/lifecycle.html"><![CDATA[<p>In the realm of Objective-C, and particularly within the <a href="//mulle-objc.github.io">mulle-objc</a> framework,
+objects undergo a fascinating journey through various lifecycle phases. Each
+phase carries its own set of implications for memory management and thread
+safety. Let’s dive deeper into this technical landscape and explore some of
+the implications.</p>
+
+<p><img src="images/lifecycle.svg" alt="Lifecycle" /></p>
+
+<h2 id="initial-creation-the-single-threaded-genesis">Initial Creation: The Single-Threaded Genesis</h2>
+
+<p>When you create an object in <a href="//mulle-objc.github.io">mulle-objc</a> you’re still in a phase of
+single-threaded bliss. This initial stage is crucial for setup of immutable
+objects.</p>
+
+<blockquote>
+  <p>LAW: Any object passed to another thread must be placed into the
+autoreleasepool stack of that thread.</p>
+</blockquote>
+
+<p>During this phase, if you need to dispose of the object, you should use
+<code class="language-plaintext highlighter-rouge">-release</code> rather than <code class="language-plaintext highlighter-rouge">-autorelease</code>. This direct approach aligns with the
+single-threaded nature of the object at this point.</p>
+
+<h2 id="autorelease-phase-stepping-into-the-multi-threaded-arena">Autorelease Phase: Stepping into the Multi-threaded Arena</h2>
+
+<p>The next phase begins when an object is <code class="language-plaintext highlighter-rouge">-autoreleased</code>. This is a critical
+juncture in the object’s lifecycle. Once autoreleased, the object is primed for
+a potential multi-threaded existence (assuming it supports multi-threading).</p>
+
+<p>Consider this scenario:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">id</span>   <span class="n">obj</span><span class="p">;</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSObject</span> <span class="nf">alloc</span><span class="p">];</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">autorelease</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>At this point, you need to be prepared for the possibility that any thread could
+call <code class="language-plaintext highlighter-rouge">mullePerformFinalize</code> on the object. This method is designed to “disable”
+the object. Let’s illustrate this with an example:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NSFileHandle</span>   <span class="o">*</span><span class="n">h</span><span class="p">;</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFileHandle</span> <span class="nf">fileHandleForWritingAtPath</span><span class="p">:</span><span class="s">@"/tmp/example.txt"</span><span class="p">];</span>
+<span class="c1">// At any point after this, mullePerformFinalize could be called,</span>
+<span class="c1">// closing the file handle...</span>
+<span class="p">[</span><span class="n">h</span> <span class="nf">mullePerformFinalize</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>During this multi-threaded phase, it’s crucial to balance <code class="language-plaintext highlighter-rouge">-retain</code> calls with
+<code class="language-plaintext highlighter-rouge">-autorelease</code>. Using <code class="language-plaintext highlighter-rouge">-release</code> directly is considered a mistake in mulle-objc,
+unlike in some other Objective-C implementations.</p>
+
+<h3 id="example-1">Example 1</h3>
+
+<p>Consider this code snippet:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+
+<span class="k">@autoreleasepool</span>
+<span class="p">{</span>
+<span class="c1">// #1</span>
+   <span class="p">[[</span><span class="n">document</span> <span class="nf">retain</span><span class="p">]</span> <span class="nf">autorelease</span><span class="p">];</span>
+<span class="c1">// #2</span>
+<span class="p">}</span>
+<span class="c1">// #3</span>
+</code></pre></div></div>
+
+<p>Here is what happens:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-2.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code></td>
+      <td><img src="images/pool-object-ownership-3a.svg" alt="3" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code></td>
+      <td><img src="images/pool-object-ownership-1.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code></td>
+    </tr>
+    <tr>
+      <td>A document in the root pool of a hierarchy with a fresh inferior pool</td>
+      <td>The document gets (retained and) autoreleased into the new pool</td>
+      <td>The new pool disappears again. The document remains in its old pool</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-2">Example 2</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+<span class="c1">// #1</span>
+<span class="k">@autoreleasepool</span>
+<span class="p">{</span>
+<span class="c1">// #2</span>
+   <span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="n">person</span><span class="p">];</span>
+<span class="c1">// #3</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-1.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code></td>
+      <td><img src="images/pool-object-ownership-2.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code></td>
+      <td><img src="images/pool-object-ownership-3.svg" alt="3" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code></td>
+    </tr>
+    <tr>
+      <td>The initial setup with <em>document</em> in its pool</td>
+      <td>An inferior pool is created</td>
+      <td><em>person</em> is created in the inferior pool and ownership is given to <em>document</em> via <code class="language-plaintext highlighter-rouge">-setPerson:</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Continuing on:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+<span class="c1">// #1</span>
+<span class="k">@autoreleasepool</span>
+<span class="p">{</span>
+<span class="c1">// #2</span>
+   <span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="n">person</span><span class="p">];</span>
+<span class="c1">// #3</span>
+<span class="p">}</span>
+<span class="c1">// #4</span>
+<span class="k">@autoreleasepool</span>
+<span class="p">{</span>
+<span class="c1">// #5</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="c1">// #6</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-4.svg" alt="4" width="120" /> <code class="language-plaintext highlighter-rouge">#4</code></td>
+      <td><img src="images/pool-object-ownership-5.svg" alt="5" width="120" /> <code class="language-plaintext highlighter-rouge">#5</code></td>
+      <td><img src="images/pool-object-ownership-6.svg" alt="6" width="120" /> <code class="language-plaintext highlighter-rouge">#6</code></td>
+    </tr>
+    <tr>
+      <td>The creation pool disappears. <em>person</em> is still alive</td>
+      <td>A new inferior pool appears</td>
+      <td>Document relinquishes ownership when receiving <code class="language-plaintext highlighter-rouge">-setPerson:nil</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In frame #4 <em>person</em> is implicitly in the same pool as <em>document</em>, through the ownership by <em>document</em>. But its not explicitly in the pool. <em>person</em> didn’t “magically” get an <code class="language-plaintext highlighter-rouge">-autorelease</code> from somewhere, when its creation pool went down.</p>
+
+<h3 id="lifting-an-object-to-a-parent-pool">Lifting an object to a parent pool</h3>
+
+<p>Inside a function or method scope you can <code class="language-plaintext highlighter-rouge">-retain</code> and <code class="language-plaintext highlighter-rouge">-release</code> objects,
+as long as you keep it balanced.</p>
+
+<p>Though you are advised to never call <code class="language-plaintext highlighter-rouge">-release</code> directly, you may do so, if you
+previously called <code class="language-plaintext highlighter-rouge">-retain</code> on the same object. This is a special case, that is
+hardly ever useful.</p>
+
+<p>Somewhat more useful is the ability to <code class="language-plaintext highlighter-rouge">-retain</code> and <code class="language-plaintext highlighter-rouge">-autorelease</code> in the same
+function or method scope.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">Document</span> <span class="o">*</span><span class="p">)</span> <span class="n">document</span>
+<span class="p">{</span>
+   <span class="n">Document</span>  <span class="o">*</span><span class="n">document</span><span class="p">;</span>
+
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>
+      <span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+      <span class="p">[</span><span class="n">document</span> <span class="nf">retain</span><span class="p">];</span>
+   <span class="p">}</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">autorelease</span><span class="p">];</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="n">document</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This can be used to lift an object into a parent pool and therefore extend its lifetime:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-3b.svg" alt="4" width="240" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-return-to-single-threaded-life">The Return to Single-threaded Life</h2>
+
+<p>An interesting aspect of mulle-objc’s object lifecycle is the potential return
+to single-threaded existence. This occurs when an object’s retain count reaches 1.
+On occasion it can be useful to check for this condition in your code:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">retainCount</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="c1">// Object is back to single-threaded life</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="the-final-act-deallocation">The Final Act: Deallocation</h2>
+
+<p>The deallocation phase always occurs while the object is single-threaded. During
+-dealloc we also know that the objects is not in a pool, so objects that are still
+retained by the object, must be released now. As they are also not implicitly in
+a pool anymore (from the perspective of the instance executing <code class="language-plaintext highlighter-rouge">-dealloc</code>) it would be wrong to call <code class="language-plaintext highlighter-rouge">-autorelease</code> on them.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">self</span> <span class="nf">cleanup</span><span class="p">];</span>   <span class="c1">// Last chance for cleanup</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">finalize</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_data</span> <span class="nf">release</span><span class="p">];</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The distinction between <code class="language-plaintext highlighter-rouge">finalize</code> and <code class="language-plaintext highlighter-rouge">dealloc</code> is crucial in mulle-objc:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">finalize</code>: Closes resources and cleans up state. It can run early via
+<code class="language-plaintext highlighter-rouge">mullePerformFinalize</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">dealloc</code>: Releases retained objects.</li>
+</ul>
+
+<p>This two-step cleanup process allows for more flexible and robust resource
+management compared to simpler models used in languages like C++.</p>
+
+<p>Understanding this lifecycle is paramount for several reasons:</p>
+
+<ol>
+  <li>It allows for precise performance optimization.</li>
+  <li>It provides clear thread-safety guarantees.</li>
+  <li>It enables efficient resource management.</li>
+  <li>It helps prevent memory leaks.</li>
+  <li>It ensures clean object cleanup.</li>
+</ol>
+
+<p>As you work with mulle-objc, you’ll find that this sophisticated lifecycle
+management system provides powerful tools for creating efficient, thread-safe,
+and resource-conscious applications. How will you leverage these capabilities in
+your next project?</p>]]></content><author><name></name></author><summary type="html"><![CDATA[In the realm of Objective-C, and particularly within the mulle-objc framework, objects undergo a fascinating journey through various lifecycle phases. Each phase carries its own set of implications for memory management and thread safety. Let’s dive deeper into this technical landscape and explore some of the implications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/lifecycle.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/lifecycle.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">NSObject: -finalize</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/finalize.html" rel="alternate" type="text/html" title="NSObject: -finalize" /><published>2025-03-11T00:00:00+01:00</published><updated>2025-03-11T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/finalize</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/finalize.html"><![CDATA[<p>One of the most intriguing aspects of <a href="//mulle-objc.github.io">mulle-objc</a>’s memory management is the
+<code class="language-plaintext highlighter-rouge">-finalize</code> method. This method serves a crucial role in resource management,
+particularly for cleaning up external resources like file handles. It’s
+guaranteed to run only once in an object’s lifetime, either through <code class="language-plaintext highlighter-rouge">-release</code>
+or <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code>. Here’s how you might implement it:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">Person</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">_fileHandle</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">close</span><span class="p">(</span> <span class="n">_fileHandle</span><span class="p">);</span>
+      <span class="n">_fileHandle</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="p">[</span><span class="n">super</span> <span class="nf">finalize</span><span class="p">];</span>  <span class="c1">// release properties</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_address</span> <span class="nf">release</span><span class="p">];</span>
+
+   <span class="p">[</span><span class="n">super</span> <span class="nf">dealloc</span><span class="p">];</span>   <span class="c1">// always call super last</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>Notice how <code class="language-plaintext highlighter-rouge">-finalize</code> handles resource cleanup, while <code class="language-plaintext highlighter-rouge">-dealloc</code> focuses on
+releasing retained objects. This separation of concerns allows for more robust
+and predictable cleanup processes.</p>
+
+<h2 id="-mulleperformfinalize-runs--finalize-on-demand">-mullePerformFinalize runs -finalize on demand</h2>
+
+<p>You can use <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code> to finalize an object “manually”:</p>
+
+<p><img src="images/object-finalize.svg" alt="" /></p>
+
+<p>The finalization can happen in the “middle of the lifetime” of the object.
+And it is guaranteed that <code class="language-plaintext highlighter-rouge">-finalize</code> is only called once.</p>
+
+<blockquote>
+  <p>LAW: Never call <code class="language-plaintext highlighter-rouge">-finalize</code> directly, always use <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code></p>
+</blockquote>
+
+<p>A finalized object is still useable in the object hierarchy,
+but it is not active anymore. An example, where this is useful, is a window
+controller, where the window close button has been clicked. It may still
+redraw, but it doesn’t react to any event actions any more.</p>
+
+<h2 id="-finalize-runs-automatically-before--dealloc">-finalize runs automatically before -dealloc</h2>
+
+<p>When the <code class="language-plaintext highlighter-rouge">-retainCount</code> is decremented to zero via <code class="language-plaintext highlighter-rouge">-release</code>, an object gets
+the <code class="language-plaintext highlighter-rouge">-finalize</code> message, unless <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code> has been called on it
+already:</p>
+
+<p><img src="images/object-lifetime.svg" alt="" /></p>
+
+<p>If the <code class="language-plaintext highlighter-rouge">-retainCount</code> remains unchanged throughout <code class="language-plaintext highlighter-rouge">-finalize</code>, then <code class="language-plaintext highlighter-rouge">-dealloc</code>
+is called afterwards.</p>
+
+<p>During <code class="language-plaintext highlighter-rouge">-finalize</code> all <a href="//www.mulle-kybernetik.com/de-re-property/">@properties</a> will be cleared. So <code class="language-plaintext highlighter-rouge">-finalize</code> is used to free resources and cut links to other objects. Objects that are cleared by <code class="language-plaintext highlighter-rouge">-finalize</code>  will be released with  <code class="language-plaintext highlighter-rouge">-autorelease</code> and not with <code class="language-plaintext highlighter-rouge">-release</code>. <code class="language-plaintext highlighter-rouge">-dealloc</code> will ideally at most contain <code class="language-plaintext highlighter-rouge">-release</code> calls and <code class="language-plaintext highlighter-rouge">[super dealloc]</code>. Anything else can be done in <code class="language-plaintext highlighter-rouge">-finalize</code>.</p>
+
+<h2 id="important--finalize-considerations">Important -finalize considerations</h2>
+
+<p><code class="language-plaintext highlighter-rouge">-finalize</code> can happen at any time, so the rules differ from those of <code class="language-plaintext highlighter-rouge">-dealloc</code>
+which is guaranteed to run only single-threaded with a retainCount of 1. In
+contrast to <code class="language-plaintext highlighter-rouge">-dealloc</code>:</p>
+
+<ol>
+  <li>Use <code class="language-plaintext highlighter-rouge">-autorelease</code> to release instance variables and <code class="language-plaintext highlighter-rouge">nil</code> them</li>
+  <li>You can use using property setters for the release of instance variables.</li>
+  <li>Call <code class="language-plaintext highlighter-rouge">[super finalize]</code> when convenient, or omit if you handle all properties
+yourself</li>
+</ol>
+
+<h2 id="you-can-write--finalize-dealloc-portably">You can write -finalize/-dealloc portably</h2>
+
+<p>If you use <code class="language-plaintext highlighter-rouge">-finalize</code>, you will be incompatible with non-ARC Apple. This can be
+remedied, by structuring your <code class="language-plaintext highlighter-rouge">-finalize/-dealloc</code> code like this:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">_finalize</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+  <span class="p">[</span><span class="n">self</span> <span class="nf">_finalize</span><span class="p">];</span>
+
+  <span class="p">[</span><span class="n">super</span> <span class="nf">finalize</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">dealloc</span>
+<span class="p">{</span>
+<span class="cp">#ifndef __MULLE_OBJC__
+</span>   <span class="p">[</span><span class="n">self</span> <span class="nf">_finalize</span><span class="p">];</span>
+<span class="cp">#endif
+</span>   <span class="p">[</span><span class="n">super</span> <span class="nf">dealloc</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="caveat">Caveat</h2>
+
+<p><code class="language-plaintext highlighter-rouge">-finalize</code> is single-threaded, just like <code class="language-plaintext highlighter-rouge">-init</code> and <code class="language-plaintext highlighter-rouge">-dealloc</code> when called
+during <code class="language-plaintext highlighter-rouge">release</code>. When you invoke <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code> it can only be
+guaranteed, that no other thread will be executing <code class="language-plaintext highlighter-rouge">-finalize</code> (ever). But it
+is <em>not guaranteed</em> that no other thread is accessing the object. That’s
+different to <code class="language-plaintext highlighter-rouge">-dealloc</code>, where the guarantee is that no other thread will
+ever call this object again.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[One of the most intriguing aspects of mulle-objc’s memory management is the -finalize method. This method serves a crucial role in resource management, particularly for cleaning up external resources like file handles. It’s guaranteed to run only once in an object’s lifetime, either through -release or -mullePerformFinalize. Here’s how you might implement it:]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/finalize.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/finalize.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">NSObject: +object</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/factory.html" rel="alternate" type="text/html" title="NSObject: +object" /><published>2025-03-10T00:00:00+01:00</published><updated>2025-03-10T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/factory</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/factory.html"><![CDATA[<p>In the world of <a href="//mulle-objc.github.io">mulle-objc</a>, creating object instances is a fundamental
+operation. The user of a class should not be burdened with the details of
+how to create an instance and the memory management with <a href="autorelease.html">autorelease pools</a>.</p>
+
+<p>That’s why factory methods are an important part of a well written
+mulle-objc class. It is bad class design to not provide a factory method for
+all published init methods.</p>
+
+<h2 id="the-power-of-factory-methods">The Power of Factory Methods</h2>
+
+<p>When it comes to creating objects in mulle-objc, factory methods reign supreme.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSObject</span> <span class="nf">object</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>This simple line of code creates an autoreleased object, initialized with
+<code class="language-plaintext highlighter-rouge">init</code>.</p>
+
+<h2 id="crafting-sophisticated-factory-methods">Crafting Sophisticated Factory Methods</h2>
+
+<p>In mulle-objc, factory methods are designed with a two-part structure. This
+design pattern enhances readability and maintainability. Let’s examine a more
+complex example:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// factory method</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">personWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">name</span>
+<span class="n">age</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span> <span class="n">age</span>
+<span class="p">{</span>
+<span class="k">return</span><span class="p">([[[</span><span class="n">self</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithName</span><span class="p">:</span><span class="n">name</span>
+<span class="nl">age:</span><span class="n">age</span><span class="p">]</span> <span class="nf">autorelease</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// worker method</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">initWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">name</span>
+<span class="n">age</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span> <span class="n">age</span>
+<span class="p">{</span>
+<span class="n">self</span> <span class="o">=</span><span class="p">[</span><span class="n">self</span> <span class="nf">init</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(</span> <span class="n">self</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">_name</span> <span class="o">=</span><span class="p">[</span><span class="n">name</span> <span class="nf">copy</span><span class="p">];</span>
+<span class="n">_age</span>  <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="the-elegance-of-literals">The Elegance of Literals</h2>
+
+<p>mulle-objc takes object creation a step further with literals, a powerful
+compiler feature. Consider the following examples:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NSString</span>     <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="s">@"literal"</span><span class="p">;</span>
+<span class="n">NSString</span>     <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="err">@</span><span class="p">(</span> <span class="n">a_char_pointer_variable</span><span class="p">);</span>
+<span class="n">NSNumber</span>     <span class="o">*</span><span class="n">n</span> <span class="o">=</span> <span class="mi">@42</span><span class="p">;</span>
+<span class="n">NSNumber</span>     <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="err">@</span><span class="p">(</span> <span class="n">some_numeric_variable</span><span class="p">);</span>
+<span class="n">NSArray</span>      <span class="o">*</span><span class="n">a</span> <span class="o">=</span> <span class="p">@[</span> <span class="mi">@1</span><span class="p">,</span> <span class="mi">@2</span><span class="p">,</span> <span class="mi">@3</span> <span class="p">];</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">d</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"key1"</span><span class="o">:</span> <span class="s">@"value1"</span><span class="p">,</span> 
+                     <span class="s">@"key2"</span><span class="o">:</span> <span class="s">@"value2"</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<p>These literals provide a concise and readable way to create objects.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[In the world of mulle-objc, creating object instances is a fundamental operation. The user of a class should not be burdened with the details of how to create an instance and the memory management with autorelease pools.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/instances.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/instances.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">NSObject: -init</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/init.html" rel="alternate" type="text/html" title="NSObject: -init" /><published>2025-03-05T00:00:00+01:00</published><updated>2025-03-05T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/init</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/init.html"><![CDATA[<p>Coming back to object initialization. In Objective-C, the <code class="language-plaintext highlighter-rouge">-init</code> method is
+crucial for initializing an object after
+it has been allocated. It is important to write an <code class="language-plaintext highlighter-rouge">init</code> routine properly to
+ensure that the object is in a valid state before it is used.</p>
+
+<p>For example:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+   <span class="n">id</span> <span class="n">object</span><span class="p">;</span>
+
+   <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">self</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">_counter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="multiple-initializers">Multiple initializers</h2>
+
+<p>It is not uncommon to have multiple <code class="language-plaintext highlighter-rouge">init</code> methods with varying
+arguments. All these initializers should funnel into a designated initializer to
+ensure that there is one place to override in subclasses. This approach promotes
+code reuse and maintains a clear initialization flow. By following this pattern,
+you can ensure that all properties are set correctly and that your
+initialization logic remains consistent across different initializers.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">objectWithValue</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span> <span class="n">value</span>
+<span class="p">{</span>
+   <span class="n">id</span>   <span class="n">obj</span><span class="p">;</span>
+   
+   <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">alloc</span><span class="p">];</span>
+   <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">init</span><span class="p">];</span>
+   <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">obj</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">initWithValue</span><span class="p">:(</span><span class="n">NSInteger</span><span class="p">)</span> <span class="n">value</span>
+<span class="p">{</span>
+   <span class="n">MyClass</span>   <span class="o">*</span><span class="n">instance</span><span class="p">;</span>
+
+   <span class="n">instance</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>     <span class="c1">// call super not self</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">instance</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">_counter</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">instance</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[</span><span class="n">self</span> <span class="nf">initWithValue</span><span class="p">:</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// call self not super!</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here <code class="language-plaintext highlighter-rouge">-initWithValue:</code> is the designated initializer. You would document this in
+the header file of your class.</p>
+
+<h2 id="important--init-conventions">Important -init conventions</h2>
+
+<p>Here are some rules to follow when writing <code class="language-plaintext highlighter-rouge">init</code> methods:</p>
+
+<ol>
+  <li>If you cannot initialize the object, do a <code class="language-plaintext highlighter-rouge">[self release]</code> and then return
+<code class="language-plaintext highlighter-rouge">nil</code>.</li>
+  <li>Do not throw exceptions in your <code class="language-plaintext highlighter-rouge">-init</code> method</li>
+  <li>Do not pass <code class="language-plaintext highlighter-rouge">self</code> to other objects during initialization.</li>
+  <li>Avoid using property setters for initialization of instance variables.</li>
+  <li>Always call <code class="language-plaintext highlighter-rouge">[super init]</code> (or any other initialize of the superclass) unless
+your base class is <code class="language-plaintext highlighter-rouge">NSObject</code>, in which case you can skip it. You must call
+<code class="language-plaintext highlighter-rouge">[super init] on </code>MulleDynamicObject<code class="language-plaintext highlighter-rouge"> and </code>MulleObject<code class="language-plaintext highlighter-rouge">. This exception is
+only valid for </code>NSObject`.</li>
+  <li>For immutable objects, the -init method is really the only time, where you
+cann set the instance variables.</li>
+</ol>
+
+<h2 id="important--dealloc-conventions">Important -dealloc conventions</h2>
+
+<p>The setup code in <code class="language-plaintext highlighter-rouge">-init</code> is mirrored by the teardown code in<code class="language-plaintext highlighter-rouge">-dealloc</code>. The
+rules for similar to <code class="language-plaintext highlighter-rouge">-init</code>:</p>
+
+<ol>
+  <li>Use <code class="language-plaintext highlighter-rouge">-release</code> to release instance variables. Avoid <code class="language-plaintext highlighter-rouge">-autorelease</code>.</li>
+  <li>Do not throw exceptions</li>
+  <li>Avoid passing <code class="language-plaintext highlighter-rouge">self</code> to other objects</li>
+  <li>Avoid using property setters for release of instance variables.</li>
+  <li>Avoid locking of <code class="language-plaintext highlighter-rouge">self</code> during the scope of <code class="language-plaintext highlighter-rouge">-dealloc</code></li>
+  <li>Always call <code class="language-plaintext highlighter-rouge">[super dealloc]</code> last</li>
+</ol>]]></content><author><name></name></author><summary type="html"><![CDATA[Coming back to object initialization. In Objective-C, the -init method is crucial for initializing an object after it has been allocated. It is important to write an init routine properly to ensure that the object is in a valid state before it is used.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/init.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/init.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">AAO: Always autoreleased objects</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/always-autoreleased.html" rel="alternate" type="text/html" title="AAO: Always autoreleased objects" /><published>2025-03-02T00:00:00+01:00</published><updated>2025-03-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/always-autoreleased</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/always-autoreleased.html"><![CDATA[<p>In mulle-objc the <em>expectation</em> is that all objects are created autoreleased.</p>
+
+<blockquote>
+  <p>RULE: Objects are passed autoreleased to functions and methods and objects
+are also returned autoreleased from functions and methods.</p>
+</blockquote>
+
+<p>When you <code class="language-plaintext highlighter-rouge">-autorelease</code> an object, typically during creation, you are tieing
+the lifetime of your object to the lifetime of the current autorelease pool.
+This is an <strong>explicitly</strong> autoreleased object, as the autorelease
+pool contains a pointer to it.</p>
+
+<p>Your object is now guaranteed to live at least as long as the autorelease pool.
+It will live longer, if it is directly or indirectly part of another autorelease
+pool.</p>
+
+<p>In a method, you know the incoming objects are autoreleased. So you don’t
+<code class="language-plaintext highlighter-rouge">-release</code> or <code class="language-plaintext highlighter-rouge">-autorelease</code> them. If you want to return a new object,
+you return an autoreleased object only.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">Document</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">Document</span> <span class="o">*</span><span class="p">)</span> <span class="nf">improvedDocument</span><span class="p">:(</span><span class="n">Document</span> <span class="o">*</span><span class="p">)</span> <span class="n">document</span>
+<span class="p">{</span>
+   <span class="n">Document</span>  <span class="o">*</span><span class="n">improved</span><span class="p">;</span>
+
+   <span class="k">if</span><span class="p">(</span> <span class="p">[</span><span class="n">document</span> <span class="nf">isPerfect</span><span class="p">])</span>
+      <span class="k">return</span><span class="p">(</span> <span class="n">document</span><span class="p">);</span>  <span class="c1">// incoming is autoreleased, outgoing therefore too</span>
+
+   <span class="n">improved</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="c1">// do something smart ...</span>
+   <span class="p">[</span><span class="n">improved</span> <span class="nf">setPerfect</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">document</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">...</span>
+</code></pre></div></div>
+
+<p>To keep an object alive longer, another objects needs to <code class="language-plaintext highlighter-rouge">-retain</code> it,
+to obtain ownership. As the owning object is oblidged to <code class="language-plaintext highlighter-rouge">-autorelease</code> it
+before the death of the owner, it will need to keep a reference to this object
+for as long as it needs to hold unto it.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Person</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+<span class="k">@public</span>
+   <span class="n">Person</span>  <span class="o">*</span><span class="n">_author</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setAuthor</span><span class="p">:(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span> <span class="n">author</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_author</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="n">_author</span> <span class="o">=</span> <span class="p">[</span><span class="n">author</span> <span class="nf">retain</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+
+
+<span class="kt">int</span>  <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">document</span><span class="p">;</span>
+   <span class="n">Person</span>     <span class="o">*</span><span class="n">person</span><span class="p">;</span>
+
+   <span class="n">document</span> <span class="o">=</span> <span class="p">[</span><span class="n">document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>
+      <span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span> <span class="nf">object</span><span class="p">];</span>
+      <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="n">person</span><span class="p">];</span>
+<span class="c1">// #1</span>
+   <span class="p">}</span>
+
+<span class="c1">// #2</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"%@</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">document</span><span class="o">-&gt;</span><span class="n">_author</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">document</span> <span class="nf">setPerson</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="c1">// #3</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The drawings show the fate of the <em>person</em> object:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/pool-object-ownership-3.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code> <strong>explicit</strong></td>
+      <td><img src="images/pool-object-ownership-7.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code> <strong>implicit</strong></td>
+      <td><img src="images/pool-object-ownership-8.svg" alt="6" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code> <strong>explicit</strong></td>
+    </tr>
+    <tr>
+      <td><em>person</em> is created in an inferior pool and referenced by <em>document</em></td>
+      <td>The inferior pool is gone, <em>person</em> is still alive through a <code class="language-plaintext highlighter-rouge">-retain</code> by <em>document</em></td>
+      <td><em>document</em> relinquishes ownership with <code class="language-plaintext highlighter-rouge">-autorelease</code> of <em>person</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Your retained object is now an <strong>implicitly</strong> autoreleased object. When the
+owner cuts the reference, it will <code class="language-plaintext highlighter-rouge">-autorelease</code> your object, therefore turning
+it back into an <strong>expliticly</strong> autoreleased object.</p>
+
+<p>These basic relationships form the foundation of mulle-objc’s object ownership
+convention.</p>
+
+<blockquote>
+  <p>RULE: The only times that <code class="language-plaintext highlighter-rouge">-release</code> calls are made on an object</p>
+  <ol>
+    <li>if it is not part of any autorelease pool either explicitly or implicitly</li>
+    <li>during the death of an autorelease pool (including <code class="language-plaintext highlighter-rouge">-dealloc</code>)</li>
+    <li>in the scope of a function or method, if each <code class="language-plaintext highlighter-rouge">release</code> undoes a preceeding <code class="language-plaintext highlighter-rouge">-retain</code> in the same function and the object is no longer accessed or returned after the last <code class="language-plaintext highlighter-rouge">release</code>.</li>
+  </ol>
+</blockquote>
+
+<h3 id="not-all-objects-are-autoreleased-in-mulle-objc">Not all objects are autoreleased in mulle-objc</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">NSThread</code> objects typically do not reside in autorelease pools. Very short
+lived objects may never enter an autorelease pool. Static <code class="language-plaintext highlighter-rouge">NSString</code> objects
+are never placed in an autorelease pool. Doing a <code class="language-plaintext highlighter-rouge">-autorelease</code> on a class or a
+<a href="//www.mulle-kybernetik.com/weblog/2016/mulle_objc_boon_or_bane.html">TPS object</a>
+does nothing and there can be more special cases.</p>
+
+<p>Nevertheless as long as these objects are “static” or permanent, they count
+as “implicitly” autoreleased, belonging to a virtual universe autoreleasepool.
+If at any time they would lose their permanence, they would need to be placed
+into a true autorelease pool.</p>
+
+<blockquote>
+  <p>This was probably the most important chapter of this guide. Always autoreleased
+objects are the philosophical foundation of <a href="//mulle-objc.github.io">mulle-objc</a>.</p>
+</blockquote>]]></content><author><name></name></author><summary type="html"><![CDATA[In mulle-objc the expectation is that all objects are created autoreleased.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/lifecycle.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/lifecycle.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">NSObject: -autorelease</title><link href="https://www.mulle-kybernetik.com/de-re-nsobject/autorelease.html" rel="alternate" type="text/html" title="NSObject: -autorelease" /><published>2025-03-01T00:00:00+01:00</published><updated>2025-03-01T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-nsobject/autorelease</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-nsobject/autorelease.html"><![CDATA[<p>Welcome to the world of <a href="//mulle-objc.github.io">mulle-objc</a>’s memory management, where <strong>NSAutoreleasePool</strong> reigns supreme.</p>
+
+<p>You learned about the retain counting and the lifetime of objects in a previous
+chapter, and now comes the chapter that will try to sell you, that you don’t
+need to worry about retain counting. As now, the <code class="language-plaintext highlighter-rouge">NSAutoreleasePool</code> makes its
+appearance on the scene.</p>
+
+<h2 id="the-nsautoreleasepool-class">The NSAutoreleasePool class</h2>
+
+<p>Basically a <code class="language-plaintext highlighter-rouge">NSAutoreleasePool</code> just manages an array of pointers to objects.
+You can add objects to the pool by using the <code class="language-plaintext highlighter-rouge">-autorelease</code> convenience
+method on <code class="language-plaintext highlighter-rouge">NSObject</code>. This method locates the current pool for the running
+thread and adds the object to the array.</p>
+
+<p>The autorelease pool has one operational method <code class="language-plaintext highlighter-rouge">-drain</code>, which iterates
+through this array, sending a <code class="language-plaintext highlighter-rouge">-release</code> message to each object. You usually
+call <code class="language-plaintext highlighter-rouge">-drain</code> only indirectly, once a NSAutoreleasePool expires.</p>
+
+<p>Creating an pool in your code is never necessary, but it can be
+a useful optimization, when you create lots of short lived objects. But you
+can if you want with the <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> directive. More on this later.</p>
+
+<h3 id="thread-specific-pool-stacks">Thread-Specific Pool Stacks</h3>
+
+<p>Each thread in mulle-objc maintains its own stack of autorelease pools. This
+design ensures thread safety without the need for expensive locking mechanisms.</p>
+
+<p><img src="images/thread_2-pool_1-obj_0.svg" alt="Pools And Threads" height="300" /></p>
+
+<p>As shown above, Thread #1 and Thread #2 each manage their own pools
+independently, preventing any cross-thread interference.
+Each thread under mulle-objc control, even the main thread creates an
+autorelease pool when it starts up.</p>
+
+<blockquote>
+  <p>RULE: An object can only be messaged by a thread, if the object resides
+in the autoreleasepool stack of that thread.</p>
+</blockquote>
+
+<p>This ensures that autoreleased objects always have a pool to be added to, even
+in the absence of explicit <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> directives.</p>
+
+<h2 id="nested-pool-management">Nested Pool Management</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/thread_1-pool_2-obj_0.svg" alt="Single Nested Pool" width="250" /></td>
+      <td><img src="images/thread_1-pool_2-obj_1.svg" alt="One Object Added" width="250" /></td>
+    </tr>
+    <tr>
+      <td>Pools can be nested within each other, creating a hierarchical structure for fine-grained memory management</td>
+      <td>Objects are always added to the innermost pool in the current thread’s stack.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The next code snippet and the accompanying drwawing visualize how nested
+autorelease pools collect and dispose of objects during program execution.</p>
+
+<blockquote>
+  <p>NOTE: The <code class="language-plaintext highlighter-rouge">+object</code> method creates an instance and then calls <code class="language-plaintext highlighter-rouge">-autorelease</code>
+on it.</p>
+</blockquote>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@autoreleasepool</span>
+<span class="p">{</span>                 <span class="c1">// pool 1 starts</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+   <span class="n">Document</span>   <span class="o">*</span><span class="n">c</span><span class="p">;</span>
+
+   <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>
+   <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>          <span class="c1">// #1#</span>
+
+   <span class="k">@autoreleasepool</span>
+   <span class="p">{</span>  <span class="c1">// pool 2 starts</span>
+
+      <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span> <span class="nf">object</span><span class="p">];</span>       <span class="c1">// #2</span>
+      <span class="c1">// c added to pool 2</span>
+   <span class="p">}</span>  <span class="c1">// pool 2 drains, c released // #3</span>
+
+                                   <span class="c1">// #4</span>
+   <span class="n">mulle_printf</span><span class="p">(</span> <span class="s">"a %@ and b %@ are still alive</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+
+   <span class="c1">// this would crash likely</span>
+   <span class="c1">// mulle_printf( "c %@ is dead\n", c);</span>
+<span class="p">}</span>                 <span class="c1">// pool 1 drains</span>
+</code></pre></div></div>
+
+<p>When an autorelease pool is drained, it releases all the objects it contains.
+This happens automatically at the end of an @autoreleasepool scope.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="images/nested-pools-2.svg" alt="1" width="120" /> <code class="language-plaintext highlighter-rouge">#1</code></td>
+      <td><img src="images/nested-pools-3.svg" alt="2" width="120" /> <code class="language-plaintext highlighter-rouge">#2</code></td>
+      <td><img src="images/nested-pools-4.svg" alt="3" width="120" /> <code class="language-plaintext highlighter-rouge">#3</code></td>
+      <td><img src="images/nested-pools-2.svg" alt="4" width="120" /> <code class="language-plaintext highlighter-rouge">#4</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="creating-autoreleased-and-zeroed-c-memory">Creating autoreleased and zeroed C memory</h3>
+
+<p>An autoreleasepool can also facilitate C coding. You can use
+<code class="language-plaintext highlighter-rouge">MulleObjCCallocAutoreleased</code> to create an autoreleased and zeroed
+block of memory:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">MulleObjCCallocAutoreleased</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span> <span class="k">struct</span> <span class="n">whatever</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>This is like a <code class="language-plaintext highlighter-rouge">calloc</code> you don’t have to free. Remember though, you can’
+retain an allocation like this.</p>
+
+<h3 id="caveat">Caveat</h3>
+
+<p>While mulle-objc’s autorelease system offers great convenience, it’s important
+to be aware of potential pitfalls. For instance, creating and keeping
+to many autoreleased objects and never getting to a pool drain will lead to
+increased memory usage.</p>
+
+<p>This can happen for example in long-running operations, like a database import
+from JSON for example. The remedy is to use <code class="language-plaintext highlighter-rouge">@autoreleasepool</code> blocks or
+to manually drain pools once in a while.</p>
+
+<h3 id="discussion-on-nsautoreleasepool-vs-garbage-collection">Discussion on NSAutoreleasePool vs Garbage Collection</h3>
+
+<p>NSAutoreleasePool offers several advantages over garbage collection,
+particularly in terms of performance and predictability.</p>
+
+<ul>
+  <li><strong>Deterministic Memory Management</strong>: With NSAutoreleasePool, developers have
+control over when memory is released, allowing for more predictable memory
+usage patterns. In contrast, garbage collection can introduce latency as it
+runs in the background, potentially leading to unpredictable pauses in
+application performance.</li>
+  <li><strong>Lower Overhead</strong>: NSAutoreleasePool has a lower runtime overhead compared to
+garbage collection. It does not require the additional resources needed to
+track object references and manage cycles, which can be particularly
+beneficial in resource-constrained environments.</li>
+  <li><strong>Fine-Grained Control</strong>: Developers can create and drain autorelease pools at
+specific points in their code, allowing for fine-tuned memory management
+strategies. This is especially useful in applications with varying memory
+demands, where developers can optimize memory usage based on the current
+workload.</li>
+  <li><strong>Control over Resource</strong>: Developers can release resources (like file
+handles) when they want with <code class="language-plaintext highlighter-rouge">-mullePerformFinalize</code>, compared to garbage
+collection which is unpredictable.</li>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[Welcome to the world of mulle-objc’s memory management, where NSAutoreleasePool reigns supreme.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/autorelease.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-nsobject/%7B%22feature%22=%3E%22images/features/autorelease.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

@@ -1,0 +1,1511 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/" rel="alternate" type="text/html" /><updated>2025-01-26T22:58:03+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/feed.xml</id><title type="html">Objective-C Runtime in Pictures</title><subtitle>How your sourcecode ends up in the Objective-C runtime - The Mulle Way.</subtitle><entry><title type="html">Appendix</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/appendix.html" rel="alternate" type="text/html" title="Appendix" /><published>2024-12-01T00:00:00+01:00</published><updated>2024-12-01T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/appendix</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/appendix.html"><![CDATA[<h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">obj</span> <span class="nf">methodWithArgument</span><span class="p">:</span><span class="n">argument</span> <span class="nf">additionalArgument</span><span class="p">:];</span>
+<span class="p">[</span><span class="n">super</span> <span class="nf">method</span><span class="p">:</span><span class="n">argument</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="method-call"><code class="language-plaintext highlighter-rouge">[method call]</code></h2>
+
+<p>When you invoke or call an Objective-C method on an object, the object is 
+the <strong>receiver</strong> of a message. This is just nomenclature.</p>
+
+<p>The receiver appears first in the method call, followed by the selector 
+interspersed with arguments in square brackets. So a call to method <code class="language-plaintext highlighter-rouge">- (void) insertObject:(id) obj atIndex:(NSUInteger) index</code> will look like this:</p>
+
+<p><a href="images/method-call.svg"><img src="images/method-call.svg" alt="Method call deconstructed" /></a></p>
+
+<h3 id="method-search">Method search</h3>
+
+<p>So what does a method call do ? First it looks at the <a href="https://alwaysprocessing.blog/2023/01/19/objc-class-isa">isa</a> 
+pointer of the object. This will be a pointer to a <a href="class.html">class</a>  object. 
+The class has 
+at least one methodlist. It can have multiple methodlists, if some were added 
+by <a href="category.html">categories</a>. The search order goes from back to front, so the most
+recently added category methodlist comes first.</p>
+
+<p>If no method has been found, the class may inherit methodlists from its
+<a href="protocolclass.html">protocolclasses</a> and its <a href="inheritance.html">superclass</a>.
+Again, the search order is back to first, the latest defined protocolclass is
+searched first, then the others and the superclass last.</p>
+
+<p>The superclass itself can be the same mixture of categories, protocolclasses 
+and a possible superclass.</p>
+
+<p>Finally after the rootclass has been reached, and no method has been found yet, 
+the runtime will turn to forwarding (not part of this pamphlet) and if that 
+fails, the runtime will crash.</p>
+
+<h3 id="super-method-search">Super method search</h3>
+
+<p>The special super call, starts the message search from the “place” of
+implementation. It will ignore all sibling methodlists of its implementation
+class and then start a regular method search in the protocolclasses 
+and superclass.</p>
+
+<h3 id="clobber-method-search">Clobber method search</h3>
+
+<p>Only available with MulleObjC C runtime functions. This search stops at the 
+implementation class boundary. It searches backwards from the current 
+methodlist.</p>
+
+<h3 id="override-method-search">Override method search</h3>
+
+<p>Like the Clobber method search, but does not stop at the class boundary.</p>
+
+<h2 id="case-studies">Case studies</h2>
+
+<p><em>Only instance methodlists are shown for simplicity.</em></p>
+
+<h3 id="class-a-the-simplest-case">Class A, the simplest case</h3>
+
+<p><strong>A</strong> contains a method <code class="language-plaintext highlighter-rouge">instanceMethod</code>, its <code class="language-plaintext highlighter-rouge">@implementation</code> is not shown, 
+as it’s boring:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">A</span> 
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p><a href="images/A.svg"><img src="images/A.svg" alt="A" /></a></p>
+
+<p>This is just for warming up. There is no <strong>super</strong> method in a root class,
+and nothing has been overridden. So its <code class="language-plaintext highlighter-rouge">-instanceMethod</code> only.</p>
+
+<h3 id="subclass-b-of-a-and-categories-on-b">Subclass B of A and categories on B</h3>
+
+<p>B overrides the superclass method <code class="language-plaintext highlighter-rouge">instanceMethod</code>. And so do the two 
+categories P and Q on B. Again, implementations are not shown:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">B</span> <span class="p">:</span> <span class="nc">A</span>  
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">B</span><span class="p">(</span> <span class="nl">P</span><span class="p">)</span>   
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">B</span><span class="p">(</span> <span class="nl">Q</span><span class="p">)</span>   
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>this will result in more complex layout:</p>
+
+<p><a href="images/B.svg"><img src="images/B.svg" alt="B" /></a></p>
+
+<p>As explained before, the search order will be from  back to front.
+So <em>methodlist #2</em> of B comes first, then <em>methodlist #1</em> of B, then 
+<em>methodlist #0</em> of B. The final search is through <em>methodlist #0</em> of A.</p>
+
+<p>In short notation the various searches result in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: B(Q) -&gt; A
+  clobber chain: B(Q) -&gt; B(P) -&gt; B
+ override chain: B(Q) -&gt; B(P) -&gt; B -&gt; A
+</code></pre></div></div>
+
+<h3 id="subclass-c-of-b-and-multiple-inheritance-with-protocolclasses">Subclass C of B and multiple inheritance with protocolclasses</h3>
+
+<p>The next class <code class="language-plaintext highlighter-rouge">C</code> builds on <code class="language-plaintext highlighter-rouge">B</code> and has two protocolclasses added to the mix:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">X</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">X</span> <span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="nc">Y</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">Y</span> <span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">C</span> <span class="p">:</span> <span class="nc">B</span> <span class="o">&lt;</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The result looks like this:</p>
+
+<p><a href="images/C.svg"><img src="images/C.svg" alt="C" /></a></p>
+
+<p>Now with methodlist of <code class="language-plaintext highlighter-rouge">C</code> as the starting point, we get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: C -&gt; Y -&gt; X -&gt; B(Q) -&gt; A
+  clobber chain: C
+ override chain: C -&gt; Y -&gt; X -&gt; B(Q) -&gt; B(P) -&gt; B -&gt; A
+</code></pre></div></div>
+
+<h3 id="class-d-inheritance-with-duplicate-protocolclasses">Class D, inheritance with duplicate protocolclasses</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">D</span> <span class="p">:</span> <span class="nc">C</span> <span class="o">&lt;</span> <span class="n">Y</span><span class="p">,</span> <span class="n">X</span> <span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">D</span><span class="p">(</span> <span class="nl">P</span><span class="p">)</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">D</span><span class="p">(</span> <span class="nl">Q</span><span class="p">)</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p><a href="images/D.svg"><img src="images/D.svg" alt="D" /></a></p>
+
+<p>Before we go on, lets reconsider, that a protocolclass is a root class and 
+has no business calling “super” by itself. But if you were, here is what 
+would happen:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    super chain: D(Q) -&gt; X -&gt; Y -&gt; C -&gt; Y -&gt; C -&gt; ... -&gt; INFINITE LOOP CRASH
+  clobber chain: D(Q) -&gt; D(P) -&gt; D
+ override chain: D(Q) -&gt; D(P) -&gt; D -&gt; X -&gt; Y -&gt; C -&gt; Y -&gt; C -&gt; ... -&gt; INFINITE LOOP CRASH
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:</code></td>
+      <td>Perform method taking no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:withObject:</code></td>
+      <td>Perform method taking one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-performSelector:withObject:withObject:</code></td>
+      <td>Perform method taking two arguments</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector0</code></td>
+      <td>Call method with no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector</code></td>
+      <td>Call method with one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectPerformSelector2</code></td>
+      <td>Call method with two arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall0</code></td>
+      <td>Call implementation with no arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall</code></td>
+      <td>Call implementation with one argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCall2</code></td>
+      <td>Call implementation with two arguments</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithFloat</code></td>
+      <td>Call implementation with float argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithDouble</code></td>
+      <td>Call implementation with double argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCIMPCallWithLong</code></td>
+      <td>Call implementation with long argument</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector0</code></td>
+      <td>Call method on array of objects with no args</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector</code></td>
+      <td>Call method on array of objects with one arg</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCMakeObjectsPerformSelector2</code></td>
+      <td>Call method on array of objects with two args</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchSuperIMP</code></td>
+      <td>Find superclass implementation of a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchSpecificIMP</code></td>
+      <td>Find method implementation in specific class/category</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchOverriddenIMP</code></td>
+      <td>Find overridden implementation of a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchClobberedIMP</code></td>
+      <td>Find implementation clobbered by a category</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry><entry><title type="html">Outro</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/outro.html" rel="alternate" type="text/html" title="Outro" /><published>2024-11-30T00:00:00+01:00</published><updated>2024-11-30T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/outro</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/outro.html"><![CDATA[<h2 id="how-to-create-your-own-runtime-pictures">How to create your own runtime pictures</h2>
+
+<p>Create a new <a href="https://mulle-objc.github.io/">mulle-objc</a>  with
+<a href="https://github/mulle-sde">mulle-sde</a>:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">mulle-sde init -d picture -m mulle-objc/objc-developer executable
+</span></code></pre></div></div>
+
+<p>Edit <code class="language-plaintext highlighter-rouge">src/main.m</code> with a class hierarchy of your choice, then change <code class="language-plaintext highlighter-rouge">main</code> to:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span>  <span class="nf">main</span><span class="p">(</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+   <span class="n">MulleObjCDotdumpClass</span><span class="p">(</span> <span class="s">"MyClass"</span><span class="p">);</span>
+
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now build and run:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">mulle-sde craft
+mulle-sde run
+</span></code></pre></div></div>
+
+<p>Finally run the output <code class="language-plaintext highlighter-rouge">MyClass.dot</code> through <a href="https://graphviz.org/">graphviz</a>
+to produce a graphics file:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">dot -Tsvg -o MyClass.svg MyClass.dot
+</span></code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[How to create your own runtime pictures]]></summary></entry><entry><title type="html">Quiz</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/quiz.html" rel="alternate" type="text/html" title="Quiz" /><published>2024-11-29T00:00:00+01:00</published><updated>2024-11-29T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/quiz</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/quiz.html"><![CDATA[<p>Armed with this knowledge, here is an example project. Assume that
+you are only linking against the <code class="language-plaintext highlighter-rouge">mulle-objc-runtime</code>, which doesn’t provide
+any classes.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">A</span>
+<span class="k">@property</span> <span class="kt">char</span>   <span class="o">*</span><span class="n">x</span><span class="p">;</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@implementation</span> <span class="nc">A</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">x</span>  <span class="p">{</span>  <span class="k">return</span><span class="p">(</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">__FUNCTION__</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">@end</span>
+
+<span class="k">@protocol</span> <span class="nc">B</span>
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">x</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">B</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">x</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@implementation</span> <span class="nc">B</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">x</span>  <span class="p">{</span>  <span class="k">return</span><span class="p">(</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">__FUNCTION__</span><span class="p">);</span> <span class="p">}</span>
+<span class="k">@end</span>
+
+
+<span class="k">@interface</span> <span class="nc">C</span> <span class="p">:</span> <span class="nc">A</span> <span class="o">&lt;</span> <span class="n">B</span> <span class="o">&gt;</span>
+<span class="k">@end</span>
+<span class="k">@implementation</span> <span class="nc">C</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<div class="quiz_container">
+  <!-- Question 1 -->
+  <div class="quiz_question">
+    <p>1. How many <i>metaclasses</i> will exist at runtime ?</p>
+    <label class="quiz_label"><input type="radio" name="q1" value="wrong" /> none</label>
+    <label class="quiz_label"><input type="radio" name="q1" value="wrong" /> two</label>
+    <label class="quiz_label"><input type="radio" name="q1" value="right" /> three</label>
+    <label class="quiz_label"><input type="radio" name="q1" value="wrong" /> four</label>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="quiz_question">
+    <p>2. How many <i>methods</i> does <i>infraclass</i> <b>C</b> have in its <i>methodlists</i> ?</p>
+    <label class="quiz_label"><input type="radio" name="q2" value="right" /> none</label>
+    <label class="quiz_label"><input type="radio" name="q2" value="wrong" /> one</label>
+    <label class="quiz_label"><input type="radio" name="q2" value="wrong" /> two</label>
+    <label class="quiz_label"><input type="radio" name="q2" value="wrong" /> <b>C</b> has no methodlists</label>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="quiz_question">
+    <p>3. What is the result of <code>[[C new] x]</code> ?</p>
+    <label class="quiz_label"><input type="radio" name="q3" value="right" /> -[A x]</label>
+    <label class="quiz_label"><input type="radio" name="q3" value="wrong" /> -[B x]</label>
+    <label class="quiz_label"><input type="radio" name="q3" value="wrong" /> NULL</label>
+    <label class="quiz_label"><input type="radio" name="q3" value="wrong" /> a crash</label>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="quiz_question">
+    <p>4. What is the result of <code>[C x]</code> ?</p>
+    <label class="quiz_label"><input type="radio" name="q4" value="wrong" /> +[A x]</label>
+    <label class="quiz_label"><input type="radio" name="q4" value="right" /> -[A x]</label>
+    <label class="quiz_label"><input type="radio" name="q4" value="wrong" /> -[B x]</label>
+    <label class="quiz_label"><input type="radio" name="q4" value="wrong" /> a crash</label>
+  </div>
+
+
+  <!-- Submit Button -->
+  <button class="quiz_button" onclick="calculateScore()">Submit Quiz</button>
+
+  <!-- Result -->
+  <div class="quiz_result" id="quiz_result"></div>
+</div>
+
+<script>
+  function calculateScore() {
+    let score = 0;
+    let allAnswered = true;
+    const questions = ["q1", "q2", "q3", "q4"];
+
+    questions.forEach((question) => {
+      const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+      if (!selectedAnswer) {
+        allAnswered = false;
+      } else if (selectedAnswer.value === "right") {
+        score++;
+      }
+    });
+
+    const resultDiv = document.getElementById("quiz_result");
+
+    // Array of messages for each possible score
+    const messages = [
+      "Why don't you find yourself a nice scripting language ?",
+      "Don't worry, there are other programming languages in the sea. Maybe rather checkout Go or Rust.",
+      "Well the test is tricky, it can't hurt to peruse the pamphlet one more time.",
+      "Almost there, but you had to guess at one time. And you chose poorly.",
+      "Welcome to the Objective-C Pantheon!"
+    ];
+
+    // Check if all questions were answered
+    if (!allAnswered) {
+      resultDiv.textContent = "Please answer all questions before submitting.";
+    } else {
+      // Display result with corresponding message
+      resultDiv.textContent = `${messages[score]}`;
+    }
+  }
+   document.querySelector('.quiz_button').addEventListener('click', function(e) {
+     this.classList.add('clicked');
+     setTimeout(() => this.classList.remove('clicked'), 300);
+   });
+</script>]]></content><author><name></name></author><summary type="html"><![CDATA[Armed with this knowledge, here is an example project. Assume that you are only linking against the mulle-objc-runtime, which doesn’t provide any classes.]]></summary></entry><entry><title type="html">Protocolclass</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocolclass.html" rel="alternate" type="text/html" title="Protocolclass" /><published>2024-11-09T00:00:00+01:00</published><updated>2024-11-09T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocolclass</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocolclass.html"><![CDATA[<h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">SomeProtocolClass</span>
+<span class="k">@end</span> 
+<span class="k">@interface</span> <span class="nc">SomeProtocolClass</span> <span class="o">&lt;</span><span class="n">SomeProtocolClass</span><span class="o">&gt;</span>
+<span class="k">@end</span> 
+
+<span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="o">&lt;</span> <span class="n">SomeProtocolClass</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="protocolclass">protocolclass</h2>
+
+<p>A <strong>protocolclass</strong> is a <em>rootclass</em> that implements a <em>protocol</em> of the same 
+name. The methods declared as <code class="language-plaintext highlighter-rouge">@optional</code> will be defined by the protocolclass,
+for reuse by protocol adopting classes:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">@interface</span> <span class="nc">RootClass</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">RootClass</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@protocol</span> <span class="nc">ProtocolClass</span>
+
+<span class="k">@optional</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@interface</span> <span class="nc">ProtocolClass</span> <span class="o">&lt;</span> <span class="n">ProtocolClass</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">ProtocolClass</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span>
+<span class="p">{</span>
+   <span class="n">IMP</span>   <span class="n">imp</span><span class="p">;</span>
+
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+   <span class="c1">// can't call super</span>
+   <span class="n">imp</span> <span class="o">=</span> <span class="n">MulleObjCOverriddenIMP</span><span class="p">;</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">imp</span><span class="p">)</span>
+      <span class="n">MulleObjCIMPCall0</span><span class="p">(</span> <span class="n">imp</span><span class="p">,</span> <span class="n">self</span><span class="p">,</span> <span class="n">_cmd</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="p">:</span> <span class="nc">RootClass</span> <span class="o">&lt;</span> <span class="n">ProtocolClass</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">SomeClass</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">instanceMethod</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>This turns out to be akin to multiple inheritance.</p>
+
+<p><img src="images/protocolclass.svg" alt="protocolclass" /></p>
+
+<p>When you run <code class="language-plaintext highlighter-rouge">[instance instanceMethod]</code> the output will be:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">-[SomeClass instanceMethod]
+-[ProtocolClass instanceMethod]
+-[RootClass instanceMethod]
+</span></code></pre></div></div>
+
+<p>The protocolclass “wedged” itself between the superclass and the adopting class.. The super call actually reached the protocolclass method, not the superclass
+method.</p>
+
+<p>Interestingly, adding protocolclasses to a rootclass is 
+possible, but the compiler will not allow you to call super in the adopting
+rootclass. A protocolclass will not want to call <em>super</em> as it has no idea what the 
+superclass of the protocol adopting class is. Nevertheless, mulle-objc does not stand in 
+the way of a good hack, so you can  reach the superclass method with 
+<code class="language-plaintext highlighter-rouge">MulleObjCOverriddenIMP</code>, if so desired.</p>
+
+<p>What is obviously missing is the possibility to add instance variables.There are other solutions for this, but that is a topic for another pamphlet.</p>
+
+<h3 id="the-order-of-protocolclasses-is-important">The order of protocolclasses is important</h3>
+
+<p>Like the <em>methodlists</em> of a class, the search order of protocolclasses is
+back to front:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@protocol A
+
+@optional
+- (void) instanceMethod;
+
+@end
+
+
+@interface A &lt; A&gt;
+@end
+
+@implementation A
+
+- (void) instanceMethod
+{
+   IMP   imp;
+
+   printf( "%s\n", __FUNCTION__);
+   imp = MulleObjCOverriddenIMP;
+   if( imp)
+      MulleObjCIMPCall0( imp, self, _cmd);
+}
+
+@end
+
+
+@protocol B
+
+@optional
+- (void) instanceMethod;
+
+@end
+
+
+@interface B &lt; B&gt;
+@end
+
+@implementation B
+
+- (void) instanceMethod
+{
+   IMP   imp;
+
+   printf( "%s\n", __FUNCTION__);
+   imp = MulleObjCOverriddenIMP;
+   if( imp)
+      MulleObjCIMPCall0( imp, self, _cmd);
+}
+
+@end
+
+
+@interface SomeClass &lt; A, B&gt;
+@end
+
+
+@implementation SomeClass
+@end
+</code></pre></div></div>
+
+<p>This produces a class hierarchy:</p>
+
+<p><img src="images/protocolclass-order.svg" alt="protocolclass" /></p>
+
+<p>When you run <code class="language-plaintext highlighter-rouge">[obj instanceMethod]</code> on a “SomeClass” instance, “B” will be
+found first. So the output is:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">-[B instanceMethod]
+-[A instanceMethod]
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_PROTOCOLCLASS_INTERFACE0</code></td>
+      <td>Define protocol class without protocols</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE0</code></td>
+      <td>Define protocol class with NSObject protocol</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_PROTOCOLCLASS_INTERFACE</code></td>
+      <td>Define protocol class with custom protocols</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_INTERFACE</code></td>
+      <td>Define protocol class with NSObject and custom protocols</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_END</code></td>
+      <td>End protocol class definition</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PROTOCOLCLASS_IMPLEMENTATION</code></td>
+      <td>Begin protocol class implementation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCOverriddenIMP</code></td>
+      <td>Get overridden implementation in protocol class chain</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClobberedIMP</code></td>
+      <td>Get clobbered implementation (stops at class boundary)</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry><entry><title type="html">Inheritance</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/inheritance.html" rel="alternate" type="text/html" title="Inheritance" /><published>2024-11-08T00:00:00+01:00</published><updated>2024-11-08T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/inheritance</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/inheritance.html"><![CDATA[<h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="p">:</span> <span class="nc">SomeSuperClass</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="inheritance">Inheritance</h2>
+
+<p>In terms of a C <code class="language-plaintext highlighter-rouge">struct</code>, inheritance is akin to nesting a struct within another
+struct:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">a</span> 
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">b</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="n">a</span>   <span class="n">a</span><span class="p">;</span>
+    <span class="kt">int</span>        <span class="n">w</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>The Objective-C syntax <code class="language-plaintext highlighter-rouge">@interface &lt;class&gt; : &lt;otherClass&gt;</code> is used 
+to define the inheritance:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">A</span>
+<span class="p">{</span>
+   <span class="kt">int</span>   <span class="n">u</span><span class="p">;</span>
+   <span class="kt">int</span>   <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getU</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">A</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getU</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@interface</span> <span class="nc">B</span> <span class="p">:</span> <span class="nc">A</span>
+<span class="p">{</span>
+   <span class="kt">int</span>   <span class="n">w</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getW</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">B</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getV</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[</span><span class="n">super</span> <span class="nf">getU</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">super</span> <span class="nf">getV</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">getW</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">w</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The runtime will now look like this:</p>
+
+<p><img src="images/inheritance.svg" alt="Inheritance" />There is a uni-directional relationship <strong>super</strong> between the class B and its <strong>superclass</strong> A..</p>
+
+<p>The instance variables and methods of class A are <em>inherited</em> by B.As you can see, the contents of the ivarlists and methodlists of A are not copied down to B.Nevertheless, all methods and instance variables of A are now available in B.</p>
+
+<h3 id="super">super</h3>
+
+<p>With the special <code class="language-plaintext highlighter-rouge">[super method]</code> syntax, a method of a superclass can be
+invoked, even if there is a method with the same name in the current class.</p>
+
+<h3 id="special-case-the-root-class">Special case: the root class</h3>
+
+<p>A root class is a class that does not have a superclass. There is a special
+treatment for ‘+’ class methods on these root classes.</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">RootClass</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">RootClass</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">instanceMethod</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>When you run</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">cls</span> <span class="nf">classMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">cls</span> <span class="nf">instanceMethod</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">instance</span> <span class="nf">instanceMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">instance</span> <span class="nf">classMethod</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>the output will be:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">+[RootClass classMethod]
+-[RootClass instanceMethod]
+-[RootClass instanceMethod]
+mulle_objc_universe 0x5B74C1D11080 fatal: unknown method c3074566 "-classMethod" in class 4b9217f9 "RootClass"
+</span></code></pre></div></div>
+<p>So what is going on here?</p>
+
+<p><img src="images/RootClass.svg" alt="Root class" /></p>
+
+<p>If you follow the <code class="language-plaintext highlighter-rouge">isa/meta</code> path, you will see that the metaclass of the
+metaclass as actually the infraclass again. So a rootclass class methods
+are augmented with the infraclass methods.</p>
+
+<p>This is something to be aware of. So root classes usually have
+a class method implementation for every instance method to avoid surprises.
+Another option is to put a empty root class on top.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-superclass</code></td>
+      <td>Get receiver’s superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+superclass</code></td>
+      <td>Get class’s superclass</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+isSubclassOfClass:</code></td>
+      <td>Check if class inherits from given class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isKindOfClass:</code></td>
+      <td>Check if receiver inherits from or is instance of class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-isMemberOfClass:</code></td>
+      <td>Check if receiver is direct instance of class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[super ...]</code></td>
+      <td>Language feature to call superclass implementation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassIsSubclassOfClass</code></td>
+      <td>C function to check class inheritance relationship</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NSObjectIsKindOfClass</code></td>
+      <td>C function for instance/class relationship check</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceIsMemberOfClass</code></td>
+      <td>C function for direct instance/class check</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCSuperIMP</code></td>
+      <td>Get superclass implementation of current method</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry><entry><title type="html">Protocol</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocol.html" rel="alternate" type="text/html" title="Protocol" /><published>2024-11-07T00:00:00+01:00</published><updated>2024-11-07T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocol</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/protocol.html"><![CDATA[<h2 id="syntax-topics">Syntax topics</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">SomeProtocol</span>
+<span class="k">@end</span> 
+
+<span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="o">&lt;</span><span class="n">SomeProtocol</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="p">[</span><span class="n">objc</span> <span class="nf">conformsToProtocol</span><span class="p">:</span><span class="k">@protocol</span><span class="err">(</span> <span class="nc">SomeProtocol</span><span class="p">)];</span>
+</code></pre></div></div>
+
+<h2 id="protocol">@protocol</h2>
+
+<p>A <strong>protocol</strong> is a way to declare a set of methods. A class that
+<em>adopts</em> a protocol, declares that it implements all of the methods in the
+protocol:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">EmptyProtocol</span>
+<span class="k">@end</span> 
+
+
+<span class="k">@interface</span> <span class="nc">SomeClass</span> <span class="o">&lt;</span><span class="n">EmptyProtocol</span><span class="o">&gt;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">SomeClass</span>
+<span class="c1">// protocol EmptyProtocol is empty, so no need to implement anything</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The actual output of the compiler is just an identifier that can be queried
+with <code class="language-plaintext highlighter-rouge">[Someclass conformsToProtocol:@protocol( EmptyProtocol)]</code>.</p>
+
+<p><a href="images/protocol.svg"><img src="images/protocol.svg" alt="Protocol" /></a></p>
+
+<p>At runtime, the information is lost, which methods are part of a protocol..</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCProtocolGetNameUTF8String</code></td>
+      <td>Get protocol name as UTF8 string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-conformsToProtocol:</code></td>
+      <td>Check if receiver conforms to protocol (including inheritance)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-mulleContainsProtocol:</code></td>
+      <td>Check if receiver directly implements protocol (no inheritance)</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topics]]></summary></entry><entry><title type="html">Category</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/category.html" rel="alternate" type="text/html" title="Category" /><published>2024-11-06T00:00:00+01:00</published><updated>2024-11-06T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/category</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/category.html"><![CDATA[<h3 id="syntax-topic">Syntax topic</h3>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">@interface</span> <span class="nc">SomeClass</span><span class="p">(</span> <span class="nl">Additions</span><span class="p">)</span>
+
+ <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">additionalClassMethod</span><span class="p">;</span>
+ <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">instanceMethod</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">argument</span><span class="p">;</span>
+
+ <span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">SomeClass</span><span class="p">(</span> <span class="nl">Additions</span><span class="p">)</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">instanceMethod</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">argument</span>
+<span class="p">{</span>
+    <span class="n">IMP</span>   <span class="n">imp</span><span class="p">;</span>
+    
+    <span class="n">imp</span> <span class="o">=</span> <span class="n">MulleObjCOverriddenIMP</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">_cmd</span><span class="p">);</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">imp</span><span class="p">)(</span> <span class="n">self</span><span class="p">,</span> <span class="n">_cmd</span><span class="p">,</span> <span class="n">argument</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<h2 id="category">Category</h2>
+
+<p>A category adds methodlists to an existing class:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">CGPoint</span><span class="p">(</span> <span class="nl">Additions</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">newWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dx</span>
+                        <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dy</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">rotateWithRadians</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">radians</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">CGPoint</span><span class="p">(</span> <span class="nl">Additions</span><span class="p">)</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">newWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">x</span>
+                        <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">y</span>
+<span class="p">{</span>
+   <span class="n">CGPoint</span>   <span class="o">*</span><span class="n">obj</span><span class="p">;</span>
+
+   <span class="n">obj</span>    <span class="o">=</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+   <span class="n">obj</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+   <span class="n">obj</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">obj</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">rotateWithRadians</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">radians</span>
+<span class="p">{</span>
+   <span class="kt">float</span>   <span class="n">cos_rad</span><span class="p">;</span>
+   <span class="kt">float</span>   <span class="n">sin_rad</span><span class="p">;</span>
+   <span class="kt">float</span>   <span class="n">rotated_x</span><span class="p">;</span>
+   <span class="kt">float</span>   <span class="n">rotated_y</span><span class="p">;</span>
+
+   <span class="n">cos_rad</span>   <span class="o">=</span> <span class="n">cosf</span><span class="p">(</span> <span class="n">radians</span><span class="p">);</span>
+   <span class="n">sin_rad</span>   <span class="o">=</span> <span class="n">sinf</span><span class="p">(</span> <span class="n">radians</span><span class="p">);</span>
+   <span class="n">rotated_x</span> <span class="o">=</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="n">cos_rad</span> <span class="o">-</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">*</span> <span class="n">sin_rad</span><span class="p">;</span>
+   <span class="n">rotated_y</span> <span class="o">=</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="n">sin_rad</span> <span class="o">+</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">*</span> <span class="n">cos_rad</span><span class="p">;</span>
+
+   <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">=</span> <span class="n">rotated_x</span><span class="p">;</span>
+   <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">=</span> <span class="n">rotated_y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The category can be in the same file as the class, or in a separate file, and
+even in a different library.. The category is attached to the class at
+runtime.</p>
+
+<p><a href="images/category.svg"><img src="images/category.svg" alt="" /></a></p>
+
+<p>The order of the methodlists is important. The search direction for a method
+is from the back to the front. So a category has the option to override methods 
+in the class.</p>
+
+<p>The order of the categories is therefore also important. You specify them with one of the <a href="https://github.com/mulle-objc/MulleObjC/blob/master/src/protocol/MulleObjCRuntimeObject.h#L71C1-L71C67"><code class="language-plaintext highlighter-rouge">MULLE_OBJC_DEPENDS_...</code> macros</a>..</p>
+
+<p>To retrieve a overridden method, you can use 
+<code class="language-plaintext highlighter-rouge">MulleObjCOverriddenIMP</code>or <code class="language-plaintext highlighter-rouge">MulleObjCClobberedIMP</code> in your category 
+implementation. (<code class="language-plaintext highlighter-rouge">MulleObjCClobberedIMP</code> stops at the class boundary).</p>
+
+<blockquote>
+  <h4 id="caveat">Caveat</h4>
+
+  <p>You need some knowledge about the <a href="https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html">metaABI</a> 
+though to pass more than one argument or arguments that are not <code class="language-plaintext highlighter-rouge">void *</code>
+compatible.</p>
+</blockquote>
+
+<p>Category ids are stored separately and are available from the classpair of
+infraclass and metaclass. They are very rarely used by the API programmer.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-mulleInterposeBeforeClass:</code></td>
+      <td>Insert category methods before another class (method version)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchOverriddenIMP</code></td>
+      <td>Find method implementation overridden by category</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSearchClobberedIMP</code></td>
+      <td>Find method implementation clobbered by category (stops at class boundary)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassInterposeBeforeClass</code></td>
+      <td>Insert category methods before another class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MULLE_OBJC_DEPENDS_ON_CLASS</code></td>
+      <td>Declare category dependency on a class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MULLE_OBJC_DEPENDS_ON_CATEGORY</code></td>
+      <td>Declare category dependency on another category</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MULLE_OBJC_DEPENDS_ON_LIBRARY</code></td>
+      <td>Declare category dependency on a library</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry><entry><title type="html">Property</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/property.html" rel="alternate" type="text/html" title="Property" /><published>2024-11-05T00:00:00+01:00</published><updated>2024-11-05T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/property</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/property.html"><![CDATA[<h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span>
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<h2 id="property-lists">Property Lists</h2>
+
+<p>A <strong>property</strong> is a combination of <em>methods</em> and an <em>ivar</em>.When you declare a property, an instance variable is (usually) created and several messages.
+are auto-generated to support the property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">@interface</span> <span class="nc">CGPoint</span>
+
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+<span class="k">@property</span> <span class="kt">float</span>  <span class="n">y</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+
+<span class="k">@implementation</span> <span class="nc">CGPoint</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>The above will create entries in the class’s methodlist and ivarlist:</p>
+
+<p><a href="images/properties.svg"><img src="images/properties.svg" alt="Properties" /></a></p>
+
+<h2 id="property">Property</h2>
+
+<p>A <strong>property</strong> ties the instance variable to the methods.
+This is the information you can get from a <strong>property</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">signature</code></td>
+      <td>type in <a href="https://github.com/mulle-cc/mulle-clang-project/blob/6fa55d0016ce52c8f79167dde22481f473754c60/clang/lib/AST/ASTContext.cpp#L7889">@property attribute</a> format</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">propertyid</code></td>
+      <td>id (hash) of the property name for lookup. Tip: use <code class="language-plaintext highlighter-rouge">@selector( name)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ivarid</code></td>
+      <td>id (hash) of the ivar name for lookup.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getter</code></td>
+      <td>id (hash) of the getter method name for lookup</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">setter</code></td>
+      <td>id (hash) of the setter method name for lookup</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bits</code></td>
+      <td>internal state</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The marriage of accessor methods and instance variables allows for simpler and 
+faster key-value coding, due to introspection and not just convention.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCClassSearchProperty</code></td>
+      <td>Find property in a class by propertyid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCInstanceSearchProperty</code></td>
+      <td>Find property in an instance’s class by propertyid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearProperty</code></td>
+      <td>Clear a property value (handles retain/copy/assign)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearPropertyNoReadOnly</code></td>
+      <td>Clear non-readonly property value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCClassWalkClearableProperties</code></td>
+      <td>Walk through all clearable properties of a class</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCInstanceClearProperties</code></td>
+      <td>Clear all properties of an instance</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="references">References</h2>
+
+<p><a href="https://mulle-objc.github.io/De-Re-mulle-objc/mydoc_property_new.html"></a></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry><entry><title type="html">Method</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/method.html" rel="alternate" type="text/html" title="Method" /><published>2024-11-03T00:00:00+01:00</published><updated>2024-11-03T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/method</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/method.html"><![CDATA[<h2 id="syntax-topics">Syntax topics</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">@interface</span> <span class="nc">SomeClass</span>
+ <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">classMethod</span><span class="p">;</span>
+ <span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">instanceMethod</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">argument</span><span class="p">;</span>
+ <span class="k">@end</span>
+
+<span class="k">@selector</span><span class="p">(</span> <span class="n">instanceMethod</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">SomeClass</span> <span class="nf">classMethod</span><span class="p">];</span>
+<span class="p">[</span><span class="n">obj</span> <span class="nf">instanceMethod</span><span class="p">:</span><span class="n">argument</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="method-lists-and-methods">method lists and methods</h2>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Data_structure">data structure</a> in C is a 
+<code class="language-plaintext highlighter-rouge">struct</code> and an assortment of functions. You typically pass a pointer to a 
+struct variable to a function or you pass the whole struct variable by value:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">CGPoint</span> 
+<span class="p">{</span> 
+    <span class="kt">float</span> <span class="n">x</span><span class="p">;</span> 
+    <span class="kt">float</span> <span class="n">y</span><span class="p">;</span> 
+<span class="p">};</span>
+
+<span class="kt">void</span>   <span class="nf">CGPointTranslate</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dy</span><span class="p">);</span>
+<span class="kt">float</span>  <span class="nf">CGPointGetArea</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="n">self</span><span class="p">);</span> <span class="c1">// from 0,0 to x,y</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span>   <span class="nf">CGPointTranslate</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dx</span><span class="p">,</span> <span class="kt">float</span> <span class="n">dy</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span><span class="p">;</span> 
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="kt">float</span>   <span class="nf">CGPointGetArea</span><span class="p">(</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="n">point</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="k">return</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span><span class="p">));</span> 
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<p>Generally in MulleObjC, one uses methods to interact with objects:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">CGPoint</span> 
+<span class="p">{</span> 
+   <span class="kt">float</span> <span class="n">x</span><span class="p">;</span> 
+   <span class="kt">float</span> <span class="n">y</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span><span class="p">;</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">translateWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dx</span> 
+                      <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dy</span><span class="p">;</span>
+                     
+<span class="k">-</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">area</span><span class="p">;</span> 
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@implementation</span> <span class="nc">CGPoint</span> 
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="n">new</span>
+<span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span> <span class="n">mulle_objc_infraclass_alloc_instance</span><span class="p">(</span> <span class="n">self</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">translateWithX</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dx</span> 
+                      <span class="n">y</span><span class="o">:</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">dy</span>
+<span class="p">{</span> 
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span><span class="p">;</span> 
+    <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span><span class="p">;</span> 
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="n">area</span>
+<span class="p">{</span> 
+    <span class="k">return</span><span class="p">(</span> <span class="n">fabs</span><span class="p">(</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">*</span> <span class="n">self</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">));</span> 
+<span class="p">}</span> 
+                     
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<p>The compiler will generate two <strong>methodlists</strong>, one methodlist for
+<strong>instance methods</strong>, which are prefixed with a <code class="language-plaintext highlighter-rouge">-</code>. These are attached to the
+<em>infraclass</em>, and one methodlist for <strong>class methods</strong>,
+which are prefixed with a <code class="language-plaintext highlighter-rouge">+</code> and attached to the <em>metaclass</em>. A class will
+always have at least one <strong>methodlists</strong>, even if its empty.</p>
+
+<p><a href="images/methods.svg"><img src="images/methods.svg" alt="Class with methodlists" /></a></p>
+
+<p>To message the <code class="language-plaintext highlighter-rouge">+new</code> class-method one would write <code class="language-plaintext highlighter-rouge">obj = [CGPoint new]</code>. The 
+result of this method is an instance of the class. This instance can now be
+messaged with instance methods like so: <code class="language-plaintext highlighter-rouge">[obj translateWithX:18 y:48];</code></p>
+
+<h2 id="method">method</h2>
+
+<p>And this is (some) of the information you can get about a class:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>methodid</td>
+      <td>id (hash) of the ivar name for lookup. Tip: use <code class="language-plaintext highlighter-rouge">@selector( name)</code></td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>name</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>type in <a href="https://nshipster.com/type-encodings"><code class="language-plaintext highlighter-rouge">@encode</code></a> format</td>
+    </tr>
+    <tr>
+      <td>bits</td>
+      <td>additional information about the method</td>
+    </tr>
+    <tr>
+      <td>implementation</td>
+      <td>the address of the C function, that implements the method</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Every method implementation receives two hidden parameters: <code class="language-plaintext highlighter-rouge">self</code> and <code class="language-plaintext highlighter-rouge">_cmd</code>. 
+Additional parameters are passed via another hidden parameter <code class="language-plaintext highlighter-rouge">_param</code>, but
+its contents are available as the non hidden parameters.</p>
+
+<p>In C terms the two methods above are uniformly implemented like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span>   <span class="o">*</span><span class="nf">CGPoint_translateWithXY</span><span class="p">(</span> <span class="kt">void</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">SEL</span> <span class="n">_cmd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">_param</span><span class="p">);</span>
+<span class="kt">void</span>   <span class="o">*</span><span class="nf">CGPoint_area</span><span class="p">(</span> <span class="kt">void</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="n">SEL</span> <span class="n">_cmd</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">_param</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">self</code> pointer works just like the struct pointer in C, 
+giving access to instance variables, pointing past the object header. 
+<code class="language-plaintext highlighter-rouge">_cmd</code> contains the method selector, which is a unique hash on the method name. 
+The hash is then used by the runtime to find the method implementation in
+the methodlists.</p>
+
+<p>For example the hash for the method <code class="language-plaintext highlighter-rouge">translateWithX:y:</code> is 0xb7ee7240. The
+mulle-objc compiler will calculate at compile time the hash with
+<code class="language-plaintext highlighter-rouge">@selector( translateWithX:y: )</code>.</p>
+
+<p>The actual arguments and return values are stored in <code class="language-plaintext highlighter-rouge">_param</code>, which is a compiler
+generated structure. The details can be found the <a href="https://www.mulle-kybernetik.com/weblog/2015/mulle_objc_meta_call_convention.html">metaABI</a>
+specification.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function/Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCSelectorGetNameUTF8String</code></td>
+      <td>Get method’s selector name as UTF8 string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCCreateSelectorUTF8String</code></td>
+      <td>Create a new selector from UTF8 string</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>NSObject Method Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-methodForSelector:</code></td>
+      <td>Get implementation address for a method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+instanceMethodForSelector:</code></td>
+      <td>Get implementation address for an instance method</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">-methodSignatureForSelector:</code></td>
+      <td>Get method metadata (parameter/return types)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">+instanceMethodSignatureForSelector:</code></td>
+      <td>Get instance method metadata</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topics]]></summary></entry><entry><title type="html">Ivar</title><link href="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/ivar.html" rel="alternate" type="text/html" title="Ivar" /><published>2024-11-02T00:00:00+01:00</published><updated>2024-11-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/objc-runtime-in-pictures/ivar</id><content type="html" xml:base="https://www.mulle-kybernetik.com/objc-runtime-in-pictures/ivar.html"><![CDATA[<h2 id="syntax-topic">Syntax topic</h2>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+   <span class="kt">float</span>  <span class="n">value</span><span class="p">;</span>
+   <span class="kt">char</span>   <span class="o">*</span><span class="n">name</span><span class="p">;</span>        
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="ivarlists">ivarlists</h2>
+
+<p>In C, you declare a <code class="language-plaintext highlighter-rouge">struct</code> type to define the layout of a block of memory,
+say like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">CGPoint</span>
+<span class="p">{</span>
+   <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+   <span class="kt">float</span>  <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So you can have a <code class="language-plaintext highlighter-rouge">struct CGPoint *</code> pointer, pointing to a memory area and
+access the <strong>x</strong> and <strong>y</strong> fields.
+Furthermore you can access the next struct by just incrementing the pointer:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   .       .
+   +---+------+   &lt;----  pointer
+   |  0| x    |
+   +---+------+
+   |  4| y    |
+   +...+......+   &lt;----  pointer + 1
+   .  8| x    .
+   +...+......+
+   . 12| y    .
+   +...+......+
+   .       .
+</code></pre></div></div>
+
+<p>An <code class="language-plaintext highlighter-rouge">@interface</code> declaration is quite like a <code class="language-plaintext highlighter-rouge">struct</code> declaration as it defines the memory layout of its instances. In the runtime, this information is kept
+in <strong>ivarlists</strong> which contain  <strong>ivars</strong>:</p>
+
+<p>This source code:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">CGPoint</span>   <span class="c1">// `struct` and `@interface` have separate namespaces</span>
+<span class="p">{</span>                    <span class="c1">// so `struct CGPoint` and a CGPoint class can coexist</span>
+<span class="k">@public</span>
+   <span class="kt">float</span>  <span class="n">x</span><span class="p">;</span>
+   <span class="kt">float</span>  <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span> 
+
+<span class="k">@implementation</span> <span class="nc">CGPoint</span>
+<span class="k">@end</span> 
+</code></pre></div></div>
+
+<p>creates this runtime data:</p>
+
+<p><a href="images/CGPoint-ivars.svg"><img src="images/CGPoint-ivars.svg" alt="Instance variables" /></a></p>
+
+<p>An <em>infraclass</em> will always have an <strong>ivarslist</strong>, even if it’s empty.</p>
+
+<h2 id="ivars">Ivars</h2>
+
+<p>This is the information you can get from an <strong>ivar</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ivarid</code></td>
+      <td>id (hash) of the ivar name for lookup. Tip: use <code class="language-plaintext highlighter-rouge">@selector( name)</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>name of the instance variable</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">signature</code></td>
+      <td>type in <a href="https://nshipster.com/type-encodings"><code class="language-plaintext highlighter-rouge">@encode</code></a> format, describes the data type</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">offset</code></td>
+      <td>byte offset from start of ivars section. First ivar starts at 0, each subsequent ivar follows based on its size</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">@public</code> keyword allows direct access to the instance variables, 
+like you would with a <code class="language-plaintext highlighter-rouge">struct</code>. So you access them the same:</p>
+
+<div class="language-objective-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span>    <span class="nf">print</span><span class="p">(</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="k">struct</span> <span class="n">CGPoint</span> <span class="o">*</span><span class="n">q</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%f,%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">);</span>
+   <span class="n">printf</span><span class="p">(</span> <span class="s">"%f,%f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Without <code class="language-plaintext highlighter-rouge">@public</code>, the instance variables become <code class="language-plaintext highlighter-rouge">@protected</code> and inaccessible
+from the compiler outside of an <code class="language-plaintext highlighter-rouge">@implemenation</code> block.</p>
+
+<p>The memory layout of an instance looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        .               .
+header: +---|-------------+
+        |-24| thread      |
+        +---|-------------+
+        |-16| retainCount |
+        +---|-------------+
+        | -8| isa         |
+ivars:  +---|-------------+  &lt;----  pointer to CGPoint instance
+        |  0| x           |
+        +---|-------------+
+        | +4| y           |
+        +---|-------------+
+        .               .  
+</code></pre></div></div>
+
+<p>Do not use pointer arithmetic on an Objective-C object though, as the 
+hidden object header will not be factored in by the compiler.</p>
+
+<hr />
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCObjectSetIvar</code></td>
+      <td>Set raw ivar value by copying bytes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_MulleObjCObjectGetIvar</code></td>
+      <td>Get raw ivar value by copying bytes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectGetObjectIvar</code></td>
+      <td>Get object ivar with proper retain/release semantics</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSetObjectIvar</code></td>
+      <td>Set object ivar with proper retain/release semantics</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MulleObjCObjectSetDuplicatedUTF8String</code></td>
+      <td>Set string ivar with memory management (duplicates string)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Types</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mulle_atomic_id_t</code></td>
+      <td>Type for atomic object references</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><summary type="html"><![CDATA[Syntax topic]]></summary></entry></feed>

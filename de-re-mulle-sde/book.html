@@ -1,0 +1,2047 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- seems to be needed -->
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+<title>De Re mulle-sde</title>
+
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="De Re mulle-sde">
+
+<meta name="twitter:site" content="@mulle_nat">
+<meta name="twitter:creator" content="@mulle_nat">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/features/book.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="De Re mulle-sde">
+
+<meta property="og:url" content="https://www.mulle-kybernetik.com/book.html">
+<meta property="og:site_name" content="De Re mulle-sde">
+
+<meta property="og:image" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/features/book.png">
+
+<meta property="og:logo" content="https://www.mulle-kybernetik.com/de-re-mulle-sde/images/logo.png">
+
+
+
+<link href="/de-re-mulle-sde/atom.xml" type="application/atom+xml" rel="alternate" title="De Re mulle-sde Feed">
+<link href="/de-re-mulle-sde/index.rdf" type="application/rss+xml" rel="alternate" title="De Re mulle-sde Feed">
+
+
+<link rel="canonical" href="https://www.mulle-kybernetik.com/book.html">
+
+
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/skeleton.css">
+
+<!-- Code Color
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/monokai.css">
+
+<!-- Site custom css -->
+<link rel="stylesheet" href="css/custom.css">
+
+<!-- local FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="stylesheet" href="css/junction.css">
+
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link rel="icon" type="image/svg" href="images/favicon.svg">
+
+<!-- This tag allows for activation of ClearType in Mobile IE for smoothing fonts.-->
+<meta http-equiv="cleartype" content="on">
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+
+
+</head>
+<body class="post">
+
+
+<div class="container">
+   <div class="row">
+      <div id="post-first" class="twelve columns">
+         <div class="title">
+            <div>
+               <h2>De Re mulle-sde&nbsp;<div style="font-size:10px; display: inline-block;">1.1.0</div>&nbsp;&nbsp;<a href="feed.xml"><img class="inline-img" src="/de-re-mulle-sde/images/feed-icon-28x28.png"></a></h2>
+               <h7></h7>
+            </div>
+            <h6>© 2022-2024 by Nat!, Mulle kybernetiK. All rights reserved.</h6>
+            <p>
+         </div> <!-- title -->
+
+         <div id="main" role="main">
+         
+             <h1>Intro</h1>
+             <h2 id="is-mulle-sde-an-ide-">Is mulle-sde an IDE ?</h2>
+
+<p>According to <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Wikipedia</a>
+“an IDE normally consists of at least a source code
+editor, build automation tools and a debugger.” Looking at a typical IDE like
+Visual Studio, its easy to identify the “Editor” (the “CalculatorTutorial.cpp”
+pane), a “Debugger/Terminal” (the “Output” pane) and the project manager
+(the “Solution Explorer” pane) all integrated into a single window.</p>
+
+<p><img src="images/vs2019.png" alt="Visual Studio" /></p>
+
+<p>For me, the “Editor” is not the best editor available, the “Terminal” is not the
+best terminal available, the “Solution Explorer” is not the best explorer
+available. An IDE is an integration of compromises.</p>
+
+<p><a href="//github.com/mulle-sde">mulle-sde</a> has no editor or debugger. It doesn’t
+integrate, it leaves the tool choices up to me. So it’s not an IDE -
+it’s a software development  environment (SDE). It is a meta-build tool,
+a project compositor, a virtual environment, a template generator and much
+more. It can be used inside IDEs though.</p>
+
+<h2 id="install-mulle-sde">Install mulle-sde</h2>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> has the
+instructions on how to install mulle-sde. There are packages, script installers
+and a Dockerfile. For a quick start the script method is the easiest
+cross-platform method, which installs everything in your ${HOME} directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-O</span> <span class="s1">'https://raw.githubusercontent.com/mulle-sde/mulle-sde/release/bin/installer-all'</span> <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nb">chmod </span>755 installer-all <span class="o">&amp;&amp;</span> <span class="se">\</span>
+<span class="nv">SDE_PROJECTS</span><span class="o">=</span><span class="s2">"mulle-sde-developer;latest"</span> ./installer-all <span class="s2">"</span><span class="k">${</span><span class="nv">HOME</span><span class="k">}</span><span class="s2">"</span> no
+</code></pre></div></div>
+
+<p>Files will end up in <code class="language-plaintext highlighter-rouge">~/bin</code> and <code class="language-plaintext highlighter-rouge">~/libexec</code> and <code class="language-plaintext highlighter-rouge">~/share</code>.</p>
+
+<p>The basic mulle-sde system knows about C and C++ only. To support other
+languages and frameworks, you’d need additional developer packages like
+<a href="//github.com/mulle-objc/mulle-objc-developer">mulle-objc-developer</a>
+or <a href="//github.com/MulleFoundation/foundation-developer">foundation-developer</a>
+for <a href="//mulle-objc.github.io">mulle-objc</a></p>
+
+<p>But for the scope of this pamphlet though, it will be <em>mulle-sde-developer</em>
+and C projects only.</p>
+
+<h2 id="study-a-use-case-">Study a use case 🆕</h2>
+
+<ul>
+  <li>Manage the dependencies of an <a href="existing-makefile.html">existing Makefile project</a></li>
+</ul>
+
+<h2 id="the-fork-in-the-road">The fork in the road</h2>
+
+<p>Here the intro comes to a fork in the road. Choose your direction, depending on
+how you want to use  mulle-sde:</p>
+
+<ul>
+  <li>as a <a href="virtual-env.html">virtual environment</a></li>
+  <li>as a <a href="template.html">template generator</a></li>
+  <li>as a <a href="compositor.html">project compositor</a></li>
+  <li>as a <a href="builder.html">dependency fetcher and builder</a></li>
+  <li>as a <a href="makefile.html">Makefile maintainer</a></li>
+  <li>as a <a href="test+coverage.html">test suite with coverage</a> 🆕</li>
+  <li>as a <a href="definition.html">definition isolator</a></li>
+</ul>
+
+<p>A full mulle-sde project encompasses all these concepts.</p>
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>🔶 Manage a Makefile project 🆕</h1>
+             <p>While mulle-sde is most powerful, when setting up new projects, it can also
+be usefully employed, with an existing project. To illustrate this, a small
+demo project is created and then lightly adapted to work seamlessly with
+mulle-sde.</p>
+
+<h2 id="setup-of-the-demo-project">Setup of the demo project</h2>
+
+<blockquote>
+  <p>It’s going to be a C based <code class="language-plaintext highlighter-rouge">make</code> project, if that doesn’t interest you and
+you prefer <code class="language-plaintext highlighter-rouge">cmake</code> or <code class="language-plaintext highlighter-rouge">meson</code>, you can skip to
+<a href="#Employ-mulle-sde-to-get-the-custom-library">Employ mulle-sde to get the custom library</a>
+and continue from there.</p>
+</blockquote>
+
+<h3 id="let-ai-create-a-demo-makefile">Let AI create a demo Makefile</h3>
+
+<p>Let an AI (like <a href="https://phind.com">ChatGPT</a>) create a simple
+<code class="language-plaintext highlighter-rouge">Makefile</code> for an executable, in a form that could be considered somewhat
+standard <sup><a href="#footnote1">[1]</a></sup>:</p>
+
+<pre><code class="language-Makefile"># Compiler and linker flags
+CC = gcc
+CFLAGS = -Wall -Wextra
+LDFLAGS = -L/path/to/lib -lmulle-core
+INCLUDES = -I/path/to/includes
+
+# Variables for installation prefixes, extra include directories, and library directories
+PREFIX = /usr/local
+INCDIR = $(PREFIX)/include
+LIBDIR = $(PREFIX)/lib
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(SRCS:.c=.o)
+EXECUTABLE = my.exe
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) $(LDFLAGS) $(INCLUDES) -o $@ $^
+
+# Rule for building the object files
+%.o: %.c
+   $(CC) $(CFLAGS) $(INCLUDES) -c $&lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp libmulle-core.so $(LIBDIR)
+
+# Clean target
+clean:
+   rm -f $(OBJS) $(EXECUTABLE)
+</code></pre>
+
+<h3 id="let-ai-create-demo-content">Let AI create demo content</h3>
+
+<p>I am not sure why the AI wants a header for an executable, but lets play
+along anyway <sup><a href="#footnote2">[2]</a></sup>:</p>
+
+<p>For <code class="language-plaintext highlighter-rouge">my.h</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#ifndef MY_H
+#define MY_H
+</span>
+<span class="kt">void</span> <span class="nf">print_message</span><span class="p">();</span>
+
+<span class="cp">#endif </span><span class="cm">/* MY_H */</span><span class="cp">
+</span></code></pre></div></div>
+
+<p>For <code class="language-plaintext highlighter-rouge">my.c</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"my.h"</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">print_message</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For <code class="language-plaintext highlighter-rouge">other.c</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">"my.h"</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">print_message</span><span class="p">();</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>AI: In this example, <code class="language-plaintext highlighter-rouge">my.h</code> is a header file that declares a function prototype for
+<code class="language-plaintext highlighter-rouge">print_message()</code>. <code class="language-plaintext highlighter-rouge">my.c</code> is a source file that defines <code class="language-plaintext highlighter-rouge">print_message()</code>, and
+<code class="language-plaintext highlighter-rouge">other.c</code> is another source file that uses <code class="language-plaintext highlighter-rouge">print_message()</code>.</em></p>
+
+<h2 id="employ-mulle-sde">Employ mulle-sde</h2>
+
+<h3 id="build-project-with-mulle-make">Build project with mulle-make</h3>
+
+<p>Run <strong><code class="language-plaintext highlighter-rouge">mulle-make</code></strong> instead of plain <code class="language-plaintext highlighter-rouge">make</code>. What’s the advantage ?
+<code class="language-plaintext highlighter-rouge">mulle-make</code> will automatically create a suitable <code class="language-plaintext highlighter-rouge">-j</code> argument to
+parallelize the build. Also the output of make will be logged separately into
+a log file in a <code class="language-plaintext highlighter-rouge">build</code> folder for later perusal with (<code class="language-plaintext highlighter-rouge">mulle-make log</code>).</p>
+
+<p>We do error out though, because <code class="language-plaintext highlighter-rouge">-lmulle-core</code> isn’t installed yet (usually):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-make
+collect2: error: ld returned 1 <span class="nb">exit </span>status
+make: <span class="k">***</span> <span class="o">[</span>Makefile:25: my.exe] Fehler 1
+/usr/bin/ld: <span class="nt">-lmulle-core</span> kann nicht gefunden werden: Datei oder Verzeichnis nicht gefunden
+collect2: error: ld returned 1 <span class="nb">exit </span>status
+make: <span class="k">***</span> <span class="o">[</span>Makefile:25: my.exe] Fehler 1
+mulle-make fatal error: make failed with 2 <span class="o">(</span>/tmp/xya<span class="o">)</span>
+</code></pre></div></div>
+
+<p>As an intermediate step though, before fixing the link error, it would be
+nicer, if all <code class="language-plaintext highlighter-rouge">.o</code> files would also end up in the
+<code class="language-plaintext highlighter-rouge">build</code> folder, so we get parts of the Makefile rewritten by the AI <sup><a href="#footnote3">[3]</a></sup> too:</p>
+
+<pre><code class="language-Makefile">...
+
+# Build directory
+BUILD_DIR = build
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+EXECUTABLE = my.exe
+
+...
+
+# Clean target
+clean:
+   rm -rf $(BUILD_DIR) $(EXECUTABLE)
+</code></pre>
+
+<p>Now let’s get the <code class="language-plaintext highlighter-rouge">-lmulle-core</code> working.</p>
+
+<h3 id="employ-mulle-sde-to-get-the-custom-library">Employ mulle-sde to get the custom library</h3>
+
+<p>To get dependencies (third party libraries) happening, we need to initialize
+this project for <strong>mulle-sde</strong>. This will add a <code class="language-plaintext highlighter-rouge">.mulle</code> folder to the project.
+As the project already exists, we use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init none
+</code></pre></div></div>
+<p>The project type ‘none’ will add no additional files outside of the <code class="language-plaintext highlighter-rouge">.mulle</code>
+folder and mulle-sde will not attempt to build the main project.</p>
+
+<p>Now we will link our executable with <a href="htts://github.com/mulle-core/mulle-core">mulle-core</a>.
+mulle-core is nice for demo purposes, because its known to work :) But you can
+try out non-mulle libraries as well. If they use <code class="language-plaintext highlighter-rouge">autoconf</code> or <code class="language-plaintext highlighter-rouge">cmake</code>, chances
+are good, that they work without tweaks.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde add github:mulle-core/mulle-core  <span class="c"># add .tar suffix to fetch archives</span>
+</code></pre></div></div>
+
+<blockquote>
+  <h4 id="what-can-be-added-">What can be added ?</h4>
+
+  <p>In principle anything can be added that is based on <code class="language-plaintext highlighter-rouge">cmake</code> or <code class="language-plaintext highlighter-rouge">autoconf</code>.
+<code class="language-plaintext highlighter-rouge">meson</code> and <code class="language-plaintext highlighter-rouge">make</code> projects can work too. Everything can be made to fit
+using additional script though. It needn’t be hosted on github, though
+github is best supported.</p>
+</blockquote>
+
+<p>So <strong>mulle-sde</strong> should have cloned the <code class="language-plaintext highlighter-rouge">mulle-core</code> repository from github
+and already compiled it. But where is it ? It’s in the <code class="language-plaintext highlighter-rouge">dependency/Debug</code>
+folder. A release build would end up in the root of the <code class="language-plaintext highlighter-rouge">dependency</code> (with
+default settings). That’s more conventional, so lets do a “Release” build
+instead and remove the <code class="language-plaintext highlighter-rouge">dependency/Debug</code> folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde clean tidy
+mulle-sde <span class="nt">-v</span> craft <span class="nt">--release</span>  <span class="c"># use the -v flag to see log during build</span>
+</code></pre></div></div>
+
+<p>Now we have to adjust the <code class="language-plaintext highlighter-rouge">Makefile</code> so that the include and library
+directories in <code class="language-plaintext highlighter-rouge">dependency</code> are found <sup><a href="#footnote4">[4]</a></sup>:</p>
+
+<pre><code class="language-Makefile">...
+
+DEPENDENCY_DIR = dependency
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) -L$(DEPENDENCY_DIR)/lib -lmulle-core -I$(DEPENDENCY_DIR)/include -o $@ $^
+
+# Rule for building the object files
+$(BUILD_DIR)/%.o: %.c
+   $(CC) $(CFLAGS) -I$(DEPENDENCY_DIR)/include -c $&lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp $(DEPENDENCY_DIR)/lib/libmulle-core.so $(LIBDIR)
+
+...
+</code></pre>
+
+<p>I am not a super-fan of the way the AI coded this, but fine enough.
+Lets run <code class="language-plaintext highlighter-rouge">mulle-make</code> again, and there should be a <code class="language-plaintext highlighter-rouge">my.exe</code> in the project
+directory.</p>
+
+<h3 id="tie-mulle-make-and-mulle-sde-together">Tie mulle-make and mulle-sde together</h3>
+
+<p>Now we have <code class="language-plaintext highlighter-rouge">mulle-sde craft</code> to build the dependency and <code class="language-plaintext highlighter-rouge">mulle-make</code> to
+build the project. Lets tie both together, so that <code class="language-plaintext highlighter-rouge">mulle-sde craft</code> can
+do both.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># turn on main project builds</span>
+mulle-sde <span class="nb">env</span> <span class="nt">--project</span> remove MULLE_SDE_CRAFT_TARGET
+mulle-sde <span class="nb">env</span> <span class="nt">--project</span> <span class="nb">set </span>PROJECT_TYPE <span class="s1">'executable'</span>
+<span class="c"># ensure that dependency is built 'Release'</span>
+mulle-sde <span class="nb">env</span> <span class="nt">--this-user</span> <span class="nb">set </span>MULLE_SDE_CRAFTORDER_STYLE <span class="s1">'Release'</span>
+</code></pre></div></div>
+
+<p>Now the project can be built with <code class="language-plaintext highlighter-rouge">mulle-sde</code>. But can it still be built
+on remote systems, where there is only a make and mulle-core installed but no
+mulle-sde ?</p>
+
+<p>Yes, with a little tweak of the <code class="language-plaintext highlighter-rouge">Makefile</code> <sup><a href="#footnote3">[5]</a></sup>:</p>
+
+<pre><code class="language-Makefile"># Compiler and linker flags
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+# Variables for installation prefixes, extra include directories, and library directories
+PREFIX = /usr/local
+INCDIR = $(PREFIX)/include
+LIBDIR = $(PREFIX)/lib
+
+# Build directory
+BUILD_DIR = build
+
+# Dependency directory
+DEPENDENCY_DIR = dependency
+
+# Library and include directories
+LIB_DIR = $(DEPENDENCY_DIR)/lib
+INC_DIR = $(DEPENDENCY_DIR)/include
+
+# Check if the dependency directory exists
+ifeq ($(wildcard $(DEPENDENCY_DIR)),$(DEPENDENCY_DIR))
+   LIB_DIR = $(DEPENDENCY_DIR)/lib
+   INC_DIR = $(DEPENDENCY_DIR)/include
+else
+   LIB_DIR = /usr/lib
+   INC_DIR = /usr/include
+endif
+
+# Source and object files
+SRCS = my.c other.c
+OBJS = $(addprefix $(BUILD_DIR)/, $(SRCS:.c=.o))
+EXECUTABLE = my.exe
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule for building the executable
+$(EXECUTABLE): $(OBJS)
+   $(CC) -L$(LIB_DIR) -lmulle-core -I$(INC_DIR) -o $@ $^
+
+# Rule for building the object files
+$(BUILD_DIR)/%.o: %.c
+   $(CC) $(CFLAGS) -I$(INC_DIR) -c $&lt; -o $@
+
+# Install target
+install: $(EXECUTABLE)
+   cp $(EXECUTABLE) $(PREFIX)/bin
+   cp my.h $(INCDIR)
+   cp $(LIB_DIR)/libmulle-core.so $(LIBDIR)
+
+# Clean target
+clean:
+   rm -rf $(BUILD_DIR) $(EXECUTABLE)
+</code></pre>
+
+<p>The AI changed things around for the better IMO.</p>
+
+<p>Now we are done:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde craft <span class="nt">--clean-all</span>
+</code></pre></div></div>
+
+<p>and that’s what you should be seeing:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Clean</span> <span class="n">all</span>
+<span class="no">Creating</span> <span class="n">xya</span> <span class="n">craftorder</span>
+<span class="no">Let</span> <span class="n">cmake</span><span class="o">/</span><span class="n">ninja</span> <span class="k">do</span> <span class="n">a</span> <span class="no">Release</span> <span class="n">build</span> <span class="n">of</span> <span class="n">mulle</span><span class="o">-</span><span class="n">core</span> <span class="o">...</span>
+<span class="no">Let</span> <span class="n">make</span><span class="o">/</span><span class="n">make</span> <span class="k">do</span> <span class="n">a</span> <span class="no">Debug</span> <span class="n">build</span> <span class="n">of</span> <span class="n">xya</span> <span class="o">.</span>
+</code></pre></div></div>
+
+<p>The intermediate build files are no longer in <code class="language-plaintext highlighter-rouge">build</code>, instead the build is now
+done also in <code class="language-plaintext highlighter-rouge">kitchen</code> where the temporary <code class="language-plaintext highlighter-rouge">mulle-core</code> object files (and logs)
+are placed. So <code class="language-plaintext highlighter-rouge">build</code> is unused now and can be removed.</p>
+
+<h2 id="spruce-up-the-project-with-personal-preferences">Spruce up the project with personal preferences</h2>
+
+<h3 id="use-shell-aliases-to-reduce-type-work">Use shell aliases to reduce type-work</h3>
+
+<p>As one will by typing <code class="language-plaintext highlighter-rouge">mulle-sde craft</code> a lot, create aliases like these:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">sde</span><span class="o">=</span><span class="sb">`</span>mulle-sde<span class="sb">`</span>
+<span class="nb">alias </span><span class="nv">c</span><span class="o">=</span><span class="sb">`</span>mulle-sde craft<span class="sb">`</span>
+</code></pre></div></div>
+
+<h3 id="separate-release-and-debug-directories-in-dependency">Separate Release and Debug directories in <code class="language-plaintext highlighter-rouge">dependency</code></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nb">env</span> <span class="nt">--this-user</span> <span class="nb">set </span>MULLE_CRAFT_DISPENSE_STYLE <span class="s1">'strict'</span>
+</code></pre></div></div>
+
+<p>or do the opposite and use dispense style <code class="language-plaintext highlighter-rouge">none</code> to also not create a <code class="language-plaintext highlighter-rouge">Debug</code>
+directory.</p>
+
+<h3 id="get-stash-kitchen-dependency-out-of-the-way">Get <code class="language-plaintext highlighter-rouge">stash</code>, <code class="language-plaintext highlighter-rouge">kitchen</code>, <code class="language-plaintext highlighter-rouge">dependency</code> out of the way</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDEs</a> who
+employ indexing, slow down a lot, when they encounter directories with build
+products and third party sources. There is an easy way, to move mulle-sde
+directories out of the project.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde clean tidy
+<span class="nb">rm</span> <span class="nt">-rf</span> kitchen stash dependency
+<span class="nv">uuid</span><span class="o">=</span><span class="sb">`</span>uuidgen<span class="sb">`</span>
+mulle-sde <span class="nb">env</span> <span class="nt">--this-host</span> <span class="nb">set </span>DEPENDENCY_DIR <span class="s1">'${HOME}/.mulle/var/${PROJECT_NAME}-'</span><span class="k">${</span><span class="nv">uuid</span><span class="k">}</span><span class="s1">'/dependency'</span>
+mulle-sde <span class="nb">env</span> <span class="nt">--this-host</span> <span class="nb">set </span>KITCHEN_DIR <span class="s1">'${HOME}/.mulle/var/${PROJECT_NAME}-'</span><span class="k">${</span><span class="nv">uuid</span><span class="k">}</span><span class="s1">'/kitchen'</span>
+mulle-sde <span class="nb">env</span> <span class="nt">--this-host</span> <span class="nb">set </span>MULLE_SOURCETREE_STASH_DIR <span class="s1">'${HOME}/.mulle/var/${PROJECT_NAME}-'</span><span class="k">${</span><span class="nv">uuid</span><span class="k">}</span><span class="s1">'/stash'</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>To guard against clashes with duplicate projects of the same name, use an
+<a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a> in the
+directory path:</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">Makefile</code> should now get the value from mulle-sde either via <code class="language-plaintext highlighter-rouge">MULLE_SDK_PATH</code>,
+which will be provided as an argument, or we could be asking:
+<code class="language-plaintext highlighter-rouge">mulle-sde dependency-dir</code>:</p>
+
+<pre><code class="language-Makefile">MULLE_SDK_PATH ?=
+
+# Dependency directory
+DEPENDENCY_DIR := $(shell echo $(MULLE_SDK_PATH) | cut -d':' -f1)
+</code></pre>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>So what was gained ?</p>
+
+<ul>
+  <li>project users can fetch dependencies and build and project in one step</li>
+  <li>dependencies don’t clutter or conflict with the system or other projects</li>
+  <li>the possibility of having “build local” environment variables like CC defined</li>
+  <li>more opportunities await, as there is a lot more to uncover about mulle-sde</li>
+</ul>
+
+<p>With one dependency, you might shrug it off, but the more dependencies your
+project has, the more useful mulle-sde will become.</p>
+
+<hr />
+<h4 id="ai-prompts">AI Prompts</h4>
+
+<p><a name="myfootnote1">[1]</a><code class="language-plaintext highlighter-rouge">You are a C and Unix expert. Write me
+a Makefile with common conventions that maintains an executable "my.exe" which
+links against a custom library "-lmulle-core" library. We need all and install and
+clean targets as well. Also need some variables for installation prefixes,
+extra include directories and library directories.</code></p>
+
+<p><a name="myfootnote2">[2]</a> <code class="language-plaintext highlighter-rouge">Please provide some demo content
+for the files in that Makefile: my.h, my.c, other.c.</code></p>
+
+<p><a name="myfootnote3">[3]</a> <code class="language-plaintext highlighter-rouge">Can we change OBJS = $(SRCS:.c=.o) so
+that the output lands in a "build" folder ?</code></p>
+
+<p><a name="myfootnote4">[4]</a> <code class="language-plaintext highlighter-rouge">The /path/to/ is really a local
+folder called "dependency", and the header directory in there is called
+"include" not "includes". Please use an additional variable so we can move
+"dependency" around.</code></p>
+
+<p><a name="myfootnote5">[5]</a> <code class="language-plaintext highlighter-rouge">Please modify the Makefile so that,
+if there is no dependency folder in the project, that the default system /usr
+is searched.</code></p>
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>🌳 Virtual Environment</h1>
+             <p><a href="//en.wikipedia.org/wiki/Environment_variable">Environment variables</a> are used
+by mulle-sde to store project related information, like the programming
+language to use, the place to search for dependencies and so on.
+If one were to use the global shell environment (setup by a <code class="language-plaintext highlighter-rouge">.bashrc</code> or
+<code class="language-plaintext highlighter-rouge">.profile</code> file) for these environment variables, this wouldn’t go very far, as
+different projects would interfere with each other.</p>
+
+<p>Therefore mulle-sde provides a custom environment. In it, unwanted environment
+settings are hidden and desired settings are added. Furthermore these
+<strong>environment settings can be specific</strong> to a certain <strong>platform</strong> or
+<strong>host</strong> or <strong>user</strong>.</p>
+
+<h3 id="a-clean-environement-for-consistent-builds">A clean environement for consistent builds</h3>
+
+<p>Differences in environment variable values between different developers or
+computers are a source of subtle and hard to find bugs like “Why is the sort
+order different on this machine ?” Development in a consistent environment is
+a time saver.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<p>Let’s create a virtual environment in a demo folder “foo”. The virtual
+environment will have a certain <em>style</em> called <code class="language-plaintext highlighter-rouge">none/inherit</code>, which filters
+out most environment variables. It will leave the <code class="language-plaintext highlighter-rouge">PATH</code> variable intact though.
+The command <code class="language-plaintext highlighter-rouge">mulle-sde init -d foo -s none/inherit none</code> will do
+all of that:</p>
+
+<p><img src="images/environment-initial.png" alt="Initial Environment" /></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">mulle-sde env</code> command shows the environment variables, that
+are added by the virtual environment configuration. These environment variables
+are grouped by <em>scope</em> (see below). The complete environment, as available
+to the commands running in the virtual environment, can be seen with:
+<code class="language-plaintext highlighter-rouge">mulle-sde run env | sort</code>. <code class="language-plaintext highlighter-rouge">mulle-sde run</code> executes a single command inside
+the virtual environment. You can also get an interactive shell with just
+<code class="language-plaintext highlighter-rouge">mulle-sde</code>.</p>
+
+<blockquote>
+  <p>The “foo” folder will appear empty as the virtual environment is stored in
+a hidden <code class="language-plaintext highlighter-rouge">.mulle</code> folder. If mulle-sde finds  no <code class="language-plaintext highlighter-rouge">.mulle</code> folder in the
+current directory, a search is made, to find the nearest enclosing virtual
+environment. Thus you can execute mulle-sde commands, wherever you are
+inside the project.</p>
+</blockquote>
+
+<h2 id="scopes">Scopes</h2>
+
+<p>Environment variables in mulle-sde are scoped. There is a certain order in
+which they are defined, so that settings can inherit or override previous
+setting. For example a mulle-sde plugin may specify a default executable
+<code class="language-plaintext highlighter-rouge">FOO_EXE=foo</code>. But you may need a different tool on macOS. So you specify for
+macOS: <code class="language-plaintext highlighter-rouge">mulle-sde env --os darwin set FOO_EXE bar</code>.
+This value will then override the plugin value on macOS only.</p>
+
+<blockquote>
+  <p>How do you know that you need to use “darwin” on macOS ? Run
+<code class="language-plaintext highlighter-rouge">mulle-sde uname</code> to get the short identifier for the current platform.</p>
+</blockquote>
+
+<p>The scopes, in order of them being read, are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scope</th>
+      <th>Read/Write</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hardcoded</code></td>
+      <td>NO</td>
+      <td>Variables needed by mulle-sde scripts.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugin</code></td>
+      <td>NO</td>
+      <td>Variables added by the chosen plugin (see Tool-style).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plugin-os-&lt;uname&gt;</code></td>
+      <td>NO</td>
+      <td>Variables added by the chosen plugin for specific platforms.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">project</code></td>
+      <td>YES</td>
+      <td>Project specific variables. Usually set once and rarely changed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">global</code></td>
+      <td>YES</td>
+      <td>Global project tweaks. This is the default scope for many commands.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">os-&lt;uname&gt;</code></td>
+      <td>YES</td>
+      <td>Platform specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">host-&lt;hostname&gt;</code></td>
+      <td>YES</td>
+      <td>Host specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">user-&lt;username&gt;</code></td>
+      <td>YES</td>
+      <td>User specific tweaks.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">post-global</code></td>
+      <td>YES</td>
+      <td>Globally incorporate changes from site/user/host tweaks.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The order is important, for example <code class="language-plaintext highlighter-rouge">host-&lt;hostname&gt;</code> variables can override
+<code class="language-plaintext highlighter-rouge">os-&lt;uname&gt;</code> variables. They can also expand them.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde <span class="nb">env</span> <span class="nt">--this-os</span> <span class="nb">set </span>X_PATH <span class="s1">'a:b'</span>
+<span class="nv">$ </span>mulle-sde <span class="nb">env</span> <span class="nt">--this-host</span> <span class="nb">set </span>X_PATH <span class="s1">'${X_PATH}:c'</span>
+<span class="nv">$ </span>mulle-sde <span class="nb">env </span>get <span class="nt">--output-eval</span> X_PATH
+a:b:c
+</code></pre></div></div>
+
+<p>Can you add more scopes ? Yes.</p>
+
+<blockquote>
+  <h4 id="note">Note</h4>
+
+  <p><code class="language-plaintext highlighter-rouge">global</code> settings are still local to the project environment. They are
+global, in that they always apply, no matter the platform, user, or host.</p>
+</blockquote>
+
+<h2 id="path-restrictions">PATH restrictions</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">PATH</code> environment variable is used to find commands to execute. With
+mulle-sde you can prune the <code class="language-plaintext highlighter-rouge">PATH</code> down, so that only a very basic set of
+commands is available. This way, your project won’t accidentally rely  on
+features, that are not present on other platforms. With the <code class="language-plaintext highlighter-rouge">mulle-sde tool add</code>
+command, you add commands that are necessary:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde tool add <span class="nt">--optional</span> cmake
+</code></pre></div></div>
+
+<p>You can differentiate between <em>required</em> and <em>optional</em> tools and you can
+have different tools for different platforms.</p>
+
+<h3 id="environment-styles">Environment Styles</h3>
+
+<p>Let’s get back to the
+<code class="language-plaintext highlighter-rouge">mulle-sde init -d foo -s none/inherit none</code> command and
+talk about the <code class="language-plaintext highlighter-rouge">none/inherit</code> style some more.  A style specifies in the first
+part the “tool style” (often provided by a “plugin”) and in the second part
+the “environment style”, also known as the “flavor”.</p>
+
+<p>Currently there are five known environment styles, ordered from
+restrictive to loose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Env-style</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">none</code></td>
+      <td>All environment variables must be user defined</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">restrict</code></td>
+      <td>Inherit some environment (like <code class="language-plaintext highlighter-rouge">SSH_TTY</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">relax</code></td>
+      <td>as “restrict” plus <code class="language-plaintext highlighter-rouge">/bin</code> and <code class="language-plaintext highlighter-rouge">/usr/bin</code> are available via <code class="language-plaintext highlighter-rouge">PATH</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">inherit</code></td>
+      <td>as “restrict”, but <code class="language-plaintext highlighter-rouge">PATH</code> is kept intact</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">wild</code></td>
+      <td>no restrictions</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tool-styles">Tool Styles</h3>
+
+<p>The four toolstyles are used to augment the basic environment styles <code class="language-plaintext highlighter-rouge">none</code> and
+<code class="language-plaintext highlighter-rouge">restrict</code> with a predefined set of tools. For mulle-sde development tool-style
+<code class="language-plaintext highlighter-rouge">mulle</code> will be the norm.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool-style</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">none</code></td>
+      <td>No additions to the tool list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">minimal</code></td>
+      <td>a minimal set of tools (like cd, ls)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">developer</code></td>
+      <td>a common set of tools (like cd, ls, awk, man)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mulle</code></td>
+      <td>Like developer but also adds mulle-sde tools</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Since the contents of <code class="language-plaintext highlighter-rouge">PATH</code> or <code class="language-plaintext highlighter-rouge">/bin</code> aren’t clearly defined and vary on a
+per host and per platform basis, <code class="language-plaintext highlighter-rouge">relax</code> and <code class="language-plaintext highlighter-rouge">inherit</code> are relatively blunt
+instruments. The tool styles based on <code class="language-plaintext highlighter-rouge">none</code> or <code class="language-plaintext highlighter-rouge">restrict</code> offer more fine
+grained control over the available tools.</p>
+
+<h2 id="breaking-out-of-the-environment">Breaking out of the environment</h2>
+
+<p>With <code class="language-plaintext highlighter-rouge">mudo</code> you can run commands with an unrestricted PATH from inside the
+virtual environment e.g. <code class="language-plaintext highlighter-rouge">mudo subl src/main.m</code>.</p>
+
+<h2 id="final-words">Final words</h2>
+
+<p>If virtual environments is all you need, you don’t need the full mulle-sde
+install but can use <a href="https://github.com/mulle-sde/mulle-env">mulle-env</a>
+instead, which is actually responsible for all the environment handling.</p>
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>🕋 Template generator</h1>
+             <p>mulle-sde has a template generator to create source files and populate new
+projects. But it can be useful in other scenarios. Here are three different
+examples:</p>
+
+<h2 id="example-create-a-serial-email">Example: Create a serial email</h2>
+
+<p>Lets create a little email template. In case we only have an email address of
+the recipient and no other information, we will address the recipient as
+“Friend”:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; serial-email.txt
+From: me@me.com
+To: &lt;|EMAIL|&gt;
+Subject: This is a personal email
+
+Dear &lt;|TITLE|&gt; &lt;|FIRSTNAME|&gt; &lt;|LASTNAME:-Friend|&gt;,
+
+Happy holidays!
+
+Yours
+	A friend
+.
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>If you read the previous chapter, you probably already guessed what’s coming
+next: we need some environment variables to fill the template.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">TITLE</span><span class="o">=</span><span class="s2">"Mr."</span>
+<span class="nb">export </span><span class="nv">FIRSTNAME</span><span class="o">=</span><span class="s2">"Joe"</span>
+<span class="nb">export </span><span class="nv">LASTNAME</span><span class="o">=</span><span class="s2">"Shmoe"</span>
+<span class="nb">export </span><span class="nv">EMAIL</span><span class="o">=</span><span class="s2">"joe.schmoe@shmoester-consult.gg"</span>
+</code></pre></div></div>
+
+<p>Now we can run <code class="language-plaintext highlighter-rouge">mulle-template -v generate serial-email.txt -</code> to
+get the filled out template:</p>
+
+<p><img src="images/template-email.png" alt="Email" /></p>
+
+<blockquote>
+  <p>To see the effect of the <code class="language-plaintext highlighter-rouge">&lt;|LASTNAME:-Friend|&gt;</code> default value, you must
+<code class="language-plaintext highlighter-rouge">unset LASTNAME</code>. An empty string still counts as value. (If you don’t like
+the <code class="language-plaintext highlighter-rouge">&lt;| |&gt;</code> tags, you can change them to anything, which doesn’t
+interfere with the other text).</p>
+</blockquote>
+
+<h2 id="example-a-boilerplate-c-project-from-templates">Example: A boilerplate C project from templates</h2>
+
+<p>Let’s create a simple C project template, with a Makefile:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>PROJECT_NAME
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; PROJECT_NAME/PROJECT_NAME.c
+#include &lt;stdio.h&gt;
+
+
+int  main( int argc, char *argv[])
+{
+   printf( "VfL Bochum 1848</span><span class="se">\n</span><span class="sh">");
+   return( 0);
+}
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; PROJECT_NAME/Makefile
+.PHONY: all
+
+all:  &lt;|PROJECT_NAME|&gt;
+
+&lt;|PROJECT_NAME|&gt;:  &lt;|PROJECT_NAME|&gt;.o
+
+clean:
+	rm &lt;|PROJECT_NAME|&gt; &lt;|PROJECT_NAME|&gt;.o  # must be TAB in front of rm
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Now with the template directory in place generate the C project with
+<code class="language-plaintext highlighter-rouge">mulle-template -DPROJECT_NAME=caramba generate PROJECT_NAME .</code>. You can define
+environment variables on the command line as well.</p>
+
+<p><img src="images/template-caramba.png" alt="C Project" /></p>
+
+<h2 id="example-a-script-file-from-a-template">Example: A script file from a template</h2>
+
+<p>mulle-sde ships with a number of file templates. More templates can be added
+with <em>extensions</em> (more on that later).
+For example <code class="language-plaintext highlighter-rouge">mulle-sde add foo.sh</code> creates a template generated shell script
+file “foo.sh” for use with
+<a href="/github.com/mulle-nat/mulle-bashfunctions">mulle-bashfunctions</a>.</p>
+
+<p>Here is how “foo.sh” looks like at the time of writing (contents are subject to
+change with general progress):</p>
+
+<pre><code class="language-txt">#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+#
+#
+#  foo.sh
+#  serial-letter
+#
+#  Copyright (c) 2022 Nat! - Mulle kybernetiK.
+#  All rights reserved.
+#
+#
+#  Redistribution and use in source and binary forms, with or without
+#  modification, are permitted provided that the following conditions are met:
+#
+#  Redistributions of source code must retain the above copyright notice, this
+#  list of conditions and the following disclaimer.
+#
+#  Redistributions in binary form must reproduce the above copyright notice,
+#  this list of conditions and the following disclaimer in the documentation
+#  and/or other materials provided with the distribution.
+#
+#  Neither the name of Mulle kybernetiK nor the names of its contributors
+#  may be used to endorse or promote products derived from this software
+#  without specific prior written permission.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+#  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+#  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+#  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+#  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#  POSSIBILITY OF SUCH DAMAGE.
+#
+
+
+[ "${TRACE}" = 'YES' -o "${FOO_TRACE}" = 'YES' ] \
+&amp;&amp; set -x  \
+&amp;&amp; : "$0" "$@"
+
+#
+# Versioning of this script
+#
+MULLE_EXECUTABLE_VERSION="0.0.0"
+
+
+foo::print_flags()
+{
+	echo "   -f    : force operation"
+
+	##
+	## ADD YOUR FLAGS DESCRIPTIONS HERE
+	##
+
+	options_technical_flags_usage \
+			  "      : "
+}
+
+
+foo::usage()
+{
+	[ $# -ne 0 ] &amp;&amp; log_error "$*"
+
+
+	cat &lt;&lt;EOF &gt;&amp;2
+Usage:
+	foo [flags]
+
+	##
+	## ADD YOUR USAGE DESCRIPTION HERE
+	##
+
+Flags:
+EOF
+	foo::print_flags | LC_ALL=C sort &gt;&amp;2
+
+	exit 1
+}
+
+
+foo::main()
+{
+	#
+	# simple option/flag handling
+	#
+	local OPTION_VALUE
+
+	while [ $# -ne 0 ]
+	do
+		if options_technical_flags "$1"
+		then
+			shift
+			continue
+		fi
+
+		case "$1" in
+			-f|--force)
+				MULLE_FLAG_MAGNUM_FORCE='YES'
+			;;
+
+			-h*|--help|help)
+				foo::usage
+			;;
+
+			--value)
+				[ $# -eq 1 ] &amp;&amp; match_list_usage "missing argument to $1"
+				shift
+
+				OPTION_VALUE="$1"
+			;;
+
+			--version)
+				printf "%s\n" "${MULLE_EXECUTABLE_VERSION}"
+				exit 0
+			;;
+
+
+			##
+			## ADD YOUR FLAGS HERE
+			##
+
+			-*)
+				foo::usage "Unknown flag \"$1\""
+			;;
+
+			*)
+				break
+			;;
+		esac
+
+		shift
+	done
+
+	options_setup_trace "${MULLE_TRACE}" &amp;&amp; set -x
+
+	##
+	## ADD YOUR CODE HERE
+	##
+	log_info "Does nothing, but will soon"
+}
+
+#
+# You can also use the function `call_with_flags`, which has been defined
+# during mulle-boot. It lets you call 'foo::main'
+# with FOO_FLAGS interposed.
+#
+# call_with_flags "foo::main" "${FOO_FLAGS}" "$@"
+
+foo::main "$@"
+</code></pre>
+
+<p>The BSD license header on top is taken from a file
+<code class="language-plaintext highlighter-rouge">~/.config/mulle/etc/sde/header.sh</code>, that is included by the template
+via a <code class="language-plaintext highlighter-rouge">&lt;|HEADER|&gt;</code> tag:</p>
+
+<blockquote>
+  <p>You can execute <code class="language-plaintext highlighter-rouge">mulle-sde add</code> anywhere. The “add” command does not require
+a virtual environment unlike most mulle-sde commands.</p>
+</blockquote>
+
+<h2 id="final-words">Final words</h2>
+
+<p>That is templating with mulle-sde. The most exciting feature is probably, the
+way that filenames are also subject to templating. The templating features
+are provided by <a href="//github.com/mulle-sde/mulle-template">mulle-template</a>, which
+can be used outside of mulle-sde.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>🌲 Project Compositor</h1>
+             <p>Project composition adds remote or local files (and directories) to
+a project. The project, as stored in a source code management sytem like git,
+would commonly <strong><em>not</em></strong> include these files. These files <em>would</em> typically be part
+of your build process (Makefile) though. So after a checkout, you need to run the
+project composition to complete the project complete.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<p>For project composition only the most barebones, unencumbered virtual
+environment is needed to store a few settings. On the assumption, that we are
+in the right place already, prepare the virtual environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">--no-post-init</span> <span class="nt">-s</span> none/wild none
+</code></pre></div></div>
+<p>As mulle-sde will not be used for building, its most convenient to use the
+<code class="language-plaintext highlighter-rouge">none/wild</code> environment style. This makes the virtual environment completely
+unencumbered.</p>
+
+<h3 id="add-a-license-file">Add a LICENSE file</h3>
+
+<p>With the <code class="language-plaintext highlighter-rouge">dependency add --embedded</code> command a LICENSE file will be downloaded
+from a remote source and placed into the project root at a later time:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add <span class="nt">--embedded</span> <span class="se">\</span>
+                         <span class="nt">--address</span> LICENSE <span class="se">\</span>
+                         https://www.gnu.org/licenses/gpl-3.0.txt
+</code></pre></div></div>
+
+<blockquote>
+  <p>If there was a <code class="language-plaintext highlighter-rouge">gpl-latest.txt</code>, we would be up to date with the latest
+GPL automatically.</p>
+</blockquote>
+
+<h3 id="add-some-source-code">Add some source code</h3>
+
+<p>Add a small hash library from the “mulle-c” project and place it into <code class="language-plaintext highlighter-rouge">src</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add <span class="se">\</span>
+   <span class="nt">--embedded</span> <span class="se">\</span>
+   <span class="nt">--address</span> src/farmhash <span class="se">\</span>
+   https://github.com/mulle-c/farmhash-c/archive/refs/tags/latest.tar.gz
+</code></pre></div></div>
+
+<h3 id="run-the-composition">Run the composition</h3>
+
+<p>With these dependency definitions in place, it’s now time to run
+<code class="language-plaintext highlighter-rouge">mulle-sde fetch</code> to compose the project.</p>
+
+<p><img src="images/composition-fetch.png" alt="" /></p>
+
+<p>To get rid of the embedded files, use <code class="language-plaintext highlighter-rouge">mulle-sde clean tidy</code>.  Project
+composition is fairly powerful. You can add and remove embedded dependencies
+and change their URLs at will. A new <code class="language-plaintext highlighter-rouge">mulle-sde fetch</code> will track the
+changes and synchronize your project.</p>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>If you don’t need any other functionality from mulle-sde, you can get project
+composition from <a href="//github.com/mulle-sde/mulle-sourcetree">mulle-sourcetree</a>
+only. You would not need to run <code class="language-plaintext highlighter-rouge">mulle-sde init</code> then.</p>
+
+<p>The fetching of archives and git repositories is done with
+<a href="//github.com/mulle-sde/mulle-fetch">mulle-fetch</a>. mulle-fetch relies on
+heuristics to save typework. This will work fine in common cases, but needs
+explicitness, when it fails. Nevertheless just having to type
+<code class="language-plaintext highlighter-rouge">mulle-fetch --github mulle-c mulle-container</code> to fetch a repository or
+<code class="language-plaintext highlighter-rouge">mulle-fetch https://github.com/mulle-c/mulle-buffer/archive/refs/tags/latest.tar.gz</code>
+to download and unpack a github tar link is handy.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>🚬 Fetch and build</h1>
+             <p>With <a href="compositor.html">project composition</a>
+one can embed third party code directly into a project. But often a project
+needs third party code, that builds separately, possibly with a different
+build system (say <em>autoconf</em> instead of <em>cmake</em>). More often than not this
+third party code is a github or gitlab repository, that needs to be downloaded
+and built. It will typically be a library to link the project against and
+one or more header files, which will be included in the project source code.</p>
+
+<p>mulle-sde will fetch these dependencies and will build them
+and install them into a local <code class="language-plaintext highlighter-rouge">dependency</code> folder. That way you have access
+to the headers and libraries in a uniform way.</p>
+
+<h2 id="quick-demo">Quick Demo</h2>
+
+<h3 id="setup">Setup</h3>
+
+<p>Mix and match a few dependencies:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dependency</th>
+      <th>Build System</th>
+      <th>SCM</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>zlib library</td>
+      <td>cmake</td>
+      <td>git</td>
+      <td>https://github.com/madler/zlib.git</td>
+    </tr>
+    <tr>
+      <td>bison</td>
+      <td>autoconf</td>
+      <td>tar</td>
+      <td>https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz</td>
+    </tr>
+    <tr>
+      <td>mulle-data</td>
+      <td>mulle-sde</td>
+      <td>zip</td>
+      <td>https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For dependency building only the most barebones, unencumbered virtual
+environment is needed to store a few settings. Lets create a new project
+“my-demo”, to be filled with the main code later on:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> my-demo <span class="nt">--no-post-init</span> <span class="nt">-s</span> none/wild none
+<span class="nb">cd </span>my-demo
+</code></pre></div></div>
+
+<p>Now add the first dependency, a git repository. Dependency order may be
+important, but it isn’t in this case.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://github.com/madler/zlib.git
+</code></pre></div></div>
+
+<p>From the URL, mulle-sde will try to figure out what it needs to do. Sometimes
+more information needs to be given with additional command line options,
+but not in this case.</p>
+
+<p><img src="images/dependency-zlib.png" alt="Zlib" /></p>
+
+<p>As this is a demo, we immediately hit the best case, which is that <em>zlib</em> is
+a known dependency, that has some documentation! The documentation is provided
+by the <a href="//github.com/craftinfo">craftinfo</a> repository.</p>
+
+<blockquote>
+  <p>Clearly the vision of the craftinfo repository is, that millions of developer
+work together in harmony on craftinfos, so that all possible
+dependencies can be added without effort. It’s not quite there yet though.</p>
+</blockquote>
+
+<p>Anyway let’s use the suggestions and continue:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency <span class="nb">set </span>zlib aliases z
+mulle-sde dependency <span class="nb">set </span>zlib include zlib.h
+</code></pre></div></div>
+
+<p>Now add the next dependency <em>bison</em>, which is a tar archive:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://ftp.halifax.rwth-aachen.de/gnu/bison/bison-3.8.2.tar.xz
+</code></pre></div></div>
+
+<p>And add <em>mulle-data</em>, which is a mulle-sde project in a zip archive:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency add https://github.com/mulle-c/mulle-data/archive/refs/tags/latest.zip
+</code></pre></div></div>
+
+<p><img src="images/dependency-bison-data.png" alt="Zlib" /></p>
+
+<h3 id="fetch-and-craft">Fetch and Craft</h3>
+
+<p>If the URLs are wrong or stale in some way, the fetch might not work. Otherwise
+there is no expectation of failure here:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde fetch
+</code></pre></div></div>
+
+<p><img src="images/dependency-fetch.png" alt="Zlib" /></p>
+
+<p>As mulle-data is a mulle-sde project, it can advertise its dependencies
+(mulle-c11). So dependencies of true mulle-sde dependencies will be fetched
+as well. Everything ends up in a directory named “stash”. The separate “fetch”
+step is not really necessary, as the craft step will fetch what is needed. So
+for demonstration let’s do it all over again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde clean tidy
+mulle-sde craft craftorder
+</code></pre></div></div>
+
+<p><img src="images/dependency-craft.png" alt="Zlib" /></p>
+
+<p>The contents of the <code class="language-plaintext highlighter-rouge">dependency/Debug</code> are analogous to the contents of
+a <code class="language-plaintext highlighter-rouge">/usr/local</code> folder, but local to your project:</p>
+
+<blockquote>
+  <p>Find the location of the <code class="language-plaintext highlighter-rouge">dependency</code> folder with <code class="language-plaintext highlighter-rouge">mulle-sde dependency-dir</code>,
+if you can’t find it in your project.</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tree -L 3 dependency
+dependency/
+├── Debug
+│   ├── bin
+│   │   ├── bison
+│   │   ├── mulle-fnv1a
+│   │   └── yacc
+│   ├── include
+│   │   ├── mulle-c11
+│   │   ├── mulle-data
+│   │   ├── zconf.h
+│   │   └── zlib.h
+│   ├── lib
+│   │   ├── libmulle-data.a
+│   │   ├── liby.a
+│   │   ├── libz.a
+│   │   ├── libz.so -&gt; libz.so.1
+│   │   ├── libz.so.1 -&gt; libz.so.1.2.13
+│   │   └── libz.so.1.2.13
+│   └── share
+│       ├── aclocal
+│       ├── bison
+│       ├── doc
+│       ├── info
+│       ├── locale
+│       ├── man
+│       └── pkgconfig
+└── etc
+    └── craftorder-Default--Default--Debug
+</code></pre></div></div>
+
+<p>You can get arguments for the linker command line from mulle-sde after a little
+tweaking of the <em>bison</em> dependency. The produced libary by bison is called
+‘liby.a’ and not the default ‘libbison.a’ as would be expected. This can
+be corrected though:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency <span class="nb">set </span>bison aliases y
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde linkorder
+<span class="nt">-L</span><span class="s1">'/tmp/my-demo/dependency/Debug/lib'</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-lz</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-ly</span>
+<span class="nt">-Wl</span>,--export-dynamic <span class="nt">-lmulle-data</span>
+</code></pre></div></div>
+
+<p>You can also get include source code for your source files from mulle-sde with.
+Again <em>bison</em> is a bit weird, as it produces no header files. To avoid an
+error in the next step, lets mark it as having no header:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde dependency mark bison no-header
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mulle-sde headerorder
+<span class="nt">-isystem</span> <span class="s1">'/tmp/my-demo/dependency/Debug/include'</span>
+<span class="c">#include &lt;zlib.h&gt;</span>
+<span class="c">#include &lt;mulle-data/mulle-data.h&gt;</span>
+</code></pre></div></div>
+
+<h2 id="final-words">Final Words</h2>
+
+<p>The fetching of archives and git repositories is done with
+<a href="//github.com/mulle-sde/mulle-fetch">mulle-fetch</a>.
+<a href="//github.com/mulle-sde/mulle-domain">mulle-domain</a> provides heuristics based
+on URLs. <a href="//github.com/mulle-sde/mulle-fetch">mulle-make</a> is used to build
+the dependency.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>💠 Makefile maintainer</h1>
+             <p>There is no better tool to structure a project with, than the filesystem tools
+you already have. That is either a textual command line terminal or the native
+GUI “File Explorer”, “Finder”, “Nautilus”. Large scale project reorganizations
+are usually a major pain in IDEs, but moving files between folders is a cinch
+in the shell or in the Finder.</p>
+
+<p>mulle-sde as a project maintenance tool examines the file arrangement of your
+project and “reflects” it back into a “Makefile” or “CMakeLists.txt” or any
+other build system of your choice.</p>
+
+<h2 id="demo-nim-and-make">Demo: nim and make</h2>
+
+<p>Let’s create a build system for the <a href="https://nim-lang.org/">nim</a> language
+using <em>make</em>. <em>cmake</em> is more common for mulle-sde, but lets have a challenge
+here.</p>
+
+<h3 id="helloworldnim-and-a-makefile">Helloworld.nim and a Makefile</h3>
+
+<p>Lets start with a “hello world” source, taken from the
+<a href="https://nim-by-example.github.io/hello_world/">nim-by-example</a> website.
+Though sources may reside in the root folder, a subfolder is more convenient
+for technical reasons. So <code class="language-plaintext highlighter-rouge">helloworld.nim</code> is placed into a subdirectory called
+<code class="language-plaintext highlighter-rouge">src</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-demo/src
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/src/helloworld.nim
+echo "Hello World"
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>A simple Makefile for the “helloworld” executable is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=src/helloworld.nim
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+helloworld: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>A <code class="language-plaintext highlighter-rouge">make</code> run shows this to be working.</p>
+
+<h3 id="mulle-sde-integration-from-scratch">mulle-sde integration (from scratch)</h3>
+
+<p>The first step is to make this a mulle-sde project. As neither <em>nim</em> nor <em>make</em>
+are supported by any mulle-sde extensions yet, only a bare project can be
+created:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> nim-demo <span class="nt">--no-post-init</span> none
+</code></pre></div></div>
+
+<h4 id="let-mulle-sde-manage-the-makefile">Let mulle-sde manage the Makefile</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">mulle-sde -f files</code> command, checks, if a source is identified as an
+interesting file by mulle-sde. The first time the output will be empty though.
+<code class="language-plaintext highlighter-rouge">src/helloworld.nim</code> is not yet considered to be interesting. For that a
+matcher is needed to associate files with the <code class="language-plaintext highlighter-rouge">.nim</code> extension with a
+mulle-sde file type. Lets call the type “sources”.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-d</span> nim-demo match <span class="s1">'*.nim'</span> sources
+</code></pre></div></div>
+
+<p>Now <code class="language-plaintext highlighter-rouge">mulle-sde -d nim-demo -f files</code> will return:</p>
+
+<p><img src="images/manage-files.png" alt="" /></p>
+
+<p>How to get this information into the Makefile ? A tool that edits an
+existing Makefile is complicated to devise and seldom foolproof. Overwriting
+the whole Makefile is undesirable, as it would delete user edits.
+The best idea is to let some parts of the Makefile be generated as
+separate file. This file is then included by the Makefile.
+Thus the Makefile becomes:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/Makefile
+.SUFFIXES:  .nim
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.nim=.o)
+
+.nim.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+helloworld: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>The file <code class="language-plaintext highlighter-rouge">make/sources.make</code> should be generated by mulle-sde on
+<code class="language-plaintext highlighter-rouge">mulle-sde -f reflect</code>. Lets create a small script to do just that:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-demo/nim-make-reflect
+#! /bin/sh
+
+mkdir -p make
+mulle-match list --format '%T += %f</span><span class="se">\n</span><span class="sh">' &gt; make/sources.make
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-demo/nim-make-reflect
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>mulle-match</strong> is the program that is actually used when <code class="language-plaintext highlighter-rouge">mulle-sde files</code>
+is run. <code class="language-plaintext highlighter-rouge">mulle-sde files</code> is very limited, but <code class="language-plaintext highlighter-rouge">mulle-match list</code> is quite
+powerful. Besides various filter options, you can specify a printf like format
+to be used on each file. In the above format string <code class="language-plaintext highlighter-rouge">%T</code> turns the mulle-sde
+file type into an uppercase identifier and <code class="language-plaintext highlighter-rouge">%f</code> prints the filename.
+Everything else is printed verbatim.</p>
+</blockquote>
+
+<p>To add the script into the reflection mechanism of mulle-sde, a named task has
+to be created. The name “filesystem” is conventional, it is not required.
+The integration with the <code class="language-plaintext highlighter-rouge">mulle-sde reflect</code> mechanism is done
+via the environment <code class="language-plaintext highlighter-rouge">MULLE_SDE_REFLECT_CALLBACKS</code> variable:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> <span class="nt">-d</span> nim-demo task create <span class="nt">--callback</span> filesystem <span class="s2">"</span><span class="k">${</span><span class="nv">PWD</span><span class="k">}</span><span class="s2">/nim-demo/nim-make-reflect"</span>
+mulle-sde <span class="nt">-d</span> nim-demo environment <span class="nt">--global</span> <span class="nb">set </span>MULLE_SDE_REFLECT_CALLBACKS filesystem
+</code></pre></div></div>
+
+<p>After <code class="language-plaintext highlighter-rouge">mulle-sde -d nim-demo reflect</code> the file <code class="language-plaintext highlighter-rouge">cmake/sources.make</code> will have appeared.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde reflect
+<span class="nb">ls </span>cmake
+</code></pre></div></div>
+
+<p>Now “nim” files can be added and deleted. They can be renamed and moved around.
+As long as <code class="language-plaintext highlighter-rouge">mulle-sde reflect</code> is called afterwards, the changes will be picked
+up and the Makefile will be up-to-date.</p>
+
+<h2 id="a-nimmake-mulle-sde-extension">A nim/make mulle-sde extension</h2>
+
+<p>Ideally one wants to be able to create a <em>nim</em>/<em>make</em> project like above
+with a single command line, such as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde init <span class="nt">-d</span> nim-demo <span class="nt">-m</span> nim/nim-developer executable
+</code></pre></div></div>
+
+<p>For this a mulle-sde “meta” extension is needed. mulle-sde extensions use the
+<a href="template.html">template</a> capabilities to create boilerplate projects for new
+languages and build systems. There are several different extension types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">extra</code></td>
+      <td>a project can have multiple “extra” extensions. Typical “extra” extensions are “sublime-text” or “vscode”, which add IDE support.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">runtime</code></td>
+      <td>a project can have one “runtime” extension, which is programming language specific</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">oneshot</code></td>
+      <td>“oneshot” extensions are used by the “mulle-sde add” command to add files to a project.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">buildtool</code></td>
+      <td>a project can have one “buildtool” extension, to support tools like “autconf” or “cmake”</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">meta</code></td>
+      <td>a project is initialized with a “meta” extension, which combines buildtool and runtime and extra extensions</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To support <em>make</em> a “buildtool” extension is needed.  Both are combined by a “meta extension”. So
+all in all lets create three extensions:</p>
+
+<h3 id="create-the-runtime-extension">Create the runtime extension</h3>
+
+<p>For the language <em>nim</em> a <em>runtime</em> extension will be used. The runtime
+extension defines the <code class="language-plaintext highlighter-rouge">.nim</code> file extension and adds a default
+“helloworld” source. Extensions are grouped by a “vendor”, so <code class="language-plaintext highlighter-rouge">VENDOR_NAME</code>
+(any word you like) must be specified:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer runtime
+</code></pre></div></div>
+
+<p>Define the language basics with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/language
+# language;dialect;extensions
+nim;;nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Create the demo source file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim/src/me/nim/project/executable/src
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/project/executable/src/PROJECT_NAME.nim
+echo "Hello World"
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Add a tool declaration for <em>nim</em> to be used in restrictive environments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim/src/me/nim/tool
+nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>That’s it.</p>
+
+<h3 id="create-the-buildtool-extension">Create the buildtool extension</h3>
+
+<p>The buildtool extension is used to setup the <code class="language-plaintext highlighter-rouge">Makefile</code> and the reflection
+mechanism:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim-make <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer buildtool
+</code></pre></div></div>
+
+<p>Create the demo <code class="language-plaintext highlighter-rouge">Makefile</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/project/all
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/project/all/Makefile
+.SUFFIXES:  .&lt;|PROJECT_EXTENSION|&gt;
+
+SOURCES=
+
+include make/sources.make
+
+OBJECTS=</span><span class="se">\$</span><span class="sh">(SOURCES:.&lt;|PROJECT_EXTENSION|&gt;=.o)
+
+.&lt;|PROJECT_EXTENSION|&gt;.o:
+	nim -c -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+
+&lt;|PROJECT_NAME|&gt;: </span><span class="se">\$</span><span class="sh">(OBJECTS)
+	ld -o </span><span class="se">\$</span><span class="sh">@ </span><span class="se">\$</span><span class="sh">&lt;
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Create the match pattern for <code class="language-plaintext highlighter-rouge">.nim</code> files:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/match/match.d
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/match/match.d/20-sources--nim-sources
+*.nim
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Setup the callback for the reflection mechanism:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/monitor/bin
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+#! /bin/sh
+echo "filesystem"
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-make/src/me/nim-make/share/monitor/bin/filesystem-callback
+</code></pre></div></div>
+
+<p>Create a task that produces the <code class="language-plaintext highlighter-rouge">make/sources.make</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> nim-make/src/me/nim-make/share/monitor/libexec
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+#! /usr/bin/env mulle-bash
+# shellcheck shell=bash
+
+#
+# This function will be called by mulle-monitor
+#
+filesystem_task_run()
+{
+	log_entry "filesystem_task_run" "</span><span class="se">\$</span><span class="sh">@"
+
+	mkdir -p make
+	mulle-match list --format '%T += %f</span><span class="se">\n</span><span class="sh">' &gt; make/sources.make
+}
+
+#
+# Convenience to test your script standalone
+#
+if [ -z "</span><span class="se">\$</span><span class="sh">{MULLE_MONITOR_TASK_LOAD}" ]
+then
+	filesystem_task_run "</span><span class="se">\$</span><span class="sh">@"
+fi
+</span><span class="no">EOF
+</span><span class="nb">chmod </span>755 nim-make/src/me/nim-make/share/monitor/libexec/filesystem-task.sh
+</code></pre></div></div>
+
+<p>Add the “filesystem” callback to the callbacks executed on reflect with an
+environment setting:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/environment
+MULLE_SDE_REFLECT_CALLBACKS='</span><span class="k">${</span><span class="nv">MULLE_SDE_REFLECT_CALLBACKS</span><span class="k">}</span><span class="sh">:filesystem'
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>Add <em>make</em> to the list of tools for restrictive environments:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; nim-make/src/me/nim-make/tool
+make;optional
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<h3 id="create-the-meta-extension">Create the meta extension</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nt">-f</span> init <span class="nt">--no-post-init</span> <span class="nt">-d</span> nim-developer <span class="nt">-DVENDOR_NAME</span><span class="o">=</span>me <span class="nt">-m</span> mulle-sde/extension-developer meta
+</code></pre></div></div>
+
+<p>The meta extension ties the runtime and the buildtool together. And that’s
+it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt;&gt; nim-developer/src/me/nim-developer/inherit
+me/nim;runtime
+me/nim-make;buildtool
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<h3 id="test-the-meta-extension">Test the meta extension</h3>
+
+<p>Add your (uninstalled) extensions to the mulle-sde extension search path.
+Then pick the meta extension “nim-developer” by vendor “me” and create a
+new “executable” project in directory “nim-demo2”:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">MULLE_SDE_EXTENSION_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/nim/src:</span><span class="se">\</span><span class="s2">
+</span><span class="nv">$PWD</span><span class="s2">/nim-make/src:</span><span class="se">\</span><span class="s2">
+</span><span class="nv">$PWD</span><span class="s2">/nim-developer/src:</span><span class="se">\</span><span class="s2">
+</span><span class="k">${</span><span class="nv">MULLE_SDE_EXTENSION_PATH</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+	mulle-sde init <span class="nt">-d</span> nim-demo2 <span class="nt">-m</span> me/nim-developer executable
+
+mulle-sde <span class="nt">-d</span> nim-demo2 run make
+</code></pre></div></div>
+
+<blockquote>
+  <p>As <code class="language-plaintext highlighter-rouge">nim-demo2</code> is now a proper mulle-sde project of type
+“executable”, the <code class="language-plaintext highlighter-rouge">-f</code> flag that was used pervasively on the
+“none” project commands, can now be omitted.</p>
+</blockquote>
+
+<h2 id="final-words">Final Words</h2>
+
+<p><a href="//github.com/mulle-sde/mulle-sde-developer">mulle-sde-developer</a> provides
+extensive support for maintaining cmake projects. Language support is available
+for C, C++, Objective-C.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>☑︎ Test suite with Coverage 🆕</h1>
+             <p>Tests for libraries and executables are easily setup with mulle-sde. In
+both cases just run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nb">test </span>init
+</code></pre></div></div>
+
+<p>and a basic test setup should be setup in the <code class="language-plaintext highlighter-rouge">test</code> folder.</p>
+
+<h2 id="executable-test--coverage">Executable Test + Coverage</h2>
+
+<p>There are two simple principles behind mulle-sde tests.</p>
+
+<p>They are:</p>
+
+<ul>
+  <li>a non-zero exit code means a failed test (unless a <code class="language-plaintext highlighter-rouge">&lt;testname&gt;.errors</code> file is present)</li>
+  <li>if a file <code class="language-plaintext highlighter-rouge">&lt;testname&gt;.stdout</code> is present, then the output of the test must match the contents of this file exactly</li>
+</ul>
+
+<h3 id="setting-up-a-test">Setting up a test</h3>
+
+<p>To build the executable for testing:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nb">test </span>craft
+</code></pre></div></div>
+
+<p>Each test for an executable is a file named <code class="language-plaintext highlighter-rouge">&lt;testname&gt;.args</code>. Conversely each
+test for a C library is named <code class="language-plaintext highlighter-rouge">&lt;testname&gt;.c</code>, for an Objective-C library
+<code class="language-plaintext highlighter-rouge">&lt;testname&gt;.m</code> and so on.</p>
+
+<p>So a test named <code class="language-plaintext highlighter-rouge">hello.args</code> file is found in the <code class="language-plaintext highlighter-rouge">10-first</code> folder, so this
+will be the demo test we will run (it will fail):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde <span class="nb">test </span>run
+</code></pre></div></div>
+
+<p>Rerun it with <code class="language-plaintext highlighter-rouge">mulle-sde test rerun --serial</code>, it will fail again. Provide
+the proper output in the <testname>.stdout and now all tests will pass.</testname></p>
+
+<h3 id="creating-coverage-information">Creating coverage information</h3>
+
+<p>When all tests pass, you can create coverage information:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde test coverage
+</code></pre></div></div>
+
+<p>This will rebuild the project with coverage information and then all tests
+are run again. For a “hello world” executable, the output will look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: /tmp/bbb/src
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+main.c                                         3       3   100%
+------------------------------------------------------------------------------
+TOTAL                                          3       3   100%
+------------------------------------------------------------------------------
+</code></pre></div></div>
+
+<p>You can also get HTML output, check the usage of the <code class="language-plaintext highlighter-rouge">coverage</code> command for
+more info.</p>
+
+<h2 id="final-words">Final Words</h2>
+
+<p><a href="//github.com/mulle-sde/mulle-test">mulle-test</a> provides much more
+information how to setup and check tests.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>💄 Definition isolator</h1>
+             <p>The mulle-sde <a href="virtual_env.html">virtual environment</a> shields the project from
+unintentional environment settings. But that is not enough separation, if the
+project is made up of multiple projects (a.k.a. “dependencies”).</p>
+
+<p>Here is a contrived example. The main project get its current version via the
+commandline like <code class="language-plaintext highlighter-rouge">cc -DVERSION='"1"'</code>. Lets use the mulle-sde environment to
+set <code class="language-plaintext highlighter-rouge">CFLAGS</code>, assuming that this is picked up by the Makefile.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde environment <span class="nb">set </span>CFLAGS <span class="s1">'-DVERSION="1"'</span>
+</code></pre></div></div>
+
+<p>It will work fine, until you add a third-party dependency, which also uses a
+<code class="language-plaintext highlighter-rouge">VERSION</code> definition. As the mulle-sde environment is active during the build
+of the project and the build of the dependency, there will be a clash.</p>
+
+<h2 id="definitions-environments-for-a-build">Definitions: environments for a build</h2>
+
+<p><em>mulle-make</em> is the meta-builder, that uses build systems like <em>cmake</em> and
+<em>autoconf</em> and <em>xcodebuild</em>, to build a dependency or the project itself.
+That may sound fancy, but is really not much more than what this little script
+does:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#! /bin/sh</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> CMakeLists.txt <span class="o">]</span>
+<span class="k">then
+   </span>cmake <span class="nt">-B</span> build <span class="nt">-S</span> <span class="nb">.</span>
+   cmake <span class="nt">--build</span> build
+<span class="k">else</span>
+    <span class="c"># use some other build tool</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<p>One thing <em>mulle-make</em> adds to the process, is that it looks at variables that
+start with the string ‘DEFINITION_’ and uses those to create options for
+the individual build tool (unknown options are passed verbatim).</p>
+
+<p>For example the value of <code class="language-plaintext highlighter-rouge">DEFINITION_CFLAGS='-DVERSION="1"'</code> will be used
+by the <em>cmake</em>  plugin of mulle-make to produce a
+<code class="language-plaintext highlighter-rouge">-DCMAKE_C_FLAGS='-DVERSION="1"'</code> command line option for cmake.</p>
+
+<p>So how are <code class="language-plaintext highlighter-rouge">DEFINITION_</code> variables set in mulle-make ? They are fed to
+mulle-make by another tool mulle-craft. mulle-craft searches for applicable
+definition folders and applies them to the mulle-make call. There can be
+multiple definitions, which enables inheritance schemes.</p>
+
+<h2 id="project-definitions">Project definitions</h2>
+
+<p>The main project <code class="language-plaintext highlighter-rouge">definition</code> folder is managed with the <code class="language-plaintext highlighter-rouge">mulle-sde definition</code>
+commands. The values contained in it are only used for the main project and can
+not be overridden.</p>
+
+<p><img src="images/definition1.svg" alt="Project definitions" /></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>foo
+cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"1"'</span> ...
+</code></pre></div></div>
+
+<h2 id="dependency-definitions">Dependency definitions</h2>
+
+<p>A dependency definition is just a project definition from a different
+perspective. Here a third party project may very well also have a <code class="language-plaintext highlighter-rouge">definition</code>
+folder, if it is a mulle-sde project. This definition will be used during
+its build. But it will not interfere with the main project craft.</p>
+
+<p><img src="images/definition2.svg" alt="Dependency definitions" /></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>
+   <span class="nb">cd </span>foo/stash/bar
+   cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"2"'</span> ...
+<span class="o">)</span>
+
+<span class="nb">cd </span>foo
+cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"1"'</span> ...
+</code></pre></div></div>
+
+<h2 id="project-craftinfos">Project craftinfos</h2>
+
+<p>The project has the option to override dependency definitions with <code class="language-plaintext highlighter-rouge">craftinfos</code>.
+This is especially useful for third party projects, that are not mulle-sde
+projects. With a <em>craftinfo</em> you can tweak the build process of that dependency
+to your liking without having to edit the dependency source itself.</p>
+
+<p><img src="images/definition3.svg" alt="Project craftinfos" /></p>
+
+<p>The values in the <em>craftinfo</em> will usually override the values in the
+<em>definition</em> of the dependency. So <code class="language-plaintext highlighter-rouge">-DVERSION="3"</code> will be in effect for
+the craft of “bar”.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>
+   <span class="nb">cd </span>foo/stash/bar
+   cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"3"'</span> ...
+<span class="o">)</span>
+
+<span class="nb">cd </span>foo
+cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"1"'</span> ...
+</code></pre></div></div>
+
+<h2 id="inherited-definitions">Inherited definitions</h2>
+
+<p>Maybe the most powerful feature of the mulle-sde build system are inherited
+<em>definitions</em>. These definitions are installed by dependencies into the
+<code class="language-plaintext highlighter-rouge">dependency/share</code> folder and can affect all consecutive dependencies.
+This for example allows the switch of compilers during the craft of
+dependencies.</p>
+
+<p>Multiple dependencies can add and subtract from these definitions.</p>
+
+<p><img src="images/definition4.svg" alt="Inherited craftinfos" /></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>
+   <span class="nb">cd </span>foo/stash/bar
+   cc <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"3"'</span> ...
+<span class="o">)</span>
+
+<span class="nb">cd </span>foo
+mulle-clang <span class="nt">-DVERSION</span><span class="o">=</span><span class="s1">'"1"'</span> ...
+</code></pre></div></div>
+
+<p>Inherited definitions can augment the <em>definitions</em> of the main project, but
+it can not override them.</p>
+
+<p>Inherited definitions can override the <em>definitions</em> of dependencies, but
+it does not override <em>craftinfos</em>.</p>
+
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>Outro</h1>
+             <p>When all roads have been traveled, the next trip might be the <a href="https://github-com/mulle-sde/mulle-sde.wiki">mulle-sde Wiki</a>. There is still a lot more to discover.</p>
+
+<p>Some but not all of the topics not covered in this guide are</p>
+
+<ul>
+  <li>version support (mulle-semver)</li>
+  <li>platform dependent dependencies</li>
+  <li>header only dependencies</li>
+  <li>control of generated cmake statements</li>
+</ul>
+
+<p>The <a href="//mulle-objc.github.io/De-Re-mulle-objc/">De Re mulle-objc</a>
+developer guide might also be a good next read.</p>
+
+<h2 id="links">Links</h2>
+
+<ul>
+  <li><a href="//mulle-objc.github.io/">mulle-objc</a> homepage</li>
+</ul>
+
+             
+             <div class="pagebreak"></div>
+             
+         
+             <h1>Hecklers Corner</h1>
+             <h4 id="why-dont-you-use-direnv-">Why don’t you use <code class="language-plaintext highlighter-rouge">direnv</code> ?</h4>
+
+<p>I rarely use the interactive subshell for executing virtual environments, but
+instead use <code class="language-plaintext highlighter-rouge">mulle-sde run</code> all the time.
+direnv augments the environment, it doesn’t remove environment variables,
+unless you explicity write environment files to do so.
+For lack of a better term, there is no API to add and remove environment
+variables. There is no “tool” functionality.</p>
+
+<h4 id="why-dont-you-use-docker-instead-">Why don’t you use <code class="language-plaintext highlighter-rouge">docker</code> instead ?</h4>
+
+<p>Docker is too slow and cumbersome. It’s not that popular on freebsd and I
+doubt it will work in mingw.</p>
+
+<h4 id="why-dont-you-use-git-submodules-instead-">Why don’t you use <code class="language-plaintext highlighter-rouge">git submodules</code> instead ?</h4>
+
+<p>One advantage of mulle-sde dependencies over git submodules is, that when you
+are doing git, you are not doing anything else.
+mulle-sde dependencies can be used with various source control management
+systems (SCM). You can mix tar archives with git and svn repositories.</p>
+
+<h4 id="why-dont-you-use-my-pet-sandbox-instead-of-mulle-env-">Why don’t you use &lt;my pet sandbox&gt; instead of mulle-env ?</h4>
+
+<p>Sandboxing would not help with the environment setting. Sandboxing can be
+an interesting idea on top of mulle-sde. And actually in the newest version
+there is support for linux landlock sandboxing (also there is some support
+for apparmor) See the <a href="//github.com/mulle-sde/mulle-sde/wiki">Wiki</a> for
+more info.</p>
+
+<h4 id="why-is-this-written-bash-and-not-in-my-pet-language-">Why is this written bash and not in &lt;my pet language&gt; ?</h4>
+
+<p>Actually this used to be written in “sh”, the Bourne Shell.
+I would expect the Bourne Shell to be unbeatable in terms of availabilty and
+long term compatibility (think decades not years). Sadly “sh” must rely on
+external commands, to get anything slightly sophisticated done. This already
+impedes cross-platform portability. But the main reason is that
+running external commands for string operations is <em>just too slow</em>.</p>
+
+<p>So I returned to the “bash”.</p>
+
+<h4 id="why-is-this-written-in-fairly-ancient-bash-">Why is this written in fairly ancient bash ?</h4>
+
+<p>When this project started on macOS (then as mulle-bootstrap), the “bash” was
+seriously out of date and didn’t even support arrays (this is still noticable
+in the code today). “bash” on macOS a mere decade or so later is still out of
+date and has been officially replaced by “zsh”. So now I need to support two
+shells “bash” and “zsh”. Both are mostly compatible with each other, but not 100%.
+I am loathe to use too many fancy “bash” features to keep “zsh” as a fallback
+option or vice versa.</p>
+
+<h4 id="mulle-template-is-just-a-glorified-sed-script">mulle-template is just a glorified sed script!</h4>
+
+<p>That’s pretty much what it is!</p>
+
+<h4 id="mulle-match-is-just-a-glorified-find-command">mulle-match is just a glorified find command!</h4>
+
+<p>That’s really not quite what it is!</p>
+
+             
+         
+         </div>
+         <hr>
+         <div class="bio">
+               
+
+               <div class="bio-photo-container" style="display: inline-block">
+                     
+                     <img src="images/dog-pic.jpg" class="bio-photo" alt="Nat! bio photo">
+                     
+               </div>
+               <div style="display: inline-block; padding-left: 8px">
+                     <h4>Nat!</h4>
+                     <p>Senior Mull</p>
+               </div>
+
+               <div class="author-social"><a href="//www.mulle-kybernetik.com" target="_blank" class="link"><img class="inline-img" src="images/homepage-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//www.mulle-kybernetik.com" target="_blank" class="link">WWW</a></div>
+
+               <div class="author-social"><a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank"><img class="inline-img" src="images/email-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="mailto:nat-de-re-mulle-sde@emulle-kybernetik.com" target="_blank" class="link">Email</a></div>
+               <div class="author-social"><a href="//twitter.com/mulle_nat" target="_blank"><img class="inline-img" src="images/twitter-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitter.com/mulle_nat" target="_blank" class="link">Twitter</a></div>
+
+               <div class="author-social"><a href="//github.com/mulle-nat" target="_blank"><img class="inline-img" src="images/github-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//github.com/mulle-nat" target="_blank" class="link">Github</a></div>
+               <div class="author-social"><a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank"><img class="inline-img" src="images/twitch-svgrepo-com.svg"></a>&nbsp;&nbsp;<a href="//twitch.tv/Mulle_kybernetiK_TV" target="_blank" class="link">Twitch</a></div>
+</div> <!-- bio -->
+
+      </div>
+   </div>
+</div>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.www.mulle-kybernetik.com"]);
+  _paq.push(["setDomains", ["*.www.mulle-kybernetik.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//www.mulle-kybernetik.com/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//www.mulle-kybernetik.com/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+</body>
+</html>

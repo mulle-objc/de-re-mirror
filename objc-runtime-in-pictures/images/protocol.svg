@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="453pt" height="378pt" viewBox="0 0 452.5 378" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" transform="scale(1) translate(4 374)">
+<title>mulle_objc_class</title>
+<polygon points="-4 4 -4 -374 448.5 -374 448.5 4" fill="#fff" stroke="transparent"/>
+<g class="node">
+<title>0x630e3b7ccc40</title>
+<a xlink:href="file:///./Empty.dot" xlink:title="&lt;TABLE&gt;">
+<polygon points="423 -370 42 -370 42 -241 423 -241" fill="none" stroke="#000"/>
+<polygon points="51.5 -347.5 51.5 -364.5 414.5 -364.5 414.5 -347.5" fill="blue" stroke="transparent"/>
+<polygon points="51.5 -347.5 51.5 -364.5 414.5 -364.5 414.5 -347.5" fill="none" stroke="#000"/>
+<text x="209" y="-352.3" fill="white" font-family="Times,serif" font-size="14">Empty</text>
+<polygon points="51.5 -330.5 51.5 -347.5 186.5 -347.5 186.5 -330.5" fill="none" stroke="#000"/>
+<text x="70.5" y="-335.3" font-family="Times,serif" font-size="14">allocationsize</text>
+<polygon points="186.5 -330.5 186.5 -347.5 414.5 -347.5 414.5 -330.5" fill="none" stroke="#000"/>
+<text x="291" y="-335.3" font-family="Times,serif" font-size="14">32</text>
+<polygon points="51.5 -313.5 51.5 -330.5 186.5 -330.5 186.5 -313.5" fill="none" stroke="#000"/>
+<text x="78" y="-318.3" font-family="Times,serif" font-size="14">inheritance</text>
+<polygon points="186.5 -313.5 186.5 -330.5 414.5 -330.5 414.5 -313.5" fill="none" stroke="#000"/>
+<text x="187.5" y="-318.3" font-family="Times,serif" font-size="14">superclass categories protocols</text>
+<polygon points="51.5 -296.5 51.5 -313.5 186.5 -313.5 186.5 -296.5" fill="none" stroke="#000"/>
+<text x="100.5" y="-301.3" font-family="Times,serif" font-size="14">state</text>
+<polygon points="186.5 -296.5 186.5 -313.5 414.5 -313.5 414.5 -296.5" fill="none" stroke="#000"/>
+<text x="287" y="-301.3" font-family="Times,serif" font-size="14">0x0</text>
+<polygon points="51.5 -279.5 51.5 -296.5 186.5 -296.5 186.5 -279.5" fill="none" stroke="#000"/>
+<text x="88" y="-284.3" font-family="Times,serif" font-size="14">ivarhash</text>
+<polygon points="186.5 -279.5 186.5 -296.5 414.5 -296.5 414.5 -279.5" fill="none" stroke="#000"/>
+<text x="257" y="-284.3" font-family="Times,serif" font-size="14">0x11c9dc58</text>
+<polygon points="51.5 -262.5 51.5 -279.5 186.5 -279.5 186.5 -262.5" fill="none" stroke="#000"/>
+<text x="52.5" y="-267.3" font-family="Times,serif" font-size="14">allocatedInstances</text>
+<polygon points="186.5 -262.5 186.5 -279.5 414.5 -279.5 414.5 -262.5" fill="none" stroke="#000"/>
+<text x="295.5" y="-267.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="51.5 -245.5 51.5 -262.5 186.5 -262.5 186.5 -245.5" fill="none" stroke="#000"/>
+<text x="88" y="-250.3" font-family="Times,serif" font-size="14">preloads</text>
+<polygon points="186.5 -245.5 186.5 -262.5 414.5 -262.5 414.5 -245.5" fill="none" stroke="#000"/>
+<text x="295.5" y="-250.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="50 -245 50 -366 415 -366 415 -245" fill="none" stroke="#000"/>
+</a>
+</g>
+<g class="node">
+<title>0x630e3b7cce20</title>
+<a xlink:href="file:///./Empty.dot" xlink:title="&lt;TABLE&gt;">
+<polygon points="345 -190 0 -190 0 -186 -4 -186 -4 -182 0 -182 0 -103 -4 -103 -4 -99 0 -99 0 -95 345 -95" fill="none" stroke="#000"/>
+<polyline points="0 -186 4 -186 4 -182 0 -182" fill="none" stroke="#000"/>
+<polyline points="0 -103 4 -103 4 -99 0 -99" fill="none" stroke="#000"/>
+<polygon points="9.5 -167.5 9.5 -184.5 336.5 -184.5 336.5 -167.5" fill="#daa520" stroke="transparent"/>
+<polygon points="9.5 -167.5 9.5 -184.5 336.5 -184.5 336.5 -167.5" fill="none" stroke="#000"/>
+<text x="149" y="-172.3" fill="white" font-family="Times,serif" font-size="14">Empty</text>
+<polygon points="9.5 -150.5 9.5 -167.5 108.5 -167.5 108.5 -150.5" fill="none" stroke="#000"/>
+<text x="10.5" y="-155.3" font-family="Times,serif" font-size="14">allocationsize</text>
+<polygon points="108.5 -150.5 108.5 -167.5 336.5 -167.5 336.5 -150.5" fill="none" stroke="#000"/>
+<text x="208.5" y="-155.3" font-family="Times,serif" font-size="14">352</text>
+<polygon points="9.5 -133.5 9.5 -150.5 108.5 -150.5 108.5 -133.5" fill="none" stroke="#000"/>
+<text x="18" y="-138.3" font-family="Times,serif" font-size="14">inheritance</text>
+<polygon points="108.5 -133.5 108.5 -150.5 336.5 -150.5 336.5 -133.5" fill="none" stroke="#000"/>
+<text x="109.5" y="-138.3" font-family="Times,serif" font-size="14">superclass categories protocols</text>
+<polygon points="9.5 -116.5 9.5 -133.5 108.5 -133.5 108.5 -116.5" fill="none" stroke="#000"/>
+<text x="40.5" y="-121.3" font-family="Times,serif" font-size="14">state</text>
+<polygon points="108.5 -116.5 108.5 -133.5 336.5 -133.5 336.5 -116.5" fill="none" stroke="#000"/>
+<text x="204.5" y="-121.3" font-family="Times,serif" font-size="14">0x40</text>
+<polygon points="9.5 -99.5 9.5 -116.5 108.5 -116.5 108.5 -99.5" fill="none" stroke="#000"/>
+<text x="28" y="-104.3" font-family="Times,serif" font-size="14">preloads</text>
+<polygon points="108.5 -99.5 108.5 -116.5 336.5 -116.5 336.5 -99.5" fill="none" stroke="#000"/>
+<text x="217.5" y="-104.3" font-family="Times,serif" font-size="14">0</text>
+<polygon points="8 -99 8 -186 337 -186 337 -99" fill="none" stroke="#000"/>
+</a>
+</g>
+<g class="edge">
+<title>0x630e3b7ccc40-&gt;0x630e3b7cce20</title>
+<path d="m153.71-240.86c-3.99 5.66-7.47 11.63-10.21 17.86-3.25 7.37-3.77 15.24-2.59 23.04" fill="none" stroke="#daa520"/>
+<polygon points="144.33 -200.68 143.24 -190.14 137.52 -199.07" fill="#daa520" stroke="#daa520"/>
+<text x="162" y="-211.8" fill="goldenrod" font-family="Times,serif" font-size="14" text-anchor="middle">meta</text>
+</g>
+<g class="node">
+<title>0x630e3b7cb950</title>
+<polygon points="179.5 -22 179.5 -39 374.5 -39 374.5 -22" fill="dimgray" stroke="transparent"/>
+<polygon points="179.5 -22 179.5 -39 374.5 -39 374.5 -22" fill="none" stroke="#000"/>
+<text x="243.5" y="-26.8" fill="white" font-family="Times,serif" font-size="14">protocols</text>
+<polygon points="179.5 -5 179.5 -22 302.5 -22 302.5 -5" fill="none" stroke="#000"/>
+<text x="180.5" y="-9.8" font-family="Times,serif" font-size="14">"EmptyProtocol"</text>
+<polygon points="302.5 -5 302.5 -22 374.5 -22 374.5 -5" fill="none" stroke="#000"/>
+<text x="303.5" y="-9.8" font-family="Times,serif" font-size="14">c004086e</text>
+<polygon points="178 -4 178 -40 375 -40 375 -4" fill="none" stroke="#000"/>
+</g>
+<g class="edge">
+<title>0x630e3b7ccc40-&gt;0x630e3b7cb950</title>
+<path d="m318.33-240.77c14.31 14.95 27.11 32.04 35.17 50.77 16.69 38.78 15.23 55.62 0 95-6.85 17.72-20.8 32.9-34.97 44.7" fill="none" stroke="#000"/>
+<polygon points="320.7 -47.56 310.68 -44.11 316.36 -53.05" stroke="#000"/>
+<text x="404.5" y="-138.8" font-family="Times,serif" font-size="14" text-anchor="middle">protocolids</text>
+</g>
+<g class="edge">
+<title>0x630e3b7cce20-&gt;0x630e3b7ccc40</title>
+<path d="m189.94-190.28c4.78-12.84 10.08-27.07 15.28-41.01" fill="none" stroke="#daa520"/>
+<polygon points="202.01 -232.72 208.79 -240.87 208.57 -230.28" fill="#daa520" stroke="#daa520"/>
+<text x="219" y="-211.8" fill="goldenrod" font-family="Times,serif" font-size="14" text-anchor="middle">meta</text>
+</g>
+<g class="edge">
+<title>0x630e3b7cce20-&gt;0x630e3b7ccc40</title>
+<path d="m229.95-190.2c4.21-5.57 7.85-11.52 10.55-17.8 3.08-7.17 4.78-14.91 5.5-22.78" fill="none" stroke="blue"/>
+<polygon points="242.5 -230.94 246.42 -240.78 249.5 -230.64" fill="blue" stroke="blue"/>
+<text x="261.5" y="-211.8" fill="blue" font-family="Times,serif" font-size="14" text-anchor="middle">infra</text>
+</g>
+<g class="edge">
+<title>0x630e3b7cce20-&gt;0x630e3b7cb950</title>
+<path d="m213.6-94.67c12.7 14.47 26.3 29.97 37.6 42.84" fill="none" stroke="#000"/>
+<polygon points="253.94 -54.01 257.9 -44.19 248.68 -49.4" stroke="#000"/>
+<text x="279.5" y="-65.8" font-family="Times,serif" font-size="14" text-anchor="middle">protocolids</text>
+</g>
+</g>
+</svg>

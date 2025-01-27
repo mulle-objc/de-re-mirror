@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/" rel="alternate" type="text/html" /><updated>2025-01-26T22:37:34+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/feed.xml</id><title type="html">De Re mulle-objc</title><subtitle>The Developer Guide for MulleObjC and the mulle-objc runtime.</subtitle><entry><title type="html">Tooling: Code reduction</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/reduction.html" rel="alternate" type="text/html" title="Tooling: Code reduction" /><published>2024-06-29T00:00:00+02:00</published><updated>2024-06-29T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/reduction</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/reduction.html"><![CDATA[<h2 id="reduction">Reduction</h2>
+
+<p>With the coverage information gained in the previous chapter, we can now
+extract the required <code class="language-plaintext highlighter-rouge">.o</code> files from the static libraries and create a
+custom static library, that contains only the necessary files.</p>
+
+<h2 id="todo">TODO</h2>
+
+<p>Explain how this is done with the cmake <code class="language-plaintext highlighter-rouge">OBJC_COVERAGE_OPTIMIZED_LIBS</code>.</p>
+
+<blockquote>
+  <p>I have this already written somewhere…</p>
+</blockquote>]]></content><author><name></name></author><summary type="html"><![CDATA[Reduction]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/reduction.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/reduction.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tooling: Coverage information</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/coverage.html" rel="alternate" type="text/html" title="Tooling: Coverage information" /><published>2024-06-24T00:00:00+02:00</published><updated>2024-06-24T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/coverage</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/coverage.html"><![CDATA[<h2 id="coverage">Coverage</h2>
+
+<p>You can create Objective-C coverage information for any mulle-objc program.</p>
+
+<p>Coverage files will be are generated when you run the program with
+with the environment variables <code class="language-plaintext highlighter-rouge">MULLE_OBJC_PEDANTIC_EXIT</code> and
+<code class="language-plaintext highlighter-rouge">MULLE_OBJC_COVERAGE</code> set to YES:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">MULLE_OBJC_PEDANTIC_EXIT</span><span class="o">=</span>YES <span class="nv">MULLE_OBJC_COVERAGE</span><span class="o">=</span>YES myexe
+</code></pre></div></div>
+
+<p>This will produce two coverage files <code class="language-plaintext highlighter-rouge">class-coverage.csv</code> and
+<code class="language-plaintext highlighter-rouge">method-coverage.csv</code>.</p>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Your executable needs to properly terminate, to generate
+coverage information. If that isn’t possible, call
+<code class="language-plaintext highlighter-rouge">mulle_objc_csvdump_methodcoverage()</code> and <code class="language-plaintext highlighter-rouge">mulle_objc_csvdump_classcoverage()</code>
+yourself, when you know the runtime system is quiescent.</div>
+
+<h2 id="extending-coverage-files">Extending coverage files</h2>
+
+<p>A second “coverage” run will append to previously existing coverage files.
+But you can also concatenate coverage files from various source with <code class="language-plaintext highlighter-rouge">cat</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>coverage<span class="k">*</span>.txt | <span class="nb">sort</span> <span class="nt">-u</span> <span class="o">&gt;</span> class-coverage.csv
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Coverage]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/coverage.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/coverage.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Tooling: mulle-objc Tools</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/tools.html" rel="alternate" type="text/html" title="Tooling: mulle-objc Tools" /><published>2024-06-20T00:00:00+02:00</published><updated>2024-06-20T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/tools</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/tools.html"><![CDATA[<h2 id="mulle-objc-listmulle-objc-lista">mulle-objc-list/mulle-objc-lista</h2>
+
+<p><strong>mulle-objc-list</strong> generates CSV style information from dynamic libraries,
+that contain mulle-objc code. You can list the contained classes, methods and
+properties. It’s the backbone of the mulle-objc tool set.</p>
+
+<p><strong>mulle-objc-lista</strong> is the variant that handles static libraries.</p>
+
+<p>See <a href="//github.com/mulle-objc/mulle-objc-runtime">mulle-objc-runtime</a> for more
+details.</p>
+
+<h2 id="mulle-objc-uniqueid">mulle-objc-uniqueid</h2>
+
+<p>Generates the <code class="language-plaintext highlighter-rouge">@selector()</code> hash value from a string. This can be useful when
+writing C code, that calls Objective-C.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mulle-objc-uniqueid alloc
+<span class="go">ab1bb16b
+</span></code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mulle_objc_object_call</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="mh">0xab1bb16b</span><span class="p">,</span> <span class="n">nil</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>See <a href="//github.com/mulle-objc/mulle-objc-runtime">mulle-objc-runtime</a> for more
+details.</p>
+
+<h2 id="mulle-objc-loader-tool">mulle-objc-loader-tool</h2>
+
+<p>Generates the required <code class="language-plaintext highlighter-rouge">MulleObjCLoader</code> category files for a library.
+This tool is used in the <a href="modern">modern workflow</a> to generate the
+proper dependency information.</p>
+
+<p>See <a href="//github.com/mulle-objc/mulle-objc-list">mulle-objc-list</a> for more
+details.</p>
+
+<h2 id="mulle-objc-signature">mulle-objc-signature</h2>
+
+<p>Separates an ‘@encode()’ Objective-C type into constituents, separated by ‘;’.
+This can be useful for creating inspection tools.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mulle-objc-uniqueid alloc ^v@:@<span class="s2">"NSString"</span>
+<span class="gp">^v;</span>@<span class="p">;</span>:<span class="p">;</span>@<span class="s2">"NSString"</span>
+</code></pre></div></div>
+<p>See <a href="//github.com/mulle-objc/mulle-objc-runtime">mulle-objc-runtime</a> for more
+details.</p>
+
+<h2 id="mulle-objc-printline">mulle-objc-printline</h2>
+
+<p>A little utility to fake a “class-coverage.csv” entry.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mulle-objc-printline <span class="nt">--method</span> <span class="nt">-foo</span> <span class="nt">--category</span> Foo Bar
+<span class="gp">bbc7dbad;</span>Bar<span class="p">;</span>c7e16770<span class="p">;</span>Foo<span class="p">;</span>9f37ed7a<span class="p">;</span><span class="nt">-foo</span>
+</code></pre></div></div>
+<p>See <a href="coverage.html">Coverage</a> for more details about mulle-objc
+coverage information.</p>
+
+<h2 id="mulle-objc-searchid">mulle-objc-searchid</h2>
+
+<p>Grep through libraries to find the matching string for a selector, classid,
+protocol et.c.  This can be useful when debugging optimized code.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>mulle-objc-searchid ab1bb16b
+<span class="go">@selector( alloc) is ab1bb16b
+</span></code></pre></div></div>
+
+<p>See <a href="//github.com/mulle-objc/mulle-objc-list">mulle-objc-list</a> for more
+details.</p>
+
+<h2 id="mulle-objc-unarchive">mulle-objc-unarchive</h2>
+
+<p>Used by the library optimization process, that unpacks and repacks static
+libraries to only contain required classes and categories.</p>
+
+<p>See <a href="//github.com/mulle-objc/mulle-objc-list">mulle-objc-list</a> for more
+details.</p>
+
+<h2 id="mulle-objc-uncovered-methods">mulle-objc-uncovered-methods</h2>
+
+<p>Creates a list of methods not being messaged during a programs run. This can
+be useful for finding missing tests.</p>
+
+<p>See <a href="coverage.html">Coverage</a> for more details about mulle-objc coverage information.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[mulle-objc-list/mulle-objc-lista]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/tools.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/tools.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: Xcode projects</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/xcodeproj.html" rel="alternate" type="text/html" title="Porting: Xcode projects" /><published>2024-06-19T00:00:00+02:00</published><updated>2024-06-19T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/xcodeproj</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/xcodeproj.html"><![CDATA[<p>As <strong>mulle-objc</strong> evolves, more and more Xcode projects will be portable
+without effort. For now Foundation based Tool and Library targets are
+the candidates for porting.</p>
+
+<h2 id="mulle-xcode-to-cmake">mulle-xcode-to-cmake</h2>
+
+<p>Getting an existing Xcode project to run with <strong>mulle-objc</strong> can be very easy
+with <a href="//github.com/mulle-nat/mulle-xcode-to-cmake">mulle-xcode-to-cmake</a>.
+Assuming  that your Xcode project file is named “project.xcodeproj”, these
+steps may already be sufficient:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-xcode-to-cmake <span class="nb">export </span>project.xcodeproj <span class="o">&gt;</span> CMakeLists.txt
+mulle-sde init <span class="nt">-m</span> foundation/objc-porter executable
+mulle-sde craft
+</code></pre></div></div>
+
+<p>To install:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mulle-sde craft craftorder
+mulle-sde run mulle-make <span class="nb">install</span> <span class="nt">--prefix</span> /tmp/whereever
+</code></pre></div></div>
+
+<h2 id="converting-to-the-modern-workflow">Converting to the modern workflow</h2>
+
+<p>If your project contains one or many libraries, it is best to split them
+up into multiple projects.</p>
+
+<p>Replace the <em>objc-porter</em> environment with the <em>objc-developer</em> environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> .mulle
+mulle-sde init <span class="nt">-m</span> foundation/objc-developer executable
+</code></pre></div></div>
+
+<p>And then you are ready to setup a <a href="modern.html">project</a>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[As mulle-objc evolves, more and more Xcode projects will be portable without effort. For now Foundation based Tool and Library targets are the candidates for porting.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/xcodeproj.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/xcodeproj.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: Objective-C++</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/cpp.html" rel="alternate" type="text/html" title="Porting: Objective-C++" /><published>2024-06-14T00:00:00+02:00</published><updated>2024-06-14T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/cpp</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/cpp.html"><![CDATA[<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> C++ is already the most complex language in the
+world and adding Objective-C on top of it, is like the worst of both worlds.</div>
+
+<h2 id="use-c-from-objective-c">Use C++ from Objective-C</h2>
+
+<p>Create a C code wrapper to call the C++ functions. Then call the C code from
+Objective-C.</p>
+
+<p>C++</p>
+
+<p><code class="language-plaintext highlighter-rouge">cpp.h:</code></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#ifdef __cplusplus
+</span><span class="k">extern</span> <span class="s">"C"</span>
+<span class="p">{</span>
+<span class="cp">#endif
+</span>   <span class="kt">void</span>  <span class="n">call_cpp1</span><span class="p">(</span> <span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+   <span class="kt">char</span>  <span class="o">*</span><span class="n">call_cpp2</span><span class="p">(</span> <span class="kt">void</span><span class="p">);</span>
+<span class="cp">#ifdef __cplusplus
+</span><span class="p">};</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<p>Objective-C</p>
+
+<p><code class="language-plaintext highlighter-rouge">foo.m</code></p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;cpp.h&gt;</span><span class="cp">
+</span>
+<span class="k">@implementation</span> <span class="nc">Foo</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">callCPlusPlus1</span><span class="p">:(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">s</span>
+<span class="p">{</span>
+   <span class="n">call_cpp1</span><span class="p">(</span> <span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">callCPlusPlus2</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">call_cpp2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h2 id="use-objective-c-from-c">Use Objective-C from C++</h2>
+
+<p>This is possible too, but you need to link against the <code class="language-plaintext highlighter-rouge">mulle-objc-runtime.h</code>
+only:</p>
+
+<blockquote>
+  <p>TODO: test this does this work with mulle-c11 ?</p>
+</blockquote>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#ifdef __cplusplus
+</span><span class="k">extern</span> <span class="s">"C"</span>
+<span class="p">{</span>
+<span class="cp">#include</span> <span class="cpf">&lt;mulle-objc/mulle-objc-runtime.h&gt;</span><span class="cp">
+</span><span class="p">};</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<p>Now you can use the runtime functions to create instances and call them.
+It’s very cumbersome though.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note: C++ is already the most complex language in the world and adding Objective-C on top of it, is like the worst of both worlds.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/cpp.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/cpp.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: unichar</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/unichar.html" rel="alternate" type="text/html" title="Porting: unichar" /><published>2024-06-11T00:00:00+02:00</published><updated>2024-06-11T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/unichar</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/unichar.html"><![CDATA[<p>Apple Foundation uses UTF-16 as <code class="language-plaintext highlighter-rouge">unichar</code>, whereas the mulle-objc Foundation used
+UTF-32 as <code class="language-plaintext highlighter-rouge">unichar</code>. As long as your code is not assuming 16-bit for its size,
+there should be no problem.</p>
+
+<p>When accessing string contents as <code class="language-plaintext highlighter-rouge">unichar *</code> with <code class="language-plaintext highlighter-rouge">dataUsingEncoding:</code> use the
+generic <code class="language-plaintext highlighter-rouge">NSUnicodeStringEncoding</code> instead of <code class="language-plaintext highlighter-rouge">NSUTF32StringEncoding</code>/<code class="language-plaintext highlighter-rouge">NSUTF16StringEncoding</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  data = [s dataUsingEncoding:NSUnicodeStringEncoding];
+  here_some_unichars( (unichar *) [data bytes], [data length] / sizeof( unichar));
+</code></pre></div></div>
+
+<p>TODO:  How about <code class="language-plaintext highlighter-rouge">printf</code> with <code class="language-plaintext highlighter-rouge">%S</code> ?</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Apple Foundation uses UTF-16 as unichar, whereas the mulle-objc Foundation used UTF-32 as unichar. As long as your code is not assuming 16-bit for its size, there should be no problem.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/unichar.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/unichar.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: NSZone</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/nszone.html" rel="alternate" type="text/html" title="Porting: NSZone" /><published>2024-06-09T00:00:00+02:00</published><updated>2024-06-09T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/nszone</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/nszone.html"><![CDATA[<p>Zones are dead. Do not use the <code class="language-plaintext highlighter-rouge">withZone:</code> methods anymore.</p>
+
+<p>mulle-objc will work well enough if you use them, but they are just superflous.
+Incidentally I don’t think Apple Objective-C uses zones either anymore.</p>
+
+<h3 id="compiler-transforms--zone-calls">Compiler transforms -zone calls</h3>
+
+<p>With that being said, the <strong>mulle-clang</strong> compiler will transform any
+call to <code class="language-plaintext highlighter-rouge">-zone</code> into <code class="language-plaintext highlighter-rouge">NULL</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Zones are dead. Do not use the withZone: methods anymore.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/nszone.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/nszone.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: Variable Arguments in Methods</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/varargs.html" rel="alternate" type="text/html" title="Porting: Variable Arguments in Methods" /><published>2024-06-04T00:00:00+02:00</published><updated>2024-06-04T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/varargs</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/varargs.html"><![CDATA[<h2 id="intro">Intro</h2>
+
+<p>Variable arguments in methods follow the Mulle MetaABI and are incompatible
+with <code class="language-plaintext highlighter-rouge">va_list</code>. C functions continue to use <code class="language-plaintext highlighter-rouge">va_list</code> though. So mulle-objc
+will support both formats.</p>
+
+<h3 id="a-typical-variable-argument-method">A typical variable argument method</h3>
+
+<h4 id="va_list">va_list</h4>
+
+<p>This is the <code class="language-plaintext highlighter-rouge">+[NSString stringWithFormat:]</code> method as presumably coded in the
+Apple Foundation. Conventionally the <code class="language-plaintext highlighter-rouge">va_list</code> parameter in Apple Foundation
+methods is called “arguments:”:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">stringWithFormat</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">format</span><span class="p">,</span> <span class="p">...</span>
+<span class="p">{</span>
+   <span class="n">NSString</span>   <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+   <span class="kt">va_list</span>    <span class="n">args</span><span class="p">;</span>
+
+   <span class="n">va_start</span><span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
+   <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="n">format</span>
+              <span class="nl">arguments:</span><span class="n">args</span><span class="p">];</span>
+   <span class="n">va_end</span><span class="p">(</span> <span class="n">args</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="mulle_vararg_list">mulle_vararg_list</h4>
+
+<p>In mulle-objc the type is <code class="language-plaintext highlighter-rouge">mulle_vararg_list</code>. And if it is used as a
+parameter its called “mulleVarargList:” by convention. <code class="language-plaintext highlighter-rouge">va_list</code> which is still
+a possibility type due to C code (e.g. <code class="language-plaintext highlighter-rouge">NSLog</code>), is called  <code class="language-plaintext highlighter-rouge">varargList:</code>
+instead for discrimination.</p>
+
+<p>This is how <code class="language-plaintext highlighter-rouge">+[NSString stringWithFormat:]</code> is actually coded in
+MulleFoundation:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">stringWithFormat</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">format</span><span class="p">,</span> <span class="p">...</span>
+<span class="p">{</span>
+   <span class="n">NSString</span>             <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+   <span class="n">mulle_vararg_list</span>    <span class="n">args</span><span class="p">;</span>
+
+   <span class="n">mulle_vararg_start</span><span class="p">(</span> <span class="n">args</span><span class="p">,</span> <span class="n">format</span><span class="p">);</span>
+   <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="n">format</span>
+              <span class="nl">mulleVarargList:</span><span class="n">args</span><span class="p">];</span>
+   <span class="n">mulle_vararg_end</span><span class="p">(</span> <span class="n">args</span><span class="p">);</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So that’s pretty similar.</p>
+
+<h4 id="mulle-objc-supports-both">mulle-objc supports both</h4>
+
+<p>It’s not an either or scenarion, as mulle-objc supports both:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">stringWithFormat</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">format</span>
+                  <span class="n">mulleVarargList</span><span class="o">:</span><span class="p">(</span><span class="n">mulle_vararg_list</span><span class="p">)</span> <span class="n">arguments</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFormat</span><span class="p">:</span><span class="n">format</span>
+                         <span class="nl">mulleVarargList:</span><span class="n">arguments</span><span class="p">]</span> <span class="nf">autorelease</span><span class="p">]);</span>
+<span class="p">}</span>
+
+
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span> <span class="nf">stringWithFormat</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">format</span>
+                       <span class="n">varargList</span><span class="o">:</span><span class="p">(</span><span class="kt">va_list</span><span class="p">)</span> <span class="n">args</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFormat</span><span class="p">:</span><span class="n">format</span>
+                                 <span class="nl">varargList:</span><span class="n">args</span><span class="p">]</span> <span class="nf">autorelease</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="accessing-variable-arguments">Accessing variable arguments</h2>
+
+<p>The actual access of variable arguments of <code class="language-plaintext highlighter-rouge">mulle_vararg_list</code> is very
+different though.</p>
+
+<p>See <a href="https://github.com/MulleFoundation/objc-compat">objc-compat</a> for some
+details on how to achieve this portably.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Intro]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/varargs.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/varargs.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: Synchronized is gone</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/synchronized.html" rel="alternate" type="text/html" title="Porting: Synchronized is gone" /><published>2024-05-30T00:00:00+02:00</published><updated>2024-05-30T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/synchronized</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/synchronized.html"><![CDATA[<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> See <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafety/ThreadSafety.html#//apple_ref/doc/uid/10000057i-CH8-SW16">Threading Programming Guide</a> for more information about <tt>@synchronized</tt>.</div>
+
+<h2 id="use-mulle-thread-for-least-hassle">Use mulle-thread for least hassle.</h2>
+
+<p><a href="//github.com/mulle-concurrent/mulle-thread">mulle-thread</a>
+is available on all platforms, that run Objective-C.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">mulle_thread_mutex_t</code> to transform</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">myFunction</span>
+<span class="p">{</span>
+   <span class="k">@synchronized</span><span class="p">()</span>
+   <span class="p">{</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">mulle_thread_mutex_t</span>   <span class="n">lock</span><span class="p">;</span>
+
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">load</span>
+<span class="p">{</span>
+   <span class="n">mulle_thread_mutex_init</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">unload</span>
+<span class="p">{</span>
+   <span class="n">mulle_thread_mutex_done</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">myFunction</span>
+<span class="p">{</span>
+   <span class="n">mulle_thread_mutex_lock</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+   <span class="n">mulle_thread_mutex_unlock</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">lock</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="use-nslock-instead">Use NSLock instead</h2>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">NSLock</span>   <span class="n">lock</span><span class="p">;</span>
+
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">initialize</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span> <span class="o">!</span> <span class="n">lock</span><span class="p">)</span>
+      <span class="n">lock</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSLock</span> <span class="nf">new</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">deinitialize</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">lock</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="p">[</span><span class="n">lock</span> <span class="nf">release</span><span class="p">];</span>
+      <span class="n">lock</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">myFunction</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">lock</span> <span class="nf">lock</span><span class="p">];</span>
+   <span class="p">{</span>
+
+   <span class="p">}</span>
+   <span class="p">[</span><span class="n">lock</span> <span class="nf">unlock</span><span class="p">];</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="good-points">Good points</h3>
+
+<ul>
+  <li>code works in all runtimes without another dependency</li>
+  <li><code class="language-plaintext highlighter-rouge">+deinitialize</code> will not be called by other runtimes, it’s a harmless addition</li>
+</ul>
+
+<h3 id="bad-points">Bad points</h3>
+
+<ul>
+  <li>A <strong>NSLock</strong> is slower than a <code class="language-plaintext highlighter-rouge">mulle_thread_mutex_t</code></li>
+  <li>The lock has not become a proper mulle-objc root object, so this code will leak in tests.</li>
+</ul>
+
+<p>You could fix this with deleting <code class="language-plaintext highlighter-rouge">+deinitialize</code> and rewriting <code class="language-plaintext highlighter-rouge">+initialize</code> as:</p>
+
+<p>``` objc</p>
+<ul>
+  <li>(void) initialize
+{
+ if( ! lock)
+ {
+    lock = [NSLock new];
+#ifdef <strong>MULLE_OBJC</strong>
+    [lock _becomeRootObject];
+    [lock release;]
+#endif
+ }
+}</li>
+</ul>
+
+<p>// + (void) deinitialize clashes with  _becomeRootObject and must be removed</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Note: See Threading Programming Guide for more information about @synchronized.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/synchronized.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/synchronized.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Porting: @synthesize is useless now</title><link href="https://www.mulle-kybernetik.com/de-re-mulle-objc/synthesize.html" rel="alternate" type="text/html" title="Porting: @synthesize is useless now" /><published>2024-05-25T00:00:00+02:00</published><updated>2024-05-25T00:00:00+02:00</updated><id>https://www.mulle-kybernetik.com/de-re-mulle-objc/synthesize</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-mulle-objc/synthesize.html"><![CDATA[<p>If <code class="language-plaintext highlighter-rouge">@synthesize</code> renames the instance variable, you will unfortunately have to
+actually rename the instance variable to the name of the property prefixed
+with an underscore, otherwise it won’t work. Do best is to just delete the
+<code class="language-plaintext highlighter-rouge">@synthesize</code> and fix the errors.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[If @synthesize renames the instance variable, you will unfortunately have to actually rename the instance variable to the name of the property prefixed with an underscore, otherwise it won’t work. Do best is to just delete the @synthesize and fix the errors.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/synthesize.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-mulle-objc/%7B%22feature%22=%3E%22images/features/synthesize.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

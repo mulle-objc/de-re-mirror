@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://www.mulle-kybernetik.com/de-re-property/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mulle-kybernetik.com/de-re-property/" rel="alternate" type="text/html" /><updated>2025-01-26T22:44:07+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/feed.xml</id><title type="html">De Re @property</title><subtitle>How to employ @property in your Objective-C code for MulleObjC and the mulle-objc runtime.</subtitle><entry><title type="html">Reference: serializable</title><link href="https://www.mulle-kybernetik.com/de-re-property/serializable.html" rel="alternate" type="text/html" title="Reference: serializable" /><published>2025-01-12T00:00:00+01:00</published><updated>2025-01-12T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/serializable</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/serializable.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature letter</td>
+      <td>‘E’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">retain</span><span class="p">,</span> <span class="n">serializable</span><span class="p">)</span> <span class="n">Foo</span>      <span class="o">*</span><span class="n">foo</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">retain</span><span class="p">,</span> <span class="n">nonserializable</span><span class="p">)</span> <span class="n">Bar</span>   <span class="o">*</span><span class="n">bar</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The attribute <code class="language-plaintext highlighter-rouge">serializable</code> indicates that a property should be
+serialized by <code class="language-plaintext highlighter-rouge">NSCoder</code>, MulleEOF or some other persistence method.</p>
+
+<blockquote>
+  <p><strong>MEMO</strong>: One should optionally be able to specify a class name to indicate 
+the destination class to be used in the deserialization process.</p>
+</blockquote>
+
+<p>Its counterpart is <code class="language-plaintext highlighter-rouge">nonserializable</code>, which can be used to explicitly redeclare a 
+previously serializable a property.</p>
+
+<h2 id="nscode-considerations">NSCode considerations</h2>
+
+<p>When only properties are needed for the serialization of an object, you don’t need to
+write <code class="language-plaintext highlighter-rouge">-initWithCoder:</code> and  <code class="language-plaintext highlighter-rouge">-encodeWithCoder:</code> as the default 
+<a href="https://developer.apple.com/documentation/foundation/nscoder?language=objc">NSCoder</a> implementation will have enough
+runtime information to serialize and deserialize the object.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature letter ‘E’ Portability all Default NO]]></summary></entry><entry><title type="html">Reference: retain</title><link href="https://www.mulle-kybernetik.com/de-re-property/retain.html" rel="alternate" type="text/html" title="Reference: retain" /><published>2025-01-10T00:00:00+01:00</published><updated>2025-01-10T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/retain</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/retain.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>object types</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘&amp;’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">retain</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">propertyName</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">retain</code> attribute is used with <code class="language-plaintext highlighter-rouge">@property</code> declarations in Objective-C to specify retain counting memory management behavior for object properties. This
+is the default for objects. For objects that implement the <code class="language-plaintext highlighter-rouge">NSCopying</code>
+protocol, you should use <code class="language-plaintext highlighter-rouge">copy</code> instead.</p>
+
+<ul>
+  <li>Increases the retain count of assigned objects</li>
+  <li>Automatically autoreleases the old value before assigning a new one</li>
+  <li>Ensures the property maintains ownership of its assigned object</li>
+  <li>Helps prevent premature deallocation of objects</li>
+</ul>
+
+<h3 id="caveats">Caveats</h3>
+
+<ul>
+  <li>Potential for retain cycles if not used carefully</li>
+  <li>You can not use <code class="language-plaintext highlighter-rouge">retain</code> on non-object types (e.g. <code class="language-plaintext highlighter-rouge">char *</code>)</li>
+  <li>Using <code class="language-plaintext highlighter-rouge">retain</code> instead of <code class="language-plaintext highlighter-rouge">copy</code> on value types like <code class="language-plaintext highlighter-rouge">NSString</code>, which have a mutable variant like <code class="language-plaintext highlighter-rouge">NSMutableString</code> is asking for trouble.</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Person</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+   <span class="n">BOOL</span>   <span class="n">_isMarried</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">retain</span><span class="p">)</span> <span class="n">Person</span>  <span class="o">*</span><span class="n">spouse</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Person</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">marryPerson</span><span class="p">:(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span> <span class="n">person</span>
+<span class="p">{</span>
+   <span class="n">_isMarried</span> <span class="o">=</span> <span class="p">(</span><span class="n">person</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">);</span>
+   <span class="p">[</span><span class="n">self</span> <span class="nf">setSpouse</span><span class="p">:</span><span class="n">newName</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h3 id="accessors">Accessors</h3>
+
+<p>This is the equivalent implementation for an <code class="language-plaintext highlighter-rouge">retain</code> object property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_object</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setObject</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_object</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="n">_object</span> <span class="o">=</span> <span class="p">[</span><span class="n">object</span> <span class="nf">retain</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Types object types Signature Letter ‘&amp;’ Portability all Default NO]]></summary></entry><entry><title type="html">Reference: readonly</title><link href="https://www.mulle-kybernetik.com/de-re-property/readonly.html" rel="alternate" type="text/html" title="Reference: readonly" /><published>2025-01-09T00:00:00+01:00</published><updated>2025-01-09T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/readonly</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/readonly.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘R’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">readonly</span><span class="p">)</span> <span class="kt">int</span>   <span class="n">value</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">readonly</code> attribute is used with <code class="language-plaintext highlighter-rouge">@property</code> declarations in Objective-C
+to create properties that can only be read from outside the class, but not
+modified. This is useful for encapsulating internal state and providing
+controlled access to object data.</p>
+
+<ul>
+  <li>Only generates a getter method, no setter</li>
+  <li>Prevents external modification of the property</li>
+  <li>Useful for maintaining object invariants and encapsulation</li>
+</ul>
+
+<h3 id="caveat">Caveat</h3>
+
+<ul>
+  <li>Requires added release or deallocation code, if the property needs to be set internally</li>
+  <li>Will generate an instance variable unless declared as <code class="language-plaintext highlighter-rouge">@dynamic</code> as well</li>
+</ul>
+
+<blockquote>
+  <p><strong>Tip</strong>: Consider using a standard method, instead of a <code class="language-plaintext highlighter-rouge">@property</code> when dealing with
+readonly values.</p>
+</blockquote>
+
+<h3 id="example">Example</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Circle</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">@property</span><span class="p">(</span><span class="n">readonly</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">radius</span><span class="p">;</span>
+<span class="k">@property</span><span class="p">(</span><span class="n">readonly</span><span class="p">)</span> <span class="n">CGFloat</span> <span class="n">area</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Circle</span>
+<span class="p">{</span>
+   <span class="n">CGFloat</span>   <span class="n">_radius</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="nf">initWithRadius</span><span class="p">:(</span><span class="n">CGFloat</span><span class="p">)</span> <span class="n">radius</span>
+<span class="p">{</span>
+   <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">self</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="n">_radius</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span> <span class="n">radius</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_radius</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span> <span class="n">area</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">M_PI</span> <span class="o">*</span> <span class="n">_radius</span> <span class="o">*</span> <span class="n">_radius</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">finalize</span>
+<span class="p">{</span>
+   <span class="c1">// [_radius autorelease];  // if _radius were an object...</span>
+   <span class="c1">// _radius = nil;</span>
+   <span class="p">[</span><span class="n">super</span> <span class="nf">finalize</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h3 id="readonly-accessors">readonly accessors</h3>
+
+<p>For a <code class="language-plaintext highlighter-rouge">readonly</code> property, only a getter method is implemented:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_object</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If you need to set the instance value, you would do so typically during <code class="language-plaintext highlighter-rouge">-init</code> and you would 
+typically clear the value during <code class="language-plaintext highlighter-rouge">-finalize</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature Letter ‘R’ Portability all Default NO]]></summary></entry><entry><title type="html">Reference: nonatomic</title><link href="https://www.mulle-kybernetik.com/de-re-property/nonatomic.html" rel="alternate" type="text/html" title="Reference: nonatomic" /><published>2025-01-08T00:00:00+01:00</published><updated>2025-01-08T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/nonatomic</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/nonatomic.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘N’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>YES</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">id</span> <span class="n">propertyName</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">nonatomic</code> is “fluff” in mulle-objc, since all attributes are non-atomic.
+Atomicity in mulle-objc is either handled by locking (see MulleObject)
+or through atomic types.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature Letter ‘N’ Portability all Default YES]]></summary></entry><entry><title type="html">Reference: observable</title><link href="https://www.mulle-kybernetik.com/de-re-property/observable.html" rel="alternate" type="text/html" title="Reference: observable" /><published>2025-01-07T00:00:00+01:00</published><updated>2025-01-07T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/observable</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/observable.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘O’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>mulle-objc only</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">observable</span><span class="p">)</span> <span class="kt">double</span>   <span class="n">angle</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The property attribute <code class="language-plaintext highlighter-rouge">observable</code> is a modifier for the setting accessors.
+The generated code will call <code class="language-plaintext highlighter-rouge">[self willChange]</code> before changing the value.</p>
+
+<p>This is true for all properties, object properties</p>
+
+<h2 id="example">Example</h2>
+
+<p>Here’s an example demonstrating how <code class="language-plaintext highlighter-rouge">willChange</code> could create a snapshot of
+the current object state before changing the <code class="language-plaintext highlighter-rouge">otherObject</code> property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">MyClass</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="p">{</span>
+    <span class="n">NSMutableDictionary</span> <span class="o">*</span> <span class="n">_snapshot</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@property</span><span class="p">(</span> <span class="n">retain</span><span class="p">,</span> <span class="n">observable</span><span class="p">)</span> <span class="n">id</span> <span class="n">otherObject</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">MyClass</span>
+
+<span class="k">static</span> <span class="kt">int</span>  <span class="nf">addToSnapshot</span><span class="p">(</span> <span class="k">struct</span> <span class="n">_mulle_objc_property</span> <span class="o">*</span><span class="n">property</span><span class="p">,</span>
+                           <span class="kt">void</span> <span class="o">*</span><span class="n">userinfo</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">MyClass</span>    <span class="o">*</span><span class="n">self</span> <span class="o">=</span> <span class="n">userinfo</span><span class="p">;</span>
+   <span class="n">NSString</span>   <span class="o">*</span><span class="n">key</span><span class="p">;</span>
+
+   <span class="n">key</span>   <span class="o">=</span> <span class="err">@</span><span class="p">(</span> <span class="n">_mulle_objc_property_get_name</span><span class="p">(</span> <span class="n">property</span><span class="p">));</span>
+   <span class="c1">// Use Key Value Coding here from MulleObjCKVCFoundation to get</span>
+   <span class="c1">// everything as objects</span>
+   <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">valueForKey</span><span class="p">:</span><span class="n">key</span><span class="p">];</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">value</span><span class="p">)</span>
+      <span class="p">[</span><span class="n">self</span><span class="o">-&gt;</span><span class="n">_snapshot</span> <span class="nf">setObject</span><span class="p">:</span><span class="n">value</span>
+                          <span class="nl">forKey:</span><span class="n">key</span><span class="p">];</span>
+   <span class="k">return</span><span class="p">(</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">willChange</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span> <span class="n">_snapshot</span><span class="p">)</span>
+      <span class="k">return</span><span class="p">;</span>
+
+   <span class="c1">// Use a NSMutableDictionary from MulleObjCContainerFoundation</span>
+   <span class="n">_snapshot</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableDictionary</span> <span class="nf">dictionary</span><span class="p">];</span>
+   <span class="n">MulleObjCInstanceWalkProperties</span><span class="p">(</span> <span class="n">self</span><span class="p">,</span> <span class="n">addToSnapshot</span><span class="p">,</span> <span class="n">self</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<p>This implementation allows you to capture the state of all properties before
+any change occurs, which can be useful for undo functionality, change tracking,
+or other state management purposes.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature Letter ‘O’ Portability mulle-objc only Default NO]]></summary></entry><entry><title type="html">Reference: copy</title><link href="https://www.mulle-kybernetik.com/de-re-property/copy.html" rel="alternate" type="text/html" title="Reference: copy" /><published>2025-01-04T00:00:00+01:00</published><updated>2025-01-04T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/copy</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/copy.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>object types</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘C’</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span> <span class="n">propertyName</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">copy</code> attribute is used with <code class="language-plaintext highlighter-rouge">@property</code> declarations in Objective-C for
+object properties that should maintain their own independent copy of the
+assigned value.</p>
+
+<p>This is used for objects that implement the NSCopying protocol such as <code class="language-plaintext highlighter-rouge">NSString</code> or <code class="language-plaintext highlighter-rouge">NSData</code>:</p>
+
+<ul>
+  <li>Creates a new copy of the assigned object</li>
+  <li>Automatically autoreleases the old value before assigning the new copy</li>
+  <li>Ensures the property has its own independent instance of the object</li>
+  <li>Prevents unintended modifications to the original object</li>
+  <li>Eliminates whole classes of bugs (circular references, unintended modifications)</li>
+</ul>
+
+<p>A class that only consists of properties of non-pointer C types
+(like <code class="language-plaintext highlighter-rouge">NSUInteger</code> or <code class="language-plaintext highlighter-rouge">float</code>) and <code class="language-plaintext highlighter-rouge">copy</code> object types is a about as carefree
+a design as possible.</p>
+
+<h3 id="caveats">Caveats</h3>
+
+<ul>
+  <li>May have performance implications for large objects due to copying</li>
+  <li>You can not use <code class="language-plaintext highlighter-rouge">copy</code> on non-object types (e.g. <code class="language-plaintext highlighter-rouge">char *</code>)</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Document</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Document</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">updateTitle</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span> <span class="n">newTitle</span>
+<span class="p">{</span>
+   <span class="n">NSString</span>  <span class="o">*</span><span class="n">capitalizedTitle</span><span class="p">;</span>
+
+   <span class="n">capitalizedTitle</span> <span class="o">=</span> <span class="p">[</span><span class="n">newTitle</span> <span class="nf">capitalizedString</span><span class="p">];</span>
+   <span class="p">[</span><span class="n">self</span> <span class="nf">setTitle</span><span class="p">:</span><span class="n">capitalizedTitle</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h3 id="copy-accessors">copy accessors</h3>
+
+<p>This is the equivalent implementation for a <code class="language-plaintext highlighter-rouge">copy</code> object property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_object</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setObject</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_object</span> <span class="nf">autorelease</span><span class="p">];</span>
+   <span class="n">_object</span> <span class="o">=</span> <span class="p">[</span><span class="n">object</span> <span class="nf">copy</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Types object types Signature Letter ‘C’ Portability all Default NO]]></summary></entry><entry><title type="html">Reference: dynamic</title><link href="https://www.mulle-kybernetik.com/de-re-property/dynamic.html" rel="alternate" type="text/html" title="Reference: dynamic" /><published>2025-01-04T00:00:00+01:00</published><updated>2025-01-04T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/dynamic</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/dynamic.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>mulle-objc only</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">dynamic</span><span class="p">)</span> <span class="kt">char</span>  <span class="o">*</span><span class="n">barUTF8String</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">dynamic</code> indicates that a property is not backed by an instance variable. The
+compiler will generate neither an instance variable nor the accessor methods.</p>
+
+<p>This is useful for forwarding properties for example:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setBarUTF8String</span><span class="p">:(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span> <span class="n">s</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">_other</span> <span class="nf">setBarUTF8String</span><span class="p">:</span><span class="n">s</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="caveat">Caveat</h2>
+
+<p>If an existing non-dynamic property by a base class is redeclared as dynamic, then it’s too late. The instance variable 
+will have been created already in the base class and the accessor methods will have been generated there as well.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature Letter none Portability mulle-objc only Default NO]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-property/%7B%22thumb%22=%3E%22images/thumbs/dynamic.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-property/%7B%22thumb%22=%3E%22images/thumbs/dynamic.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Reference: container</title><link href="https://www.mulle-kybernetik.com/de-re-property/container.html" rel="alternate" type="text/html" title="Reference: container" /><published>2025-01-02T00:00:00+01:00</published><updated>2025-01-02T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/container</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/container.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>object types</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>‘K’ (‘+’,’-‘)</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>mulle-objc only</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>NO</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">container</span><span class="p">)</span> <span class="n">NSArray</span>   <span class="o">*</span><span class="n">foos</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>A property backed by a container gains two additional accessors an “adder” and a “remover. 
+If the property  is called “foos”, the two accessors will be <code class="language-plaintext highlighter-rouge">addToFoos:</code> and <code class="language-plaintext highlighter-rouge">removeFromFoos:</code>.</p>
+
+<p>These will call <code class="language-plaintext highlighter-rouge">addObject:</code> and <code class="language-plaintext highlighter-rouge">removeObject:</code> on the instance variable respectively. 
+You typically only interact with the property, using the adder and remover for setting only
+and the getter for getting the whole container. But using the setter like <code class="language-plaintext highlighter-rouge">setFoos:</code> is still
+valid.</p>
+
+<p>Specifying the <code class="language-plaintext highlighter-rouge">container</code> attribute, gives access to  two additional attributes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">adder=adderName</code></td>
+      <td>Custom getter method name.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">remover=removerName</code></td>
+      <td>Custom setter method name.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span> <span class="n">container</span><span class="p">,</span> <span class="n">adder</span><span class="o">=</span><span class="n">addToFoos</span><span class="o">:</span><span class="p">,</span> <span class="n">remover</span><span class="o">=</span><span class="n">removeFromFoos</span><span class="o">:</span><span class="p">)</span> <span class="n">NSArray</span>   <span class="o">*</span><span class="n">foos</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>These are encoded in the signature as <code class="language-plaintext highlighter-rouge">+</code> for the adder and <code class="language-plaintext highlighter-rouge">-</code> for the remover.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Types object types Signature Letter ‘K’ (‘+’,’-‘) Portability mulle-objc only Default NO]]></summary></entry><entry><title type="html">Reference: assign</title><link href="https://www.mulle-kybernetik.com/de-re-property/assign.html" rel="alternate" type="text/html" title="Reference: assign" /><published>2025-01-01T00:00:00+01:00</published><updated>2025-01-01T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/assign</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/assign.html"><![CDATA[<table>
+  <tbody>
+    <tr>
+      <td>Types</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Signature Letter</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>Portability</td>
+      <td>all</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>YES</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span><span class="p">(</span><span class="n">assign</span><span class="p">)</span> <span class="n">id</span> <span class="n">propertyName</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">assign</code> attribute is the default attribute for all attributes,
+and is therefore often omitted on non-object properties. For object
+properties that are actually <code class="language-plaintext highlighter-rouge">assign</code>, it’s very bad style to omit it.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">assign</code> attribute is used with <code class="language-plaintext highlighter-rouge">@property</code> declarations in Objective-C for
+object properties that should not retain ownership of the assigned value. This
+is commonly used for delegates or references to owner objects to avoid retain
+cycles.</p>
+
+<ul>
+  <li>Simply assigns the pointer without increasing the retain count</li>
+  <li>Does not release the old value before assigning the new one</li>
+  <li>Does not ensure the property maintains ownership of its assigned object</li>
+  <li>Useful for avoiding retain cycles in parent-child or delegate relationships</li>
+</ul>
+
+<h3 id="caveat">Caveat</h3>
+
+<ul>
+  <li>Can lead to dangling pointers, if the assigned object is prematurely deallocated</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">ChildViewController</span> <span class="p">:</span> <span class="nc">UIViewController</span>
+<span class="k">@property</span><span class="p">(</span> <span class="n">assign</span><span class="p">)</span> <span class="n">UIViewController</span> <span class="o">*</span><span class="n">parentViewController</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">ChildViewController</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setParentController</span><span class="p">:(</span><span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span> <span class="n">controller</span>
+<span class="p">{</span>
+   <span class="p">[</span><span class="n">self</span> <span class="nf">setParentViewController</span><span class="p">:</span><span class="n">controller</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div></div>
+
+<h3 id="assign-accessors">assign accessors</h3>
+
+<p>These are the equivalent accessor implementation for an <code class="language-plaintext highlighter-rouge">assign</code> object property:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="k">return</span><span class="p">(</span> <span class="n">_object</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">setObject</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span> <span class="n">object</span>
+<span class="p">{</span>
+   <span class="n">_object</span> <span class="o">=</span> <span class="n">object</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Types all Signature Letter none Portability all Default YES]]></summary></entry><entry><title type="html">Outro</title><link href="https://www.mulle-kybernetik.com/de-re-property/outro.html" rel="alternate" type="text/html" title="Outro" /><published>2024-12-29T00:00:00+01:00</published><updated>2024-12-29T00:00:00+01:00</updated><id>https://www.mulle-kybernetik.com/de-re-property/outro</id><content type="html" xml:base="https://www.mulle-kybernetik.com/de-re-property/outro.html"><![CDATA[<h2 id="advantages-of-property">Advantages of @property</h2>
+
+<p>The main technical advantages are:</p>
+
+<ul>
+  <li>Automated accessor generation reduces repetitive code</li>
+  <li>Standardized memory management patterns in setters</li>
+  <li>Direct control over getter/setter implementation when needed</li>
+  <li>Properties handle the retain/release cycle in setters automatically</li>
+  <li>Enhanced introspection</li>
+  <li>Automated break of retain cycles during -finalize for readwrite properties</li>
+</ul>
+
+<h2 id="summary">Summary</h2>
+
+<p>These are good rules to follow:</p>
+
+<ul>
+  <li>do use <code class="language-plaintext highlighter-rouge">@property</code> whenever possible</li>
+  <li>do prefer <code class="language-plaintext highlighter-rouge">copy</code> over <code class="language-plaintext highlighter-rouge">retain</code>, whenever possible</li>
+  <li>do wrap <code class="language-plaintext highlighter-rouge">@protocol</code> properties into a <code class="language-plaintext highlighter-rouge">#define</code></li>
+  <li>do not redeclare <code class="language-plaintext highlighter-rouge">@property</code> types</li>
+  <li>do not use <code class="language-plaintext highlighter-rouge">@synthesize</code></li>
+  <li>do not use <code class="language-plaintext highlighter-rouge">@dynamic</code></li>
+  <li>avoid <code class="language-plaintext highlighter-rouge">readonly</code> properties, if you don’t need the introspection</li>
+</ul>
+
+<p>Rules are not laws.</p>
+
+<h2 id="ai-tip">AI Tip</h2>
+
+<p>You can ask any AI like <a href="https://perplexity.ai">perplexity.ai</a>, just tell it that you are 
+using “mulle-objc” instead of Apple “Objective-C”.
+Most of them are quite good at explaining the concepts.</p>
+
+<h2 id="odd-tip">Odd Tip</h2>
+
+<p>For a few special cases a <code class="language-plaintext highlighter-rouge">@public</code> instance variable can be a simple alternative to a property.</p>
+
+<h2 id="links">Links</h2>
+
+<p>If you have problems with this little pamphlet or want a second opinion, you could try the 
+following sources:</p>
+
+<ol>
+  <li><a href="https://fullonrager.github.io/rys-objective-c-tutorial-archive/properties.html">Rys Objective-C Tutorial - Properties</a></li>
+  <li><a href="https://www.geeksforgeeks.org/properties-in-objective-c/">GeeksForGeeks - Properties in Objective-C</a></li>
+  <li><a href="https://stackoverflow.com/questions/10909039/in-objective-c-when-should-i-use-property-and-when-should-i-use-instance-variab">Stack Overflow - Properties vs Instance Variables</a></li>
+  <li><a href="https://www.youtube.com/watch?v=r6dOUEeGr_w">Video Tutorial - Properties</a></li>
+  <li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocProperties.html">Apple - Properties</a></li>
+  <li><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html">Apple - Encapsulating Data</a></li>
+</ol>
+
+<p>Be wary of the following concepts though: <code class="language-plaintext highlighter-rouge">weak</code>, <code class="language-plaintext highlighter-rouge">strong</code>, <code class="language-plaintext highlighter-rouge">atomic</code>, <code class="language-plaintext highlighter-rouge">unsafe_unretained</code>, 
+<code class="language-plaintext highlighter-rouge">@synthesize</code>, “ARC”, “Property Observers”, “Dot Notation”, “Xcode”
+which are all more or less not applicable to mulle-objc.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Advantages of @property]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://www.mulle-kybernetik.com/de-re-property/%7B%22thumb%22=%3E%22images/thumbs/outro.png%22%7D" /><media:content medium="image" url="https://www.mulle-kybernetik.com/de-re-property/%7B%22thumb%22=%3E%22images/thumbs/outro.png%22%7D" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

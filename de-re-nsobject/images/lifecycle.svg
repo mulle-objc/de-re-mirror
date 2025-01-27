@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" viewBox="0 0 400 720" xmlns="http://www.w3.org/2000/svg">
+<style>.phase-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .action-label {
+            font-size: 14px;
+            font-weight: 400;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+        .object-label {
+            font-size: 14px;
+            font-weight: 700;
+        }</style>
+<g transform="translate(0)">
+<rect width="400" height="140" fill="#e6ffe6"/>
+<g transform="translate(20,20)">
+<text y="20">alloc/init</text>
+<path d="m50 25v30" marker-end="url(#a)" stroke="#000"/>
+<rect y="60" width="100" height="40" fill="#fff" stroke="#000"/>
+<text x="25" y="85">Object</text>
+</g>
+<text transform="translate(200,70)">Single-threaded Birth</text>
+</g>
+<g transform="translate(0,140)">
+<rect width="400" height="140" fill="#fff2e6"/>
+<g transform="translate(20,20)">
+<text y="20">autorelease</text>
+<path d="m50 25v30" marker-end="url(#a)" stroke="#000"/>
+<rect y="60" width="100" height="40" fill="#fff" stroke="#000"/>
+<text x="25" y="85">Object</text>
+</g>
+<text transform="translate(200,70)">Autorelease Phase</text>
+</g>
+<g transform="translate(0,280)">
+<rect width="400" height="140" fill="#e6f3ff"/>
+<g transform="translate(20,20)">
+<text y="20">retain/release and finalize</text>
+<path d="m50 25v30" marker-end="url(#a)" stroke="#000"/>
+<rect y="60" width="100" height="40" fill="#fff" stroke="#000"/>
+<text x="25" y="85">Object</text>
+</g>
+<text transform="translate(200,70)">Multi-threaded Life</text>
+</g>
+<g transform="translate(0,420)">
+<rect width="400" height="140" fill="#ffe6e6"/>
+<g transform="translate(20,20)">
+<text y="20">retainCount == 1</text>
+<path d="m50 25v30" marker-end="url(#a)" stroke="#000"/>
+<rect y="60" width="100" height="40" fill="#fff" stroke="#000"/>
+<text x="25" y="85">Object</text>
+</g>
+<text transform="translate(200,70)">Single-threaded</text>
+</g>
+<g transform="translate(0,560)">
+<rect width="400" height="120" fill="#f2f2f2"/>
+<g transform="translate(20,20)">
+<text y="20">dealloc</text>
+<path d="m50 25v30" marker-end="url(#a)" stroke="#000"/>
+<rect y="60" width="100" height="40" fill="#fff" stroke="#000"/>
+<text x="25" y="85">Object</text>
+</g>
+<text transform="translate(200,70)">Deallocated</text>
+</g>
+<defs>
+<marker id="a" markerHeight="10" markerWidth="10" orient="auto" refX="9" refY="3">
+<path d="m0 0v6l9-3z"/>
+</marker>
+</defs>
+</svg>

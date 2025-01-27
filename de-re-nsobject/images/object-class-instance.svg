@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg color-interpolation="auto" color-rendering="auto" fill="black" font-family="'Dialog'" font-size="12px" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" text-rendering="auto" viewBox="0 0 366 217" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="a">
+<path d="m371 163h366v217h-366v-217z"/>
+</clipPath>
+</defs>
+<g transform="translate(-371,-163)" fill="#fff" shape-rendering="geometricPrecision" stroke="#fff" text-rendering="geometricPrecision">
+<rect x="371" y="163" width="366" height="217" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-371 -163)" shape-rendering="geometricPrecision" stroke-dasharray="0,4" stroke-dashoffset="2" stroke-linecap="round" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<ellipse cx="554" cy="281" rx="168" ry="84" clip-path="url(#a)" fill="none"/>
+</g>
+<g transform="translate(-371 -163)" font-family="sans-serif" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<text x="534.459" y="191.1699" clip-path="url(#a)" stroke="none" xml:space="preserve">Object</text>
+</g>
+<g transform="translate(-371 -163)" fill="#9cf" shape-rendering="geometricPrecision" stroke="#9cf" text-rendering="geometricPrecision">
+<circle cx="446.5" cy="272.5" r="29.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-371 -163)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<circle cx="446.5" cy="272.5" r="29.5" clip-path="url(#a)" fill="none"/>
+<text x="430.7148" y="276.6543" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">Class</text>
+</g>
+<g transform="translate(-371 -163)" fill="#cff" shape-rendering="geometricPrecision" stroke="#cff" text-rendering="geometricPrecision">
+<circle cx="658.5" cy="294.5" r="29.5" clip-path="url(#a)" stroke="none"/>
+</g>
+<g transform="translate(-371 -163)" shape-rendering="geometricPrecision" stroke-linecap="butt" stroke-miterlimit="1.45" text-rendering="geometricPrecision">
+<circle cx="658.5" cy="294.5" r="29.5" clip-path="url(#a)" fill="none"/>
+<text x="632.9795" y="298.6543" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">Instance</text>
+<path d="m475.84 275.54 145.36 15.084" clip-path="url(#a)" fill="none"/>
+<path d="m629.16 291.46-11.42-6.2119 2.4679 5.283-3.5001 4.6636z" clip-path="url(#a)" stroke="none"/>
+<rect x="531.49" y="274.52" width="42.016" height="17.969" clip-path="url(#a)" fill="#fff" stroke="none"/>
+<text x="533.4922" y="287.6543" clip-path="url(#a)" font-family="sans-serif" stroke="none" xml:space="preserve">+alloc</text>
+</g>
+</svg>
